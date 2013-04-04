@@ -1,0 +1,48 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="766" measuredH="639" mockupW="747" mockupH="627">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="19" y="12" w="747" h="627" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tank%20Control</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::ButtonBar" x="32" y="53" w="723" h="29" measuredW="300" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>Tank%20Control%26bm%3BTank%20Control.bmml%26bm%3BTank%20Control.bmml%26bm%3BTank%20Control.bmml%2CTank%20Reporting%26bm%3BTank%20Reporting.bmml%26bm%3BTank%20Reporting.bmml%26bm%3BTank%20Reporting.bmml%2CTank%20Recipe%26bm%3BTank%20Recipe.bmml%26bm%3BTank%20Recipe.bmml%26bm%3BTank%20Recipe.bmml%2CTank%20User%26bm%3BTank%20User.bmml%26bm%3BTank%20User.bmml%26bm%3BTank%20User.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2213%2C41%2C229%2C70%22%20href%3D%22Tank%2520Control.bmml%22%20alt%3D%22Tank%20Control%22%20id%3D%221_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22229%2C41%2C431%2C70%22%20href%3D%22Tank%2520Reporting.bmml%22%20alt%3D%22Tank%20Reporting%22%20id%3D%221_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22431%2C41%2C597%2C70%22%20href%3D%22Tank%2520Recipe.bmml%22%20alt%3D%22Tank%20Recipe%22%20id%3D%221_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22597%2C41%2C734%2C70%22%20href%3D%22Tank%2520User.bmml%22%20alt%3D%22Tank%20User%22%20id%3D%221_3%22/%3E%0A</map>
+        <selectedIndex>1</selectedIndex>
+        <text>Dashboard%2C%20Reporting%2C%20Recipe%2C%20User</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::DateChooser" x="133" y="108" w="-1" h="-1" measuredW="156" measuredH="25" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%2007%20/%2007%20/%202013%20%20%20%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="51" y="110" w="-1" h="-1" measuredW="67" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>From%20Date</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="325" y="110" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Until%20Date</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::DateChooser" x="401" y="108" w="-1" h="-1" measuredW="156" measuredH="25" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%2007%20/%2008%20/%202013%20%20%20%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::ColumnChart" x="51" y="406" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::LineChart" x="298" y="408" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="8" locked="false" isInGroup="-1"/>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::PieChart" x="532" y="187" w="-1" h="-1" measuredW="180" measuredH="180" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::BarChart" x="51" y="190" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="10" locked="false" isInGroup="-1"/>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::PieChart" x="531" y="394" w="-1" h="-1" measuredW="180" measuredH="180" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::LineChart" x="289" y="190" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::FieldSet" x="38" y="147" w="708" h="459" measuredW="200" measuredH="170" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reporting%20Window%20%28%20can%20be%20printed%20%29</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
