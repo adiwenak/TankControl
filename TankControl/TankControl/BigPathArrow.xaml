@@ -1,0 +1,46 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Name="BigMovingArrow" x:Class="TankControl.BigPathArrow" Height="34.209" mc:Ignorable="d" Width="119.146">
+	<UserControl.Resources>
+        <Storyboard x:Key="MovingArrow" RepeatBehavior="Forever">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="blockArrow">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="-0.375"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="109.752"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="blockArrow">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="-0.375"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.666"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="blockArrow">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        		<DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Hidden}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+	</UserControl.Resources>
+    <Grid Margin="0,0,-47.5,0">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="120*"/>
+    		<ColumnDefinition Width="47*"/>
+    	</Grid.ColumnDefinitions>
+    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="Red" HorizontalAlignment="Left" Height="3.5" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="119.25" Margin="1.185,16.648,0,0" StrokeThickness="2" Stretch="Fill" Grid.ColumnSpan="2"/>
+    	<ed:BlockArrow x:Name="blockArrow" HorizontalAlignment="Left" Height="6" Margin="1.333,15.181,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="9.666" RenderTransformOrigin="0.5,0.5" Fill="Red" Visibility="Hidden">
+    		<ed:BlockArrow.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</ed:BlockArrow.RenderTransform>
+    	</ed:BlockArrow>
+    	<Image x:Name="valveBig_Copy" HorizontalAlignment="Left" Height="20.708" Margin="50.717,3.885,0,0" VerticalAlignment="Top" Width="23.291" Source="open.png" RenderTransformOrigin="0.5,0.5">
+    		<Image.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</Image.RenderTransform>
+    	</Image>
+        
+    </Grid>
+</UserControl>
