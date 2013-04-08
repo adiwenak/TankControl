@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TankControlModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TankControlModelStoreContainer">
+          <EntitySet Name="History" EntityType="TankControlModel.Store.History" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Recipe" EntityType="TankControlModel.Store.Recipe" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemError" EntityType="TankControlModel.Store.SystemError" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="TankControlModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_History_Recipe" Association="TankControlModel.Store.FK_History_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="recipe_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="el1" Type="float" />
+          <Property Name="el2" Type="float" />
+          <Property Name="el3" Type="float" />
+          <Property Name="el4" Type="float" />
+          <Property Name="el6" Type="float" />
+          <Property Name="el7" Type="float" />
+          <Property Name="duration_el1" Type="int" />
+          <Property Name="duration_el2" Type="int" />
+          <Property Name="duration_el3" Type="int" />
+          <Property Name="duration_el4" Type="int" />
+          <Property Name="duration_el5" Type="int" />
+          <Property Name="duration_el6" Type="int" />
+          <Property Name="duration_el7" Type="int" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="el1" Type="float" />
+          <Property Name="el2" Type="float" />
+          <Property Name="el3" Type="float" />
+          <Property Name="el4" Type="float" />
+          <Property Name="el5" Type="float" />
+          <Property Name="el6" Type="float" />
+          <Property Name="el7" Type="float" />
+          <Property Name="tol_el1" Type="float" />
+          <Property Name="tol_el2" Type="float" />
+          <Property Name="tol_el3" Type="float" />
+          <Property Name="tol_el4" Type="float" />
+          <Property Name="tol_el5" Type="float" />
+          <Property Name="tol_el6" Type="float" />
+          <Property Name="tol_el7" Type="float" />
+          <Property Name="switch_el1" Type="float" />
+          <Property Name="switch_el2" Type="float" />
+          <Property Name="runtime" Type="int" />
+        </EntityType>
+        <EntityType Name="SystemError">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="errorDesc" Type="varchar" MaxLength="100" />
+          <Property Name="errorLocation" Type="varchar" MaxLength="50" />
+          <Property Name="errorDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="auth_level" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_History_Recipe">
+          <End Role="Recipe" Type="TankControlModel.Store.Recipe" Multiplicity="1" />
+          <End Role="History" Type="TankControlModel.Store.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="recipe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TankControlModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TankControlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Histories" EntityType="TankControlModel.History" />
+          <EntitySet Name="Recipes" EntityType="TankControlModel.Recipe" />
+          <EntitySet Name="SystemErrors" EntityType="TankControlModel.SystemError" />
+          <EntitySet Name="Users" EntityType="TankControlModel.User" />
+          <AssociationSet Name="FK_History_Recipe" Association="TankControlModel.FK_History_Recipe">
+            <End Role="Recipe" EntitySet="Recipes" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="recipe_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="el1" Type="Double" />
+          <Property Name="el2" Type="Double" />
+          <Property Name="el3" Type="Double" />
+          <Property Name="el4" Type="Double" />
+          <Property Name="el6" Type="Double" />
+          <Property Name="el7" Type="Double" />
+          <Property Name="duration_el1" Type="Int32" />
+          <Property Name="duration_el2" Type="Int32" />
+          <Property Name="duration_el3" Type="Int32" />
+          <Property Name="duration_el4" Type="Int32" />
+          <Property Name="duration_el5" Type="Int32" />
+          <Property Name="duration_el6" Type="Int32" />
+          <Property Name="duration_el7" Type="Int32" />
+          <NavigationProperty Name="Recipe" Relationship="TankControlModel.FK_History_Recipe" FromRole="History" ToRole="Recipe" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="el1" Type="Double" />
+          <Property Name="el2" Type="Double" />
+          <Property Name="el3" Type="Double" />
+          <Property Name="el4" Type="Double" />
+          <Property Name="el5" Type="Double" />
+          <Property Name="el6" Type="Double" />
+          <Property Name="el7" Type="Double" />
+          <Property Name="tol_el1" Type="Double" />
+          <Property Name="tol_el2" Type="Double" />
+          <Property Name="tol_el3" Type="Double" />
+          <Property Name="tol_el4" Type="Double" />
+          <Property Name="tol_el5" Type="Double" />
+          <Property Name="tol_el6" Type="Double" />
+          <Property Name="tol_el7" Type="Double" />
+          <Property Name="switch_el1" Type="Double" />
+          <Property Name="switch_el2" Type="Double" />
+          <Property Name="runtime" Type="Int32" />
+          <NavigationProperty Name="Histories" Relationship="TankControlModel.FK_History_Recipe" FromRole="Recipe" ToRole="History" />
+        </EntityType>
+        <EntityType Name="SystemError">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="errorDesc" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="errorLocation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="errorDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="auth_level" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_History_Recipe">
+          <End Role="Recipe" Type="TankControlModel.Recipe" Multiplicity="1" />
+          <End Role="History" Type="TankControlModel.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="recipe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TankControlModelStoreContainer" CdmEntityContainer="TankControlEntities">
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="TankControlModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="el1" ColumnName="el1" />
+                <ScalarProperty Name="el2" ColumnName="el2" />
+                <ScalarProperty Name="el3" ColumnName="el3" />
+                <ScalarProperty Name="el4" ColumnName="el4" />
+                <ScalarProperty Name="el6" ColumnName="el6" />
+                <ScalarProperty Name="el7" ColumnName="el7" />
+                <ScalarProperty Name="duration_el1" ColumnName="duration_el1" />
+                <ScalarProperty Name="duration_el2" ColumnName="duration_el2" />
+                <ScalarProperty Name="duration_el3" ColumnName="duration_el3" />
+                <ScalarProperty Name="duration_el4" ColumnName="duration_el4" />
+                <ScalarProperty Name="duration_el5" ColumnName="duration_el5" />
+                <ScalarProperty Name="duration_el6" ColumnName="duration_el6" />
+                <ScalarProperty Name="duration_el7" ColumnName="duration_el7" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="TankControlModel.Recipe">
+              <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="el1" ColumnName="el1" />
+                <ScalarProperty Name="el2" ColumnName="el2" />
+                <ScalarProperty Name="el3" ColumnName="el3" />
+                <ScalarProperty Name="el4" ColumnName="el4" />
+                <ScalarProperty Name="el5" ColumnName="el5" />
+                <ScalarProperty Name="el6" ColumnName="el6" />
+                <ScalarProperty Name="el7" ColumnName="el7" />
+                <ScalarProperty Name="tol_el1" ColumnName="tol_el1" />
+                <ScalarProperty Name="tol_el2" ColumnName="tol_el2" />
+                <ScalarProperty Name="tol_el3" ColumnName="tol_el3" />
+                <ScalarProperty Name="tol_el4" ColumnName="tol_el4" />
+                <ScalarProperty Name="tol_el5" ColumnName="tol_el5" />
+                <ScalarProperty Name="tol_el6" ColumnName="tol_el6" />
+                <ScalarProperty Name="tol_el7" ColumnName="tol_el7" />
+                <ScalarProperty Name="switch_el1" ColumnName="switch_el1" />
+                <ScalarProperty Name="switch_el2" ColumnName="switch_el2" />
+                <ScalarProperty Name="runtime" ColumnName="runtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemErrors">
+            <EntityTypeMapping TypeName="TankControlModel.SystemError">
+              <MappingFragment StoreEntitySet="SystemError">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="errorDesc" ColumnName="errorDesc" />
+                <ScalarProperty Name="errorLocation" ColumnName="errorLocation" />
+                <ScalarProperty Name="errorDate" ColumnName="errorDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TankControlModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="auth_level" ColumnName="auth_level" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TankControlDB">
+        <EntityTypeShape EntityType="TankControlModel.History" Width="1.5" PointX="3" PointY="1.25" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="TankControlModel.Recipe" Width="1.5" PointX="0.75" PointY="1" Height="4.6725065104166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="TankControlModel.SystemError" Width="1.5" PointX="5.75" PointY="0.75" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="TankControlModel.User" Width="1.5" PointX="5.75" PointY="3.75" Height="1.9802864583333335" IsExpanded="true" />
+        <AssociationConnector Association="TankControlModel.FK_History_Recipe" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.3939518229166659" />
+          <ConnectorPoint PointX="3" PointY="3.3939518229166659" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

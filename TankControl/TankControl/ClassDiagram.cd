@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TankControl.Model.Pump">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Model\Pump.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TankControl.Model.Valve">
+    <Position X="11.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Model\Valve.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TankControl.BaseTank">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\BaseTank.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Components" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TankControl.Model.MainTank">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MainTank.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="TinyTank" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TankControl.Model.TinyTank">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TinyTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankControl.Model.WeightScale">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAQAAABAAAAgQAAAICAAAAAAAAAAAAQAAAABA=</HashCode>
+      <FileName>Model\WeightScale.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Process" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TankControl.Model.Process">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAABAAAAAQAAAAAAAAAAAAAAAgAAAIAAABAgAAAI=</HashCode>
+      <FileName>Model\Process.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TankControl.Model.Component">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Model\Component.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
