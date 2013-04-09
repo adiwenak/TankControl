@@ -60,9 +60,8 @@
       <FileName>Model\Process.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="MainTank" />
       <Property Name="Recipe" />
-      <Property Name="View" />
+      <Property Name="MainTank" />
     </ShowAsAssociation>
   </Class>
   <Class Name="TankControl.Recipe" Collapsed="true">

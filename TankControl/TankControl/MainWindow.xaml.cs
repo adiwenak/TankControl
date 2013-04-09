@@ -11,23 +11,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-<<<<<<< HEAD
-=======
 using TankControl.Model;
->>>>>>> origin/master-adi
 
 namespace TankControl
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-<<<<<<< HEAD
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-=======
     public partial class MainWindow : NavigationWindow
     {
         private Process process;
@@ -40,8 +30,6 @@ namespace TankControl
 
         public void Update()
         {
-
->>>>>>> origin/master-adi
         }
     }
 }
