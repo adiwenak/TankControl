@@ -41,6 +41,7 @@ local.properties
 *.user
 *.sln.docstates
 *.csproj
+App.config
 
 # Build results
 [Dd]ebug/
