@@ -24,12 +24,14 @@ namespace TankControl
         public MainWindow()
         {
             InitializeComponent();
+            
             process = new Process();
             process.AddView(this);
         }
 
         public void Update()
         {
+           
         }
     }
 }

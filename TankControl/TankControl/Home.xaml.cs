@@ -15,13 +15,19 @@ using System.Windows.Shapes;
 namespace TankControl
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class Dashboard : UserControl
+    public partial class Home : Page
     {
-        public Dashboard()
+        public Home()
         {
             InitializeComponent();
+        }
+
+        public void Dashboad_Click(object sender, RoutedEventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            MainContainer.Children.Insert(0, dashboard);
         }
     }
 }
