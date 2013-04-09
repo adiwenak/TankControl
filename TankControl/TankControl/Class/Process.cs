@@ -3,24 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TankControl.Model
+namespace TankControl.Class
 {
     public class Process
     {
-        private MainWindow view;
         private Recipe recipe;
-
-        public MainWindow View
-        {
-            get
-            {
-                return this.view;
-            }
-            set
-            {
-                this.view = value;
-            }
-        }
 
         public Recipe Recipe
         {
@@ -70,13 +57,13 @@ namespace TankControl.Model
 
         public void AddView(MainWindow window)
         {
-            View = window;
+            
 
         }
 
         public void UpdateView()
         {
-            View.Update();
+           
         }
 
     }

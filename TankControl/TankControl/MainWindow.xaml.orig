@@ -1,6 +1,10 @@
 ﻿<NavigationWindow x:Class="TankControl.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+<<<<<<< HEAD
+        Title="MainWindow" Height="700" Width="1000" Source="View/Home.xaml" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+=======
         Title="MainWindow" Source="View/Home.xaml" Height="700" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+>>>>>>> 4005535aa65fe760594c032ede770fdddea9b46f
 </NavigationWindow>
 

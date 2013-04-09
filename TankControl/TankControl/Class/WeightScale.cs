@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace TankControl.Model
+namespace TankControl.Class
 {
     public class WeightScale
     {

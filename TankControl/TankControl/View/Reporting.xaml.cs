@@ -11,23 +11,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TankControl.Class;
 
-namespace TankControl
+namespace TankControl.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Reporting.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class Reporting : UserControl
     {
-        public MainWindow()
+        public Reporting()
         {
             InitializeComponent();
-        }
-
-        public void Update()
-        {
-           
         }
     }
 }
