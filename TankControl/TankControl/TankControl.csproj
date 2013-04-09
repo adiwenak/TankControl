@@ -109,8 +109,6 @@
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\BaseTank.cs" />
-    <Compile Include="Model\Component.cs" />
     <Compile Include="History.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -128,8 +126,6 @@
     <Compile Include="Class\Pump.cs" />
     <Compile Include="Class\Process.cs" />
     <Compile Include="NotificationCenter.cs" />
-    <Compile Include="Model\Pump.cs" />
-    <Compile Include="Model\Process.cs" />
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -147,8 +143,6 @@
     </Compile>
     <Compile Include="Class\Valve.cs" />
     <Compile Include="Class\WeightScale.cs" />
-    <Compile Include="Model\Valve.cs" />
-    <Compile Include="Model\WeightScale.cs" />
     <Page Include="Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
