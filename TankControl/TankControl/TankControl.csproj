@@ -103,14 +103,6 @@
     </ApplicationDefinition>
     <Compile Include="Class\BaseTank.cs" />
     <Compile Include="Class\Component.cs" />
-    <Compile Include="Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Class\BaseTank.cs" />
-    <Compile Include="Class\Component.cs" />
     <Compile Include="History.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -145,14 +137,15 @@
     </Compile>
     <Compile Include="Class\Valve.cs" />
     <Compile Include="Class\WeightScale.cs" />
-    <Page Include="Dashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Home.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="View\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphicDisplayArea.xaml.cs">
+      <DependentUpon>GraphicDisplayArea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,6 +159,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\GraphicDisplayArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Home.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -212,9 +217,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Window\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

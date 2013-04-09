@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TankControl.View
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for GraphicDisplayArea.xaml
     /// </summary>
-    public partial class Dashboard : UserControl
+    public partial class GraphicDisplayArea : UserControl
     {
-        public Dashboard()
+        public GraphicDisplayArea()
         {
             InitializeComponent();
         }

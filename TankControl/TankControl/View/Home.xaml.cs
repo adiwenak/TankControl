@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TankControl
+namespace TankControl.View
 {
     /// <summary>
     /// Interaction logic for Home.xaml
@@ -22,11 +22,15 @@ namespace TankControl
         public Home()
         {
             InitializeComponent();
+            GraphicDisplayArea gda = new GraphicDisplayArea();
+            MainContainer.Children.Clear();
+            MainContainer.Children.Insert(0, gda);
         }
 
         public void Dashboad_Click(object sender, RoutedEventArgs e)
         {
             Dashboard dashboard = new Dashboard();
+            MainContainer.Children.Clear();
             MainContainer.Children.Insert(0, dashboard);
         }
     }
