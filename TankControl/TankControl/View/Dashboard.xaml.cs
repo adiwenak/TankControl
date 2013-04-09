@@ -22,6 +22,9 @@ namespace TankControl.View
         public Dashboard()
         {
             InitializeComponent();
+            GraphicDisplayArea gda = new GraphicDisplayArea();
+            mainTangki.Children.Clear();
+            mainTangki.Children.Add(gda);
         }
     }
 }

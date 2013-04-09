@@ -11,6 +11,6 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <Label Grid.Column="1">IT WORKS</Label>
+        <StackPanel Name="mainTangki" Grid.Column="0"></StackPanel>
     </Grid>
 </UserControl>
