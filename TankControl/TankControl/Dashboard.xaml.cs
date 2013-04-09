@@ -17,7 +17,7 @@ namespace TankControl
     /// <summary>
     /// Interaction logic for Dashboard.xaml
     /// </summary>
-    public partial class Dashboard : Page
+    public partial class Dashboard : UserControl
     {
         public Dashboard()
         {

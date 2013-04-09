@@ -11,27 +11,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TankControl.Model;
 
 namespace TankControl
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class Home : Page
     {
-        private Process process;
-        public MainWindow()
+        public Home()
         {
             InitializeComponent();
-            
-            process = new Process();
-            process.AddView(this);
         }
 
-        public void Update()
+        public void Dashboad_Click(object sender, RoutedEventArgs e)
         {
-           
+            Dashboard dashboard = new Dashboard();
+            MainContainer.Children.Insert(0, dashboard);
         }
     }
 }
