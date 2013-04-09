@@ -3,7 +3,7 @@
   <Class Name="TankControl.Model.Pump">
     <Position X="9.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
       <FileName>Model\Pump.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -11,7 +11,7 @@
   <Class Name="TankControl.Model.Valve">
     <Position X="11.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
       <FileName>Model\Valve.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -44,9 +44,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TankControl.Model.WeightScale">
-    <Position X="7.5" Y="4.5" Width="1.5" />
+    <Position X="7" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAQAAABAAAAgQAAAICAAAAAAAAAAAAQAAAABA=</HashCode>
+      <HashCode>AAAAEAAAQAAABAAAAgYAAAICAAAAAAAAAAAAQAAAABA=</HashCode>
       <FileName>Model\WeightScale.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -54,16 +54,35 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="TankControl.Model.Process">
-    <Position X="4.25" Y="4.5" Width="1.5" />
+    <Position X="3.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAABAAAAAQAAAAAAAAAAAAAAAgAAAIAAABAgAAAI=</HashCode>
+      <HashCode>AAAgAQBAAAAAQAgAAAAAAAAAAAABgAAAIQAABAgAAAI=</HashCode>
       <FileName>Model\Process.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MainTank" />
+      <Property Name="Recipe" />
+      <Property Name="View" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TankControl.Recipe" Collapsed="true">
+    <Position X="3.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAPhFAAAIAAAAAAAAAAAgAQAAAAAAAAAAAAAACgA=</HashCode>
+      <FileName>Recipe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankControl.MainWindow" Collapsed="true">
+    <Position X="1.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="TankControl.Model.Component">
     <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
       <FileName>Model\Component.cs</FileName>
     </TypeIdentifier>
   </Interface>

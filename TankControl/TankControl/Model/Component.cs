@@ -7,9 +7,9 @@ namespace TankControl.Model
 {
     public interface Component
     {
-        void run();
-        void stop();
-        bool isRun();
+        void Run();
+        void Stop();
+        bool IsRun();
     }
 
 }

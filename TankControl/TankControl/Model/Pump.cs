@@ -7,17 +7,17 @@ namespace TankControl.Model
 {
     public class Pump : Component
     {
-        public void run()
+        public void Run()
         {
             throw new NotImplementedException();
         }
 
-        public void stop()
+        public void Stop()
         {
             throw new NotImplementedException();
         }
 
-        public bool isRun()
+        public bool IsRun()
         {
             throw new NotImplementedException();
         }
