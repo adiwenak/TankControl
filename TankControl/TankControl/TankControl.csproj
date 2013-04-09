@@ -15,6 +15,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>5.2.30810.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -64,12 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\BaseTank.cs" />
-    <Compile Include="Model\Component.cs" />
+    <Compile Include="Class\BaseTank.cs" />
+    <Compile Include="Class\Component.cs" />
     <Compile Include="History.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\MainTank.cs" />
+    <Compile Include="Class\MainTank.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,8 +81,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Pump.cs" />
-    <Compile Include="Model\Process.cs" />
+    <Compile Include="Class\Pump.cs" />
+    <Compile Include="Class\Process.cs" />
     <Compile Include="NotificationCenter.cs" />
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -94,12 +95,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TankControlDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\TinyTank.cs" />
+    <Compile Include="Class\TinyTank.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Valve.cs" />
-    <Compile Include="Model\WeightScale.cs" />
+    <Compile Include="Class\Valve.cs" />
+    <Compile Include="Class\WeightScale.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,6 +113,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
