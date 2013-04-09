@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TankControl;
+using TankControl.Class;
 
-namespace TankControl.Model
+namespace TankControl
 {
-    public class MainTank : BaseTank
+    public class BaseTank
     {
 
-        public ICollection<TinyTank> TinyTank
+        public ICollection<Component> Components
         {
             get
             {
@@ -19,7 +19,5 @@ namespace TankControl.Model
             {
             }
         }
-
-
     }
 }
