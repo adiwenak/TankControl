@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="TankControl.Model.Pump">
+  <Class Name="TankControl.Class.Pump">
     <Position X="9.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
-      <FileName>Model\Pump.cs</FileName>
+      <FileName>Class\Pump.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TankControl.Model.Valve">
+  <Class Name="TankControl.Class.Valve">
     <Position X="11.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
-      <FileName>Model\Valve.cs</FileName>
+      <FileName>Class\Valve.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -20,44 +20,44 @@
     <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\BaseTank.cs</FileName>
+      <FileName>Class\BaseTank.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Components" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="TankControl.Model.MainTank">
+  <Class Name="TankControl.Class.MainTank">
     <Position X="3.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\MainTank.cs</FileName>
+      <FileName>Class\MainTank.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="TinyTank" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="TankControl.Model.TinyTank">
+  <Class Name="TankControl.Class.TinyTank">
     <Position X="7" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\TinyTank.cs</FileName>
+      <FileName>Class\TinyTank.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TankControl.Model.WeightScale">
+  <Class Name="TankControl.Class.WeightScale">
     <Position X="7" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAQAAABAAAAgYAAAICAAAAAAAAAAAAQAAAABA=</HashCode>
-      <FileName>Model\WeightScale.cs</FileName>
+      <FileName>Class\WeightScale.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Process" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="TankControl.Model.Process">
+  <Class Name="TankControl.Class.Process">
     <Position X="3.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAQBAAAAAQAgAAAAAAAAAAAABgAAAIQAABAgAAAI=</HashCode>
-      <FileName>Model\Process.cs</FileName>
+      <FileName>Class\Process.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Recipe" />
@@ -78,11 +78,11 @@
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="TankControl.Model.Component">
+  <Interface Name="TankControl.Class.Component">
     <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
-      <FileName>Model\Component.cs</FileName>
+      <FileName>Class\Component.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

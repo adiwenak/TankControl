@@ -18,7 +18,7 @@ namespace TankControl
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class MainWindow : Window
     {
         private Process process;
         public MainWindow()
