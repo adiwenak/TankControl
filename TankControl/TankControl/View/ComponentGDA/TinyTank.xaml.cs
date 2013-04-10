@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,21 +11,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TankControl.View
+namespace TankControl.View.ComponentGDA
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for TinyTank.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class TinyTank : UserControl
     {
-        public Home()
-        {
-            InitializeComponent();
-        }
+        public BigValve Bv;
 
-        public void Dashboad_Click(object sender, RoutedEventArgs e)
+        public TinyTank()
         {
-
+            this.InitializeComponent();
+            Bv = BigValve;
         }
     }
 }

@@ -8,7 +8,6 @@ namespace TankControl.Class
 {
     public class MainTank : BaseTank
     {
-
         public ICollection<TinyTank> TinyTank
         {
             get
@@ -19,7 +18,5 @@ namespace TankControl.Class
             {
             }
         }
-
-
     }
 }

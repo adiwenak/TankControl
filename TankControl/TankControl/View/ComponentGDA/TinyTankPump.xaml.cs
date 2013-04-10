@@ -12,21 +12,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TankControl.View
+namespace TankControl.View.ComponentGDA
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for TinyTankPump.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class TinyTankPump : UserControl
     {
-        public Home()
+        public TinyTankPump()
         {
             InitializeComponent();
-        }
-
-        public void Dashboad_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
