@@ -8,21 +8,18 @@
 	Title="Home">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu Grid.ColumnSpan="2" IsMainMenu="True">
+        
+        <Menu Grid.Row="0" IsMainMenu="True">
             <MenuItem Header="_Dashboard" Click="Dashboad_Click"/>
             <MenuItem Header="_Reporting"/>
             <MenuItem Header="_User"/>
         </Menu>
 
-        <StackPanel Grid.ColumnSpan="2" Grid.Row="1"  Name="MainContainer"></StackPanel>
+        <StackPanel Grid.Row="1"  Name="MainContainer"></StackPanel>
     </Grid>
 
 </Page>

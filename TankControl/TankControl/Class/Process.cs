@@ -2,12 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
+using TankControl.View;
 
 namespace TankControl.Class
 {
     public class Process
     {
+        private MainTank mainTank;
         private Recipe recipe;
+        private GraphicDisplayArea view;
+        private static Process singleton;
+
+
+        // SINGLETON
+        public static Process Singleton
+        {
+            get
+            {
+                if (singleton == null)
+                {
+                    singleton = new Process();
+                }
+                return singleton;
+            }
+        }
+
+        // CONSTRUCTOR
+        public Process()
+        {
+
+        }
+
+        public GraphicDisplayArea View
+        {
+            get
+            {
+                return this.view;
+            }
+            set
+            {
+                this.view = value;
+            }
+        }
 
         public Recipe Recipe
         {
@@ -25,15 +62,20 @@ namespace TankControl.Class
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.mainTank;
             }
             set
             {
+                this.mainTank = value;
             }
         }
 
+        public void Initialize()
+        {
+            
+        }
 
-        public void UpdateState()
+        public void WeightUpdated()
         {
 
         }
@@ -55,15 +97,35 @@ namespace TankControl.Class
         {
         }
 
-        public void AddView(MainWindow window)
+        public void AddView(GraphicDisplayArea processView)
         {
-            
+            if (view != null)
+            {
+                View = processView;
+                foreach (Component cmp in MainTank.Components)
+                {
+                    if (cmp is Pump)
+                    {
+                    
+                    }
+                    else if (cmp is Valve)
+                    {
+                        cmp.ComponentUC = processView.Valve;
+                        cmp.IsRun();
+                    }
+                }
+            }
 
         }
 
-        public void UpdateView()
+        public void RemoveView()
         {
-           
+            View = null;
+        }
+
+        public void NotifyView()
+        {
+            view.UpdateView();
         }
 
     }

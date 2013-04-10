@@ -9,6 +9,13 @@ namespace TankControl.Class
     public class MainTank : BaseTank
     {
 
+        public MainTank(){
+            this.Components.Add(new Valve());
+            this.Components.Add(new Valve());
+            this.Components.Add(new Valve());
+            this.Components.Add(new Pump());
+        }
+
         public ICollection<TinyTank> TinyTank
         {
             get

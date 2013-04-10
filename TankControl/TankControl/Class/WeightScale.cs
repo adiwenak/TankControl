@@ -9,9 +9,22 @@ namespace TankControl.Class
     public class WeightScale
     {
         private Process process;
-        public float currentWeight;
-        public float setLimit;
-        private static WeightScale scale;
+        private float currentWeight;
+        private float limit;
+        private static WeightScale singleton;
+
+        public static WeightScale Singleton
+        {
+            get
+            {
+                if (singleton == null)
+                {
+                    singleton = new WeightScale();
+                }
+
+                return singleton;
+            }
+        }
 
         public float CurrentWeight
         {
@@ -25,16 +38,16 @@ namespace TankControl.Class
             }
         }
 
-        public float SetLimit
+        public float Limit
         {
             get
             {
-                return this.setLimit;
+                return this.limit;
             }
             set
             {
-                this.setLimit = value;
-                Thread newThread = new Thread (() => receiveLimit(value));
+                this.limit = value;
+                Thread newThread = new Thread(() => StartCalculating(value));
                 newThread.Start();
             }
         }
@@ -51,9 +64,9 @@ namespace TankControl.Class
             }
         }
 
-        private void receiveLimit(float weight)
+        private void StartCalculating(float limit)
         {
-            while (currentWeight < weight)
+            while (currentWeight < limit)
             {
                 // update when know how to set currentWeight
             }
@@ -62,18 +75,8 @@ namespace TankControl.Class
     
         public void notify()
         {
-            process.UpdateState();
+            process.WeightUpdated();
         }
 
-        public static WeightScale Scale
-        {
-            get
-            {
-                if (scale == null)
-                    scale = new WeightScale();
-
-                return scale;
-            }
-        }
     }
 }
