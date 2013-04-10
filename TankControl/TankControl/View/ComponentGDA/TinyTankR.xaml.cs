@@ -12,31 +12,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TankControl.View
+namespace TankControl.View.ComponentGDA
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for TinyTankR.xaml
     /// </summary>
-    public partial class Dashboard : UserControl
+    public partial class TinyTankR : UserControl
     {
-        private GraphicDisplayArea gdaProperty;
+        public BigValveR Bv;
 
-        public Dashboard()
+        public TinyTankR()
         {
             InitializeComponent();
-            gdaProperty = gda;
-        }
-
-        public GraphicDisplayArea GdaProperty
-        {
-            get
-            {
-                return this.gdaProperty;
-            }
-            set
-            {
-                this.gdaProperty = value;
-            }
+            Bv = BigValveR;
         }
     }
 }

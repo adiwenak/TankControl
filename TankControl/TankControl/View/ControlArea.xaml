@@ -1,0 +1,16 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" x:Class="TankControl.View.ControlArea" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="250" Height="675">
+    <Grid Width="250" Height="675">
+            
+    	<telerik:GroupBox x:Name="groupCA" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="595" Width="224" BorderThickness="4" Header="Control Area" FontSize="18.667">
+    		<Button Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="100" Margin="57,505,0,0" Click="Start_Click" />
+    	</telerik:GroupBox>
+            
+    </Grid>
+</UserControl>

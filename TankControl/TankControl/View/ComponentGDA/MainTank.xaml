@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="TankControl.View.ComponentGDA.MainTank"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="445" Width="216">
+        <UserControl.Resources>
+        <Storyboard x:Key="storyTank">
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="tankiFill">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="415.237"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:10" Value="88"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="topFill">
+        			<EasingColorKeyFrame KeyTime="0" Value="Red"/>
+        			<EasingColorKeyFrame KeyTime="0:0:10" Value="Red"/>
+        		</ColorAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="topFill">
+        			<EasingDoubleKeyFrame KeyTime="0:0:10" Value="-0.987"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="topFill">
+        			<EasingDoubleKeyFrame KeyTime="0:0:10" Value="-327.379"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="topFill">
+        			<DiscreteObjectKeyFrame KeyTime="0:0:10" Value="{x:Static Visibility.Visible}"/>
+        		</ObjectAnimationUsingKeyFrames>
+
+        	</Storyboard>
+    </UserControl.Resources>
+
+    <Grid Margin="0,0.083,1.5,-0.083" Background="{x:Null}">
+        <Rectangle x:Name="mainTangki" HorizontalAlignment="Left" Height="413.207" Margin="8.23,17.793,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.601" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="Red"/>
+        <Rectangle x:Name="tankiFill" HorizontalAlignment="Left" Height="414.011" Margin="8.679,16.484,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.601" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="topFill" HorizontalAlignment="Left" Height="40.621" Margin="8.987,390.379,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.6" RenderTransformOrigin="0.495,1.798" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="tankiClose" HorizontalAlignment="Left" Height="40.621" Margin="8.23,15.315,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.601" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+    </Grid>
+</UserControl>
