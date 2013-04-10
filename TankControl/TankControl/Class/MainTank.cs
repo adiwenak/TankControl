@@ -73,28 +73,5 @@ namespace TankControl.Class
                 this.Name = tankName;
             }
         }
-
-        public void InitializeComponent(IList<Component> components)
-        {
-            if (components.Count() > 0)
-            {
-                this.AddComponents(components);
-            }
-        }
-
-        public void InitializeTinyTankL(IList<TinyTankL> tinyTanksL)
-        {
-            this.TinyTanksL = tinyTanksL;
-        }
-
-        public void InitializeTinyTankR(IList<TinyTankR> tinyTanksR)
-        {
-            this.TinyTanksR = tinyTanksR;
-        }
-
-        public void InitializeTinyTankPump(IList<TinyTankPump> tinyTanksPump)
-        {
-            this.TinyTanksPump = tinyTanksPump;
-        }
     }
 }

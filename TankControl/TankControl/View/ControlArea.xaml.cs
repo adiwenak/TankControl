@@ -12,6 +12,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TankControl.Class;
 
 namespace TankControl.View
 {
@@ -30,6 +31,8 @@ namespace TankControl.View
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
+            Process.Singleton.Run();
+
             var parent = VisualTreeHelper.GetParent(this);
             while (!(parent is Dashboard))
             {

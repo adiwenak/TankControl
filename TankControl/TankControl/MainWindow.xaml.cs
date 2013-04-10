@@ -23,11 +23,9 @@ namespace TankControl
         public MainWindow()
         {
             InitializeComponent();
+            RunTester runTester = new RunTester();
+            runTester.RunTimer();
         }
 
-        public void Update()
-        {
-           
-        }
     }
 }

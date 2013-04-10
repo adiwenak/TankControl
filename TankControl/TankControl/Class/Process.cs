@@ -71,16 +71,12 @@ namespace TankControl.Class
             }
         }
 
-        public void SetupMainTank()
-        {
-        }
-
         // PROPERTIES - END
 
         // CONTROL - START
         public void Run()
         {
-            
+            View.RunWhole();
         }
 
         public void Pause()
@@ -100,7 +96,7 @@ namespace TankControl.Class
         // ADD VIEW OSERVER
         public void AddView(GraphicDisplayArea processView)
         {
-            if (view != null)
+            if (processView != null)
             {
                 View = processView;
 
@@ -115,7 +111,7 @@ namespace TankControl.Class
         }
 
         // LISTENER WEIGHT SCALE
-        public void WeightUpdated()
+        public void WeightUpdated(float weightScale)
         {
 
         }

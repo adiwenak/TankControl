@@ -26,6 +26,7 @@ namespace TankControl.Class
             }
         }
 
+        // PROPERTIES - START
         public float CurrentWeight
         {
             get
@@ -47,8 +48,6 @@ namespace TankControl.Class
             set
             {
                 this.limit = value;
-                Thread newThread = new Thread(() => StartCalculating(value));
-                newThread.Start();
             }
         }
 
@@ -64,18 +63,23 @@ namespace TankControl.Class
             }
         }
 
-        private void StartCalculating(float limit)
-        {
-            while (currentWeight < limit)
-            {
-                // update when know how to set currentWeight
-            }
-            notify();
-        }
+        // PROPERTIES END
     
-        public void notify()
+        // UPDATE OBSERVER
+        public void Notify()
         {
-            process.WeightUpdated();
+            process.WeightUpdated(CurrentWeight);
+        }
+
+        // LISTENER TO WEIGHT SCALE
+
+        public void WeightScaleUpdated(float weight)
+        {
+            this.CurrentWeight = weight;
+            if (this.Limit > weight)
+            {
+                Notify();
+            }
         }
 
     }

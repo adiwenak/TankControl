@@ -35,7 +35,7 @@ namespace TankControl.Class
             }
         }
 
-        private IList<Component> ListComponents
+        public IList<Component> ListComponents
         {
             get
             {
