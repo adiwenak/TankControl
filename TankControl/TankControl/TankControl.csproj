@@ -99,6 +99,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\BigValve.cs" />
+    <Compile Include="Class\BigValveR.cs" />
     <Compile Include="Class\MainTank.cs" />
     <Compile Include="Class\Process.cs" />
     <Compile Include="Class\Pump.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Class\SmallValve.cs" />
     <Compile Include="SystemError.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

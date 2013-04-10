@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TankControl.View;
-using System.Windows.Controls;
 
 namespace TankControl.Class
 {
-    public class Valve : Component
+    public class BigValve : Component
     {
         public void Run()
         {
-            
             throw new NotImplementedException();
         }
 
@@ -24,6 +21,5 @@ namespace TankControl.Class
         {
             throw new NotImplementedException();
         }
-
     }
 }
