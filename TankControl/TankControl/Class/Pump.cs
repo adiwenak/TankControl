@@ -10,6 +10,8 @@ namespace TankControl.Class
     public class Pump : Component
     {
         private PumpComponent view;
+        private Guid id;
+        private string name;
 
         public PumpComponent View
         {
@@ -21,6 +23,39 @@ namespace TankControl.Class
             {
                 this.view = value;
             }
+        }
+
+        public Guid Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
+
+
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
+
+        public Pump(PumpComponent pumpView, string pumpName)
+        {
+            View = pumpView;
+            Id = new Guid();
+            if (pumpName != null)
+                Name = pumpName;
         }
 
         public void Run()
@@ -38,28 +73,5 @@ namespace TankControl.Class
             throw new NotImplementedException();
         }
 
-        public Guid Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
     }
 }

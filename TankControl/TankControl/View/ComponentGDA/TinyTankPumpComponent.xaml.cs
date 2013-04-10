@@ -19,9 +19,51 @@ namespace TankControl.View.ComponentGDA
     /// </summary>
     public partial class TinyTankPumpComponent : UserControl
     {
+        public BigValveLComponent Bv;
+        public SmallValveComponent Sv;
+        public PumpComponent Pc;
+
         public TinyTankPumpComponent()
         {
             InitializeComponent();
+            Bv = BigValve;
+            Sv = SmallValve;
+            Pc = Pump;
+        }
+        public PumpComponent PPc
+        {
+            get
+            {
+                return this.Pc;
+            }
+            set
+            {
+                this.Pc = value;
+            }
+        }
+
+        public SmallValveComponent PSv
+        {
+            get
+            {
+                return this.Sv;
+            }
+            set
+            {
+                this.Sv = value;
+            }
+        }
+
+        public BigValveLComponent PBv
+        {
+            get
+            {
+                return this.Bv;
+            }
+            set
+            {
+                this.Bv = value;
+            }
         }
     }
 }

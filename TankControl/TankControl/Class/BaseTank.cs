@@ -7,57 +7,95 @@ namespace TankControl.Class
 {
     public class BaseTank
     {
-        private ICollection<Component> listComponents;
+        private IList<Component> listComponents;
+        private Guid id;
+        private string name;
 
-        public void AddComponents(ICollection<Component> components)
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
+
+        public Guid ID
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
+
+        private IList<Component> ListComponents
+        {
+            get
+            {
+                return this.listComponents;
+            }
+            set
+            {
+                this.listComponents = value;
+            }
+        }
+
+        public void AddComponents(IList<Component> components)
         {
             if (components.Count() > 0)
             {
                 foreach (Component cmp in components)
                 {
-                    listComponents.Add(cmp);
+                    ListComponents.Add(cmp);
                 }
             }
         }
 
         public void AddComponent(Component component)
         {
-            listComponents.Add(component);
+            ListComponents.Add(component);
         }
 
-        public ICollection<Component> GetAllComponent()
+        public IList<Component> GetAllComponent()
         {
-            return listComponents;
+            return ListComponents;
         }
 
         public Component GetComponent(Component component)
         {
-            Component cmp = listComponents.FirstOrDefault(x => x == component);
+            Component cmp = ListComponents.FirstOrDefault(x => x == component);
             return cmp;
         }
 
         public Component GetComponent(Guid id)
         {
-            Component cmp = listComponents.FirstOrDefault(x => x.Id == id);
+            Component cmp = ListComponents.FirstOrDefault(x => x.Id == id);
             return cmp;
         }
 
         public Component GetComponent(string name)
         {
-            Component cmp = listComponents.FirstOrDefault(x => x.Name == name);
+            Component cmp = ListComponents.FirstOrDefault(x => x.Name == name);
             return cmp;
         }
 
         public bool RemoveAllComponent()
         {
             bool success = false;
-            int totalComponent = listComponents.Count();
+            int totalComponent = ListComponents.Count();
 
             if (totalComponent > 0)
             {
                 foreach (Component cmp in listComponents)
                 {
-                    if (listComponents.Remove(cmp))
+                    if (ListComponents.Remove(cmp))
                     {
                         totalComponent--;
                     }
@@ -78,7 +116,7 @@ namespace TankControl.Class
 
             if (component != null)
             {
-                if (listComponents.Remove(component))
+                if (ListComponents.Remove(component))
                 {
                     success = true;
                 }

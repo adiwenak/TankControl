@@ -11,17 +11,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace TankControl.View.ComponentGDA
 {
     /// <summary>
-    /// Interaction logic for SmallValveComponent.xaml
+    /// Interaction logic for SmallValve.xaml
     /// </summary>
     public partial class SmallValveComponent : UserControl
     {
+
+        private Storyboard smallValveAnimation;
+
         public SmallValveComponent()
         {
             InitializeComponent();
+            smallValveAnimation = (Storyboard)FindResource("MovingArrow");
+        }
+
+        public void Run()
+        {
+            if (smallValveAnimation != null)
+            {
+                BitmapImage img = new BitmapImage();
+                img.BeginInit();
+                img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/open.png");
+                img.EndInit();
+                valveBig.Source = img;
+                smallValveAnimation.Begin();
+            }
         }
     }
 }

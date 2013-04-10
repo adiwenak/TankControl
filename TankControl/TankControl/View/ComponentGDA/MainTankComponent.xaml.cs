@@ -21,6 +21,7 @@ namespace TankControl.View.ComponentGDA
     public partial class MainTankComponent : UserControl
     {
         private Storyboard mainTankAnimation;
+
         public MainTankComponent()
         {
             InitializeComponent();

@@ -20,5 +20,20 @@ namespace TankControl.Class
                 this.view = value;
             }
         }
+
+        public TinyTankR(TinyTankRComponent tankView, string tankName, List<Component> components)
+        {
+            this.View = tankView;
+            this.ID = new Guid();
+            if (tankName != null)
+            {
+                this.Name = tankName;
+            }
+
+            if (components.Count > 0)
+            {
+                this.AddComponents(components);
+            }
+        }
     }
 }

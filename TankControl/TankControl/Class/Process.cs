@@ -34,6 +34,7 @@ namespace TankControl.Class
 
         }
 
+        // PROPERTIES - START
         public GraphicDisplayArea View
         {
             get
@@ -70,19 +71,16 @@ namespace TankControl.Class
             }
         }
 
-        public void Initialize()
+        public void SetupMainTank()
         {
-            
         }
 
-        public void WeightUpdated()
-        {
+        // PROPERTIES - END
 
-        }
-
+        // CONTROL - START
         public void Run()
         {
-
+            
         }
 
         public void Pause()
@@ -97,6 +95,9 @@ namespace TankControl.Class
         {
         }
 
+        // CONTROL - END
+
+        // ADD VIEW OSERVER
         public void AddView(GraphicDisplayArea processView)
         {
             if (view != null)
@@ -107,14 +108,16 @@ namespace TankControl.Class
 
         }
 
-        public void RemoveView()
-        {
-            View = null;
-        }
-
+        // NOTIFY VIEW OBSERVER
         public void NotifyView()
         {
             view.UpdateView();
+        }
+
+        // LISTENER WEIGHT SCALE
+        public void WeightUpdated()
+        {
+
         }
 
     }

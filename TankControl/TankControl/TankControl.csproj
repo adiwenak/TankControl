@@ -132,6 +132,18 @@
     <Compile Include="View\ComponentGDA\Component\BigValveRComponent.xaml.cs">
       <DependentUpon>BigValveRComponent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ComponentGDA\Component\OutValveComponent.xaml.cs">
+      <DependentUpon>OutValveComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComponentGDA\Component\ShakeValveLComponent.xaml.cs">
+      <DependentUpon>ShakeValveLComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComponentGDA\Component\ShakeValveRComponent.xaml.cs">
+      <DependentUpon>ShakeValveRComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComponentGDA\ShakeComponent.xaml.cs">
+      <DependentUpon>ShakeComponent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ControlArea.xaml.cs">
       <DependentUpon>ControlArea.xaml</DependentUpon>
     </Compile>
@@ -192,6 +204,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ComponentGDA\Component\BigValveRComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\Component\OutValveComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\Component\ShakeValveLComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\Component\ShakeValveRComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\ShakeComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -295,7 +323,15 @@
     <Resource Include="Images\valve\close.png" />
     <Resource Include="Images\valve\open.png" />
     <Resource Include="Images\valve\openR.png" />
-    <Resource Include="Images\valve\pump.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\valve\pump.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\valve\openRotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\valve\closeRotate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
