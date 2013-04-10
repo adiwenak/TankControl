@@ -57,7 +57,7 @@
   <Class Name="TankControl.View.GraphicDisplayArea" Collapsed="true">
     <Position X="1.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAQIAAAECAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAQAAAAAAAAAAAAAAAAAAAAQIAAAECAAAAAAQAAA=</HashCode>
       <FileName>View\GraphicDisplayArea.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -111,7 +111,7 @@
   <Class Name="TankControl.View.ComponentGDA.PumpComponent" Collapsed="true">
     <Position X="19" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>View\ComponentGDA\Component\PumpComponent.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -137,7 +137,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TankControl.Class.TinyTankPump">
-    <Position X="3" Y="2" Width="1.5" />
+    <Position X="3" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Class\TinyTankPump.cs</FileName>
