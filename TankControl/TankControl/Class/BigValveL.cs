@@ -6,13 +6,13 @@ using TankControl.View.ComponentGDA;
 
 namespace TankControl.Class
 {
-    public class BigValveR : Component
+    public class BigValveL : Component
     {
-        private BigValveRComponent view;
+        private BigValveLComponent view;
         private Guid id;
         private string name;
 
-        public BigValveRComponent View
+        public BigValveLComponent View
         {
             get
             {
@@ -49,7 +49,7 @@ namespace TankControl.Class
             }
         }
 
-        public BigValveR(BigValveRComponent valveView,string nameValve)
+        public BigValveL(BigValveLComponent valveView,string nameValve)
         {
             View = valveView;
             Id = new Guid();
@@ -71,7 +71,5 @@ namespace TankControl.Class
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

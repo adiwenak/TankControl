@@ -7,16 +7,134 @@ namespace TankControl.Class
 {
     public class BaseTank
     {
+        private IList<Component> listComponents;
+        private Guid id;
+        private string name;
 
-        public ICollection<Component> Components
+        public string Name
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.name;
             }
             set
             {
+                this.name = value;
             }
         }
+
+        public Guid ID
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
+
+        public IList<Component> ListComponents
+        {
+            get
+            {
+                return this.listComponents;
+            }
+            set
+            {
+                this.listComponents = value;
+            }
+        }
+
+        public void AddComponents(IList<Component> components)
+        {
+            if (components.Count() > 0)
+            {
+                foreach (Component cmp in components)
+                {
+                    ListComponents.Add(cmp);
+                }
+            }
+        }
+
+        public void AddComponent(Component component)
+        {
+            ListComponents.Add(component);
+        }
+
+        public IList<Component> GetAllComponent()
+        {
+            return ListComponents;
+        }
+
+        public Component GetComponent(Component component)
+        {
+            Component cmp = ListComponents.FirstOrDefault(x => x == component);
+            return cmp;
+        }
+
+        public Component GetComponent(Guid id)
+        {
+            Component cmp = ListComponents.FirstOrDefault(x => x.Id == id);
+            return cmp;
+        }
+
+        public Component GetComponent(string name)
+        {
+            Component cmp = ListComponents.FirstOrDefault(x => x.Name == name);
+            return cmp;
+        }
+
+        public bool RemoveAllComponent()
+        {
+            bool success = false;
+            int totalComponent = ListComponents.Count();
+
+            if (totalComponent > 0)
+            {
+                foreach (Component cmp in listComponents)
+                {
+                    if (ListComponents.Remove(cmp))
+                    {
+                        totalComponent--;
+                    }
+                }
+            }
+
+            if (totalComponent == 0)
+            {
+                success = true;
+            }
+
+            return success;
+        }
+
+        public bool RemoveComponent(Component component)
+        {
+            bool success = false;
+
+            if (component != null)
+            {
+                if (ListComponents.Remove(component))
+                {
+                    success = true;
+                }
+            }
+
+            return success;
+        }
+
+        public void RemoveComponent(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveComponent(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

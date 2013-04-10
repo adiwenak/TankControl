@@ -34,6 +34,7 @@ namespace TankControl.Class
 
         }
 
+        // PROPERTIES - START
         public GraphicDisplayArea View
         {
             get
@@ -70,19 +71,12 @@ namespace TankControl.Class
             }
         }
 
-        public void Initialize()
-        {
-            
-        }
+        // PROPERTIES - END
 
-        public void WeightUpdated()
-        {
-
-        }
-
+        // CONTROL - START
         public void Run()
         {
-
+            View.RunWhole();
         }
 
         public void Pause()
@@ -97,34 +91,29 @@ namespace TankControl.Class
         {
         }
 
+        // CONTROL - END
+
+        // ADD VIEW OSERVER
         public void AddView(GraphicDisplayArea processView)
         {
-            if (view != null)
+            if (processView != null)
             {
                 View = processView;
-                foreach (Component cmp in MainTank.Components)
-                {
-                    if (cmp is Pump)
-                    {
-                    
-                    }
-                    else if (cmp is Valve)
-                    {
-                        
-                    }
-                }
+
             }
 
         }
 
-        public void RemoveView()
-        {
-            View = null;
-        }
-
+        // NOTIFY VIEW OBSERVER
         public void NotifyView()
         {
             view.UpdateView();
+        }
+
+        // LISTENER WEIGHT SCALE
+        public void WeightUpdated(float weightScale)
+        {
+
         }
 
     }

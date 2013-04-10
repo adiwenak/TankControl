@@ -87,12 +87,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Class\BigValve.cs" />
+    <Compile Include="Class\BigValveL.cs" />
     <Compile Include="Class\BigValveR.cs" />
     <Compile Include="Class\MainTank.cs" />
     <Compile Include="Class\Process.cs" />
     <Compile Include="Class\Pump.cs" />
-    <Compile Include="Class\TinyTank.cs" />
+    <Compile Include="Class\TinyTankL.cs" />
     <Compile Include="Class\BaseTank.cs" />
     <Compile Include="Class\Component.cs" />
     <Compile Include="History.cs">
@@ -120,16 +120,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TankControlDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Class\TinyTankPump.cs" />
+    <Compile Include="Class\TinyTankR.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class\Valve.cs" />
     <Compile Include="Class\WeightScale.cs" />
-    <Compile Include="View\ComponentGDA\Component\BigValve.xaml.cs">
-      <DependentUpon>BigValve.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\Component\BigValveLComponent.xaml.cs">
+      <DependentUpon>BigValveLComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\Component\BigValveR.xaml.cs">
-      <DependentUpon>BigValveR.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\Component\BigValveRComponent.xaml.cs">
+      <DependentUpon>BigValveRComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComponentGDA\Component\OutValveComponent.xaml.cs">
+      <DependentUpon>OutValveComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComponentGDA\Component\ShakeValveLComponent.xaml.cs">
+      <DependentUpon>ShakeValveLComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComponentGDA\Component\ShakeValveRComponent.xaml.cs">
+      <DependentUpon>ShakeValveRComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComponentGDA\ShakeComponent.xaml.cs">
+      <DependentUpon>ShakeComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControlArea.xaml.cs">
+      <DependentUpon>ControlArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ComponentGDA\MainTankComponent.xaml.cs">
       <DependentUpon>MainTankComponent.xaml</DependentUpon>
@@ -137,20 +153,20 @@
     <Compile Include="View\ComponentGDA\Component\PumpComponent.xaml.cs">
       <DependentUpon>PumpComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\Component\SmallValve.xaml.cs">
-      <DependentUpon>SmallValve.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\Component\SmallValveComponent.xaml.cs">
+      <DependentUpon>SmallValveComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\TinyTankL.xaml.cs">
-      <DependentUpon>TinyTankL.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\TinyTankLComponent.xaml.cs">
+      <DependentUpon>TinyTankLComponent.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ComponentGDA\Component\TinyTankComponent.xaml.cs">
       <DependentUpon>TinyTankComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\TinyTankPump.xaml.cs">
-      <DependentUpon>TinyTankPump.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\TinyTankPumpComponent.xaml.cs">
+      <DependentUpon>TinyTankPumpComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\TinyTankR.xaml.cs">
-      <DependentUpon>TinyTankR.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\TinyTankRComponent.xaml.cs">
+      <DependentUpon>TinyTankRComponent.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -179,11 +195,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ComponentGDA\Component\BigValve.xaml">
+    <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\Component\BigValveR.xaml">
+    <Page Include="View\ComponentGDA\Component\BigValveLComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\Component\BigValveRComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\Component\OutValveComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\Component\ShakeValveLComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\Component\ShakeValveRComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\ShakeComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlArea.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -195,11 +235,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\Component\SmallValve.xaml">
+    <Page Include="View\ComponentGDA\Component\SmallValveComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\TinyTankL.xaml">
+    <Page Include="View\ComponentGDA\TinyTankLComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -207,11 +247,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\TinyTankPump.xaml">
+    <Page Include="View\ComponentGDA\TinyTankPumpComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\TinyTankR.xaml">
+    <Page Include="View\ComponentGDA\TinyTankRComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -283,7 +323,15 @@
     <Resource Include="Images\valve\close.png" />
     <Resource Include="Images\valve\open.png" />
     <Resource Include="Images\valve\openR.png" />
-    <Resource Include="Images\valve\pump.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\valve\pump.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\valve\openRotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\valve\closeRotate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

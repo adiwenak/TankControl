@@ -150,11 +150,35 @@ namespace TankControl.View
                 this.mt = value;
             }
         }
+        
+        public void RunWhole()
+        {
+            this.Mt.MainTankAnimation.Begin();
+            this.Tt1.Bv.Run();
+            this.Tt1.Sv.Run();
+            this.Tt2.Bv.Run();
+            this.Tt2.Sv.Run();
+            this.Tt3.Bv.Run();
+            this.Tt4.Bv.Run();
+            this.Tt5.Bv.Run();
+            this.Tt6.Bv.Run();
+            this.Tt7.Bv.Run();
+
+            this.Sc.slc.Run();
+            this.Sc.src.Run();
+            this.Sc.oc.Run();
+        }
+
+        public void StopWhole()
+        {
+
+        }
 
         public void UpdateView()
         {
 
         }
+
 
     }
 
