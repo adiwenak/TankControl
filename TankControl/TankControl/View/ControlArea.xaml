@@ -12,8 +12,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>-->
-            <Button Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="6,522,0,0" Click="Start_Click" />
-            <Button Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="135,522,0,0" Click="Stop_Click" />
+            <Button x:Name="StartProcess"  Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="6,522,0,0" Click="Start_Click" />
+            <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="135,522,0,0" Click="Stop_Click" />
         </Grid>
     </telerik:GroupBox>
 
