@@ -38,11 +38,20 @@ namespace TankControl.View
             if (!animation)
             {              
                 (parent as Dashboard).gda.Mt.MainTankAnimation.Begin();
+                (parent as Dashboard).gda.Tt1.Bv.Run();
+                (parent as Dashboard).gda.Tt1.Sv.Run();
+                (parent as Dashboard).gda.Tt2.Bv.Run();
+                (parent as Dashboard).gda.Tt2.Sv.Run();
                 (parent as Dashboard).gda.Tt3.Bv.Run();
                 (parent as Dashboard).gda.Tt4.Bv.Run();
                 (parent as Dashboard).gda.Tt5.Bv.Run();
                 (parent as Dashboard).gda.Tt6.Bv.Run();
                 (parent as Dashboard).gda.Tt7.Bv.Run();
+
+                (parent as Dashboard).gda.Sc.slc.Run();
+                (parent as Dashboard).gda.Sc.src.Run();
+                (parent as Dashboard).gda.Sc.oc.Run();
+
                 animation = true;
             }
         }

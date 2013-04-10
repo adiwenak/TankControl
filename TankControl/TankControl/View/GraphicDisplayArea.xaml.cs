@@ -22,12 +22,15 @@ namespace TankControl.View
     /// </summary>
     public partial class GraphicDisplayArea : UserControl
     {
-        private MainTankComponent mt;     
-        private TinyTankL tt3;
-        private TinyTankL tt4;
-        private TinyTankR tt5;
-        private TinyTankR tt6;
-        private TinyTankR tt7;
+        private MainTankComponent mt;
+        private ShakeComponent sc;
+        private TinyTankPumpComponent tt1;
+        private TinyTankPumpComponent tt2;
+        private TinyTankLComponent tt3;
+        private TinyTankLComponent tt4;
+        private TinyTankRComponent tt5;
+        private TinyTankRComponent tt6;
+        private TinyTankRComponent tt7;
 
         public GraphicDisplayArea()
         {
@@ -36,6 +39,9 @@ namespace TankControl.View
             Process.Singleton.AddView(this);
 
             mt = mainTank;
+            sc = shakeComponent;
+            tt1 = tinyTank_1;
+            tt2 = tinyTank_2;
             tt3 = tinyTank_3;
             tt4 = tinyTank_4;
             tt5 = tinyTank_5;
@@ -43,9 +49,42 @@ namespace TankControl.View
             tt7 = tinyTank_7;
         }
 
-        
 
-        public TinyTankL Tt3
+        public ShakeComponent Sc
+        {
+            get
+            {
+                return this.sc;
+            }
+            set
+            {
+                this.sc = value;
+            }
+        }
+
+        public TinyTankPumpComponent Tt1
+        {
+            get
+            {
+                return this.tt1;
+            }
+            set
+            {
+                this.tt1 = value;
+            }
+        }
+        public TinyTankPumpComponent Tt2
+        {
+            get
+            {
+                return this.tt2;
+            }
+            set
+            {
+                this.tt2 = value;
+            }
+        }
+        public TinyTankLComponent Tt3
         {
             get
             {
@@ -57,7 +96,7 @@ namespace TankControl.View
             }
         }
 
-        public TinyTankL Tt4
+        public TinyTankLComponent Tt4
         {
             get
             {
@@ -69,7 +108,7 @@ namespace TankControl.View
             }
         }
 
-        public TinyTankR Tt5
+        public TinyTankRComponent Tt5
         {
             get
             {
@@ -81,7 +120,7 @@ namespace TankControl.View
             }
         }
 
-        public TinyTankR Tt7
+        public TinyTankRComponent Tt7
         {
             get
             {
@@ -93,7 +132,7 @@ namespace TankControl.View
             }
         }
 
-        public TinyTankR Tt6
+        public TinyTankRComponent Tt6
         {
             get
             {

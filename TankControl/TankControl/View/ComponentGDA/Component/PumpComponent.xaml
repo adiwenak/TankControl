@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="40" d:DesignWidth="50">
+             d:DesignHeight="40" d:DesignWidth="47.5">
     <Grid>
-    	<Image x:Name="Pump" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Source="/TankControl;component/Images/valve/pump.jpg"/>
+    	<Image x:Name="Pump" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Source="/TankControl;component/Images/valve/pump.png"/>
             
     </Grid>
 </UserControl>
