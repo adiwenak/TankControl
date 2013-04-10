@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TankControl
+namespace TankControl.View
 {
     /// <summary>
     /// Interaction logic for Dashboard.xaml
@@ -22,6 +22,9 @@ namespace TankControl
         public Dashboard()
         {
             InitializeComponent();
+            GraphicDisplayArea gda = new GraphicDisplayArea();
+            mainTangki.Children.Clear();
+            mainTangki.Children.Add(gda);
         }
     }
 }
