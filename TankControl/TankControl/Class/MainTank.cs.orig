@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using TankControl;
+
+namespace TankControl.Class
+{
+    public class MainTank : BaseTank
+    {
+<<<<<<< HEAD
+
+        public MainTank(){
+            this.Components.Add(new Valve());
+            this.Components.Add(new Valve());
+            this.Components.Add(new Valve());
+            this.Components.Add(new Pump());
+        }
+
+=======
+>>>>>>> 7fda6d8fa96924931599eac16d8568d9c31d455a
+        public ICollection<TinyTank> TinyTank
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    }
+}

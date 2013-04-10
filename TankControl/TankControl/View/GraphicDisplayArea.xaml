@@ -2,12 +2,12 @@
              Height="600" d:DesignWidth="750" mc:Ignorable="d">
 	<Canvas Margin="2,0,-2,0">
 		<telerik:GroupBox x:Name="gropGDA" HorizontalAlignment="Left" Height="595" VerticalAlignment="Top" Width="720" Canvas.Left="14.5" Canvas.Top="10" Header="Graphical Display Area" BorderThickness="4" FontSize="18.667">
-			<ComponentGDA:MainTank x:Name="mainTank" HorizontalAlignment="Left" Height="440" VerticalAlignment="Top" Width="215" Margin="251,18.5,0,0"/>
+			<ComponentGDA:MainTankComponent x:Name="mainTank" HorizontalAlignment="Left" Height="440" VerticalAlignment="Top" Width="215" Margin="251,18.5,0,0"/>
 		</telerik:GroupBox>
         <ComponentGDA:TinyTankR x:Name="tinyTank_7" Canvas.Left="475" Canvas.Top="300"/>
         <ComponentGDA:TinyTankR x:Name="tinyTank_6" Canvas.Left="475" Canvas.Top="218.798"/>
         <ComponentGDA:TinyTankR x:Name="tinyTank_5" Canvas.Left="475" Canvas.Top="135.5"/>
-        <ComponentGDA:TinyTank x:Name="tinyTank_4" Canvas.Left="92.5" Canvas.Top="377" Height="75"/>
-        <ComponentGDA:TinyTank x:Name="tinyTank_3" Canvas.Left="92.5" Canvas.Top="295.5" Height="75"/>
+        <ComponentGDA:TinyTankL x:Name="tinyTank_4" Canvas.Left="92.5" Canvas.Top="377" Height="75"/>
+        <ComponentGDA:TinyTankL x:Name="tinyTank_3" Canvas.Left="92.5" Canvas.Top="295.5" Height="75"/>
 	</Canvas>	
 </UserControl>
