@@ -22,9 +22,9 @@ namespace TankControl.View
     /// </summary>
     public partial class GraphicDisplayArea : UserControl
     {
-        private MainTank mt;     
-        private TinyTank tt3;
-        private TinyTank tt4;
+        private MainTankComponent mt;     
+        private TinyTankL tt3;
+        private TinyTankL tt4;
         private TinyTankR tt5;
         private TinyTankR tt6;
         private TinyTankR tt7;
@@ -45,7 +45,7 @@ namespace TankControl.View
 
         
 
-        public TinyTank Tt3
+        public TinyTankL Tt3
         {
             get
             {
@@ -57,7 +57,7 @@ namespace TankControl.View
             }
         }
 
-        public TinyTank Tt4
+        public TinyTankL Tt4
         {
             get
             {
@@ -105,7 +105,7 @@ namespace TankControl.View
             }
         }
 
-        public MainTank Mt
+        public MainTankComponent Mt
         {
             get
             {
