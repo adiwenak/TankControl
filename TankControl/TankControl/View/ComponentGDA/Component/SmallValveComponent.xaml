@@ -1,0 +1,63 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="TankControl.View.ComponentGDA.SmallValveComponent" 
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="125">
+    <UserControl.Resources>
+		<Storyboard x:Key="MovingArrow" RepeatBehavior="Forever">
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="downArrow">
+				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="downArrow">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="downArrow">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="32"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rightArrow">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightArrow">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="109.348"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightArrow">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.041"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+    <Grid>
+    	<Path x:Name="BigPath" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="119.25" Margin="1.855,39.236,0,0" StrokeThickness="10" Stretch="Fill"/>
+    	<Path Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="41.833" Margin="1.838,2.584,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="Black" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
+    	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="13" Margin="1.832,36.247,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" Fill="Red" Visibility="Hidden">
+    		<ed:BlockArrow.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</ed:BlockArrow.RenderTransform>
+    	</ed:BlockArrow>
+    	<ed:BlockArrow x:Name="downArrow" Fill="Red" HorizontalAlignment="Left" Height="15" Margin="-1,0.292,0,0" Orientation="Down" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="13" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+    		<ed:BlockArrow.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</ed:BlockArrow.RenderTransform>
+    	</ed:BlockArrow>
+    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="36" Margin="42.675,15.385,0,0" VerticalAlignment="Top" Width="44" Source="/TankControl;component/Images/valve/close.png"/>
+            
+    </Grid>
+</UserControl>

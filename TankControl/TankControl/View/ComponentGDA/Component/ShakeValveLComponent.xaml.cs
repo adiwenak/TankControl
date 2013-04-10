@@ -16,27 +16,27 @@ using System.Windows.Shapes;
 namespace TankControl.View.ComponentGDA
 {
     /// <summary>
-    /// Interaction logic for BigValveR.xaml
+    /// Interaction logic for ShakeValveLComponent.xaml
     /// </summary>
-    public partial class BigValveR : UserControl
+    public partial class ShakeValveLComponent : UserControl
     {
-        private Storyboard bigValveAnimation;
-        public BigValveR()
+        private Storyboard ShakeValveAnimation;
+        public ShakeValveLComponent()
         {
             InitializeComponent();
-            bigValveAnimation = (Storyboard)FindResource("MovingArrow");
+            ShakeValveAnimation = (Storyboard)FindResource("MovingArrow");
         }
 
         public void Run()
         {
-            if (bigValveAnimation != null)
+            if (ShakeValveAnimation != null)
             {
                 BitmapImage img = new BitmapImage();
                 img.BeginInit();
-                img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/openR.png");
+                img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/open.png");
                 img.EndInit();
-                valveBig.Source = img;
-                bigValveAnimation.Begin();
+                valveLeft.Source = img;
+                ShakeValveAnimation.Begin();
             }
         }
     }

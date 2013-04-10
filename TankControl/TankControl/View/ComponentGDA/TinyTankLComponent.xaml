@@ -5,12 +5,12 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:local="clr-namespace:TankControl.View.ComponentGDA"
 	mc:Ignorable="d"
-    x:Class="TankControl.View.ComponentGDA.TinyTankL"
+    x:Class="TankControl.View.ComponentGDA.TinyTankLComponent"
     x:Name="UserControl"
 	d:DesignWidth="195" d:DesignHeight="78.851">
 
 	<Grid x:Name="LayoutRoot" Margin="0,-1.149,0,1.149">
 		<local:TinyTankComponent x:Name="TiniTank" HorizontalAlignment="Left" Margin="19.452,-13.613,0,0" VerticalAlignment="Top" Width="57.298"/>
-		<local:BigValve x:Name="BigValve" HorizontalAlignment="Left" Margin="72.828,8.003,0,0" VerticalAlignment="Top"/>
+		<local:BigValveLComponent x:Name="BigValve" HorizontalAlignment="Left" Margin="72.828,8.003,0,0" VerticalAlignment="Top"/>
 	</Grid>
 </UserControl>

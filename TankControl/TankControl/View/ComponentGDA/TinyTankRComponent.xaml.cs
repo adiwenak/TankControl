@@ -17,11 +17,11 @@ namespace TankControl.View.ComponentGDA
     /// <summary>
     /// Interaction logic for TinyTankR.xaml
     /// </summary>
-    public partial class TinyTankR : UserControl
+    public partial class TinyTankRComponent : UserControl
     {
-        public BigValveR Bv;
+        public BigValveRComponent Bv;
 
-        public TinyTankR()
+        public TinyTankRComponent()
         {
             InitializeComponent();
             Bv = BigValveR;

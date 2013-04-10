@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,28 +15,29 @@ using System.Windows.Media.Animation;
 
 namespace TankControl.View.ComponentGDA
 {
-	/// <summary>
-	/// Interaction logic for BigValve.xaml
-	/// </summary>
-	public partial class BigValve : UserControl
-	{
+    /// <summary>
+    /// Interaction logic for ShakeValveRComponent.xaml
+    /// </summary>
+    public partial class ShakeValveRComponent : UserControl
+    {
+        private Storyboard ShakeValveAnimation;
+        public ShakeValveRComponent()
+        {
+            InitializeComponent();
+            ShakeValveAnimation = (Storyboard)FindResource("MovingArrow");
+        }
 
-        private Storyboard bigValveAnimation;
-		public BigValve()
-		{
-			this.InitializeComponent();
-            bigValveAnimation = (Storyboard)FindResource("MovingArrow");
-		}
-
-        public void Run() { 
-            if(bigValveAnimation != null){
+        public void Run()
+        {
+            if (ShakeValveAnimation != null)
+            {
                 BitmapImage img = new BitmapImage();
                 img.BeginInit();
                 img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/open.png");
                 img.EndInit();
-                valveBig.Source = img;
-                bigValveAnimation.Begin();
+                valveRight.Source = img;
+                ShakeValveAnimation.Begin();
             }
         }
-	}
+    }
 }
