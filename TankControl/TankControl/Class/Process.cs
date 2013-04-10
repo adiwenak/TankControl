@@ -89,6 +89,7 @@ namespace TankControl.Class
 
         public void Stop()
         {
+            View.StopWhole();
         }
 
         // CONTROL - END

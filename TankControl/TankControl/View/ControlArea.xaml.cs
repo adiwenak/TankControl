@@ -21,12 +21,15 @@ namespace TankControl.View
     /// </summary>
     public partial class ControlArea : UserControl
     {
-        private bool animation;
 
         public ControlArea()
         {
-            animation = false;
             InitializeComponent();
+        }
+
+        public void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Singleton.Stop();
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
