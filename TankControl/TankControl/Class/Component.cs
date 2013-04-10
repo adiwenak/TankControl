@@ -8,6 +8,10 @@ namespace TankControl.Class
 {
     public interface Component 
     {
+        Guid Id {get; set; }
+
+        string Name{ get; set; }
+
         void Run();
 
         void Stop();

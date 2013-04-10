@@ -69,7 +69,7 @@
 	
 	<!-- SimpleButtonFocusVisual is used to show keyboard focus around a SimpleButton control -->
 	<Style x:Key="SimpleButtonFocusVisual">
-		<Setter Property="Control.Template">
+		<Setter View="Control.Template">
 			<Setter.Value>
 				<ControlTemplate>
 					<Border>
@@ -82,10 +82,10 @@
 	
 	<!-- Simple Button - This control sets brushes on each state. Note that these brushes must be listed above since they are static resources -->
 	<Style x:Key="SimpleButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
-		<Setter Property="FocusVisualStyle" Value="{DynamicResource SimpleButtonFocusVisual}"/>
-		<Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-		<Setter Property="Template">
+		<Setter View="FocusVisualStyle" Value="{DynamicResource SimpleButtonFocusVisual}"/>
+		<Setter View="Background" Value="{DynamicResource NormalBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
 					
@@ -100,21 +100,21 @@
 					
 					<!--Each state sets a brush on the Border in the template -->
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsKeyboardFocused" Value="true">
-							<Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsKeyboardFocused" Value="true">
+							<Setter View="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+						<Trigger View="IsMouseOver" Value="true">
+							<Setter View="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsPressed" Value="true">
-							<Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsPressed" Value="true">
+							<Setter View="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="true"/>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="true"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -123,7 +123,7 @@
 	</Style>
 	
 	<Style x:Key="RadioButtonFocusVisual">
-		<Setter Property="Control.Template">
+		<Setter View="Control.Template">
 			<Setter.Value>
 				<ControlTemplate>
 					<Border>
@@ -135,7 +135,7 @@
 	</Style>
 	
 	<Style x:Key="CheckBoxFocusVisual">
-		<Setter Property="Control.Template">
+		<Setter View="Control.Template">
 			<Setter.Value>
 				<ControlTemplate>
 					<Border>
@@ -148,11 +148,11 @@
 	
 	<!-- Simple CheckBox -->
 	<Style x:Key="SimpleCheckBox" TargetType="{x:Type CheckBox}">
-		<Setter Property="SnapsToDevicePixels" Value="true"/>
-		<Setter Property="FocusVisualStyle" Value="{DynamicResource CheckBoxFocusVisual}"/>
-		<Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-		<Setter Property="Template">
+		<Setter View="SnapsToDevicePixels" Value="true"/>
+		<Setter View="FocusVisualStyle" Value="{DynamicResource CheckBoxFocusVisual}"/>
+		<Setter View="Background" Value="{DynamicResource NormalBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type CheckBox}">
 					
@@ -169,19 +169,19 @@
 					
 					<!-- This uses Visibility to hide and show the CheckMark on IsChecked -->
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsChecked" Value="false">
-							<Setter Property="Visibility" Value="Collapsed" TargetName="CheckMark"/>
+						<Trigger View="IsChecked" Value="false">
+							<Setter View="Visibility" Value="Collapsed" TargetName="CheckMark"/>
 						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+						<Trigger View="IsMouseOver" Value="true">
+							<Setter View="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsPressed" Value="true">
-							<Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsPressed" Value="true">
+							<Setter View="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 					
@@ -192,11 +192,11 @@
 	
 	<!-- Simple Radio Button -->
 	<Style x:Key="SimpleRadioButton" TargetType="{x:Type RadioButton}">
-		<Setter Property="SnapsToDevicePixels" Value="true"/>
-		<Setter Property="FocusVisualStyle" Value="{DynamicResource RadioButtonFocusVisual}"/>
-		<Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-		<Setter Property="Template">
+		<Setter View="SnapsToDevicePixels" Value="true"/>
+		<Setter View="FocusVisualStyle" Value="{DynamicResource RadioButtonFocusVisual}"/>
+		<Setter View="Background" Value="{DynamicResource NormalBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
 				
@@ -212,20 +212,20 @@
 					</BulletDecorator>
 					
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsChecked" Value="false">
-							<Setter Property="Visibility" Value="Collapsed" TargetName="CheckMark"/>
+						<Trigger View="IsChecked" Value="false">
+							<Setter View="Visibility" Value="Collapsed" TargetName="CheckMark"/>
 						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter Property="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Ellipse_Border"/>
+						<Trigger View="IsMouseOver" Value="true">
+							<Setter View="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Ellipse_Border"/>
 						</Trigger>
-						<Trigger Property="IsPressed" Value="true">
-							<Setter Property="Fill" Value="{DynamicResource PressedBrush}" TargetName="Ellipse_Border"/>
-							<Setter Property="Stroke" Value="{DynamicResource GlyphBrush}" TargetName="Ellipse_Border"/>
+						<Trigger View="IsPressed" Value="true">
+							<Setter View="Fill" Value="{DynamicResource PressedBrush}" TargetName="Ellipse_Border"/>
+							<Setter View="Stroke" Value="{DynamicResource GlyphBrush}" TargetName="Ellipse_Border"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Ellipse_Border"/>
-							<Setter Property="Stroke" Value="#40000000" TargetName="Ellipse_Border"/>
-							<Setter Property="Foreground" Value="#80000000"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Ellipse_Border"/>
+							<Setter View="Stroke" Value="#40000000" TargetName="Ellipse_Border"/>
+							<Setter View="Foreground" Value="#80000000"/>
 						</Trigger>
 						
 					</ControlTemplate.Triggers>
@@ -236,9 +236,9 @@
 	
 	<!-- Simple Repeat Button - This is used by Simple ScrollBar for the up and down buttons -->
 	<Style x:Key="SimpleRepeatButton" d:IsControlPart="True" TargetType="{x:Type RepeatButton}" BasedOn="{x:Null}">
-		<Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-		<Setter Property="Template">
+		<Setter View="Background" Value="{DynamicResource NormalBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RepeatButton}">
 					<Grid>
@@ -246,20 +246,20 @@
 						<ContentPresenter HorizontalAlignment="Center" x:Name="ContentPresenter" VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsKeyboardFocused" Value="true">
-							<Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsKeyboardFocused" Value="true">
+							<Setter View="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+						<Trigger View="IsMouseOver" Value="true">
+							<Setter View="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsPressed" Value="true">
-							<Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsPressed" Value="true">
+							<Setter View="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -269,17 +269,17 @@
 	
 	<!-- Simple Thumb - The Thumb is the draggable part of the Scrollbar -->
 	<Style x:Key="SimpleThumbStyle" d:IsControlPart="True" TargetType="{x:Type Thumb}" BasedOn="{x:Null}">
-		<Setter Property="Template">
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
 					<Grid Margin="0,0,0,0" x:Name="Grid">
 						<Rectangle HorizontalAlignment="Stretch" x:Name="Rectangle" VerticalAlignment="Stretch" Width="Auto" Height="Auto" RadiusX="2" RadiusY="2" Fill="{DynamicResource NormalBrush}" Stroke="{DynamicResource NormalBorderBrush}"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsFocused" Value="True"/>
-						<Trigger Property="IsMouseOver" Value="True"/>
-						<Trigger Property="IsEnabled" Value="False"/>
-						<Trigger Property="IsDragging" Value="True"/>
+						<Trigger View="IsFocused" Value="True"/>
+						<Trigger View="IsMouseOver" Value="True"/>
+						<Trigger View="IsEnabled" Value="False"/>
+						<Trigger View="IsDragging" Value="True"/>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -288,11 +288,11 @@
 	
 	<!-- Simple ScrollRepeatButton Style - This RepeatButton is used above and below the Thumb in the Scrollbar. They are set to transparent si that they do not show over the scrollbar -->
 	<Style x:Key="SimpleScrollRepeatButtonStyle" d:IsControlPart="True" TargetType="{x:Type RepeatButton}">
-		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="BorderBrush" Value="Transparent"/>
-		<Setter Property="IsTabStop" Value="false"/>
-		<Setter Property="Focusable" Value="false"/>
-		<Setter Property="Template">
+		<Setter View="Background" Value="Transparent"/>
+		<Setter View="BorderBrush" Value="Transparent"/>
+		<Setter View="IsTabStop" Value="false"/>
+		<Setter View="Focusable" Value="false"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RepeatButton}">
 					<Grid>
@@ -306,9 +306,9 @@
 	<!-- Simple ScrollBar  This makes use of SimpleThumb, SimpleRepeatButton and SimpleScrollRepeatButton -->
 	
 	<Style x:Key="SimpleScrollBar" TargetType="{x:Type ScrollBar}">
-		<Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
-		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-		<Setter Property="Template">
+		<Setter View="Stylus.IsFlicksEnabled" Value="false"/>
+		<Setter View="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ScrollBar}">
 					<Grid x:Name="GridRoot" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Background="{TemplateBinding Background}">
@@ -347,23 +347,23 @@
 					<!-- This uses a single template for ScrollBar and rotate it to be Horizontal
 					It also changes the commands so that the it does Left and Right instead of Up and Down Commands -->
 					<ControlTemplate.Triggers>
-						<Trigger Property="Orientation" Value="Horizontal">
+						<Trigger View="Orientation" Value="Horizontal">
 
 							<!-- Rotate the ScrollBar from Vertical to Horizontal -->
-							<Setter Property="LayoutTransform" TargetName="GridRoot">
+							<Setter View="LayoutTransform" TargetName="GridRoot">
 								<Setter.Value>
 									<RotateTransform Angle="-90"/>
 								</Setter.Value>
 							</Setter>
 							
 							<!-- Track is bound to Orientation internally, so we need to rotate it back to Vertical -->
-							<Setter TargetName="PART_Track" Property="Orientation" Value="Vertical"/>
+							<Setter TargetName="PART_Track" View="Orientation" Value="Vertical"/>
 					
 							<!-- Change the commands to do Horizontal commands -->
-							<Setter Property="Command" Value="ScrollBar.LineLeftCommand" TargetName="DecreaseRepeat"/>
-							<Setter Property="Command" Value="ScrollBar.LineRightCommand" TargetName="IncreaseRepeat"/>
-							<Setter Property="Command" Value="ScrollBar.PageLeftCommand" TargetName="PageDown"/>
-							<Setter Property="Command" Value="ScrollBar.PageRightCommand" TargetName="PageUp"/>
+							<Setter View="Command" Value="ScrollBar.LineLeftCommand" TargetName="DecreaseRepeat"/>
+							<Setter View="Command" Value="ScrollBar.LineRightCommand" TargetName="IncreaseRepeat"/>
+							<Setter View="Command" Value="ScrollBar.PageLeftCommand" TargetName="PageDown"/>
+							<Setter View="Command" Value="ScrollBar.PageRightCommand" TargetName="PageUp"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -375,7 +375,7 @@
 	ScrollViewer is a Grid control which has a ContentPresenter and a Horizontal and Vertical ScrollBar 
 	It is used by ListBox, MenuItem, ComboBox, and TreeView -->
 	<Style x:Key="SimpleScrollViewer" TargetType="{x:Type ScrollViewer}" BasedOn="{x:Null}">
-		<Setter Property="Template">
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ScrollViewer}">
 					<Grid Background="{TemplateBinding Background}">
@@ -400,13 +400,13 @@
 	
 	<!-- Simple ListBox - This uses SimpleScrollViewer to allow items to be scrolled and SimpleListBoxItem to define the look of each item -->
 	<Style x:Key="SimpleListBox" TargetType="{x:Type ListBox}">
-		<Setter Property="SnapsToDevicePixels" Value="true"/>
-		<Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource SolidBorderBrush}"/>
-		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-		<Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
-		<Setter Property="Template">
+		<Setter View="SnapsToDevicePixels" Value="true"/>
+		<Setter View="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource SolidBorderBrush}"/>
+		<Setter View="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+		<Setter View="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+		<Setter View="ScrollViewer.CanContentScroll" Value="True"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListBox}">
 					<Grid>
@@ -419,12 +419,12 @@
 						</ScrollViewer>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsGrouping" Value="true">
-							<Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+						<Trigger View="IsGrouping" Value="true">
+							<Setter View="ScrollViewer.CanContentScroll" Value="false"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -435,9 +435,9 @@
 	<!-- Simple ListBoxItem - This is used for each Item in a ListBox. The item's content is placed in the ContentPresenter -->
 	
 	<Style x:Key="SimpleListBoxItem" d:IsControlPart="True" TargetType="{x:Type ListBoxItem}">
-		<Setter Property="SnapsToDevicePixels" Value="true"/>
-		<Setter Property="OverridesDefaultStyle" Value="true"/>
-		<Setter Property="Template">
+		<Setter View="SnapsToDevicePixels" Value="true"/>
+		<Setter View="OverridesDefaultStyle" Value="true"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListBoxItem}">
 					<Grid SnapsToDevicePixels="true">
@@ -447,12 +447,12 @@
 					<ControlTemplate.Triggers>
 						
 						<!-- Change IsSelected SelectedBackgroundBrush to set the selection color for the items -->
-						<Trigger Property="IsSelected" Value="true">
-							<Setter Property="Background" Value="{DynamicResource SelectedBackgroundBrush}" TargetName="Border"/>
+						<Trigger View="IsSelected" Value="true">
+							<Setter View="Background" Value="{DynamicResource SelectedBackgroundBrush}" TargetName="Border"/>
 						</Trigger>
 						
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -468,21 +468,21 @@
 			<Path Visibility="Collapsed" HorizontalAlignment="Center" x:Name="Down_Arrow" VerticalAlignment="Center" Fill="{DynamicResource GlyphBrush}" Data="M 0 4 L 4 0 L 8 4 Z"/>
 		</Grid>
 		<ControlTemplate.Triggers>
-			<Trigger Property="IsMouseOver" Value="true">
-				<Setter Property="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Rectangle"/>
+			<Trigger View="IsMouseOver" Value="true">
+				<Setter View="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Rectangle"/>
 			</Trigger>
-			<Trigger Property="IsPressed" Value="true">
-				<Setter Property="Fill" Value="{DynamicResource PressedBrush}" TargetName="Rectangle"/>
+			<Trigger View="IsPressed" Value="true">
+				<Setter View="Fill" Value="{DynamicResource PressedBrush}" TargetName="Rectangle"/>
 			</Trigger>
-			<Trigger Property="IsChecked" Value="true">
-				<Setter Property="Visibility" Value="Visible" TargetName="Down_Arrow"/>
-				<Setter Property="Visibility" Value="Collapsed" TargetName="Up_Arrow"/>
+			<Trigger View="IsChecked" Value="true">
+				<Setter View="Visibility" Value="Visible" TargetName="Down_Arrow"/>
+				<Setter View="Visibility" Value="Collapsed" TargetName="Up_Arrow"/>
 			</Trigger>
-			<Trigger Property="IsEnabled" Value="False">
-				<Setter Property="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Rectangle"/>
-				<Setter Property="Stroke" Value="{DynamicResource DisabledBorderBrush}" TargetName="Rectangle"/>
-				<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
-				<Setter Property="Fill" Value="{DynamicResource DisabledForegroundBrush}" TargetName="Up_Arrow"/>
+			<Trigger View="IsEnabled" Value="False">
+				<Setter View="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Rectangle"/>
+				<Setter View="Stroke" Value="{DynamicResource DisabledBorderBrush}" TargetName="Rectangle"/>
+				<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+				<Setter View="Fill" Value="{DynamicResource DisabledForegroundBrush}" TargetName="Up_Arrow"/>
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
@@ -491,9 +491,9 @@
 	 This uses the Simpler ExpanderToggleButton. It sets Visibility on the ContentPresenter to expand
 	 Limitations : The Simple Expander only expands down -->
 	<Style x:Key="SimpleExpander" TargetType="{x:Type Expander}">
-		<Setter Property="Background" Value="{DynamicResource LightBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-		<Setter Property="Template">
+		<Setter View="Background" Value="{DynamicResource LightBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Expander}">
 					<Grid>
@@ -516,13 +516,13 @@
 						</Border>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsExpanded" Value="True">
-							<Setter Property="Visibility" Value="Visible" TargetName="ExpandSite"/>
+						<Trigger View="IsExpanded" Value="True">
+							<Setter View="Visibility" Value="Visible" TargetName="ExpandSite"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="False">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -542,17 +542,17 @@
 			<Path Grid.Column="1" HorizontalAlignment="Center" x:Name="Arrow" VerticalAlignment="Center" Fill="{DynamicResource GlyphBrush}" Data="M 0 0 L 4 4 L 8 0 Z"/>
 		</Grid>
 		<ControlTemplate.Triggers>
-			<Trigger Property="IsMouseOver" Value="true">
-				<Setter Property="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Rectangle"/>
+			<Trigger View="IsMouseOver" Value="true">
+				<Setter View="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Rectangle"/>
 			</Trigger>
-			<Trigger Property="IsChecked" Value="true">
-				<Setter Property="Fill" Value="{DynamicResource PressedBrush}" TargetName="Rectangle"/>
+			<Trigger View="IsChecked" Value="true">
+				<Setter View="Fill" Value="{DynamicResource PressedBrush}" TargetName="Rectangle"/>
 			</Trigger>
-			<Trigger Property="IsEnabled" Value="False">
-				<Setter Property="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Rectangle"/>
-				<Setter Property="Stroke" Value="{DynamicResource DisabledBorderBrush}" TargetName="Rectangle"/>
-				<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
-				<Setter Property="Fill" Value="{DynamicResource DisabledForegroundBrush}" TargetName="Arrow"/>
+			<Trigger View="IsEnabled" Value="False">
+				<Setter View="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Rectangle"/>
+				<Setter View="Stroke" Value="{DynamicResource DisabledBorderBrush}" TargetName="Rectangle"/>
+				<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+				<Setter View="Fill" Value="{DynamicResource DisabledForegroundBrush}" TargetName="Arrow"/>
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
@@ -570,8 +570,8 @@
 	The Popup shows a list of items in a StackPanel-->
 	
 	<Style x:Key="SimpleComboBox" TargetType="{x:Type ComboBox}">
-		<Setter Property="SnapsToDevicePixels" Value="true"/>
-		<Setter Property="Template">
+		<Setter View="SnapsToDevicePixels" Value="true"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBox}">
 					<Grid>
@@ -597,23 +597,23 @@
 					</Grid>
 					<ControlTemplate.Triggers>						
 						<!-- This forces the DropDown to have a minimum size if it is empty -->
-						<Trigger Property="HasItems" Value="false">
-							<Setter Property="MinHeight" Value="95" TargetName="DropDownBorder"/>
+						<Trigger View="HasItems" Value="false">
+							<Setter View="MinHeight" Value="95" TargetName="DropDownBorder"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
-						<Trigger Property="IsGrouping" Value="true">
-							<Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+						<Trigger View="IsGrouping" Value="true">
+							<Setter View="ScrollViewer.CanContentScroll" Value="false"/>
 						</Trigger>
-						<Trigger Property="AllowsTransparency" SourceName="Popup" Value="true">
-							<Setter Property="CornerRadius" Value="4" TargetName="DropDownBorder"/>
-							<Setter Property="Margin" Value="0,2,0,0" TargetName="DropDownBorder"/>
+						<Trigger View="AllowsTransparency" SourceName="Popup" Value="true">
+							<Setter View="CornerRadius" Value="4" TargetName="DropDownBorder"/>
+							<Setter View="Margin" Value="0,2,0,0" TargetName="DropDownBorder"/>
 						</Trigger>
-						<Trigger Property="IsEditable" Value="true">
-							<Setter Property="IsTabStop" Value="false"/>
-							<Setter Property="Visibility" Value="Visible" TargetName="PART_EditableTextBox"/>
-							<Setter Property="Visibility" Value="Hidden" TargetName="ContentSite"/>
+						<Trigger View="IsEditable" Value="true">
+							<Setter View="IsTabStop" Value="false"/>
+							<Setter View="Visibility" Value="Visible" TargetName="PART_EditableTextBox"/>
+							<Setter View="Visibility" Value="Hidden" TargetName="ContentSite"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -623,8 +623,8 @@
 	
 	<!-- Simple ComboBoxItem - This is used for each item inside of the ComboBox. You can change the selected color of each item below-->
 	<Style x:Key="SimpleComboBoxItem" d:IsControlPart="True" TargetType="{x:Type ComboBoxItem}">
-		<Setter Property="SnapsToDevicePixels" Value="true"/>
-		<Setter Property="Template">
+		<Setter View="SnapsToDevicePixels" Value="true"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBoxItem}">
 					<Grid SnapsToDevicePixels="true">
@@ -634,12 +634,12 @@
 					<ControlTemplate.Triggers>
 					
 						<!-- Change IsHighlighted SelectedBackgroundBrush to set the selection color for the items -->
-						<Trigger Property="IsHighlighted" Value="true">
-							<Setter Property="Background" Value="{DynamicResource SelectedBackgroundBrush}" TargetName="Border"/>
+						<Trigger View="IsHighlighted" Value="true">
+							<Setter View="Background" Value="{DynamicResource SelectedBackgroundBrush}" TargetName="Border"/>
 						</Trigger>
 						
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -651,7 +651,7 @@
 	 The template uses two Border controls to show the Track and Progress 
 	 Limitations : It only supports a horizontal orientated ProgressBar -->
 	<Style x:Key="SimpleProgressBar" TargetType="{x:Type ProgressBar}">
-		<Setter Property="Template">
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ProgressBar}">
 					<Grid>
@@ -670,10 +670,10 @@
 	
 	<!-- Simple TextBox -->
 	<Style x:Key="SimpleTextBox" TargetType="{x:Type TextBox}">
-		<Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-		<Setter Property="AllowDrop" Value="true"/>
-		<Setter Property="Template">
+		<Setter View="KeyboardNavigation.TabNavigation" Value="None"/>
+		<Setter View="FocusVisualStyle" Value="{x:Null}"/>
+		<Setter View="AllowDrop" Value="true"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TextBox}">
 					<Grid>
@@ -685,10 +685,10 @@
 						</Border>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="False">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -698,16 +698,16 @@
 	
 	<!-- Simple Label - This template is just a ContentPresenter that shows the content of the Label -->
 	<Style x:Key="SimpleLabel" TargetType="{x:Type Label}">
-		<Setter Property="HorizontalContentAlignment" Value="Left"/>
-		<Setter Property="VerticalContentAlignment" Value="Top"/>
-		<Setter Property="Template">
+		<Setter View="HorizontalContentAlignment" Value="Left"/>
+		<Setter View="VerticalContentAlignment" Value="Top"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Label}">
 					<Grid>
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="false"/>
+						<Trigger View="IsEnabled" Value="false"/>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -716,10 +716,10 @@
 	
 	<!-- Simple Menu - This template uses a StackPanel to layout MenuItems --> 
 	<Style x:Key="SimpleMenu" TargetType="{x:Type Menu}">
-		<Setter Property="Background" Value="{DynamicResource LightBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-		<Setter Property="SnapsToDevicePixels" Value="True"/>
-		<Setter Property="Template">
+		<Setter View="Background" Value="{DynamicResource LightBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+		<Setter View="SnapsToDevicePixels" Value="True"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Menu}">
 					<Grid>
@@ -727,9 +727,9 @@
 						<StackPanel Background="{TemplateBinding Background}" IsItemsHost="True" ClipToBounds="True" Orientation="Horizontal"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsEnabled" Value="False">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -742,11 +742,11 @@
 	
 	<!-- Simple MenuItem - The template uses triggers to provide four different arrangements of menu item which are set via the Role property --> 
 	<Style x:Key="SimpleMenuItem" TargetType="{x:Type MenuItem}">
-		<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-		<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
-		<Setter Property="Template">
+		<Setter View="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+		<Setter View="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+		<Setter View="Background" Value="Transparent"/>
+		<Setter View="Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type MenuItem}">
 					<Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
@@ -794,62 +794,62 @@
 					<ControlTemplate.Triggers>
 					
 						<!-- Role = TopLevelHeader : this is the root menu item in a menu; the Popup expands down -->
-						<Trigger Property="Role" Value="TopLevelHeader">
-							<Setter Property="Margin" Value="0,1,0,1"/>
-							<Setter Property="Padding" Value="6,3,6,3"/>
-							<Setter Property="Grid.IsSharedSizeScope" Value="true"/>
-							<Setter Property="Placement" Value="Bottom" TargetName="SubMenuPopup"/>
-							<Setter Property="Visibility" Value="Collapsed" TargetName="ArrowPanel"/>
+						<Trigger View="Role" Value="TopLevelHeader">
+							<Setter View="Margin" Value="0,1,0,1"/>
+							<Setter View="Padding" Value="6,3,6,3"/>
+							<Setter View="Grid.IsSharedSizeScope" Value="true"/>
+							<Setter View="Placement" Value="Bottom" TargetName="SubMenuPopup"/>
+							<Setter View="Visibility" Value="Collapsed" TargetName="ArrowPanel"/>
 						</Trigger>
 						
 						<!-- Role = TopLevelItem :  this is a child menu item from the top level without any child items-->
-						<Trigger Property="Role" Value="TopLevelItem">
-							<Setter Property="Margin" Value="0,1,0,1"/>
-							<Setter Property="Padding" Value="6,3,6,3"/>
-							<Setter Property="Visibility" Value="Collapsed" TargetName="ArrowPanel"/>
+						<Trigger View="Role" Value="TopLevelItem">
+							<Setter View="Margin" Value="0,1,0,1"/>
+							<Setter View="Padding" Value="6,3,6,3"/>
+							<Setter View="Visibility" Value="Collapsed" TargetName="ArrowPanel"/>
 						</Trigger>
 						
 						<!-- Role = SubMenuHeader : this is a child menu item which does not have children -->
-						<Trigger Property="Role" Value="SubmenuHeader">
-							<Setter Property="DockPanel.Dock" Value="Top"/>
-							<Setter Property="Padding" Value="0,2,0,2"/>
-							<Setter Property="Grid.IsSharedSizeScope" Value="true"/>
+						<Trigger View="Role" Value="SubmenuHeader">
+							<Setter View="DockPanel.Dock" Value="Top"/>
+							<Setter View="Padding" Value="0,2,0,2"/>
+							<Setter View="Grid.IsSharedSizeScope" Value="true"/>
 						</Trigger>
 						
 						<!-- Role = SubMenuItem : this is a child menu item which has children-->
-						<Trigger Property="Role" Value="SubmenuItem">
-							<Setter Property="DockPanel.Dock" Value="Top"/>
-							<Setter Property="Padding" Value="0,2,0,2"/>
-							<Setter Property="Visibility" Value="Collapsed" TargetName="ArrowPanel"/>
+						<Trigger View="Role" Value="SubmenuItem">
+							<Setter View="DockPanel.Dock" Value="Top"/>
+							<Setter View="Padding" Value="0,2,0,2"/>
+							<Setter View="Visibility" Value="Collapsed" TargetName="ArrowPanel"/>
 						</Trigger>
-						<Trigger Property="IsSuspendingPopupAnimation" Value="true">
-							<Setter Property="PopupAnimation" Value="None" TargetName="SubMenuPopup"/>
+						<Trigger View="IsSuspendingPopupAnimation" Value="true">
+							<Setter View="PopupAnimation" Value="None" TargetName="SubMenuPopup"/>
 						</Trigger>
 						
 						<!-- If no Icon is present the we collapse the Icon Content -->
-						<Trigger Property="Icon" Value="{x:Null}">
-							<Setter Property="Visibility" Value="Collapsed" TargetName="Icon"/>
+						<Trigger View="Icon" Value="{x:Null}">
+							<Setter View="Visibility" Value="Collapsed" TargetName="Icon"/>
 						</Trigger>
 						
 						<!-- The GlyphPanel contains the CheckMark -->
-						<Trigger Property="IsChecked" Value="true">
-							<Setter Property="Visibility" Value="Visible" TargetName="GlyphPanel"/>
-							<Setter Property="Visibility" Value="Collapsed" TargetName="Icon"/>
+						<Trigger View="IsChecked" Value="true">
+							<Setter View="Visibility" Value="Visible" TargetName="GlyphPanel"/>
+							<Setter View="Visibility" Value="Collapsed" TargetName="Icon"/>
 						</Trigger>
 						
-						<Trigger Property="AllowsTransparency" SourceName="SubMenuPopup" Value="true">
-							<Setter Property="Margin" Value="0,0,3,3" TargetName="SubMenu"/>
-							<Setter Property="SnapsToDevicePixels" Value="true" TargetName="SubMenu"/>
-							<Setter Property="BitmapEffect" Value="{DynamicResource PopupDropShadow}" TargetName="SubMenuBorder"/>
+						<Trigger View="AllowsTransparency" SourceName="SubMenuPopup" Value="true">
+							<Setter View="Margin" Value="0,0,3,3" TargetName="SubMenu"/>
+							<Setter View="SnapsToDevicePixels" Value="true" TargetName="SubMenu"/>
+							<Setter View="BitmapEffect" Value="{DynamicResource PopupDropShadow}" TargetName="SubMenuBorder"/>
 						</Trigger>
 						
 						<!-- Using the system colors for the Menu Highlight and IsEnabled-->
-						<Trigger Property="IsHighlighted" Value="true">
-							<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" TargetName="Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+						<Trigger View="IsHighlighted" Value="true">
+							<Setter View="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" TargetName="Border"/>
+							<Setter View="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -859,10 +859,10 @@
 	
 	<!-- Simple Separator - This template is used for a Separator in a menu --> 
 	<Style x:Key="SimpleSeparator" TargetType="{x:Type Separator}">
-		<Setter Property="Height" Value="1"/>
-		<Setter Property="Margin" Value="0,2,0,2"/>
-		<Setter Property="Focusable" Value="false"/>
-		<Setter Property="Template">
+		<Setter View="Height" Value="1"/>
+		<Setter View="Margin" Value="0,2,0,2"/>
+		<Setter View="Focusable" Value="false"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Separator}">
 					<Border BorderBrush="{DynamicResource SolidBorderBrush}" BorderThickness="1"/>
@@ -876,7 +876,7 @@
 	Limitations : The Simple TabControl only allow the Tabs to be shown at the top of the Tab control. You can re-position the TabPanel to change this-->
 	
 	<Style x:Key="SimpleTabControl" TargetType="{x:Type TabControl}">
-		<Setter Property="Template">
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabControl}">
 					<Grid KeyboardNavigation.TabNavigation="Local">
@@ -898,9 +898,9 @@
 					</Grid>
 					
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsEnabled" Value="False">
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				
@@ -911,7 +911,7 @@
 	
 	<!--Simple TabItem -->
 	<Style x:Key="SimpleTabItem" d:IsControlPart="True" TargetType="{x:Type TabItem}">
-		<Setter Property="Template">
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabItem}">
 					<Grid>
@@ -920,15 +920,15 @@
 						</Border>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsSelected" Value="True">
-							<Setter Property="Panel.ZIndex" Value="100"/>
-							<Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderThickness" Value="1,1,1,0" TargetName="Border"/>
+						<Trigger View="IsSelected" Value="True">
+							<Setter View="Panel.ZIndex" Value="100"/>
+							<Setter View="Background" Value="{DynamicResource WindowBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderThickness" Value="1,1,1,0" TargetName="Border"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+						<Trigger View="IsEnabled" Value="False">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+							<Setter View="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -938,21 +938,21 @@
 	
 	<!--Simple Simple SliderThumb - The Thumb is the draggable part of a Slider-->
 	<Style x:Key="SimpleSliderThumb" d:IsControlPart="True" TargetType="{x:Type Thumb}">
-		<Setter Property="SnapsToDevicePixels" Value="true"/>
-		<Setter Property="Height" Value="14"/>
-		<Setter Property="Width" Value="14"/>
-		<Setter Property="Template">
+		<Setter View="SnapsToDevicePixels" Value="true"/>
+		<Setter View="Height" Value="14"/>
+		<Setter View="Width" Value="14"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
 					<Grid>
 						<Ellipse x:Name="Ellipse" Fill="{DynamicResource NormalBrush}" Stroke="{DynamicResource NormalBorderBrush}" StrokeThickness="1"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsMouseOver" Value="True">
-							<Setter Property="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Ellipse"/>
+						<Trigger View="IsMouseOver" Value="True">
+							<Setter View="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Ellipse"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Ellipse"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Ellipse"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -964,9 +964,9 @@
 	Similiar to ScrollBar this template uses Track to layout the draggable Thumb which has an up and down repeat button
 	It uses Simple SliderThumb and SimpleScrollRepeatButtonStyle for the page up and down repeat buttons -->
 	<Style x:Key="SimpleSlider" TargetType="{x:Type Slider}">
-		<Setter Property="Background" Value="{DynamicResource LightBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-		<Setter Property="Template">
+		<Setter View="Background" Value="{DynamicResource LightBrush}"/>
+		<Setter View="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Slider}">
 					<Grid x:Name="GridRoot">
@@ -996,30 +996,30 @@
 						<TickBar Visibility="Collapsed" Grid.Row="2" x:Name="BottomTick" Height="4" SnapsToDevicePixels="True" Placement="Bottom" Fill="{TemplateBinding Foreground}"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="TickPlacement" Value="TopLeft">
-							<Setter Property="Visibility" Value="Visible" TargetName="TopTick"/>
+						<Trigger View="TickPlacement" Value="TopLeft">
+							<Setter View="Visibility" Value="Visible" TargetName="TopTick"/>
 						</Trigger>
-						<Trigger Property="TickPlacement" Value="BottomRight">
-							<Setter Property="Visibility" Value="Visible" TargetName="BottomTick"/>
+						<Trigger View="TickPlacement" Value="BottomRight">
+							<Setter View="Visibility" Value="Visible" TargetName="BottomTick"/>
 						</Trigger>
-						<Trigger Property="TickPlacement" Value="Both">
-							<Setter Property="Visibility" Value="Visible" TargetName="TopTick"/>
-							<Setter Property="Visibility" Value="Visible" TargetName="BottomTick"/>
+						<Trigger View="TickPlacement" Value="Both">
+							<Setter View="Visibility" Value="Visible" TargetName="TopTick"/>
+							<Setter View="Visibility" Value="Visible" TargetName="BottomTick"/>
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-							<Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+							<Setter View="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
 						</Trigger>
 						
 						<!-- Use a rotation to create a Vertical Slider form the default Horizontal -->
-						<Trigger Property="Orientation" Value="Vertical">
-							<Setter Property="LayoutTransform" TargetName="GridRoot">
+						<Trigger View="Orientation" Value="Vertical">
+							<Setter View="LayoutTransform" TargetName="GridRoot">
 								<Setter.Value>
 									<RotateTransform Angle="-90"/>
 								</Setter.Value>
 							</Setter>
 							<!-- Track rotates itself based on orientation so need to force it back -->
-							<Setter TargetName="PART_Track" Property="Orientation" Value="Horizontal"/>
+							<Setter TargetName="PART_Track" View="Orientation" Value="Horizontal"/>
 						</Trigger>
 						
 					</ControlTemplate.Triggers>
@@ -1030,7 +1030,7 @@
 	
 	<!--Simple Tree View - This lays out TreeViewItems within a ScrollViewer -->
 	<Style x:Key="SimpleTreeView" TargetType="{x:Type TreeView}">
-		<Setter Property="Template">
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TreeView}">
 					<Grid>
@@ -1047,8 +1047,8 @@
 	
 	<!--Simple TreeViewItem ToggleButton - + and - button to expand and collapse a TreeViewItem -->
 	<Style x:Key="SimpleTreeViewItemToggleButton" d:IsControlPart="True" TargetType="{x:Type ToggleButton}">
-		<Setter Property="Focusable" Value="False"/>
-		<Setter Property="Template">
+		<Setter View="Focusable" Value="False"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ToggleButton}">
 					<Grid Width="15" Height="13" Background="Transparent">
@@ -1056,9 +1056,9 @@
 						<Path HorizontalAlignment="Left" Margin="1,1,1,1" x:Name="ExpandPath" VerticalAlignment="Center" Fill="{DynamicResource GlyphBrush}" Data="M 4 0 L 8 4 L 4 8 Z"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsChecked" Value="True">
-							<Setter Property="Visibility" Value="Visible" TargetName="IsExpandedPath"/>
-							<Setter Property="Visibility" Value="Collapsed" TargetName="ExpandPath"/>
+						<Trigger View="IsChecked" Value="True">
+							<Setter View="Visibility" Value="Visible" TargetName="IsExpandedPath"/>
+							<Setter View="Visibility" Value="Collapsed" TargetName="ExpandPath"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -1068,11 +1068,11 @@
 	
 	<!--Simple TreeViewItem - The TreeViewItem template has a header which shows the Item and a Body which is an ItemsHost control which expands to show child items-->
 	<Style x:Key="SimpleTreeViewItem" d:IsControlPart="True" TargetType="{x:Type TreeViewItem}">
-		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-		<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-		<Setter Property="Padding" Value="1,0,0,0"/>
-		<Setter Property="Template">
+		<Setter View="Background" Value="Transparent"/>
+		<Setter View="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+		<Setter View="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+		<Setter View="Padding" Value="1,0,0,0"/>
+		<Setter View="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TreeViewItem}">
 					<Grid>
@@ -1092,26 +1092,26 @@
 						<ItemsPresenter Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" x:Name="ItemsHost"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsExpanded" Value="false">
-							<Setter Property="Visibility" Value="Collapsed" TargetName="ItemsHost"/>
+						<Trigger View="IsExpanded" Value="false">
+							<Setter View="Visibility" Value="Collapsed" TargetName="ItemsHost"/>
 						</Trigger>
-						<Trigger Property="HasItems" Value="false">
-							<Setter Property="Visibility" Value="Hidden" TargetName="Expander"/>
+						<Trigger View="HasItems" Value="false">
+							<Setter View="Visibility" Value="Hidden" TargetName="Expander"/>
 						</Trigger>
-						<Trigger Property="IsSelected" Value="true">
-							<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" TargetName="Selection_Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+						<Trigger View="IsSelected" Value="true">
+							<Setter View="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" TargetName="Selection_Border"/>
+							<Setter View="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
 						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
-								<Condition Property="IsSelected" Value="true"/>
-								<Condition Property="IsSelectionActive" Value="false"/>
+								<Condition View="IsSelected" Value="true"/>
+								<Condition View="IsSelectionActive" Value="false"/>
 							</MultiTrigger.Conditions>
-							<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Selection_Border"/>
-							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+							<Setter View="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Selection_Border"/>
+							<Setter View="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
 						</MultiTrigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+						<Trigger View="IsEnabled" Value="false">
+							<Setter View="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

@@ -92,7 +92,7 @@
     <Compile Include="Class\MainTank.cs" />
     <Compile Include="Class\Process.cs" />
     <Compile Include="Class\Pump.cs" />
-    <Compile Include="Class\TinyTank.cs" />
+    <Compile Include="Class\TinyTankL.cs" />
     <Compile Include="Class\BaseTank.cs" />
     <Compile Include="Class\Component.cs" />
     <Compile Include="History.cs">
@@ -120,6 +120,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TankControlDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Class\TinyTankPump.cs" />
+    <Compile Include="Class\TinyTankR.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -142,17 +144,17 @@
     <Compile Include="View\ComponentGDA\Component\SmallValveComponent.xaml.cs">
       <DependentUpon>SmallValveComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\TinyTankL.xaml.cs">
-      <DependentUpon>TinyTankL.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\TinyTankLComponent.xaml.cs">
+      <DependentUpon>TinyTankLComponent.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ComponentGDA\Component\TinyTankComponent.xaml.cs">
       <DependentUpon>TinyTankComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\TinyTankPump.xaml.cs">
-      <DependentUpon>TinyTankPump.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\TinyTankPumpComponent.xaml.cs">
+      <DependentUpon>TinyTankPumpComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ComponentGDA\TinyTankR.xaml.cs">
-      <DependentUpon>TinyTankR.xaml</DependentUpon>
+    <Compile Include="View\ComponentGDA\TinyTankRComponent.xaml.cs">
+      <DependentUpon>TinyTankRComponent.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -209,7 +211,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\TinyTankL.xaml">
+    <Page Include="View\ComponentGDA\TinyTankLComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -217,11 +219,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\TinyTankPump.xaml">
+    <Page Include="View\ComponentGDA\TinyTankPumpComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ComponentGDA\TinyTankR.xaml">
+    <Page Include="View\ComponentGDA\TinyTankRComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

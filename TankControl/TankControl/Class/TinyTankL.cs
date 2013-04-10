@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TankControl;
-using TankControl.View.ComponentGDA;
 
 namespace TankControl.Class
 {
-    public class MainTank : BaseTank
+    public class TinyTankL : BaseTank
     {
-        private MainTankComponent view;
-
-        public MainTankComponent View
+        private TinyTankLComponent view;
+        public TinyTankLComponent View
         {
             get
             {
@@ -22,5 +19,6 @@ namespace TankControl.Class
                 this.view = value;
             }
         }
+         
     }
 }

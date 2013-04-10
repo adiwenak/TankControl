@@ -102,10 +102,7 @@ namespace TankControl.Class
             if (view != null)
             {
                 View = processView;
-                foreach (Component cmp in MainTank.Components)
-                {
 
-                }
             }
 
         }
