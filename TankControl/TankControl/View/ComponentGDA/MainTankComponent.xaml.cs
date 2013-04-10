@@ -18,10 +18,10 @@ namespace TankControl.View.ComponentGDA
     /// <summary>
     /// Interaction logic for MainTank.xaml
     /// </summary>
-    public partial class MainTank : UserControl
+    public partial class MainTankComponent : UserControl
     {
         private Storyboard mainTankAnimation;
-        public MainTank()
+        public MainTankComponent()
         {
             InitializeComponent();
             mainTankAnimation = (Storyboard)FindResource("storyTank");

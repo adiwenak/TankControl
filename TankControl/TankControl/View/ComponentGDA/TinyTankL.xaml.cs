@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,13 +14,16 @@ using System.Windows.Shapes;
 namespace TankControl.View.ComponentGDA
 {
     /// <summary>
-    /// Interaction logic for Pump.xaml
+    /// Interaction logic for TinyTank.xaml
     /// </summary>
-    public partial class Pump : UserControl
+    public partial class TinyTankL : UserControl
     {
-        public Pump()
+        public BigValve Bv;
+
+        public TinyTankL()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            Bv = BigValve;
         }
     }
 }
