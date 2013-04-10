@@ -29,16 +29,57 @@ namespace TankControl.View.ComponentGDA
             smallValveAnimation = (Storyboard)FindResource("MovingArrow");
         }
 
+        private void ValveClose()
+        {
+            BitmapImage img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/close.png");
+            img.EndInit();
+            valveBig.Source = img;
+        }
+
+        private void ValveOpen()
+        {
+            BitmapImage img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/open.png");
+            img.EndInit();
+            valveBig.Source = img;
+        }
+
         public void Run()
         {
             if (smallValveAnimation != null)
             {
-                BitmapImage img = new BitmapImage();
-                img.BeginInit();
-                img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/open.png");
-                img.EndInit();
-                valveBig.Source = img;
+                ValveOpen();
                 smallValveAnimation.Begin();
+            }
+        }
+
+        public void Stop()
+        {
+            if (smallValveAnimation != null)
+            {
+                ValveClose();
+                smallValveAnimation.Stop();
+            }
+        }
+
+        public void Resume()
+        {
+            if (smallValveAnimation != null)
+            {
+                ValveOpen();
+                smallValveAnimation.Resume();
+            }
+        }
+
+        public void Pause()
+        {
+            if (smallValveAnimation != null)
+            {
+                ValveClose();
+                smallValveAnimation.Pause();
             }
         }
     }

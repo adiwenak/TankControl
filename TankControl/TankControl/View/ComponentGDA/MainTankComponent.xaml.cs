@@ -39,6 +39,37 @@ namespace TankControl.View.ComponentGDA
             }
         }
 
+        public void Run() {
+            if (mainTankAnimation != null)
+            {
+                mainTankAnimation.Begin();
+            }
+        }
+
+        public void Stop()
+        {
+            if (mainTankAnimation != null)
+            {
+                mainTankAnimation.Stop();
+            }
+        }
+
+        public void Pause()
+        {
+            if (mainTankAnimation != null)
+            {
+                mainTankAnimation.Pause();
+            }
+        }
+
+        public void Resume()
+        {
+            if (mainTankAnimation != null)
+            {
+                mainTankAnimation.Resume();
+            }
+        }
+
         public void Clean() { 
             InitializeComponent();
             mainTankAnimation = (Storyboard)FindResource("storyTank");
