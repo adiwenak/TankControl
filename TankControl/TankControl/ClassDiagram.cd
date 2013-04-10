@@ -6,21 +6,19 @@
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Class\BaseTank.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Components" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="TankControl.Class.Valve">
-    <Position X="11.5" Y="1.25" Width="1.5" />
+  <Class Name="TankControl.Class.Pump" Collapsed="true">
+    <Position X="11.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
-      <FileName>Class\Valve.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="TankControl.Class.Pump">
-    <Position X="9.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAABAAAAIQAAAAAAAAI=</HashCode>
       <FileName>Class\Pump.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="View" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TankControl.Class.TinyTank">
@@ -60,7 +58,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="TankControl.Recipe" Collapsed="true">
-    <Position X="3" Y="8.75" Width="1.5" />
+    <Position X="1.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAPhFAAAIAAAAAAAAAAAgAQAAAAAAAAAAAAAACgA=</HashCode>
       <FileName>Recipe.cs</FileName>
@@ -69,36 +67,73 @@
   <Class Name="TankControl.View.GraphicDisplayArea" Collapsed="true">
     <Position X="1.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAQIAAAECAAAAAAAAAA=</HashCode>
       <FileName>View\GraphicDisplayArea.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TankControl.Class.BigValve">
-    <Position X="11.5" Y="3.5" Width="1.5" />
+  <Class Name="TankControl.Class.BigValveL" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
-      <FileName>Class\BigValve.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAABAAAAIQAAAAAAAAI=</HashCode>
+      <FileName>Class\BigValveL.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="View" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TankControl.Class.BigValveR">
-    <Position X="13.5" Y="1" Width="1.5" />
+  <Class Name="TankControl.Class.BigValveR" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAABAAAAIQAAAAAAAAI=</HashCode>
       <FileName>Class\BigValveR.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="View" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TankControl.Class.SmallValve">
-    <Position X="13.75" Y="3.5" Width="1.5" />
+  <Class Name="TankControl.Class.SmallValve" Collapsed="true">
+    <Position X="11.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAABAAAAIQAAAAAAAAI=</HashCode>
       <FileName>Class\SmallValve.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="View" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="TankControl.View.ComponentGDA.BigValveLComponent" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAI=</HashCode>
+      <FileName>View\ComponentGDA\Component\BigValveLComponent.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankControl.View.ComponentGDA.BigValveRComponent" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAI=</HashCode>
+      <FileName>View\ComponentGDA\Component\BigValveRComponent.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankControl.View.ComponentGDA.SmallValveComponent" Collapsed="true">
+    <Position X="14" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ComponentGDA\Component\SmallValveComponent.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankControl.View.ComponentGDA.PumpComponent" Collapsed="true">
+    <Position X="14" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ComponentGDA\Component\PumpComponent.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="TankControl.Class.Component">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+    <Position X="9.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAI=</HashCode>
       <FileName>Class\Component.cs</FileName>

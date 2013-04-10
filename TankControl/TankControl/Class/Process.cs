@@ -104,14 +104,7 @@ namespace TankControl.Class
                 View = processView;
                 foreach (Component cmp in MainTank.Components)
                 {
-                    if (cmp is Pump)
-                    {
-                    
-                    }
-                    else if (cmp is Valve)
-                    {
-                        
-                    }
+
                 }
             }
 

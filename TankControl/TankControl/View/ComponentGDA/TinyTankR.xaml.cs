@@ -19,12 +19,12 @@ namespace TankControl.View.ComponentGDA
     /// </summary>
     public partial class TinyTankR : UserControl
     {
-        public BigValveR Bv;
+        public BigValveRComponent Bv;
 
         public TinyTankR()
         {
             InitializeComponent();
-            Bv = BigValveR;
+            Bv = new BigValveRComponent();
         }
     }
 }

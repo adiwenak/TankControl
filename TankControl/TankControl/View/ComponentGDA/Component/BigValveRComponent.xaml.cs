@@ -18,10 +18,10 @@ namespace TankControl.View.ComponentGDA
     /// <summary>
     /// Interaction logic for BigValveR.xaml
     /// </summary>
-    public partial class BigValveR : UserControl
+    public partial class BigValveRComponent : UserControl
     {
         private Storyboard bigValveAnimation;
-        public BigValveR()
+        public BigValveRComponent()
         {
             InitializeComponent();
             bigValveAnimation = (Storyboard)FindResource("MovingArrow");

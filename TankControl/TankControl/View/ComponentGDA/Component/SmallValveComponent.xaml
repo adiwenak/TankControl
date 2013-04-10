@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="TankControl.View.ComponentGDA.SmallValve" 
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="TankControl.View.ComponentGDA.SmallValveComponent" 
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="125">
     <UserControl.Resources>

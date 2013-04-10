@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TankControl.View.ComponentGDA
 {
     /// <summary>
-    /// Interaction logic for SmallValve.xaml
+    /// Interaction logic for SmallValveComponent.xaml
     /// </summary>
-    public partial class SmallValve : UserControl
+    public partial class SmallValveComponent : UserControl
     {
-        public SmallValve()
+        public SmallValveComponent()
         {
             InitializeComponent();
         }

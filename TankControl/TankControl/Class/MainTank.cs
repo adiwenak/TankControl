@@ -10,9 +10,6 @@ namespace TankControl.Class
     {
 
         public MainTank(){
-            this.Components.Add(new Valve());
-            this.Components.Add(new Valve());
-            this.Components.Add(new Valve());
             this.Components.Add(new Pump());
         }
 
