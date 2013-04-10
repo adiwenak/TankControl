@@ -22,8 +22,7 @@
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</UserControl.Resources>
-    <Grid>
-            
+    <Grid>            
     	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="119.852" Margin="0.333,26.648,0,0" StrokeThickness="10" Stretch="Fill"/>
     	<ed:BlockArrow x:Name="blockArrow" Fill="Red" HorizontalAlignment="Left" Height="16" Margin="100.01,22.028,0,0" Orientation="Left" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
     		<ed:BlockArrow.RenderTransform>

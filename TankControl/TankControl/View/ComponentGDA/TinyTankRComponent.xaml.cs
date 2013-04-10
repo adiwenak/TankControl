@@ -24,7 +24,7 @@ namespace TankControl.View.ComponentGDA
         public TinyTankRComponent()
         {
             InitializeComponent();
-            Bv = new BigValveRComponent();
+            Bv = BigValveR;
         }
     }
 }

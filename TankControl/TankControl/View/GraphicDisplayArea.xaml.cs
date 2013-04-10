@@ -73,6 +73,7 @@ namespace TankControl.View
                 this.tt1 = value;
             }
         }
+
         public TinyTankPumpComponent Tt2
         {
             get
@@ -84,6 +85,7 @@ namespace TankControl.View
                 this.tt2 = value;
             }
         }
+
         public TinyTankLComponent Tt3
         {
             get
@@ -95,6 +97,7 @@ namespace TankControl.View
                 this.tt3 = value;
             }
         }
+
         public TinyTankLComponent Tt4
         {
             get
@@ -106,6 +109,7 @@ namespace TankControl.View
                 this.tt4 = value;
             }
         }
+
         public TinyTankRComponent Tt5
         {
             get
@@ -117,6 +121,7 @@ namespace TankControl.View
                 this.tt5 = value;
             }
         }
+
         public TinyTankRComponent Tt7
         {
             get
@@ -128,6 +133,7 @@ namespace TankControl.View
                 this.tt7 = value;
             }
         }
+
         public TinyTankRComponent Tt6
         {
             get
@@ -139,6 +145,7 @@ namespace TankControl.View
                 this.tt6 = value;
             }
         }
+
         public MainTankComponent Mt
         {
             get
