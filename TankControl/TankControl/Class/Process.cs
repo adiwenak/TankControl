@@ -110,8 +110,7 @@ namespace TankControl.Class
                     }
                     else if (cmp is Valve)
                     {
-                        cmp.ComponentUC = processView.Valve;
-                        cmp.IsRun();
+                        
                     }
                 }
             }

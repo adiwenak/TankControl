@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TankControl.ComponentGDA;
+using TankControl.View;
 using TankControl.Class;
 
 namespace TankControl.View
@@ -21,7 +21,7 @@ namespace TankControl.View
     /// </summary>
     public partial class GraphicDisplayArea : UserControl
     {
-        private UCValve valve;
+
         public GraphicDisplayArea()
         {
             InitializeComponent();
@@ -30,17 +30,11 @@ namespace TankControl.View
 
         }
 
-        public UCValve Valve
+        public void UpdateView()
         {
-            get
-            {
-                return this.valve;
-            }
-            set
-            {
-                this.valve = value;
-            }
+
         }
+
     }
 
 }

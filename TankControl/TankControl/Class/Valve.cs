@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TankControl.ComponentGDA;
+using TankControl.View;
+using System.Windows.Controls;
 
 namespace TankControl.Class
 {
     public class Valve : Component
     {
-        private UCValve view;
+        private UserControl view;
 
-        public UCValve View
+        public UserControl View
         {
             get
             {
@@ -24,7 +25,7 @@ namespace TankControl.Class
 
         public void Run()
         {
-            view.valveRun();
+            
             throw new NotImplementedException();
         }
 

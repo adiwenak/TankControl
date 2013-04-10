@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace TankControl.Class
 {
-    public interface Component
+    public interface Component 
     {
         void Run();
 

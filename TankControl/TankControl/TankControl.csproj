@@ -105,9 +105,6 @@
     <Compile Include="Class\TinyTank.cs" />
     <Compile Include="Class\BaseTank.cs" />
     <Compile Include="Class\Component.cs" />
-    <Compile Include="ComponentGDA\UCValve.xaml.cs">
-      <DependentUpon>UCValve.xaml</DependentUpon>
-    </Compile>
     <Compile Include="History.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -152,10 +149,6 @@
     <Compile Include="View\GraphicDisplayArea.xaml.cs">
       <DependentUpon>GraphicDisplayArea.xaml</DependentUpon>
     </Compile>
-    <Page Include="ComponentGDA\UCValve.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -231,7 +224,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ComponentGDA\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

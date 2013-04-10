@@ -47,9 +47,9 @@
       <FileName>Class\Process.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
+      <Property Name="View" />
       <Property Name="Recipe" />
       <Property Name="MainTank" />
-      <Property Name="View" />
     </ShowAsAssociation>
   </Class>
   <Class Name="TankControl.Class.WeightScale">
@@ -63,7 +63,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="TankControl.Recipe" Collapsed="true">
-    <Position X="8.25" Y="8" Width="1.5" />
+    <Position X="3" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAPhFAAAIAAAAAAAAAAAgAQAAAAAAAAAAAAAACgA=</HashCode>
       <FileName>Recipe.cs</FileName>
@@ -76,12 +76,9 @@
       <FileName>View\GraphicDisplayArea.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TankControl.ComponentGDA.UCValve" Collapsed="true">
-    <Position X="11.5" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ComponentGDA\UCValve.xaml.cs</FileName>
-    </TypeIdentifier>
+  <Class Name="System.Windows.Controls.UserControl" Collapsed="true">
+    <Position X="14.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Interface Name="TankControl.Class.Component">
     <Position X="9.5" Y="0.5" Width="1.5" />
