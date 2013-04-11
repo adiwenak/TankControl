@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace TankControl.View.ComponentGDA
 {
@@ -21,12 +22,34 @@ namespace TankControl.View.ComponentGDA
     public partial class MainTankComponent : UserControl
     {
         private Storyboard mainTankAnimation;
+        private double incrementHeight; //increment tangki
+        private double currentHeight;
+        private DispatcherTimer fillTimer;
 
         public MainTankComponent()
         {
             InitializeComponent();
             mainTankAnimation = (Storyboard)FindResource("storyTank");
+            incrementHeight = 10;//default
+            currentHeight = tankiFill.Height;
+            fillTimer = new DispatcherTimer();
+            fillTimer.Tick += new EventHandler(fillTimer_Tick);
+            fillTimer.Interval = new TimeSpan(0, 0, 1);
         }
+
+        void fillTimer_Tick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("current :" + tankiFill.Height);
+            System.Diagnostics.Debug.WriteLine("current :" + currentHeight);
+            if (tankiFill.Height <= (currentHeight - incrementHeight))
+            {               
+                currentHeight -= incrementHeight;
+                mainTankAnimation.Pause();
+                fillTimer.Stop();
+            }
+
+        }
+
         public Storyboard MainTankAnimation
         {
             get
@@ -39,10 +62,21 @@ namespace TankControl.View.ComponentGDA
             }
         }
 
-        public void Run() {
+        public void Run()
+        {
             if (mainTankAnimation != null)
             {
                 mainTankAnimation.Begin();
+            }
+        }
+
+        public void RunWithLimit(double incrementHeight)
+        {
+            if (mainTankAnimation != null)
+            {
+                mainTankAnimation.Begin();
+                this.incrementHeight = incrementHeight;
+                fillTimer.Start();
             }
         }
 
@@ -68,6 +102,12 @@ namespace TankControl.View.ComponentGDA
             {
                 mainTankAnimation.Resume();
             }
+        }
+
+        public void Add(double incrementHeight){
+            fillTimer.Start();
+            this.incrementHeight = incrementHeight;
+            mainTankAnimation.Resume();
         }
 
         public void Clean() { 

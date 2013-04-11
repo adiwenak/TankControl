@@ -57,7 +57,7 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<Image x:Name="valveLeft" HorizontalAlignment="Left" Height="28.991" Margin="41.217,17.669,0,0" VerticalAlignment="Top" Width="38.783"  RenderTransformOrigin="0.5,0.5" Source="close.png">
+    	<Image x:Name="valveLeft" HorizontalAlignment="Left" Height="28.991" Margin="41.217,17.669,0,0" VerticalAlignment="Top" Width="38.783"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png">
     		<Image.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
