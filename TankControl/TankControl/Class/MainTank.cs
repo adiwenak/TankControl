@@ -189,26 +189,32 @@ namespace TankControl.Class
 
         public void OpenValveControl()
         {
+            Component cmp = this.GetComponent("ControlValve");
         }
 
         public void StopValveControl()
         {
+            Component cmp = this.GetComponent("ControlValve");
         }
 
         public void OpenValveShake()
         {
+            Component cmp = this.GetComponent("ShakeValve");
         }
 
         public void StopValveShake()
         {
+            Component cmp = this.GetComponent("ShakeValve");
         }
 
         public void OpenValveOutput()
         {
+            Component cmp = this.GetComponent("OutputValve");
         }
 
         public void StopValveOutput()
         {
+            Component cmp = this.GetComponent("OutputValve");
         }
 
         public void RunPump()

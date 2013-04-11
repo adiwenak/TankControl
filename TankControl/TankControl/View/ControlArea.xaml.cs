@@ -39,7 +39,7 @@ namespace TankControl.View
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            Process.Singleton.ControlRun();
+            Process.Singleton.FillupRun();
             StartProcess.IsEnabled = false;
             StopProcess.IsEnabled = true;
         }

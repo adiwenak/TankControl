@@ -245,11 +245,11 @@ namespace TankControl.Class
 
             if (gdaView.GdaMainTankShake != null)
             {
-                ShakeValveL shakeValveL = new ShakeValveL(gdaView.GdaMainTankShake.Slc, "ControlValve");
+                Component shakeValveL = new ShakeValveL(gdaView.GdaMainTankShake.Slc, "ControlValve");
 
-                ShakeValveR shakeValveR = new ShakeValveR(gdaView.GdaMainTankShake.Src, "ShakeValve");
+                Component shakeValveR = new ShakeValveR(gdaView.GdaMainTankShake.Src, "ShakeValve");
 
-                OutValve outValve = new OutValve(gdaView.GdaMainTankShake.Oc, "OutputValve");
+                Component outValve = new OutValve(gdaView.GdaMainTankShake.Oc, "OutputValve");
 
                 this.MainTank.AddComponent(shakeValveL);
                 this.MainTank.AddComponent(shakeValveR);

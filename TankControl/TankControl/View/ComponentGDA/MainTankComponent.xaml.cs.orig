@@ -32,7 +32,12 @@ namespace TankControl.View.ComponentGDA
         {
             InitializeComponent();
             mainTankAnimation = (Storyboard)FindResource("storyTank");
+<<<<<<< HEAD
+            currentHeight = tankiFill.Height;
+=======
+            incrementHeight = 10;//default
             currentHeight = tankHeight = tankiFill.Height;
+>>>>>>> 0b8798e4d1c7943d2fdde267a795527296133514
             fillTimer = new DispatcherTimer();
             fillTimer.Tick += new EventHandler(fillTimer_Tick);
             fillTimer.Interval = TimeSpan.FromMilliseconds(1);
@@ -40,9 +45,14 @@ namespace TankControl.View.ComponentGDA
 
         void fillTimer_Tick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("tanki Height :" + tankiFill.Height);
+<<<<<<< HEAD
+            System.Diagnostics.Debug.WriteLine("curent height:" + tankiFill.Height);
             System.Diagnostics.Debug.WriteLine("after render height:" + currentHeight);
+=======
+            System.Diagnostics.Debug.WriteLine("tanki Height :" + tankiFill.Height);
+            System.Diagnostics.Debug.WriteLine("current :" + currentHeight);
             System.Diagnostics.Debug.WriteLine("increment :" + incrementHeight);
+>>>>>>> 0b8798e4d1c7943d2fdde267a795527296133514
             if (tankiFill.Height <= (currentHeight - incrementHeight))
             {               
                 currentHeight -= incrementHeight;
@@ -88,9 +98,14 @@ namespace TankControl.View.ComponentGDA
             {
                 Clean();
                 mainTankAnimation.Stop();
+<<<<<<< HEAD
+                
+                fillTimer.Stop();
+
+=======
                 fillTimer.Stop();
                 System.Diagnostics.Debug.WriteLine("current stop:" + currentHeight);
-
+>>>>>>> 0b8798e4d1c7943d2fdde267a795527296133514
             }
         }
 
@@ -118,7 +133,11 @@ namespace TankControl.View.ComponentGDA
         }
 
         public void Clean() {
+<<<<<<< HEAD
+            currentHeight = tankiFill.Height;
+=======
             currentHeight = tankHeight;
+>>>>>>> 0b8798e4d1c7943d2fdde267a795527296133514
         }
     }
 }

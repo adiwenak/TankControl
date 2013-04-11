@@ -64,11 +64,6 @@ namespace TankControl.Class
 
         public void Stop()
         {
-            this.View.Stop();
-        }
-
-        public void Stop()
-        {
             throw new NotImplementedException();
         }
 
