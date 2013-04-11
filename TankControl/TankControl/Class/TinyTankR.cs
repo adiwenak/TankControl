@@ -10,8 +10,6 @@ namespace TankControl.Class
     public class TinyTankR : BaseTank
     {
         private TinyTankRComponent view;
-        private Component valve;
-
         public TinyTankRComponent View
         {
             get

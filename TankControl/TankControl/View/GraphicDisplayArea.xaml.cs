@@ -26,8 +26,8 @@ namespace TankControl.View
         private List<UserControl> components;
 
         private ShakeComponent sc;
-        private TinyTankPumpComponent tt1;
-        private TinyTankPumpComponent tt2;
+        private TinyTankPumpComponent tPump1;
+        private TinyTankPumpComponent tPump2;
         private TinyTankLComponent tt3;
         private TinyTankLComponent tt4;
         private TinyTankRComponent tt5;
@@ -38,10 +38,10 @@ namespace TankControl.View
         {
             InitializeComponent();
 
-            Mt = mainTank;
+            GdaMainTank = mainTank;
             sc = shakeComponent;
-            tt1 = tinyTank_1;
-            tt2 = tinyTank_2;
+            tPump1 = tinyTank_1;
+            tPump2 = tinyTank_2;
             tt3 = tinyTank_3;
             tt4 = tinyTank_4;
             tt5 = tinyTank_5;
@@ -49,8 +49,8 @@ namespace TankControl.View
             tt7 = tinyTank_7;
 
             this.Components = new List<UserControl>();
-            this.Components.Add(tt1);
-            this.Components.Add(tt2);
+            this.Components.Add(tPump1);
+            this.Components.Add(tPump2);
             this.Components.Add(tt3);
             this.Components.Add(tt4);
             this.Components.Add(tt5);
@@ -63,7 +63,7 @@ namespace TankControl.View
 
         }
 
-
+        // PROPERTIES - START
         public List<UserControl> Components
         {
             get
@@ -76,7 +76,7 @@ namespace TankControl.View
             }
         }
 
-        public ShakeComponent Sc
+        public ShakeComponent GdaMainTankShake
         {
             get
             {
@@ -88,29 +88,29 @@ namespace TankControl.View
             }
         }
 
-        public TinyTankPumpComponent Tt1
+        public TinyTankPumpComponent GdaTinyTankPump1
         {
             get
             {
-                return this.tt1;
+                return this.tPump1;
             }
             set
             {
-                this.tt1 = value;
+                this.tPump1 = value;
             }
         }
-        public TinyTankPumpComponent Tt2
+        public TinyTankPumpComponent GdaTinyTankPump2
         {
             get
             {
-                return this.tt2;
+                return this.tPump2;
             }
             set
             {
-                this.tt2 = value;
+                this.tPump2 = value;
             }
         }
-        public TinyTankLComponent Tt3
+        public TinyTankLComponent GdaTinyTank3
         {
             get
             {
@@ -121,7 +121,7 @@ namespace TankControl.View
                 this.tt3 = value;
             }
         }
-        public TinyTankLComponent Tt4
+        public TinyTankLComponent GdaTinyTank4
         {
             get
             {
@@ -132,7 +132,7 @@ namespace TankControl.View
                 this.tt4 = value;
             }
         }
-        public TinyTankRComponent Tt5
+        public TinyTankRComponent GdaTinyTank5
         {
             get
             {
@@ -143,18 +143,7 @@ namespace TankControl.View
                 this.tt5 = value;
             }
         }
-        public TinyTankRComponent Tt7
-        {
-            get
-            {
-                return this.tt7;
-            }
-            set
-            {
-                this.tt7 = value;
-            }
-        }
-        public TinyTankRComponent Tt6
+        public TinyTankRComponent GdaTinyTank6
         {
             get
             {
@@ -165,7 +154,19 @@ namespace TankControl.View
                 this.tt6 = value;
             }
         }
-        public MainTankComponent Mt
+        public TinyTankRComponent GdaTinyTank7
+        {
+            get
+            {
+                return this.tt7;
+            }
+            set
+            {
+                this.tt7 = value;
+            }
+        }
+
+        public MainTankComponent GdaMainTank
         {
             get
             {
@@ -176,40 +177,42 @@ namespace TankControl.View
                 this.mt = value;
             }
         }
+
+        // PROPERTIES - END
         
         public void RunWhole()
         {
-            this.Mt.Run();
-            this.Tt1.Bv.Run();
-            this.Tt1.Sv.Run();
-            this.Tt2.Bv.Run();
-            this.Tt2.Sv.Run();
-            this.Tt3.Bv.Run();
-            this.Tt4.Bv.Run();
-            this.Tt5.Bv.Run();
-            this.Tt6.Bv.Run();
-            this.Tt7.Bv.Run();
+            this.GdaMainTank.Run();
+            this.GdaTinyTankPump1.Bv.Run();
+            this.GdaTinyTankPump1.Sv.Run();
+            this.GdaTinyTankPump2.Bv.Run();
+            this.GdaTinyTankPump2.Sv.Run();
+            this.GdaTinyTank3.Bv.Run();
+            this.GdaTinyTank4.Bv.Run();
+            this.GdaTinyTank5.Bv.Run();
+            this.GdaTinyTank6.Bv.Run();
+            this.GdaTinyTank7.Bv.Run();
 
-            this.Sc.slc.Run();
-            this.Sc.src.Run();
-            this.Sc.oc.Run();
+            this.GdaMainTankShake.slc.Run();
+            this.GdaMainTankShake.src.Run();
+            this.GdaMainTankShake.oc.Run();
         }
 
         public void StopWhole()
         {
-            this.Mt.Stop();
-            this.Tt1.Bv.Stop();
-            this.Tt1.Sv.Stop();
-            this.Tt2.Bv.Stop();
-            this.Tt2.Sv.Stop();
-            this.Tt3.Bv.Stop();
-            this.Tt4.Bv.Stop();
-            this.Tt5.Bv.Stop();
-            this.Tt6.Bv.Stop();
-            this.Tt7.Bv.Stop();
-            this.Sc.slc.Stop();
-            this.Sc.src.Stop();
-            this.Sc.oc.Stop();
+            this.GdaMainTank.Stop();
+            this.GdaTinyTankPump1.Bv.Stop();
+            this.GdaTinyTankPump1.Sv.Stop();
+            this.GdaTinyTankPump2.Bv.Stop();
+            this.GdaTinyTankPump2.Sv.Stop();
+            this.GdaTinyTank3.Bv.Stop();
+            this.GdaTinyTank4.Bv.Stop();
+            this.GdaTinyTank5.Bv.Stop();
+            this.GdaTinyTank6.Bv.Stop();
+            this.GdaTinyTank7.Bv.Stop();
+            this.GdaMainTankShake.slc.Stop();
+            this.GdaMainTankShake.src.Stop();
+            this.GdaMainTankShake.oc.Stop();
         }
 
         public void UpdateView()

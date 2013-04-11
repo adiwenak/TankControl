@@ -110,11 +110,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Class\OutValve.cs" />
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Class\SmallValve.cs" />
     <Compile Include="RunTester.cs" />
+    <Compile Include="Class\ShakeValveL.cs" />
+    <Compile Include="Class\ShakeValveR.cs" />
     <Compile Include="SystemError.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

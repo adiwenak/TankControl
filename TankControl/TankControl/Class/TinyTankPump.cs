@@ -41,11 +41,19 @@ namespace TankControl.Class
             this.AddComponent(pump);
         }
 
-        public void Run()
+        public void RunPump()
+        {
+            this.View.Pc.Open();
+        }
+
+        public void RunValveSmall()
+        {
+            this.View.Sv.Run();
+        }
+
+        public void RunValveBig()
         {
             this.View.Bv.Run();
-            this.View.Sv.Run();
-            this.View.Pc.Open();
         }
 
         public void Stop()

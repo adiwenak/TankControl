@@ -30,6 +30,7 @@ namespace TankControl.Class
                 this.Name = tankName;
             }
 
+
             Component bbl = new BigValveL(tankView.Bv, "asd");
             this.AddComponent(bbl);
             //if (components.Count > 0)
