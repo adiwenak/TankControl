@@ -27,7 +27,15 @@ namespace TankControl.View.ComponentGDA
         public void Open() {
             BitmapImage img = new BitmapImage();
             img.BeginInit();
-            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/open.png");
+            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/pumpOpen.png");
+            img.EndInit();
+            Pump.Source = img;
+        }
+		
+		public void Close() {
+            BitmapImage img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/pumpClose.png");
             img.EndInit();
             Pump.Source = img;
         }

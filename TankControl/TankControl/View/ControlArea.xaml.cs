@@ -21,10 +21,11 @@ namespace TankControl.View
     /// </summary>
     public partial class ControlArea : UserControl
     {
-
         public ControlArea()
         {
             InitializeComponent();
+            ListReceipe();
+
             StopProcess.IsEnabled = false;
         }
 
@@ -41,6 +42,24 @@ namespace TankControl.View
             Process.Singleton.Run();
             StartProcess.IsEnabled = false;
             StopProcess.IsEnabled = true;
+        }
+
+        private void ListReceipe() {
+            for (int i = 1; i < 5; i++)
+            {
+                TextBlock tb = new TextBlock();
+                tb.Text = "Receipe "+i;
+                tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                tb.Margin = new Thickness(5, 3, 0, 3);
+
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.Children.Add(tb);
+
+                ListBoxItem lb = new ListBoxItem();
+                lb.Content = sp;
+                Recipe.Items.Add(lb);
+            }
         }
     }
 }

@@ -3,18 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" x:Class="TankControl.View.ControlArea" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" xmlns:TabControl="clr-namespace:Telerik.Windows.Controls.TabControl;assembly=Telerik.Windows.Controls.Navigation" x:Class="TankControl.View.ControlArea" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="250" Height="675">
     <telerik:GroupBox x:Name="groupCA" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="595" Width="224" BorderThickness="4" Header="Control Area" FontSize="18.667">
-        <Grid Width="250" Height="675">
+        <Grid Width="250" Height="675" Margin="0,12,-38,-121.53">
             <!--<Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>-->
-            <Button x:Name="StartProcess"  Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="6,522,0,0" Click="Start_Click" />
-            <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="135,522,0,0" Click="Stop_Click" />
-        </Grid>
+            <Button x:Name="StartProcess" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="13,269,0,0" Click="Start_Click" />
+            <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="124,269,0,0" Click="Stop_Click" />
+			<telerik:RadDropDownButton x:Name="DropDownReceipe" Content="-- Select Recipe --" Margin="10,17.94,53,628.53"
+						VerticalAlignment="Center" Width="187" FontSize="16" >
+                    <telerik:RadDropDownButton.DropDownContent>
+                        <ListBox x:Name="Recipe" Width="185" telerik:StyleManager.Theme="Metro">
+                        </ListBox>
+                    </telerik:RadDropDownButton.DropDownContent>
+			</telerik:RadDropDownButton>
+			<GroupBox x:Name="GroupAction" Header="Progress" HorizontalAlignment="Left" Margin="10,64.862,0,0" VerticalAlignment="Top" Height="176.608" Width="187">
+				<StackPanel HorizontalAlignment="Left" Height="223.078" VerticalAlignment="Top" Width="175">
+					<CheckBox Content="Ready" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="True" IsEnabled="False"/>
+					<CheckBox Content="Fill Up" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
+					<CheckBox Content="Mixing" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
+					<CheckBox Content="Done" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
+				</StackPanel>
+			</GroupBox>
+		</Grid>
     </telerik:GroupBox>
 
 </UserControl>
