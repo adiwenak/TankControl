@@ -163,8 +163,12 @@ namespace TankControl.View
             this.Mt.Run();
             this.Tt1.Bv.Run();
             this.Tt1.Sv.Run();
+            this.Tt1.Pc.Open();
+
             this.Tt2.Bv.Run();
             this.Tt2.Sv.Run();
+            this.Tt2.Pc.Open();
+            
             this.Tt3.Bv.Run();
             this.Tt4.Bv.Run();
             this.Tt5.Bv.Run();
@@ -181,8 +185,12 @@ namespace TankControl.View
             this.Mt.Stop();
             this.Tt1.Bv.Stop();
             this.Tt1.Sv.Stop();
+            this.Tt1.Pc.Close();
+
             this.Tt2.Bv.Stop();
             this.Tt2.Sv.Stop();
+            this.Tt2.Pc.Close();
+
             this.Tt3.Bv.Stop();
             this.Tt4.Bv.Stop();
             this.Tt5.Bv.Stop();

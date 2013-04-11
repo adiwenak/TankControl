@@ -23,10 +23,10 @@
 			</telerik:RadDropDownButton>
 			<GroupBox x:Name="GroupAction" Header="Progress" HorizontalAlignment="Left" Margin="10,64.862,0,0" VerticalAlignment="Top" Height="176.608" Width="187">
 				<StackPanel HorizontalAlignment="Left" Height="223.078" VerticalAlignment="Top" Width="175">
-					<CheckBox Content="Ready" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="True"/>
-					<CheckBox Content="Fill Up" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0"/>
-					<CheckBox Content="Mixing" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0"/>
-					<CheckBox Content="Done" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0"/>
+					<CheckBox Content="Ready" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="True" IsEnabled="False"/>
+					<CheckBox Content="Fill Up" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
+					<CheckBox Content="Mixing" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
+					<CheckBox Content="Done" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
 				</StackPanel>
 			</GroupBox>
 		</Grid>
