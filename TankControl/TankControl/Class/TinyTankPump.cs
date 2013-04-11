@@ -9,6 +9,23 @@ namespace TankControl.Class
     public class TinyTankPump : BaseTank
     {
         private TinyTankPumpComponent view;
+        private bool valveBig;
+        private bool valveSmall;
+        private bool pump;
+        private float stageLimit2;
+
+        public float StageLimit2
+        {
+            get
+            {
+                return this.stageLimit2;
+            }
+            set
+            {
+                this.stageLimit2 = value;
+            }
+        }
+
         public TinyTankPumpComponent View
         {
             get
@@ -43,32 +60,89 @@ namespace TankControl.Class
 
         public void RunPump()
         {
-            this.View.Pc.Open();
+            if (this.pump == false)
+            {
+                this.View.Pc.Open();
+                this.pump = true;
+                this._TempAddWeight();
+            }
         }
 
         public void RunValveSmall()
         {
-            this.View.Sv.Run();
+            if (this.valveSmall == false)
+            {
+                this.View.Sv.Run();
+                this.valveSmall = true;
+                this._TempAddWeight();
+            }
         }
 
         public void RunValveBig()
         {
-            this.View.Bv.Run();
+            if (this.valveBig == false)
+            {
+                this.View.Bv.Run();
+                this.valveBig = true;
+                this._TempAddWeight();
+            }
         }
 
-        public void Stop()
+        public void StopValveSmall()
         {
-            this.View.Bv.Stop();
+            if (this.valveSmall == true)
+            {
+                this.View.Sv.Stop();
+                this.valveSmall = false;
+                this._TempEqualWeight();
+            }
         }
 
-        public void Pause()
+        public void StopPump()
         {
-            this.View.Bv.Pause();
+            if (this.pump == true)
+            {
+                this.View.Pc.Close();
+                this.pump = false;
+                this._TempEqualWeight();
+            }
         }
 
-        public void Resume()
+        public void StopValveBig()
         {
-            this.View.Bv.Resume();
+            if (this.valveBig == true)
+            {
+                this.View.Bv.Stop();
+                this.valveBig = false;
+                this._TempEqualWeight();
+            }
+        }
+
+        public void StopAll()
+        {
+            this.StopValveBig();
+            this.StopPump();
+            this.StopValveSmall();
+            this._TempEqualWeight();
+        }
+
+        public void _TempAddWeight()
+        {
+            if (this.pump == true)
+            {
+                if (this.valveBig == true || this.valveSmall == true)
+                {
+                    RunTester.Singleton.AddWeight = 1;
+                }
+            }
+        }
+
+        public void _TempEqualWeight()
+        {
+            if (this.pump == false)
+            {
+                RunTester.Singleton.AddWeight = 0;
+            }
         }
     }
 }

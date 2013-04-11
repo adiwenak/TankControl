@@ -17,8 +17,34 @@ namespace TankControl.Class
         private TinyTankR tRight1;
         private TinyTankR tRight2;
         private TinyTankR tRight3;
+        private bool isRun = false;
+        private bool isPause = false;
 
         // PROPERTIES - START
+
+        public bool IsPause
+        {
+            get
+            {
+                return this.isPause;
+            }
+            set
+            {
+                this.isPause = value;
+            }
+        }
+
+        public bool IsRun
+        {
+            get
+            {
+                return this.isRun;
+            }
+            set
+            {
+                this.isRun = value;
+            }
+        }
 
         public TinyTankPump TPump1
         {
@@ -130,41 +156,38 @@ namespace TankControl.Class
 
         public void Fillup()
         {
-            this.View.Run();
-        }
-
-        public void RunTTankU1()
-        {
-
-        }
-
-        public void RunTTankU2()
-        {
-        }
-
-        public void RunTTankB1()
-        {
-        }
-
-        public void RunTTankB2()
-        {
-        }
-
-        public void RunTTankR1()
-        {
-        }
-
-        public void RunTTankR2()
-        {
-        }
-
-        public void RunTTankR3()
-        {
+            if (this.IsRun == false)
+            {
+                this.View.Run();
+                this.IsRun = true;
+            }
         }
         
         public void Stop()
         {
-            View.Stop();
+            if (this.IsRun == true)
+            {
+                this.View.Stop();
+                this.IsRun = false;
+            }
+        }
+
+        public void Pause()
+        {
+            if (this.IsPause == false)
+            {
+                this.View.Pause();
+                this.IsPause = true;
+            }
+        }
+
+        public void Resume()
+        {
+            if (this.IsPause == true)
+            {
+                this.View.Resume();
+                this.IsPause = false;
+            }
         }
     }
 }
