@@ -25,6 +25,7 @@ namespace TankControl.View
         public ControlArea()
         {
             InitializeComponent();
+            ListReceipe();
         }
 
         public void Stop_Click(object sender, RoutedEventArgs e)
@@ -35,6 +36,24 @@ namespace TankControl.View
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             Process.Singleton.Run();
+        }
+
+        private void ListReceipe() {
+            for (int i = 1; i < 5; i++)
+            {
+                TextBlock tb = new TextBlock();
+                tb.Text = "Receipe "+i;
+                tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                tb.Margin = new Thickness(5, 3, 0, 3);
+
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.Children.Add(tb);
+
+                ListBoxItem lb = new ListBoxItem();
+                lb.Content = sp;
+                Recipe.Items.Add(lb);
+            }
         }
     }
 }
