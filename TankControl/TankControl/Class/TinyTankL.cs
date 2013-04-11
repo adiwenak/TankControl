@@ -21,7 +21,7 @@ namespace TankControl.Class
             }
         }
 
-        public TinyTankL(TinyTankLComponent tankView, string tankName,List<Component> components)
+        public TinyTankL(TinyTankLComponent tankView, string tankName)
         {
             this.View = tankView;
             this.ID = new Guid();
@@ -30,11 +30,33 @@ namespace TankControl.Class
                 this.Name = tankName;
             }
 
-            if (components.Count > 0)
-            {
-                this.AddComponents(components);
-            }
+            Component bbl = new BigValveL(tankView.Bv, "asd");
+            this.AddComponent(bbl);
+            //if (components.Count > 0)
+            //{
+            //    this.AddComponents(components);
+            //}
             
+        }
+
+        public void Run()
+        {
+            this.View.Bv.Run();
+        }
+
+        public void Stop()
+        {
+            this.View.Bv.Stop();
+        }
+
+        public void Pause()
+        {
+            this.View.Bv.Pause();
+        }
+
+        public void Resume()
+        {
+            this.View.Bv.Resume();
         }
          
     }

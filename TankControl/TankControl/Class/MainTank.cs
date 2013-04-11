@@ -10,12 +10,12 @@ namespace TankControl.Class
     public class MainTank : BaseTank
     {
         private MainTankComponent view;
-        private IEnumerable<TinyTankL> tinyTanksL;
-        private IEnumerable<TinyTankR> tinyTanksR;
-        private IEnumerable<TinyTankPump> tinyTanksPump;
+        private IList<TinyTankL> tinyTanksL;
+        private IList<TinyTankR> tinyTanksR;
+        private IList<TinyTankPump> tinyTanksPump;
 
 
-        public IEnumerable<TinyTankPump> TinyTanksPump
+        public IList<TinyTankPump> TinyTanksPump
         {
             get
             {
@@ -27,7 +27,7 @@ namespace TankControl.Class
             }
         }
 
-        public IEnumerable<TinyTankR> TinyTanksR
+        public IList<TinyTankR> TinyTanksR
         {
             get
             {
@@ -39,7 +39,7 @@ namespace TankControl.Class
             }
         }
 
-        public IEnumerable<TinyTankL> TinyTanksL
+        public IList<TinyTankL> TinyTanksL
         {
             get
             {
@@ -65,13 +65,41 @@ namespace TankControl.Class
 
         public MainTank(MainTankComponent tankView,string tankName)
         {
-            this.View = tankView;
             this.ID = new Guid();
-
+            this.View = tankView;
+            this.TinyTanksR = new List<TinyTankR>();
+            this.TinyTanksL = new List<TinyTankL>();
+            this.TinyTanksPump = new List<TinyTankPump>();
             if (tankName != null)
             {
                 this.Name = tankName;
             }
+        }
+
+        public void Run()
+        {
+            foreach (TinyTankL ttL in this.tinyTanksL)
+            {
+                ttL.Run();
+            }
+
+            foreach (TinyTankR ttL in this.tinyTanksR)
+            {
+                ttL.Run();
+            }
+
+            foreach (TinyTankPump ttL in this.tinyTanksPump)
+            {
+                ttL.Run();
+            }
+
+            View.Run();
+
+        }
+
+        public void Stop()
+        {
+            View.Stop();
         }
     }
 }

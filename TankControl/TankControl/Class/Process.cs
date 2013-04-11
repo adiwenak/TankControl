@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 using TankControl.View;
+using TankControl.View.ComponentGDA;
 
 namespace TankControl.Class
 {
@@ -31,7 +32,7 @@ namespace TankControl.Class
         // CONSTRUCTOR
         public Process()
         {
-
+            
         }
 
         // PROPERTIES - START
@@ -76,11 +77,12 @@ namespace TankControl.Class
         // CONTROL - START
         public void Run()
         {
-            View.RunWhole();
+            MainTank.Run();
         }
 
         public void Pause()
         {
+            
         }
 
         public void Resume()
@@ -89,7 +91,7 @@ namespace TankControl.Class
 
         public void Stop()
         {
-            View.StopWhole();
+            MainTank.Stop();
         }
 
         // CONTROL - END
@@ -100,7 +102,35 @@ namespace TankControl.Class
             if (processView != null)
             {
                 View = processView;
+                if (processView.Mt != null)
+                {
+                    MainTank = new MainTank(processView.Mt,"Main Tank");
 
+                    foreach (UserControl uc in processView.Components)
+                    {
+                        if (uc is TinyTankLComponent)
+                        {
+                            TinyTankLComponent temp = (uc as TinyTankLComponent);
+
+                            MainTank.TinyTanksL.Add(new TinyTankL(temp, "tinyT"));
+                        }
+                        else if (uc is TinyTankRComponent)
+                        {
+                            TinyTankRComponent temp = (uc as TinyTankRComponent);
+
+                            MainTank.TinyTanksR.Add(new TinyTankR(temp, "tinyT"));
+                        }
+                        else if (uc is TinyTankPumpComponent)
+                        {
+                            TinyTankPumpComponent temp = (uc as TinyTankPumpComponent);
+
+                            MainTank.TinyTanksPump.Add(new TinyTankPump(temp, "tinyT"));
+                        }
+                        else if (uc is ShakeComponent)
+                        {
+                        }
+                    }
+                }
             }
 
         }

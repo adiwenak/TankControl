@@ -49,6 +49,11 @@ namespace TankControl.Class
 
         public void AddComponents(IList<Component> components)
         {
+            if (this.ListComponents == null)
+            {
+                this.ListComponents = new List<Component>();
+            }
+
             if (components.Count() > 0)
             {
                 foreach (Component cmp in components)
@@ -60,6 +65,11 @@ namespace TankControl.Class
 
         public void AddComponent(Component component)
         {
+            if (this.ListComponents == null)
+            {
+                this.ListComponents = new List<Component>();
+            }
+
             ListComponents.Add(component);
         }
 

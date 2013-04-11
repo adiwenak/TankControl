@@ -23,6 +23,8 @@ namespace TankControl.View
     public partial class GraphicDisplayArea : UserControl
     {
         private MainTankComponent mt;
+        private List<UserControl> components;
+
         private ShakeComponent sc;
         private TinyTankPumpComponent tt1;
         private TinyTankPumpComponent tt2;
@@ -36,9 +38,7 @@ namespace TankControl.View
         {
             InitializeComponent();
 
-            Process.Singleton.AddView(this);
-
-            mt = mainTank;
+            Mt = mainTank;
             sc = shakeComponent;
             tt1 = tinyTank_1;
             tt2 = tinyTank_2;
@@ -47,8 +47,34 @@ namespace TankControl.View
             tt5 = tinyTank_5;
             tt6 = tinyTank_6;
             tt7 = tinyTank_7;
+
+            this.Components = new List<UserControl>();
+            this.Components.Add(tt1);
+            this.Components.Add(tt2);
+            this.Components.Add(tt3);
+            this.Components.Add(tt4);
+            this.Components.Add(tt5);
+            this.Components.Add(tt6);
+            this.Components.Add(tt7);
+            this.Components.Add(sc);
+            
+            Process.Singleton.AddView(this);
+
+
         }
 
+
+        public List<UserControl> Components
+        {
+            get
+            {
+                return this.components;
+            }
+            set
+            {
+                this.components = value;
+            }
+        }
 
         public ShakeComponent Sc
         {

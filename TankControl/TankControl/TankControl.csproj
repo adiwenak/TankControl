@@ -47,10 +47,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -112,6 +114,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Class\SmallValve.cs" />
+    <Compile Include="RunTester.cs" />
     <Compile Include="SystemError.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -126,6 +129,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Class\WeightScale.cs" />
+    <Compile Include="View\ComponentGDA\BaseControl.xaml.cs">
+      <DependentUpon>BaseControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ComponentGDA\Component\BigValveLComponent.xaml.cs">
       <DependentUpon>BigValveLComponent.xaml</DependentUpon>
     </Compile>
@@ -198,6 +204,10 @@
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComponentGDA\BaseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ComponentGDA\Component\BigValveLComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
