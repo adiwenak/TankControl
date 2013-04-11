@@ -21,9 +21,11 @@ namespace TankControl.View.ComponentGDA
     /// </summary>
     public partial class MainTankComponent : UserControl
     {
+        private double tankHeight;
         private Storyboard mainTankAnimation;
         private double incrementHeight; //increment tangki
         private double currentHeight;
+        
         private DispatcherTimer fillTimer;
 
         public MainTankComponent()
@@ -31,16 +33,17 @@ namespace TankControl.View.ComponentGDA
             InitializeComponent();
             mainTankAnimation = (Storyboard)FindResource("storyTank");
             incrementHeight = 10;//default
-            currentHeight = tankiFill.Height;
+            currentHeight = tankHeight = tankiFill.Height;
             fillTimer = new DispatcherTimer();
             fillTimer.Tick += new EventHandler(fillTimer_Tick);
-            fillTimer.Interval = new TimeSpan(0, 0, 1);
+            fillTimer.Interval = TimeSpan.FromMilliseconds(1);
         }
 
         void fillTimer_Tick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("current :" + tankiFill.Height);
+            System.Diagnostics.Debug.WriteLine("tanki Height :" + tankiFill.Height);
             System.Diagnostics.Debug.WriteLine("current :" + currentHeight);
+            System.Diagnostics.Debug.WriteLine("increment :" + incrementHeight);
             if (tankiFill.Height <= (currentHeight - incrementHeight))
             {               
                 currentHeight -= incrementHeight;
@@ -84,7 +87,10 @@ namespace TankControl.View.ComponentGDA
         {
             if (mainTankAnimation != null)
             {
+                Clean();
                 mainTankAnimation.Stop();
+                fillTimer.Stop();
+                System.Diagnostics.Debug.WriteLine("current stop:" + currentHeight);
             }
         }
 
@@ -110,9 +116,8 @@ namespace TankControl.View.ComponentGDA
             mainTankAnimation.Resume();
         }
 
-        public void Clean() { 
-            InitializeComponent();
-            mainTankAnimation = (Storyboard)FindResource("storyTank");
+        public void Clean() {
+            currentHeight = tankHeight;
         }
     }
 }
