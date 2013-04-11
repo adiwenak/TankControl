@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="47.5">
     <Grid>
-    	<Image x:Name="Pump" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Source="pumpClose.png"/>
+    	<Image x:Name="Pump" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Source="/TankControl;component/Images/valve/pumpClose.png"/>
             
     </Grid>
 </UserControl>
