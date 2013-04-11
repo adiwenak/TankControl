@@ -160,7 +160,7 @@ namespace TankControl.View
         
         public void RunWhole()
         {
-            this.Mt.MainTankAnimation.Begin();
+            this.Mt.Run();
             this.Tt1.Bv.Run();
             this.Tt1.Sv.Run();
             this.Tt2.Bv.Run();
@@ -178,7 +178,19 @@ namespace TankControl.View
 
         public void StopWhole()
         {
-
+            this.Mt.Stop();
+            this.Tt1.Bv.Stop();
+            this.Tt1.Sv.Stop();
+            this.Tt2.Bv.Stop();
+            this.Tt2.Sv.Stop();
+            this.Tt3.Bv.Stop();
+            this.Tt4.Bv.Stop();
+            this.Tt5.Bv.Stop();
+            this.Tt6.Bv.Stop();
+            this.Tt7.Bv.Stop();
+            this.Sc.slc.Stop();
+            this.Sc.src.Stop();
+            this.Sc.oc.Stop();
         }
 
         public void UpdateView()

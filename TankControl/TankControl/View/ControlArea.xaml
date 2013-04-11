@@ -12,8 +12,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>-->
-            <Button x:Name="Start" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="13,269,0,0" Click="Start_Click" />
-            <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="124,269,0,0" Click="Stop_Click" />
+            <Button x:Name="StartProcess" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="13,269,0,0" Click="Start_Click" />
+            <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="124,269,0,0" Click="Stop_Click" />
 			<telerik:RadDropDownButton x:Name="DropDownReceipe" Content="-- Select Recipe --" Margin="10,17.94,53,628.53"
 						VerticalAlignment="Center" Width="187" FontSize="16" >
                     <telerik:RadDropDownButton.DropDownContent>

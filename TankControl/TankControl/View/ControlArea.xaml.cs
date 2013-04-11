@@ -21,21 +21,27 @@ namespace TankControl.View
     /// </summary>
     public partial class ControlArea : UserControl
     {
-
         public ControlArea()
         {
             InitializeComponent();
             ListReceipe();
+
+            StopProcess.IsEnabled = false;
         }
 
         public void Stop_Click(object sender, RoutedEventArgs e)
         {
             Process.Singleton.Stop();
+            StartProcess.IsEnabled = true;
+            StopProcess.IsEnabled = false;
+
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             Process.Singleton.Run();
+            StartProcess.IsEnabled = false;
+            StopProcess.IsEnabled = true;
         }
 
         private void ListReceipe() {
