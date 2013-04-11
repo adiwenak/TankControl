@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Controls;
 using TankControl.View;
 using TankControl.View.ComponentGDA;
+using System.Diagnostics;
 
 namespace TankControl.Class
 {
@@ -14,7 +15,8 @@ namespace TankControl.Class
         private Recipe recipe;
         private GraphicDisplayArea view;
         private static Process singleton;
-
+        private List<BaseTank> flowOrder;
+        private int currentStage = 0;
 
         // SINGLETON
         public static Process Singleton
@@ -32,7 +34,7 @@ namespace TankControl.Class
         // CONSTRUCTOR
         public Process()
         {
-            
+            WeightScale.Singleton.Process = this;
         }
 
         // PROPERTIES - START
@@ -73,28 +75,55 @@ namespace TankControl.Class
         }
 
         // PROPERTIES - END
+        public void ProcessFlow(float receiveWeight)
+        {
+            if (receiveWeight >= this.MainTank.TPump1.StageLimit && receiveWeight < this.MainTank.TPump1.StageLimit2)
+            {
+                this.MainTank.TPump1.StopValveBig();
+                this.MainTank.TPump1.RunValveSmall();
+            }
+            else if(receiveWeight >= this.MainTank.TPump1.StageLimit2 && receiveWeight < this.MainTank.TPump2.StageLimit)
+            {
+                this.MainTank.TPump1.StopValveSmall();
+                this.MainTank.TPump1.StopPump();
+                this.MainTank.TPump2.RunPump();
+                this.MainTank.TPump2.RunValveBig();
+            }
+            else if (receiveWeight >= this.MainTank.TPump1.StageLimit && receiveWeight < this.MainTank.TPump2.StageLimit2)
+            {
+                this.MainTank.TPump2.RunValveSmall();
+                this.MainTank.TPump2.StopValveBig();
+            }
+            else if (receiveWeight >= this.MainTank.TPump2.StageLimit2)
+            {
+                this.MainTank.TPump2.StopValveSmall();
+                this.MainTank.TPump2.StopPump();
+            }
+
+        }
 
         // CONTROL - START
         public void Run()
         {
-            this.MainTank.Fillup();
+            this.MainTank.TPump1.StageLimit = 2;
+            this.MainTank.TPump1.StageLimit2 = 3;
+            this.MainTank.TPump2.StageLimit = 5;
+            this.MainTank.TPump2.StageLimit2 = 6;
+
             this.MainTank.TPump1.RunPump();
             this.MainTank.TPump1.RunValveBig();
-        }
-
-
-        public void Pause()
-        {
-            
-        }
-
-        public void Resume()
-        {
+            RunTester.Singleton.RunTimer();
+            this.MainTank.Fillup();
         }
 
         public void Stop()
         {
-            MainTank.Stop();
+            this.MainTank.Stop();
+            this.MainTank.TPump1.StopAll();
+            this.MainTank.TPump2.StopAll();
+            this.currentStage = 0;
+            this.flowOrder = null;
+
         }
 
         // CONTROL - END
@@ -178,9 +207,17 @@ namespace TankControl.Class
         }
 
         // LISTENER WEIGHT SCALE
-        public void WeightUpdated(float weightScale)
+        public void WeightUpdated(float receiveWeight)
         {
-
+            if (WeightScale.Singleton.CurrentWeight == receiveWeight)
+            {
+                this.MainTank.Pause();
+            }
+            else
+            {
+                this.MainTank.Resume();
+                this.ProcessFlow(receiveWeight);
+            }
         }
 
     }

@@ -66,20 +66,17 @@ namespace TankControl.Class
         // PROPERTIES END
     
         // UPDATE OBSERVER
-        public void Notify()
+        public void Notify(float weight)
         {
-            process.WeightUpdated(CurrentWeight);
+            process.WeightUpdated(weight);
         }
 
         // LISTENER TO WEIGHT SCALE
 
         public void WeightScaleUpdated(float weight)
-        {
+        {   
+            Notify(weight);
             this.CurrentWeight = weight;
-            if (this.Limit > weight)
-            {
-                Notify();
-            }
         }
 
     }

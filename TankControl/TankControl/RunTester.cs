@@ -9,20 +9,45 @@ namespace TankControl
 {
     class RunTester
     {
-        private WeightScale scale;
         private float weight = 0;
+        private float addWeight = 1;
         private DispatcherTimer timer;
+        private static RunTester singleton;
 
         public RunTester()
         {
-            scale = new WeightScale();
             timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += new EventHandler(WeightUpdated);
+        }
+
+        public float AddWeight
+        {
+            get
+            {
+                return this.addWeight;
+            }
+            set
+            {
+                this.addWeight = value;
+            }
+        }
+
+        public static RunTester Singleton
+        {
+            get
+            {
+                if (singleton == null)
+                {
+                    singleton = new RunTester();
+                }
+
+                return singleton;
+            }
         }
 
         public void RunTimer()
         {
-            timer.Tick += new EventHandler(UpdateWeightScale);
-            timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
         }
 
@@ -32,15 +57,11 @@ namespace TankControl
             timer.Stop();
         }
 
-        private void UpdateWeightScale(object sender, EventArgs e)
+        private void WeightUpdated(object sender, EventArgs e)
         {
-            weight++;
+            weight += this.addWeight;
             System.Diagnostics.Debug.WriteLine(weight);
-            scale.WeightScaleUpdated(weight);
-            if (weight == 10)
-            {
-                StopTimer();
-            }
+            WeightScale.Singleton.WeightScaleUpdated(weight);
         }
     }
 }

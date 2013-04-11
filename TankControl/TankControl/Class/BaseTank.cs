@@ -10,6 +10,19 @@ namespace TankControl.Class
         private IList<Component> listComponents;
         private Guid id;
         private string name;
+        private float stageLimit;
+
+        public float StageLimit
+        {
+            get
+            {
+                return this.stageLimit;
+            }
+            set
+            {
+                this.stageLimit = value;
+            }
+        }
 
         public string Name
         {
