@@ -118,12 +118,19 @@ namespace TankControl.Class
             }
         }
 
-        public void StopAll()
+        public void End()
         {
             this.StopValveBig();
             this.StopPump();
             this.StopValveSmall();
             this._TempEqualWeight();
+            this.CleanUp();
+        }
+
+        public void CleanUp()
+        {
+            this.StageLimit = 0;
+            this.StageLimit2 = 0;
         }
 
         public void _TempAddWeight()

@@ -9,6 +9,20 @@ namespace TankControl.Class
     public class TinyTankL : BaseTank
     {
         private TinyTankLComponent view;
+        private bool isValveOpen;
+
+        public bool IsValveOpen
+        {
+            get
+            {
+                return this.isValveOpen;
+            }
+            set
+            {
+                this.isValveOpen = value;
+            }
+        }
+
         public TinyTankLComponent View
         {
             get
@@ -33,31 +47,32 @@ namespace TankControl.Class
 
             Component bbl = new BigValveL(tankView.Bv, "asd");
             this.AddComponent(bbl);
-            //if (components.Count > 0)
-            //{
-            //    this.AddComponents(components);
-            //}
-            
         }
 
         public void Run()
         {
-            this.View.Bv.Run();
+            if (this.IsValveOpen == false)
+            {
+                this.View.Bv.Run();
+                this.IsValveOpen = true;
+                this._TempAddWeight();
+            }
         }
 
         public void Stop()
         {
-            this.View.Bv.Stop();
+            if (this.isValveOpen == true)
+            {
+                this.View.Bv.Stop();
+                this.IsValveOpen = false;
+                this._TempEqualWeight();
+            }
         }
 
-        public void Pause()
+        public void End()
         {
-            this.View.Bv.Pause();
-        }
-
-        public void Resume()
-        {
-            this.View.Bv.Resume();
+            this.Stop();
+            this.CleanUp();
         }
          
     }

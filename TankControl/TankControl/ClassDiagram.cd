@@ -11,7 +11,7 @@
   <Class Name="TankControl.Class.TinyTankL" Collapsed="true">
     <Position X="2.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAABAAAAIQAAAAgAAAI=</HashCode>
+      <HashCode>AAIAAAAAEAAAABAAAAAAAAAAAAABAAAAIQAAAAAAAAI=</HashCode>
       <FileName>Class\TinyTankL.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -21,7 +21,7 @@
   <Class Name="TankControl.Class.Process">
     <Position X="4.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAABAAAAAQAgAAgAAAICAAQABgAEAMQAAAAgAAAI=</HashCode>
+      <HashCode>AAAAAABAAAAAQAgAAgAAAICAAQCBgAEAMQAAgEAAAAI=</HashCode>
       <FileName>Class\Process.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -49,7 +49,7 @@
   <Class Name="TankControl.View.GraphicDisplayArea" Collapsed="true">
     <Position X="1.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAQABAAAAAIAAAACAAAAAAAAAAAAECAAACAgAQAA=</HashCode>
+      <HashCode>ABAAAQABAAAAAIAAAACAAAAAAAAAAAAEiAEACAgAYAA=</HashCode>
       <FileName>View\GraphicDisplayArea.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -80,7 +80,7 @@
   <Class Name="TankControl.Class.BaseTank">
     <Position X="6" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIgAAAAAAABAQQAAAEAIgEAACAAAAAAoA=</HashCode>
+      <HashCode>AAAAAAAAAAAIiAAAAABABAQQAAAEAogEAAKAAEAAAoA=</HashCode>
       <FileName>Class\BaseTank.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -90,7 +90,7 @@
   <Class Name="TankControl.Class.TinyTankR" Collapsed="true">
     <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAABAAAAIQAAAAgAAAI=</HashCode>
+      <HashCode>AAIAAAAAEAAAABAAAAAAAAAAAAABAAAAIQAAAAAAAAI=</HashCode>
       <FileName>Class\TinyTankR.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -100,7 +100,7 @@
   <Class Name="TankControl.Class.TinyTankPump" Collapsed="true">
     <Position X="2.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAABAAAAIQAAAAgAAAI=</HashCode>
+      <HashCode>AgIAAAAAAQgBCAAACABAIBAEACABAAAAAQAAAEAIAAA=</HashCode>
       <FileName>Class\TinyTankPump.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -131,14 +131,14 @@
   <Class Name="TankControl.View.ComponentGDA.MainTankComponent" Collapsed="true">
     <Position X="0.5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAgAQAI=</HashCode>
+      <HashCode>AgIhAQCAAAAAAAAAACAAAAAAAAAACAAAIAAAAAgAQAI=</HashCode>
       <FileName>View\ComponentGDA\MainTankComponent.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TankControl.Class.MainTank">
     <Position X="6.5" Y="4.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAEAAACABQAAAAAAAAABAACIJQAgAIAGIAA=</HashCode>
+      <HashCode>AIAgAUAAgCEAAICABQAAAAAAAAABAACAJQAgAACAIAA=</HashCode>
       <FileName>Class\MainTank.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

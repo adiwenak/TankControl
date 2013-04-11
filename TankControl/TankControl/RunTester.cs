@@ -60,7 +60,7 @@ namespace TankControl
         private void WeightUpdated(object sender, EventArgs e)
         {
             weight += this.addWeight;
-            System.Diagnostics.Debug.WriteLine(weight);
+            System.Diagnostics.Debug.WriteLine("weight :" + weight);
             WeightScale.Singleton.WeightScaleUpdated(weight);
         }
     }

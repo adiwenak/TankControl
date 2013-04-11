@@ -59,7 +59,12 @@ namespace TankControl.Class
 
         public void Run()
         {
+            this.View.Run();
+        }
 
+        public void Stop()
+        {
+            this.View.Stop();
         }
 
         public void Stop()

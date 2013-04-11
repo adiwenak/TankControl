@@ -15,8 +15,6 @@ namespace TankControl.Class
         private Recipe recipe;
         private GraphicDisplayArea view;
         private static Process singleton;
-        private List<BaseTank> flowOrder;
-        private int currentStage = 0;
 
         // SINGLETON
         public static Process Singleton
@@ -75,7 +73,9 @@ namespace TankControl.Class
         }
 
         // PROPERTIES - END
-        public void ProcessFlow(float receiveWeight)
+
+        // PROCESS - START
+        public void ProcessFillup(float receiveWeight)
         {
             if (receiveWeight >= this.MainTank.TPump1.StageLimit && receiveWeight < this.MainTank.TPump1.StageLimit2)
             {
@@ -94,36 +94,95 @@ namespace TankControl.Class
                 this.MainTank.TPump2.RunValveSmall();
                 this.MainTank.TPump2.StopValveBig();
             }
-            else if (receiveWeight >= this.MainTank.TPump2.StageLimit2)
+            else if (receiveWeight >= this.MainTank.TPump2.StageLimit2 && receiveWeight < this.MainTank.TLeft1.StageLimit)
             {
-                this.MainTank.TPump2.StopValveSmall();
                 this.MainTank.TPump2.StopPump();
+                this.MainTank.TPump2.StopValveSmall();
+                this.MainTank.TLeft1.Run();
+            }
+            else if (receiveWeight >= this.MainTank.TLeft1.StageLimit && receiveWeight < this.MainTank.TLeft2.StageLimit)
+            {
+                this.MainTank.TLeft1.Stop();
+                this.MainTank.TLeft2.Run();
+            }
+            else if (receiveWeight >= this.MainTank.TLeft2.StageLimit && receiveWeight < this.MainTank.TRight1.StageLimit)
+            {
+                this.MainTank.TLeft2.Stop();
+                this.MainTank.TRight1.Run();
+            }
+            else if (receiveWeight >= this.MainTank.TRight1.StageLimit && receiveWeight < this.MainTank.TRight2.StageLimit)
+            {
+                this.MainTank.TRight1.Stop();
+                this.MainTank.TRight2.Run();
+            }
+            else if (receiveWeight >= this.MainTank.TRight2.StageLimit && receiveWeight < this.MainTank.TRight3.StageLimit)
+            {
+                this.MainTank.TRight2.Stop();
+                this.MainTank.TRight3.Run();
+            }
+            else if (receiveWeight >= this.MainTank.TRight3.StageLimit)
+            {
+                this.MainTank.TRight3.Stop();
+                RunTester.Singleton.StopTimer();
+                this.ProcessShake();
             }
 
         }
 
+        public void ProcessShake()
+        {
+            
+        }
+
+        public void ProcessTaking()
+        {
+            throw new NotImplementedException();
+        }
+
+        // PROCESS - END
+        
         // CONTROL - START
-        public void Run()
+        public void FillupRun()
         {
             this.MainTank.TPump1.StageLimit = 2;
-            this.MainTank.TPump1.StageLimit2 = 3;
-            this.MainTank.TPump2.StageLimit = 5;
-            this.MainTank.TPump2.StageLimit2 = 6;
+            this.MainTank.TPump1.StageLimit2 = 4;
+            this.MainTank.TPump2.StageLimit = 6;
+            this.MainTank.TPump2.StageLimit2 = 8;
+            this.MainTank.TLeft1.StageLimit = 10;
+            this.MainTank.TLeft2.StageLimit = 12;
+            this.MainTank.TRight1.StageLimit = 14;
+            this.MainTank.TRight2.StageLimit = 15;
+            this.MainTank.TRight3.StageLimit = 16;
 
             this.MainTank.TPump1.RunPump();
             this.MainTank.TPump1.RunValveBig();
+
             RunTester.Singleton.RunTimer();
-            this.MainTank.Fillup();
+
+            this.MainTank.Start();
         }
 
-        public void Stop()
+        public void FillupStop()
         {
             this.MainTank.Stop();
-            this.MainTank.TPump1.StopAll();
-            this.MainTank.TPump2.StopAll();
-            this.currentStage = 0;
-            this.flowOrder = null;
+            this.MainTank.TPump1.End();
+            this.MainTank.TPump2.End();
+            this.MainTank.TLeft1.End();
+            this.MainTank.TLeft2.End();
+            this.MainTank.TRight1.End();
+            this.MainTank.TRight2.End();
+            this.MainTank.TRight3.End();
+            RunTester.Singleton.StopTimer();
+        }
 
+        public void FillupPause()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FillupResume()
+        {
+            throw new NotImplementedException();
         }
 
         // CONTROL - END
@@ -211,12 +270,12 @@ namespace TankControl.Class
         {
             if (WeightScale.Singleton.CurrentWeight == receiveWeight)
             {
-                this.MainTank.Pause();
+
             }
             else
             {
-                this.MainTank.Resume();
-                this.ProcessFlow(receiveWeight);
+                this.MainTank.FillupWithLimit(20);
+                this.ProcessFillup(receiveWeight);
             }
         }
 

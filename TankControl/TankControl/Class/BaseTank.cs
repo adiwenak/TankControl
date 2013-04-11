@@ -158,6 +158,22 @@ namespace TankControl.Class
             throw new NotImplementedException();
         }
 
+        public void CleanUp()
+        {
+            this.StageLimit = 0;
+        }
+
+        public void _TempAddWeight()
+        {
+            RunTester.Singleton.AddWeight = 1;
+        }
+
+        public void _TempEqualWeight()
+        {
+            RunTester.Singleton.AddWeight = 0;
+        }
+
+        
 
     }
 }

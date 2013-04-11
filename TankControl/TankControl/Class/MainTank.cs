@@ -154,13 +154,13 @@ namespace TankControl.Class
             }
         }
 
-        public void Fillup()
+
+        // CONTROL - START
+        public void Start()
         {
-            if (this.IsRun == false)
-            {
-                this.View.Run();
-                this.IsRun = true;
-            }
+            this.View.RunWithLimit(2);
+            this.IsRun = true;
+            
         }
         
         public void Stop()
@@ -181,13 +181,44 @@ namespace TankControl.Class
             }
         }
 
-        public void Resume()
+        public void FillupWithLimit(double height)
         {
-            if (this.IsPause == true)
-            {
-                this.View.Resume();
-                this.IsPause = false;
-            }
+            this.View.Add(height);
+            this.IsPause = false;
         }
+
+        public void OpenValveControl()
+        {
+        }
+
+        public void StopValveControl()
+        {
+        }
+
+        public void OpenValveShake()
+        {
+        }
+
+        public void StopValveShake()
+        {
+        }
+
+        public void OpenValveOutput()
+        {
+        }
+
+        public void StopValveOutput()
+        {
+        }
+
+        public void RunPump()
+        {
+        }
+
+        public void StopPump()
+        {
+        }
+
+        // CONTROL - END
     }
 }

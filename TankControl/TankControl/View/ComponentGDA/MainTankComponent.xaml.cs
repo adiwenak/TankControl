@@ -30,17 +30,16 @@ namespace TankControl.View.ComponentGDA
         {
             InitializeComponent();
             mainTankAnimation = (Storyboard)FindResource("storyTank");
-            incrementHeight = 10;//default
             currentHeight = tankiFill.Height;
             fillTimer = new DispatcherTimer();
             fillTimer.Tick += new EventHandler(fillTimer_Tick);
-            fillTimer.Interval = new TimeSpan(0, 0, 1);
+            fillTimer.Interval = TimeSpan.FromMilliseconds(1);
         }
 
         void fillTimer_Tick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("current :" + tankiFill.Height);
-            System.Diagnostics.Debug.WriteLine("current :" + currentHeight);
+            System.Diagnostics.Debug.WriteLine("curent height:" + tankiFill.Height);
+            System.Diagnostics.Debug.WriteLine("after render height:" + currentHeight);
             if (tankiFill.Height <= (currentHeight - incrementHeight))
             {               
                 currentHeight -= incrementHeight;
@@ -84,7 +83,11 @@ namespace TankControl.View.ComponentGDA
         {
             if (mainTankAnimation != null)
             {
+                Clean();
                 mainTankAnimation.Stop();
+                
+                fillTimer.Stop();
+
             }
         }
 
@@ -93,6 +96,7 @@ namespace TankControl.View.ComponentGDA
             if (mainTankAnimation != null)
             {
                 mainTankAnimation.Pause();
+                fillTimer.Stop();
             }
         }
 
@@ -110,9 +114,8 @@ namespace TankControl.View.ComponentGDA
             mainTankAnimation.Resume();
         }
 
-        public void Clean() { 
-            InitializeComponent();
-            mainTankAnimation = (Storyboard)FindResource("storyTank");
+        public void Clean() {
+            currentHeight = tankiFill.Height;
         }
     }
 }

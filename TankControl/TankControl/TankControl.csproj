@@ -132,9 +132,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Class\WeightScale.cs" />
-    <Compile Include="View\ComponentGDA\BaseControl.xaml.cs">
-      <DependentUpon>BaseControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ComponentGDA\Component\BigValveLComponent.xaml.cs">
       <DependentUpon>BigValveLComponent.xaml</DependentUpon>
     </Compile>
@@ -207,10 +204,6 @@
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\ComponentGDA\BaseControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ComponentGDA\Component\BigValveLComponent.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -338,13 +331,14 @@
     <Resource Include="Images\valve\openR.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\valve\pump.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\valve\openRotate.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\valve\closeRotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\valve\pumpClose.png" />
+    <Resource Include="Images\valve\pumpOpen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

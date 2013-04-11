@@ -8,20 +8,20 @@
         <Storyboard x:Key="storyTank">
         		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="tankiFill">
         			<EasingDoubleKeyFrame KeyTime="0" Value="415.237"/>
-        			<EasingDoubleKeyFrame KeyTime="0:0:20" Value="88"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:5" Value="88"/>
         		</DoubleAnimationUsingKeyFrames>
         		<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="topFill">
         			<EasingColorKeyFrame KeyTime="0" Value="Red"/>
-        			<EasingColorKeyFrame KeyTime="0:0:20" Value="Red"/>
+        			<EasingColorKeyFrame KeyTime="0:0:5" Value="Red"/>
         		</ColorAnimationUsingKeyFrames>
         		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="topFill">
-        			<EasingDoubleKeyFrame KeyTime="0:0:20" Value="-0.987"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:5" Value="-0.987"/>
         		</DoubleAnimationUsingKeyFrames>
         		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="topFill">
-        			<EasingDoubleKeyFrame KeyTime="0:0:20" Value="-327.379"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:5" Value="-327.379"/>
         		</DoubleAnimationUsingKeyFrames>
         		<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="topFill">
-        			<DiscreteObjectKeyFrame KeyTime="0:0:20" Value="{x:Static Visibility.Visible}"/>
+        			<DiscreteObjectKeyFrame KeyTime="0:0:5" Value="{x:Static Visibility.Visible}"/>
         		</ObjectAnimationUsingKeyFrames>
 
         	</Storyboard>
