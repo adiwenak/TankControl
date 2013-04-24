@@ -6,13 +6,13 @@ using TankControl.View.ComponentGDA;
 
 namespace TankControl.Class
 {
-    public class ShakeValveR : TankControl.Class.Component
+    public class ControlValve : Component
     {
-        private ShakeValveRComponent view;
-        private Guid id;
-        private string name;
-
-        public ShakeValveRComponent View
+        private ShakeValveLComponent view;
+        private int id;
+        private bool isRun;
+        
+        public ShakeValveLComponent View
         {
             get
             {
@@ -24,7 +24,7 @@ namespace TankControl.Class
             }
         }
 
-        public Guid Id
+        public int Id
         {
             get
             {
@@ -36,25 +36,22 @@ namespace TankControl.Class
             }
         }
 
-        public string Name
+        public bool IsRun
         {
             get
             {
-                return this.name;
+                return this.isRun;
             }
             set
             {
-                this.name = value;
+                this.isRun = value;
             }
+
         }
 
-        public ShakeValveR(ShakeValveRComponent shakeValve, string name)
+        public ControlValve(ShakeValveLComponent shakeValve, int id)
         {
-            this.Id = new Guid();
-            if (name != null)
-            {
-                this.Name = name;
-            }
+            this.Id = id;
             if (shakeValve != null)
             {
                 this.View = shakeValve;
@@ -63,17 +60,21 @@ namespace TankControl.Class
 
         public void Run()
         {
-            throw new NotImplementedException();
+            if (this.IsRun == false)
+            {
+                this.View.Open();
+                this.IsRun = true;
+            }
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            if (this.IsRun == true)
+            {
+                this.View.Close();
+                this.IsRun = false;
+            }
         }
 
-        public bool IsRun()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

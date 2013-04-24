@@ -9,8 +9,8 @@ namespace TankControl.Class
     public class BigValveL : Component
     {
         private BigValveLComponent view;
-        private Guid id;
-        private string name;
+        private int id;
+        private bool isRun;
 
         public BigValveLComponent View
         {
@@ -24,7 +24,7 @@ namespace TankControl.Class
             }
         }
 
-        public Guid Id
+        public int Id
         {
             get
             {
@@ -36,40 +36,42 @@ namespace TankControl.Class
             }
         }
 
-
-        public string Name
+        public bool IsRun
         {
             get
             {
-                return this.name;
+                return this.isRun;
             }
             set
             {
-                this.name = value;
+                this.isRun = value;
             }
+
         }
 
-        public BigValveL(BigValveLComponent valveView,string nameValve)
+        public BigValveL(BigValveLComponent valveView,int id)
         {
             View = valveView;
-            Id = new Guid();
-            if (nameValve != null)
-                Name = nameValve;
+            Id = id;
         }
 
         public void Run()
         {
-            View.Run();
+            if (this.IsRun == false)
+            {
+                this.View.Open();
+                this.IsRun = true;
+            }
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            if (this.IsRun == true)
+            {
+                this.View.Close();
+                this.IsRun = false;
+            }
         }
 
-        public bool IsRun()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

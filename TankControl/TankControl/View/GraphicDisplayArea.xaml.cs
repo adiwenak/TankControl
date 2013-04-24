@@ -183,36 +183,36 @@ namespace TankControl.View
         public void RunWhole()
         {
             this.GdaMainTank.Run();
-            this.GdaTinyTankPump1.Bv.Run();
-            this.GdaTinyTankPump1.Sv.Run();
-            this.GdaTinyTankPump2.Bv.Run();
-            this.GdaTinyTankPump2.Sv.Run();
-            this.GdaTinyTank3.Bv.Run();
-            this.GdaTinyTank4.Bv.Run();
-            this.GdaTinyTank5.Bv.Run();
-            this.GdaTinyTank6.Bv.Run();
-            this.GdaTinyTank7.Bv.Run();
+            this.GdaTinyTankPump1.Bv.Open();
+            this.GdaTinyTankPump1.Sv.Open();
+            this.GdaTinyTankPump2.Bv.Open();
+            this.GdaTinyTankPump2.Sv.Open();
+            this.GdaTinyTank3.Bv.Open();
+            this.GdaTinyTank4.Bv.Open();
+            this.GdaTinyTank5.Bv.Open();
+            this.GdaTinyTank6.Bv.Open();
+            this.GdaTinyTank7.Bv.Open();
 
-            this.GdaMainTankShake.slc.Run();
-            this.GdaMainTankShake.src.Run();
-            this.GdaMainTankShake.oc.Run();
+            this.GdaMainTankShake.slc.Open();
+            this.GdaMainTankShake.src.Open();
+            this.GdaMainTankShake.oc.Open();
         }
 
         public void StopWhole()
         {
             this.GdaMainTank.Stop();
-            this.GdaTinyTankPump1.Bv.Stop();
-            this.GdaTinyTankPump1.Sv.Stop();
-            this.GdaTinyTankPump2.Bv.Stop();
-            this.GdaTinyTankPump2.Sv.Stop();
-            this.GdaTinyTank3.Bv.Stop();
-            this.GdaTinyTank4.Bv.Stop();
-            this.GdaTinyTank5.Bv.Stop();
-            this.GdaTinyTank6.Bv.Stop();
-            this.GdaTinyTank7.Bv.Stop();
-            this.GdaMainTankShake.slc.Stop();
-            this.GdaMainTankShake.src.Stop();
-            this.GdaMainTankShake.oc.Stop();
+            this.GdaTinyTankPump1.Bv.Close();
+            this.GdaTinyTankPump1.Sv.Close();
+            this.GdaTinyTankPump2.Bv.Close();
+            this.GdaTinyTankPump2.Sv.Close();
+            this.GdaTinyTank3.Bv.Close();
+            this.GdaTinyTank4.Bv.Close();
+            this.GdaTinyTank5.Bv.Close();
+            this.GdaTinyTank6.Bv.Close();
+            this.GdaTinyTank7.Bv.Close();
+            this.GdaMainTankShake.slc.Close();
+            this.GdaMainTankShake.src.Close();
+            this.GdaMainTankShake.oc.Close();
         }
 
         public void UpdateView()

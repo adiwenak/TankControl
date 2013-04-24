@@ -9,15 +9,14 @@ namespace TankControl.Class
 {
     public interface Component 
     {
-        Guid Id {get; set; }
+        int Id {get; set; }
 
-        string Name { get; set; }
+        bool IsRun { get; set; }
 
         void Run();
 
         void Stop();
 
-        bool IsRun();
     }
 
 }

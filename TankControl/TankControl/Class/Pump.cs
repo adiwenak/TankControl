@@ -10,9 +10,21 @@ namespace TankControl.Class
     public class Pump : Component
     {
         private PumpComponent view;
-        private Guid id;
-        private string name;
+        private int id;
+        private bool isRun;
 
+        public bool IsRun
+        {
+            get
+            {
+                return this.isRun;
+            }
+            set
+            {
+                this.isRun = value;
+            }
+
+        }
         public PumpComponent View
         {
             get
@@ -25,7 +37,7 @@ namespace TankControl.Class
             }
         }
 
-        public Guid Id
+        public int Id
         {
             get
             {
@@ -37,40 +49,28 @@ namespace TankControl.Class
             }
         }
 
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
-
-        public Pump(PumpComponent pumpView, string pumpName)
+        public Pump(PumpComponent pumpView, int id)
         {
             View = pumpView;
-            Id = new Guid();
-            if (pumpName != null)
-                Name = pumpName;
+            Id = id;
         }
 
         public void Run()
         {
-            throw new NotImplementedException();
+            if (this.IsRun == false)
+            {
+                this.View.Run();
+                this.IsRun = true;
+            }
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool IsRun()
-        {
-            throw new NotImplementedException();
+            if (this.IsRun == true)
+            {
+                this.View.Stop();
+                this.IsRun = false;
+            }
         }
 
     }

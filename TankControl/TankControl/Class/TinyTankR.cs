@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TankControl.View.ComponentGDA;
 using System.Windows.Controls;
+using TankControl.Functions;
 
 namespace TankControl.Class
 {
@@ -11,6 +12,8 @@ namespace TankControl.Class
     {
         private TinyTankRComponent view;
         private bool isValveOpen;
+        private static string valveOne = "v1";
+
         public bool IsValveOpen
         {
             get
@@ -36,36 +39,34 @@ namespace TankControl.Class
         }
 
         // CONTRUCTOR
-        public TinyTankR(TinyTankRComponent tankView, string tankName)
+        public TinyTankR(TinyTankRComponent tankView, int id)
         {
             this.View = tankView;
-            this.ID = new Guid();
-            if (tankName != null)
-            {
-                this.Name = tankName;
-            }
+            this.ID = id;
 
-            Component bbl = new BigValveR(tankView.Bv, "asd");
-            this.AddComponent(bbl);
+            Component bigValve = new BigValveR(tankView.Bv, (int)ReferenceEnum.Component.ValveBig);
+            this.AddComponent(bigValve);
 
         }
 
         public void Run()
         {
-            if (this.IsValveOpen == false)
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+
+            if (cmp != null)
             {
-                this.View.Bv.Run();
-                this.IsValveOpen = true;
+                cmp.Run();
                 this._TempAddWeight();
             }
         }
 
         public void Stop()
         {
-            if (this.IsValveOpen == true)
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+
+            if (cmp != null)
             {
-                this.View.Bv.Stop();
-                this.IsValveOpen = false;
+                cmp.Stop();
                 this._TempEqualWeight();
             }
         }

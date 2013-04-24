@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using TankControl;
 using TankControl.View.ComponentGDA;
+using TankControl.View;
+using TankControl.Functions;
 
 namespace TankControl.Class
 {
@@ -17,7 +19,7 @@ namespace TankControl.Class
         private TinyTankR tRight1;
         private TinyTankR tRight2;
         private TinyTankR tRight3;
-        private bool isRun = false;
+        private bool isFillup = false;
         private bool isPause = false;
 
         // PROPERTIES - START
@@ -34,15 +36,15 @@ namespace TankControl.Class
             }
         }
 
-        public bool IsRun
+        public bool IsFillup
         {
             get
             {
-                return this.isRun;
+                return this.isFillup;
             }
             set
             {
-                this.isRun = value;
+                this.isFillup = value;
             }
         }
 
@@ -144,14 +146,17 @@ namespace TankControl.Class
 
         // PROPERTIES - END
 
-        public MainTank(MainTankComponent tankView,string tankName)
+        public MainTank(GraphicDisplayArea gdaView, int id)
         {
-            this.ID = new Guid();
-            this.View = tankView;
-            if (tankName != null)
-            {
-                this.Name = tankName;
-            }
+            this.ID = id;
+            this.View = gdaView.GdaMainTank;
+
+            Component shakeValveL = new ControlValve(gdaView.GdaMainTankShake.Slc, (int)ReferenceEnum.Component.ValveControl);
+            Component shakeValveR = new ShakeValve(gdaView.GdaMainTankShake.Src, (int)ReferenceEnum.Component.ValveShake);
+            Component outValve = new OutValve(gdaView.GdaMainTankShake.Oc, (int)ReferenceEnum.Component.PumpMainTank);
+            this.AddComponent(shakeValveL);
+            this.AddComponent(shakeValveR);
+            this.AddComponent(outValve);
         }
 
 
@@ -159,16 +164,16 @@ namespace TankControl.Class
         public void Start()
         {
             this.View.RunWithLimit(2);
-            this.IsRun = true;
+            this.IsFillup = true;
             
         }
         
         public void Stop()
         {
-            if (this.IsRun == true)
+            if (this.IsFillup == true)
             {
                 this.View.Stop();
-                this.IsRun = false;
+                this.IsFillup = false;
             }
         }
 
@@ -189,32 +194,56 @@ namespace TankControl.Class
 
         public void OpenValveControl()
         {
-            Component cmp = this.GetComponent("ControlValve");
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
+            if (cmp != null)
+            {
+                cmp.Run();
+            }
         }
 
         public void StopValveControl()
         {
-            Component cmp = this.GetComponent("ControlValve");
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
+            if (cmp != null)
+            {
+                cmp.Stop();
+            }
         }
 
         public void OpenValveShake()
         {
-            Component cmp = this.GetComponent("ShakeValve");
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
+            if (cmp != null)
+            {
+                cmp.Run();
+            }
         }
 
         public void StopValveShake()
         {
-            Component cmp = this.GetComponent("ShakeValve");
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
+            if (cmp != null)
+            {
+                cmp.Stop();
+            }
         }
 
         public void OpenValveOutput()
         {
-            Component cmp = this.GetComponent("OutputValve");
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
+            if (cmp != null)
+            {
+                cmp.Run();
+            }
         }
 
         public void StopValveOutput()
         {
-            Component cmp = this.GetComponent("OutputValve");
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
+            if (cmp != null)
+            {
+                cmp.Stop();
+            }
         }
 
         public void RunPump()
@@ -224,7 +253,10 @@ namespace TankControl.Class
         public void StopPump()
         {
         }
-
         // CONTROL - END
+
+        public void Setup()
+        {
+        }
     }
 }
