@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 namespace TankControl.View
 {
@@ -19,6 +20,7 @@ namespace TankControl.View
     /// </summary>
     public partial class Reporting : UserControl
     {
+        //private ObservableCollection<TankControl.R> ;
         public Reporting()
         {
             InitializeComponent();

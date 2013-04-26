@@ -30,6 +30,7 @@ namespace TankControl
         public Nullable<int> duration_el5 { get; set; }
         public Nullable<int> duration_el6 { get; set; }
         public Nullable<int> duration_el7 { get; set; }
+        public Nullable<double> total { get; set; }
     
         public virtual Recipe Recipe { get; set; }
     }

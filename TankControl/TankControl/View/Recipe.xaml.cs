@@ -20,6 +20,8 @@ namespace TankControl.View
     public partial class Recipe : UserControl
     {
         private ObservableCollection<TankControl.Recipe> recipelist;
+        private int startIndex = 12; 
+        private int endIndex = 21;
         public Recipe()
         {
             
@@ -31,29 +33,29 @@ namespace TankControl.View
                 var query = from a in tce.Recipes
                             select a;
                 recipelist.Clear();
-                foreach (var a in query)
+                foreach (var recipe in query)
                 {
                     recipelist.Add(new TankControl.Recipe()
                     {
-                        id = a.id,
-                        name = a.name,
-                        el1 = a.el1,
-                        el2 = a.el2,
-                        el3 = a.el3,
-                        el4 = a.el4,
-                        el5 = a.el5,
-                        el6 = a.el6,
-                        el7 = a.el7,
-                        tol_el1 = a.tol_el1,
-                        tol_el2 = a.tol_el2,
-                        tol_el3 = a.tol_el3,
-                        tol_el4 = a.tol_el4,
-                        tol_el5 = a.tol_el5,
-                        tol_el6 = a.tol_el6,
-                        tol_el7 = a.tol_el7,
-                        switch_el1 = a.switch_el1,
-                        switch_el2 = a.switch_el2,
-                        runtime = a.runtime
+                        id = recipe.id,
+                        name = recipe.name,
+                        el1 = recipe.el1,
+                        el2 = recipe.el2,
+                        el3 = recipe.el3,
+                        el4 = recipe.el4,
+                        el5 = recipe.el5,
+                        el6 = recipe.el6,
+                        el7 = recipe.el7,
+                        tol_el1 = recipe.tol_el1,
+                        tol_el2 = recipe.tol_el2,
+                        tol_el3 = recipe.tol_el3,
+                        tol_el4 = recipe.tol_el4,
+                        tol_el5 = recipe.tol_el5,
+                        tol_el6 = recipe.tol_el6,
+                        tol_el7 = recipe.tol_el7,
+                        switch_el1 = recipe.switch_el1,
+                        switch_el2 = recipe.switch_el2,
+                        runtime = recipe.runtime
                     });
                 }
                 recipeListGridView.ItemsSource = recipelist;
@@ -66,11 +68,14 @@ namespace TankControl.View
             var updatedRow = (e.NewData as TankControl.Recipe);
             if (e.EditAction == Telerik.Windows.Controls.GridView.GridViewEditAction.Cancel)
             {
-                this.recipeListGridView.Columns[1].IsVisible = false; //hide cancel button
-                for (int i = 11; i < 20; i++)
-                {
-                    this.recipeListGridView.Columns[i].IsVisible = false;
-                }
+                ///*action when the user canceled editing or adding item, based on its index*/
+                this.recipeListGridView.Columns[0].IsVisible = true; //show delete button
+                this.recipeListGridView.Columns[1].IsVisible = false; //hide done button
+                this.recipeListGridView.Columns[2].IsVisible = false; //hide cancel button
+                //for (int i = startIndex; i < endIndex; i++)
+                //{
+                //    this.recipeListGridView.Columns[i].IsVisible = false;
+                //}
                 return;
             }
             if (e.EditOperationType == Telerik.Windows.Controls.GridView.GridViewEditOperationType.Edit)
@@ -99,12 +104,14 @@ namespace TankControl.View
                 }
             }
 
-            /*Hide Columns when the user has finished editing or adding item, based on its index*/
-            this.recipeListGridView.Columns[1].IsVisible = false; //hide cancel button
-            for (int i = 11; i < 20; i++)
-            {
-                this.recipeListGridView.Columns[i].IsVisible = false;
-            }
+            ///*action when the user has finished editing or adding item, based on its index*/
+            this.recipeListGridView.Columns[0].IsVisible = true; //show delete button
+            this.recipeListGridView.Columns[1].IsVisible = false; //hide done button
+            this.recipeListGridView.Columns[2].IsVisible = false; //hide cancel button
+            //for (int i = startIndex; i < endIndex; i++)
+            //{
+            //    this.recipeListGridView.Columns[i].IsVisible = false;
+            //}
         }
 
         private void recipeListGridView_Deleted(object sender, Telerik.Windows.Controls.GridViewDeletedEventArgs e)
@@ -123,9 +130,11 @@ namespace TankControl.View
 
         private void recipeListGridView_BeginningEdit(object sender, Telerik.Windows.Controls.GridViewBeginningEditRoutedEventArgs e)
         {
-            /*Show Columns when the user edit or add item, based on its index*/
-            this.recipeListGridView.Columns[1].IsVisible = true; //show cancel button
-            for (int i = 11; i < 20; i++)
+            ///*action when the user edit or add item, based on its index*/
+            this.recipeListGridView.Columns[0].IsVisible = false; //hide delete button
+            this.recipeListGridView.Columns[1].IsVisible = true; //show done button
+            this.recipeListGridView.Columns[2].IsVisible = true; //show cancel button
+            for (int i = startIndex; i < endIndex; i++)
             {
                 this.recipeListGridView.Columns[i].IsVisible = true;
             }
@@ -143,7 +152,7 @@ namespace TankControl.View
                 e.ValidationResults.Add(validationResult);
                 e.IsValid = false;
             }
-
+            
         }
     }
 }
