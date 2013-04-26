@@ -38,6 +38,7 @@ namespace TankControl
         public Nullable<double> switch_el1 { get; set; }
         public Nullable<double> switch_el2 { get; set; }
         public Nullable<int> runtime { get; set; }
+        public string name { get; set; }
     
         public virtual ICollection<History> Histories { get; set; }
     }
