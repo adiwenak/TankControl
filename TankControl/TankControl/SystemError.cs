@@ -15,6 +15,7 @@ namespace TankControl
     public partial class SystemError
     {
         public int id { get; set; }
+        public Nullable<int> errorLevel { get; set; }
         public string errorDesc { get; set; }
         public string errorLocation { get; set; }
         public Nullable<System.DateTime> errorDate { get; set; }

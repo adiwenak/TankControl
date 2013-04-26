@@ -25,8 +25,26 @@ namespace TankControl.View
         {
             InitializeComponent();
             ListReceipe();
-
             StopProcess.IsEnabled = false;
+        }
+
+        private void ListReceipe()
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                TextBlock tb = new TextBlock();
+                tb.Text = "Receipe " + i;
+                tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                tb.Margin = new Thickness(5, 3, 0, 3);
+
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.Children.Add(tb);
+
+                ListBoxItem lb = new ListBoxItem();
+                lb.Content = sp;
+                Recipe.Items.Add(lb);
+            }
         }
 
         public void Stop_Click(object sender, RoutedEventArgs e)
@@ -44,22 +62,14 @@ namespace TankControl.View
             StopProcess.IsEnabled = true;
         }
 
-        private void ListReceipe() {
-            for (int i = 1; i < 5; i++)
-            {
-                TextBlock tb = new TextBlock();
-                tb.Text = "Receipe "+i;
-                tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                tb.Margin = new Thickness(5, 3, 0, 3);
+        private void StartTake_Click(object sender, RoutedEventArgs e)
+        {
 
-                StackPanel sp = new StackPanel();
-                sp.Orientation = Orientation.Horizontal;
-                sp.Children.Add(tb);
+        }
 
-                ListBoxItem lb = new ListBoxItem();
-                lb.Content = sp;
-                Recipe.Items.Add(lb);
-            }
+        private void PauseTake_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
