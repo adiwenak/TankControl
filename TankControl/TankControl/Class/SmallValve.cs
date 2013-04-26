@@ -6,12 +6,26 @@ using TankControl.View.ComponentGDA;
 
 namespace TankControl.Class
 {
-    public class SmallValve : Component
+    public class SmallValve : IComponent
     {
         private SmallValveComponent view;
         private int id;
-
         private bool isRun;
+
+        private UInt16 deviceAddress;
+
+        public UInt16 DeviceAddress
+        {
+            get
+            {
+                return this.deviceAddress;
+            }
+            set
+            {
+                this.deviceAddress = value;
+            }
+        }
+
         public bool IsRun
         {
             get
@@ -49,8 +63,9 @@ namespace TankControl.Class
             }
         }
 
-        public SmallValve(SmallValveComponent smallValve, int id)
+        public SmallValve(UInt16 valveAddress, SmallValveComponent smallValve, int id)
         {
+            DeviceAddress = valveAddress;
             View = smallValve;
             Id = id;
         }
@@ -59,7 +74,11 @@ namespace TankControl.Class
         {
             if (this.IsRun == false)
             {
-                this.View.Open();
+                
+                if (Microcontroller.Singleton.OnDigitalOutput(DeviceAddress))
+                {
+                    this.View.Open();
+                }
                 this.IsRun = true;
             }
         }
@@ -68,7 +87,10 @@ namespace TankControl.Class
         {
             if (this.IsRun == true)
             {
-                this.View.Close();
+                if (Microcontroller.Singleton.OffDigitalOutput(DeviceAddress))
+                {
+                    this.View.Close();
+                }
                 this.IsRun = false;
             }
         }

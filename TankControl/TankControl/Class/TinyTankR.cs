@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TankControl.View.ComponentGDA;
-using System.Windows.Controls;
 using TankControl.Functions;
 
 namespace TankControl.Class
@@ -12,7 +10,6 @@ namespace TankControl.Class
     {
         private TinyTankRComponent view;
         private bool isValveOpen;
-        private static string valveOne = "v1";
 
         public bool IsValveOpen
         {
@@ -39,19 +36,16 @@ namespace TankControl.Class
         }
 
         // CONTRUCTOR
-        public TinyTankR(TinyTankRComponent tankView, int id)
+        public TinyTankR(TinyTankRComponent tankView, int id, List<IComponent> list)
         {
             this.View = tankView;
             this.ID = id;
-
-            Component bigValve = new BigValveR(tankView.Bv, (int)ReferenceEnum.Component.ValveBig);
-            this.AddComponent(bigValve);
-
+            this.AddComponents(list);
         }
 
         public void Run()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
 
             if (cmp != null)
             {
@@ -62,7 +56,7 @@ namespace TankControl.Class
 
         public void Stop()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
 
             if (cmp != null)
             {

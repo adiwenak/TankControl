@@ -6,11 +6,25 @@ using TankControl.View.ComponentGDA;
 
 namespace TankControl.Class
 {
-    public class BigValveL : Component
+    public class BigValveL : IComponent
     {
         private BigValveLComponent view;
         private int id;
         private bool isRun;
+
+        private UInt16 deviceAddress;
+
+        public UInt16 DeviceAddress
+        {
+            get
+            {
+                return this.deviceAddress;
+            }
+            set
+            {
+                this.deviceAddress = value;
+            }
+        }
 
         public BigValveLComponent View
         {
@@ -49,8 +63,9 @@ namespace TankControl.Class
 
         }
 
-        public BigValveL(BigValveLComponent valveView,int id)
+        public BigValveL(UInt16 valveAddress, BigValveLComponent valveView, int id)
         {
+            DeviceAddress = valveAddress;
             View = valveView;
             Id = id;
         }
@@ -59,7 +74,10 @@ namespace TankControl.Class
         {
             if (this.IsRun == false)
             {
-                this.View.Open();
+                if (Microcontroller.Singleton.OnDigitalOutput(DeviceAddress))
+                {
+                    this.View.Open();
+                }
                 this.IsRun = true;
             }
         }
@@ -68,7 +86,10 @@ namespace TankControl.Class
         {
             if (this.IsRun == true)
             {
-                this.View.Close();
+                if (Microcontroller.Singleton.OffDigitalOutput(DeviceAddress))
+                {
+                    this.View.Close();
+                }
                 this.IsRun = false;
             }
         }

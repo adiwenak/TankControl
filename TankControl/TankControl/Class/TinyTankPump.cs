@@ -14,9 +14,6 @@ namespace TankControl.Class
         private bool valveSmall;
         private bool pump;
         private float stageLimit2;
-        private static string valveSmallId = "v1";
-        private static string valveBigId = "v2";
-        private static string pumpId = "p1";
 
         public float StageLimit2
         {
@@ -42,22 +39,16 @@ namespace TankControl.Class
             }
         }
 
-        public TinyTankPump(TinyTankPumpComponent tankView, int id)
+        public TinyTankPump(TinyTankPumpComponent tankView, int id,List<IComponent> list)
         {
             this.View = tankView;
             this.ID = id;
-
-            Component bigValve = new BigValveL(tankView.Bv, (int)ReferenceEnum.Component.ValveBig);
-            Component smallValve = new SmallValve(tankView.Sv, (int)ReferenceEnum.Component.ValveSmall);
-            Component pump = new Pump(tankView.Pc, (int)ReferenceEnum.Component.PumpTinyTank);
-            this.AddComponent(bigValve);
-            this.AddComponent(smallValve);
-            this.AddComponent(pump);
+            this.AddComponents(list);
         }
 
         public void RunPump()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
             if (cmp != null)
             {
                 cmp.Run();
@@ -68,7 +59,7 @@ namespace TankControl.Class
 
         public void StopPump()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
             if (cmp != null)
             {
                 cmp.Stop();
@@ -79,7 +70,7 @@ namespace TankControl.Class
 
         public void RunValveSmall()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
             if (cmp != null)
             {
                 cmp.Run();
@@ -90,7 +81,7 @@ namespace TankControl.Class
 
         public void StopValveSmall()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
             if (cmp != null)
             {
                 cmp.Stop();
@@ -101,7 +92,7 @@ namespace TankControl.Class
 
         public void RunValveBig()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
             if (cmp != null)
             {
                 cmp.Run();
@@ -112,7 +103,7 @@ namespace TankControl.Class
 
         public void StopValveBig()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
             if (cmp != null)
             {
                 cmp.Stop();

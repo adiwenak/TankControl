@@ -7,11 +7,25 @@ using TankControl.View.ComponentGDA;
 
 namespace TankControl.Class
 {
-    public class Pump : Component
+    public class Pump : IComponent
     {
         private PumpComponent view;
         private int id;
         private bool isRun;
+
+        private UInt16 deviceAddress;
+
+        public UInt16 DeviceAddress
+        {
+            get
+            {
+                return this.deviceAddress;
+            }
+            set
+            {
+                this.deviceAddress = value;
+            }
+        }
 
         public bool IsRun
         {
@@ -49,8 +63,9 @@ namespace TankControl.Class
             }
         }
 
-        public Pump(PumpComponent pumpView, int id)
+        public Pump(UInt16 pumpAddress, PumpComponent pumpView, int id)
         {
+            DeviceAddress = pumpAddress;
             View = pumpView;
             Id = id;
         }
@@ -59,7 +74,10 @@ namespace TankControl.Class
         {
             if (this.IsRun == false)
             {
-                this.View.Run();
+                if (Microcontroller.Singleton.OnDigitalOutput(DeviceAddress))
+                {
+                    this.View.Run();
+                }
                 this.IsRun = true;
             }
         }
@@ -68,7 +86,10 @@ namespace TankControl.Class
         {
             if (this.IsRun == true)
             {
-                this.View.Stop();
+                if (Microcontroller.Singleton.OffDigitalOutput(DeviceAddress))
+                {
+                    this.View.Stop();
+                }
                 this.IsRun = false;
             }
         }

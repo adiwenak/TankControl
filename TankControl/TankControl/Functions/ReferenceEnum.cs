@@ -29,5 +29,25 @@ namespace TankControl.Functions
             TinyTankSix,
             TinyTankSeven
         }
+
+        public enum MOXA
+        {
+            DO0 = 0,
+            DO1,
+            DO2,
+            DO3,
+            DO4,
+            DO5,
+            DO6,
+            DO7,
+            DO8,
+            DO9,
+            DO10,
+            DO11,
+            DO12,
+            DO13,
+            DO14,
+            DO15
+        }
     }
 }

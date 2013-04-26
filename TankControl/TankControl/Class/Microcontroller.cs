@@ -10,9 +10,10 @@ namespace TankControl.Class
 
     public class Microcontroller
     {
+
+        private Int32[] hConnection = new Int32[1];
+        private byte[] byteWriteCoils = new byte[2];
         private static Microcontroller singleton;
-
-
 
         public static Microcontroller Singleton
         {
@@ -149,20 +150,79 @@ namespace TankControl.Class
         {
             int returnValues;
             const UInt16 Port = 502;
-            string IPAddr = "192.168.1.111";
+            string IPAddr = "192.168.5.254";
             UInt32 Timeout = 10000;
-            Int32[] hConnection = new Int32[1];
             string Password = "";
 
+            // Initialize
             returnValues = MXIO_CS.MXEIO_Init();
+            Debug.WriteLine("MXIO Initialize Return Code {0}", returnValues);
+            
+            // Connect to device
             Debug.WriteLine("MXEIO_E1K_Connect IP={0}, Timeout={1}, Password={2}", IPAddr, Timeout, Password);
             returnValues = MXIO_CS.MXEIO_E1K_Connect(System.Text.Encoding.UTF8.GetBytes(IPAddr), Port, Timeout, hConnection, System.Text.Encoding.UTF8.GetBytes(Password));
             CheckError(returnValues, "MXEIO_E1K_Connect");
             if (returnValues == MXIO_CS.MXIO_OK)
             {
                 Debug.WriteLine("IO logic connected");
-
             }
+
+            //Check Connection
+            byte[] bytCheckStatus = new byte[1];
+            returnValues = MXIO_CS.MXEIO_CheckConnection(hConnection[0], Timeout, bytCheckStatus);
+            CheckError(returnValues, "MXEIO_CheckConnection");
+            if (returnValues == MXIO_CS.MXIO_OK)
+            {
+                switch (bytCheckStatus[0])
+                {
+                    case MXIO_CS.CHECK_CONNECTION_OK:
+                        Debug.WriteLine("MXEIO_CheckConnection: Check connection ok => {0}", bytCheckStatus[0]);
+                        break;
+                    case MXIO_CS.CHECK_CONNECTION_FAIL:
+                        Debug.WriteLine("MXEIO_CheckConnection: Check connection fail => {0}", bytCheckStatus[0]);
+                        break;
+                    case MXIO_CS.CHECK_CONNECTION_TIME_OUT:
+                        Debug.WriteLine("MXEIO_CheckConnection: Check connection time out => {0}", bytCheckStatus[0]);
+                        break;
+                    default:
+                        Debug.WriteLine("MXEIO_CheckConnection: Check connection status unknown => {0}", bytCheckStatus[0]);
+                        break;
+                }
+            }
+        }
+
+        public bool OnDigitalOutput(UInt16 location)
+        {
+            int ret;
+            bool success = false;
+            byteWriteCoils[0] = 0x01;
+
+            ret = MXIO_CS.MXIO_WriteCoils(hConnection[0], location, 1, byteWriteCoils);
+            CheckError(ret, "MXIO_WriteCoils");
+            if (ret == MXIO_CS.MXIO_OK)
+            {
+                Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X} , 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
+                success = true;
+            }
+
+            return success;
+        }
+
+        public bool OffDigitalOutput(UInt16 location)
+        {
+            int ret;
+            bool success = false;
+            byteWriteCoils[0] = 0x00;
+
+            ret = MXIO_CS.MXIO_WriteCoils(hConnection[0], location, 1, byteWriteCoils);
+            CheckError(ret, "MXIO_WriteCoils");
+            if (ret == MXIO_CS.MXIO_OK)
+            {
+                Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X}, 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
+                success = true;
+            }
+
+            return success;
         }
     }
 }

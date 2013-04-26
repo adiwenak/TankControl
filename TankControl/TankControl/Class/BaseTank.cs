@@ -7,7 +7,7 @@ namespace TankControl.Class
 {
     public class BaseTank
     {
-        private IList<Component> listComponents;
+        private IList<IComponent> listComponents;
         private int id;
         private float stageLimit;
 
@@ -35,7 +35,7 @@ namespace TankControl.Class
             }
         }
 
-        public IList<Component> ListComponents
+        public IList<IComponent> ListComponents
         {
             get
             {
@@ -47,46 +47,46 @@ namespace TankControl.Class
             }
         }
 
-        public void AddComponents(IList<Component> components)
+        public void AddComponents(IList<IComponent> components)
         {
             if (this.ListComponents == null)
             {
-                this.ListComponents = new List<Component>();
+                this.ListComponents = new List<IComponent>();
             }
 
             if (components.Count() > 0)
             {
-                foreach (Component cmp in components)
+                foreach (IComponent cmp in components)
                 {
                     ListComponents.Add(cmp);
                 }
             }
         }
 
-        public void AddComponent(Component component)
+        public void AddComponent(IComponent component)
         {
             if (this.ListComponents == null)
             {
-                this.ListComponents = new List<Component>();
+                this.ListComponents = new List<IComponent>();
             }
 
             ListComponents.Add(component);
         }
 
-        public IList<Component> GetAllComponent()
+        public IList<IComponent> GetAllComponent()
         {
             return ListComponents;
         }
 
-        public Component GetComponent(Component component)
+        public IComponent GetComponent(IComponent component)
         {
-            Component cmp = ListComponents.FirstOrDefault(x => x == component);
+            IComponent cmp = ListComponents.FirstOrDefault(x => x == component);
             return cmp;
         }
 
-        public Component GetComponent(int id)
+        public IComponent GetComponent(int id)
         {
-            Component cmp = ListComponents.FirstOrDefault(x => x.Id == id);
+            IComponent cmp = ListComponents.FirstOrDefault(x => x.Id == id);
             return cmp;
         }
 
@@ -97,7 +97,7 @@ namespace TankControl.Class
 
             if (totalComponent > 0)
             {
-                foreach (Component cmp in listComponents)
+                foreach (IComponent cmp in listComponents)
                 {
                     if (ListComponents.Remove(cmp))
                     {
@@ -114,7 +114,7 @@ namespace TankControl.Class
             return success;
         }
 
-        public bool RemoveComponent(Component component)
+        public bool RemoveComponent(IComponent component)
         {
             bool success = false;
 

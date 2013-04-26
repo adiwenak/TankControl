@@ -53,8 +53,14 @@ namespace TankControl
 
         public void StopTimer()
         {
-            weight = 0;
             timer.Stop();
+            this.Reset();
+        }
+
+        public void Reset()
+        {
+            this.weight = 0;
+            this.addWeight = 1;
         }
 
         private void WeightUpdated(object sender, EventArgs e)

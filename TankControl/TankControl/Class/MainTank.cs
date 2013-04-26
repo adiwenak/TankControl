@@ -146,17 +146,11 @@ namespace TankControl.Class
 
         // PROPERTIES - END
 
-        public MainTank(GraphicDisplayArea gdaView, int id)
+        public MainTank(GraphicDisplayArea gdaView, int id,List<IComponent> list)
         {
             this.ID = id;
             this.View = gdaView.GdaMainTank;
-
-            Component shakeValveL = new ControlValve(gdaView.GdaMainTankShake.Slc, (int)ReferenceEnum.Component.ValveControl);
-            Component shakeValveR = new ShakeValve(gdaView.GdaMainTankShake.Src, (int)ReferenceEnum.Component.ValveShake);
-            Component outValve = new OutValve(gdaView.GdaMainTankShake.Oc, (int)ReferenceEnum.Component.PumpMainTank);
-            this.AddComponent(shakeValveL);
-            this.AddComponent(shakeValveR);
-            this.AddComponent(outValve);
+            this.AddComponents(list);
         }
 
 
@@ -194,7 +188,7 @@ namespace TankControl.Class
 
         public void OpenValveControl()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
             if (cmp != null)
             {
                 cmp.Run();
@@ -203,7 +197,7 @@ namespace TankControl.Class
 
         public void StopValveControl()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
             if (cmp != null)
             {
                 cmp.Stop();
@@ -212,7 +206,7 @@ namespace TankControl.Class
 
         public void OpenValveShake()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
             if (cmp != null)
             {
                 cmp.Run();
@@ -221,7 +215,7 @@ namespace TankControl.Class
 
         public void StopValveShake()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
             if (cmp != null)
             {
                 cmp.Stop();
@@ -230,7 +224,7 @@ namespace TankControl.Class
 
         public void OpenValveOutput()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
             if (cmp != null)
             {
                 cmp.Run();
@@ -239,7 +233,7 @@ namespace TankControl.Class
 
         public void StopValveOutput()
         {
-            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
+            IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
             if (cmp != null)
             {
                 cmp.Stop();
