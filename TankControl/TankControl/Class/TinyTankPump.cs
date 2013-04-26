@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TankControl.View.ComponentGDA;
+using TankControl.Functions;
 
 namespace TankControl.Class
 {
@@ -13,6 +14,9 @@ namespace TankControl.Class
         private bool valveSmall;
         private bool pump;
         private float stageLimit2;
+        private static string valveSmallId = "v1";
+        private static string valveBigId = "v2";
+        private static string pumpId = "p1";
 
         public float StageLimit2
         {
@@ -38,83 +42,82 @@ namespace TankControl.Class
             }
         }
 
-        public TinyTankPump(TinyTankPumpComponent tankView, string tankName)
+        public TinyTankPump(TinyTankPumpComponent tankView, int id)
         {
             this.View = tankView;
-            this.ID = new Guid();
+            this.ID = id;
 
-            if (tankName != null)
-            {
-                this.Name = tankName;
-            }
-
-            Component bbl = new BigValveL(tankView.Bv, "asd");
-            this.AddComponent(bbl);
-            Component smv = new SmallValve(tankView.Sv, "asd");
-            this.AddComponent(bbl);
-            Component pump = new Pump(tankView.Pc, "asd");
-            this.AddComponent(bbl);
-            this.AddComponent(smv);
+            Component bigValve = new BigValveL(tankView.Bv, (int)ReferenceEnum.Component.ValveBig);
+            Component smallValve = new SmallValve(tankView.Sv, (int)ReferenceEnum.Component.ValveSmall);
+            Component pump = new Pump(tankView.Pc, (int)ReferenceEnum.Component.PumpTinyTank);
+            this.AddComponent(bigValve);
+            this.AddComponent(smallValve);
             this.AddComponent(pump);
         }
 
         public void RunPump()
         {
-            if (this.pump == false)
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
+            if (cmp != null)
             {
-                this.View.Pc.Open();
-                this.pump = true;
+                cmp.Run();
                 this._TempAddWeight();
-            }
-        }
-
-        public void RunValveSmall()
-        {
-            if (this.valveSmall == false)
-            {
-                this.View.Sv.Run();
-                this.valveSmall = true;
-                this._TempAddWeight();
-            }
-        }
-
-        public void RunValveBig()
-        {
-            if (this.valveBig == false)
-            {
-                this.View.Bv.Run();
-                this.valveBig = true;
-                this._TempAddWeight();
-            }
-        }
-
-        public void StopValveSmall()
-        {
-            if (this.valveSmall == true)
-            {
-                this.View.Sv.Stop();
-                this.valveSmall = false;
-                this._TempEqualWeight();
+                pump = true;
             }
         }
 
         public void StopPump()
         {
-            if (this.pump == true)
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
+            if (cmp != null)
             {
-                this.View.Pc.Close();
-                this.pump = false;
+                cmp.Stop();
                 this._TempEqualWeight();
+                pump = false;
             }
         }
 
+        public void RunValveSmall()
+        {
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
+            if (cmp != null)
+            {
+                cmp.Run();
+                this._TempAddWeight();
+                valveSmall = true;
+            }
+        }
+
+        public void StopValveSmall()
+        {
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
+            if (cmp != null)
+            {
+                cmp.Stop();
+                this._TempEqualWeight();
+                valveSmall = false;
+            }
+        }
+
+        public void RunValveBig()
+        {
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+            if (cmp != null)
+            {
+                cmp.Run();
+                this._TempAddWeight();
+                valveBig = true;
+            }
+        } 
+
         public void StopValveBig()
         {
-            if (this.valveBig == true)
+            Component cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+            if (cmp != null)
             {
-                this.View.Bv.Stop();
-                this.valveBig = false;
+                cmp.Stop();
                 this._TempEqualWeight();
+                valveBig = false;
             }
         }
 

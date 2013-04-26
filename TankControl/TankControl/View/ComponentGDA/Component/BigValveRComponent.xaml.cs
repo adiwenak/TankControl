@@ -45,7 +45,7 @@ namespace TankControl.View.ComponentGDA
             valveBig.Source = img;
         }
 
-        public void Run()
+        public void Open()
         {
             if (bigValveAnimation != null)
             {
@@ -54,7 +54,7 @@ namespace TankControl.View.ComponentGDA
             }
         }
 
-        public void Stop()
+        public void Close()
         {
             if (bigValveAnimation != null)
             {

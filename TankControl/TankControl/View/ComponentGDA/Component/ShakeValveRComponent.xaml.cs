@@ -45,7 +45,7 @@ namespace TankControl.View.ComponentGDA
             valveRight.Source = img;
         }
 
-        public void Run()
+        public void Open()
         {
             if (ShakeValveAnimation != null)
             {
@@ -54,7 +54,7 @@ namespace TankControl.View.ComponentGDA
             }
         }
 
-        public void Stop()
+        public void Close()
         {
             if (ShakeValveAnimation != null)
             {

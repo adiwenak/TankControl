@@ -8,8 +8,7 @@ namespace TankControl.Class
     public class BaseTank
     {
         private IList<Component> listComponents;
-        private Guid id;
-        private string name;
+        private int id;
         private float stageLimit;
 
         public float StageLimit
@@ -24,19 +23,7 @@ namespace TankControl.Class
             }
         }
 
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
-
-        public Guid ID
+        public int ID
         {
             get
             {
@@ -97,15 +84,9 @@ namespace TankControl.Class
             return cmp;
         }
 
-        public Component GetComponent(Guid id)
+        public Component GetComponent(int id)
         {
             Component cmp = ListComponents.FirstOrDefault(x => x.Id == id);
-            return cmp;
-        }
-
-        public Component GetComponent(string name)
-        {
-            Component cmp = ListComponents.FirstOrDefault(x => x.Name == name);
             return cmp;
         }
 

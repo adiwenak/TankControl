@@ -9,8 +9,21 @@ namespace TankControl.Class
     public class SmallValve : Component
     {
         private SmallValveComponent view;
-        private Guid id;
-        private string name;
+        private int id;
+
+        private bool isRun;
+        public bool IsRun
+        {
+            get
+            {
+                return this.isRun;
+            }
+            set
+            {
+                this.isRun = value;
+            }
+
+        }
 
         public SmallValveComponent View
         {
@@ -24,7 +37,7 @@ namespace TankControl.Class
             }
         }
 
-        public Guid Id
+        public int Id
         {
             get
             {
@@ -36,40 +49,29 @@ namespace TankControl.Class
             }
         }
 
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
-
-        public SmallValve(SmallValveComponent smallValve, string nameValve)
+        public SmallValve(SmallValveComponent smallValve, int id)
         {
             View = smallValve;
-            Id = new Guid();
-            if (nameValve != null)
-                Name = nameValve;
+            Id = id;
         }
 
         public void Run()
         {
-            View.Run();
+            if (this.IsRun == false)
+            {
+                this.View.Open();
+                this.IsRun = true;
+            }
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            if (this.IsRun == true)
+            {
+                this.View.Close();
+                this.IsRun = false;
+            }
         }
 
-        public bool IsRun()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
