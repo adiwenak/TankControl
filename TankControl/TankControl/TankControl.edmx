@@ -41,6 +41,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="el1" Type="float" />
           <Property Name="el2" Type="float" />
           <Property Name="el3" Type="float" />
@@ -64,6 +65,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="errorLevel" Type="int" />
           <Property Name="errorDesc" Type="varchar" MaxLength="100" />
           <Property Name="errorLocation" Type="varchar" MaxLength="50" />
           <Property Name="errorDate" Type="datetime" />
@@ -132,6 +134,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="el1" Type="Double" />
           <Property Name="el2" Type="Double" />
           <Property Name="el3" Type="Double" />
@@ -156,6 +159,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="errorLevel" Type="Int32" />
           <Property Name="errorDesc" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="errorLocation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="errorDate" Type="DateTime" />
@@ -214,6 +218,7 @@
             <EntityTypeMapping TypeName="TankControlModel.Recipe">
               <MappingFragment StoreEntitySet="Recipe">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="el1" ColumnName="el1" />
                 <ScalarProperty Name="el2" ColumnName="el2" />
                 <ScalarProperty Name="el3" ColumnName="el3" />
@@ -238,6 +243,7 @@
             <EntityTypeMapping TypeName="TankControlModel.SystemError">
               <MappingFragment StoreEntitySet="SystemError">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="errorLevel" ColumnName="errorLevel" />
                 <ScalarProperty Name="errorDesc" ColumnName="errorDesc" />
                 <ScalarProperty Name="errorLocation" ColumnName="errorLocation" />
                 <ScalarProperty Name="errorDate" ColumnName="errorDate" />
@@ -276,14 +282,14 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="TankControlDB">
-        <EntityTypeShape EntityType="TankControlModel.History" Width="1.5" PointX="3" PointY="1.25" Height="4.2879036458333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="TankControlModel.Recipe" Width="1.5" PointX="0.75" PointY="1" Height="4.6725065104166665" IsExpanded="true" />
-        <EntityTypeShape EntityType="TankControlModel.SystemError" Width="1.5" PointX="5.75" PointY="0.75" Height="1.7879850260416665" IsExpanded="true" />
+      <Diagram Name="TankControl">
+        <EntityTypeShape EntityType="TankControlModel.History" Width="1.5" PointX="3" PointY="1.375" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="TankControlModel.Recipe" Width="1.5" PointX="0.75" PointY="1.125" Height="4.8648079427083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="TankControlModel.SystemError" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
         <EntityTypeShape EntityType="TankControlModel.User" Width="1.5" PointX="5.75" PointY="3.75" Height="1.9802864583333335" IsExpanded="true" />
         <AssociationConnector Association="TankControlModel.FK_History_Recipe" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="3.3939518229166659" />
-          <ConnectorPoint PointX="3" PointY="3.3939518229166659" />
+          <ConnectorPoint PointX="2.25" PointY="3.5189518229166659" />
+          <ConnectorPoint PointX="3" PointY="3.5189518229166659" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
