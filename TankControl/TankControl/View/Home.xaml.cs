@@ -28,5 +28,22 @@ namespace TankControl.View
         {
 
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            TankControl.View.Recipe openwindow = new TankControl.View.Recipe();
+
+            if (MainContainer.Children.Count > 0)
+            {
+                MainContainer.Children.RemoveAt(0);
+                MainContainer.Children.Add(openwindow);
+            }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
