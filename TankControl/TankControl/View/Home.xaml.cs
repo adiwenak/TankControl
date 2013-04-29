@@ -57,5 +57,16 @@ namespace TankControl.View
             }
         }
 
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            TankControl.View.User openwindow = new TankControl.View.User();
+
+            if (MainContainer.Children.Count > 0)
+            {
+                MainContainer.Children.RemoveAt(0);
+                MainContainer.Children.Add(openwindow);
+            }
+        }
+
     }
 }

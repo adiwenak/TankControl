@@ -18,7 +18,7 @@
             <MenuItem Header="_Dashboard" Click="Dashboad_Click"/>
             <MenuItem Header="_Reporting" Click="MenuItem_Click_1" />
             <MenuItem Header="_Recipe" Click="MenuItem_Click" />
-            <MenuItem Header="_User"/>
+            <MenuItem Header="_User" Click="MenuItem_Click_2" />
         </Menu>
 
         <StackPanel Grid.Row="1"  x:Name="MainContainer" Height="675" Width="1000">
