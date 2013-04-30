@@ -29,5 +29,18 @@ namespace TankControl.Functions
             TinyTankSix,
             TinyTankSeven
         }
+
+        public enum ErrorLevel
+        {
+            System = 1,
+            Mechanical
+
+        }
+
+        public enum UserLevel
+        {
+            Administrator = 1,
+            Operator
+        }
     }
 }

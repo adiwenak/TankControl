@@ -50,36 +50,44 @@ namespace TankControl.View
                 /*Begin Query */
                 using (TankControlEntities tce = new TankControlEntities())
                 {
-                    var query = from a in tce.Histories
-                                where a.date >= startdate
-                                where a.date <= enddate
-                                select a;
-                  
-                    reportlist.Clear();
-                    foreach (var history in query)
+                    try
                     {
-                        reportlist.Add(new TankControl.History()
-                        {
-                            id = history.id,
-                            recipe_name = history.recipe_name,
-                            date = history.date,
-                            el1 = history.el1,
-                            el2 = history.el2,
-                            el3 = history.el3,
-                            el4 = history.el4,
-                            el5 = history.el5,
-                            el6 = history.el6,
-                            el7 = history.el7,
-                            total = history.total,
-                            duration_el1 = history.duration_el1,
-                            duration_el2 = history.duration_el2,
-                            duration_el3 = history.duration_el3,
-                            duration_el4 = history.duration_el4,
-                            duration_el5 = history.duration_el5,
-                            duration_el6 = history.duration_el6,
-                            duration_el7 = history.duration_el7
-                        });
+                        var query = from a in tce.Histories
+                                    where a.date >= startdate
+                                    where a.date <= enddate
+                                    select a;
 
+                        reportlist.Clear();
+                        foreach (var history in query)
+                        {
+                            reportlist.Add(new TankControl.History()
+                            {
+                                id = history.id,
+                                recipe_name = history.recipe_name,
+                                date = history.date,
+                                el1 = history.el1,
+                                el2 = history.el2,
+                                el3 = history.el3,
+                                el4 = history.el4,
+                                el5 = history.el5,
+                                el6 = history.el6,
+                                el7 = history.el7,
+                                total = history.total,
+                                duration_el1 = history.duration_el1,
+                                duration_el2 = history.duration_el2,
+                                duration_el3 = history.duration_el3,
+                                duration_el4 = history.duration_el4,
+                                duration_el5 = history.duration_el5,
+                                duration_el6 = history.duration_el6,
+                                duration_el7 = history.duration_el7
+                            });
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.InnerException.Message.ToString());
+                        Application.Current.Shutdown();
                     }
                     reportGridView.ItemsSource = reportlist;
                 }

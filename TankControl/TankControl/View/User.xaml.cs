@@ -13,7 +13,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 
-
 namespace TankControl.View
 {
     /// <summary>
@@ -25,63 +24,121 @@ namespace TankControl.View
         public User()
         {
             InitializeComponent();
+            
             userlist = new ObservableCollection<TankControl.User>();
-            using (TankControlEntities tce = new TankControlEntities())
-            {
-                var query = from a in tce.Users
-                            select a;
-
-                foreach (var user in query)
+                using (TankControlEntities tce = new TankControlEntities())
                 {
-                    userlist.Add(new TankControl.User()
+                    try{
+                        var query = from a in tce.Users
+                                    select a;
+                        foreach (var user in query)
+                        {
+                            userlist.Add(new TankControl.User()
+                            {
+                                id = user.id,
+                                name = user.name,
+                                auth_level = user.auth_level,
+                                username = user.username
+                            });
+                        }
+                    }
+                    catch (System.Data.EntityException ex)
                     {
-                        id = user.id,
-                        name = user.name,
-                        auth_level = user.auth_level,
-                        username = user.username
-                    });
-                }
+                        //MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An error occured while retrieving data from database. Please contact technician");
+                        Application.Current.Shutdown();
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        Application.Current.Shutdown();
+                    }
 
-                userListGridView.ItemsSource = userlist;
-            }
+                    userListGridView.ItemsSource = userlist;
+                }
+            
+            
         }
 
         private void userListGridView_RowEditEnded(object sender, Telerik.Windows.Controls.GridViewRowEditEndedEventArgs e)
         {
             var updatedRow = (e.NewData as TankControl.User);
+            string error = "";
             if (e.EditAction == Telerik.Windows.Controls.GridView.GridViewEditAction.Cancel)
             {
                 ///*action when the user canceled editing or adding item, based on its index*/
                 this.userListGridView.Columns[0].IsVisible = true; //show delete button
                 this.userListGridView.Columns[1].IsVisible = false; //hide done button
                 this.userListGridView.Columns[2].IsVisible = false; //hide cancel button
+
+
+                errorText.Content = "";
                 return;
             }
             if (e.EditOperationType == Telerik.Windows.Controls.GridView.GridViewEditOperationType.Edit)
             {
                 using (TankControlEntities tce = new TankControlEntities())
                 {
-                    var toUpdate = (from a in tce.Users
-                                    where a.id == updatedRow.id
-                                    select a).First();
-                    toUpdate.name = updatedRow.name;
-                    toUpdate.auth_level = updatedRow.auth_level;
-                    toUpdate.username = updatedRow.username;
-                    tce.SaveChanges();
+                    try
+                    {
+                        var toUpdate = (from a in tce.Users
+                                        where a.id == updatedRow.id
+                                        select a).First();
+                        toUpdate.name = updatedRow.name;
+                        toUpdate.auth_level = updatedRow.auth_level;
+                        toUpdate.username = updatedRow.username;
+                        tce.SaveChanges();
+                        errorText.Content = "";
+                    }
+                    catch (System.Data.EntityException ex)
+                    {
+                        //MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An error occured while performing update to the database. Please contact technician");
+                        Application.Current.Shutdown();
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        Application.Current.Shutdown();
+                    }
                 }
             }
             if (e.EditOperationType == Telerik.Windows.Controls.GridView.GridViewEditOperationType.Insert)
             {
+                
                 using (TankControlEntities tce = new TankControlEntities())
                 {
-                    tce.Users.Add(updatedRow);
+                    
                     try
                     {
+                        tce.Users.Add(updatedRow);
                         tce.SaveChanges();
+                        errorText.Content = "";
+                    }
+                    catch (System.Data.EntityException ex)
+                    {
+                        //MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An error occured while performing insert to the database. Please contact technician");
+                        Application.Current.Shutdown();
                     }
                     catch (Exception ex)
                     {
-                        
+                        if (ex.InnerException.InnerException.Message.Contains("UNIQUE"))
+                        {
+                            error = "Username sudah diambil";
+                            SystemError errorMessage = new SystemError();
+                            errorMessage.errorLevel = 1;
+                            errorMessage.errorDesc = error;
+                            tce.SystemErrors.Add(errorMessage);
+                            Application.Current.Shutdown();
+                        }
+                        else
+                        {
+                            MessageBox.Show("An unknown error has occurred. Please contact technician");
+                            Application.Current.Shutdown();
+                        }
                     }
 
                     
@@ -99,12 +156,28 @@ namespace TankControl.View
             var deleted = (e.Items.First() as TankControl.User);
             using (TankControlEntities tce = new TankControlEntities())
             {
-                var query = (from a in tce.Users
-                             where a.id == deleted.id
-                             select a).First();
+                try
+                {
+                    var query = (from a in tce.Users
+                                 where a.id == deleted.id
+                                 select a).First();
 
-                tce.Entry(query).State = System.Data.EntityState.Deleted;
-                tce.SaveChanges();
+                    tce.Entry(query).State = System.Data.EntityState.Deleted;
+                    tce.SaveChanges();
+                    errorText.Content = "";
+                }
+                catch (System.Data.EntityException ex)
+                {
+                    //MessageBox.Show(ex.InnerException.Message.ToString());
+                    MessageBox.Show("An error occured while performing delete to the database. Please contact technician");
+                    Application.Current.Shutdown();
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.InnerException.Message.ToString());
+                    MessageBox.Show("An unknown error has occurred. Please contact technician");
+                    Application.Current.Shutdown();
+                }
             }
         }
 
@@ -118,7 +191,44 @@ namespace TankControl.View
 
         private void userListGridView_RowValidating(object sender, Telerik.Windows.Controls.GridViewRowValidatingEventArgs e)
         {
+            var rowContent = (e.Row.DataContext as TankControl.User);
 
+            using (TankControlEntities tce = new TankControlEntities())
+            {
+                tce.Users.Add(rowContent);
+                var x = 0;
+            }
+            using (TankControlEntities tce = new TankControlEntities())
+            {
+                try
+                {
+                    var query = (from a in tce.Users
+                                 where a.username == rowContent.username
+                                 select a).FirstOrDefault();
+                    if (query != null)
+                    {
+                        //Telerik.Windows.Controls.GridViewCellValidationResult validationResult = new Telerik.Windows.Controls.GridViewCellValidationResult();
+                        //validationResult.PropertyName = "Error";
+                        //validationResult.ErrorMessage = "Username already taken";
+                        //e.ValidationResults.Add(validationResult);
+                        errorText.Content = "Username already taken";
+                        e.IsValid = false;
+                    }
+                }
+                catch (System.Data.EntityException ex)
+                {
+                    //MessageBox.Show(ex.InnerException.Message.ToString());
+                    MessageBox.Show("An error occured while performing query to the database. Please contact technician");
+                    Application.Current.Shutdown();
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.InnerException.Message.ToString());
+                    MessageBox.Show("An unknown error has occurred. Please contact technician");
+                    Application.Current.Shutdown();
+                }
+                
+            }
         }
     }
 }
