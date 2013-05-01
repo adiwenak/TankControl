@@ -19,9 +19,20 @@ namespace TankControl.View
     /// </summary>
     public partial class Home : Page
     {
+        public string userAuthenticationLevel;
         public Home()
         {
             InitializeComponent();
+            int userAuthentication = (int)Application.Current.Properties["userAuthenticationLevel"];
+            if (userAuthentication == 2)
+            {
+                User.IsEnabled = false;
+                User.Visibility = System.Windows.Visibility.Hidden;
+                Reporting.IsEnabled = false;
+                Reporting.Visibility = System.Windows.Visibility.Hidden;
+                Recipe.IsEnabled = false;
+                Recipe.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         public void Dashboad_Click(object sender, RoutedEventArgs e)

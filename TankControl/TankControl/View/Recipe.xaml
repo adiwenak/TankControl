@@ -24,7 +24,7 @@
                 <telerik:GridViewColumn IsVisible="False">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Windows7"
+                            <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Metro"
 							   Command="telerikGrid:RadGridViewCommands.CommitEdit" CommandTarget="{Binding}"  />
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
@@ -32,7 +32,7 @@
                 <telerik:GridViewColumn IsVisible="False">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Windows7"
+                            <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Metro"
 							   Command="telerikGrid:RadGridViewCommands.CancelRowEdit" CommandTarget="{Binding}"/>
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>

@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace TankControl
 {
@@ -26,14 +27,11 @@ namespace TankControl
         private void login_Click(object sender, RoutedEventArgs e)
         {
             string user = username.Text;
-            string pass = password.Password;
-
+            string pass = MD5Generator(password.Password);
             using (TankControlEntities tce = new TankControlEntities())
             {
                 try
                 {
-                    //MD5 hash in password not yet implemented
-                    //Hiding "user" menu in main window for administrator not yet implemented
                     var query = (from a in tce.Users
                                  where a.username == user
                                  where a.password == pass
@@ -44,9 +42,8 @@ namespace TankControl
                     }
                     else if (query != null)
                     {
+                        Application.Current.Properties["userAuthenticationLevel"] = query.auth_level; //set the current user authentication level to a "global" property/variable, so that other parts of the application can access it.
                         TankControl.MainWindow openwindow = new TankControl.MainWindow();
-                        //TankControl.View.Home menuwindow = new View.Home();
-                        //menuwindow.Dashboard.Visibility = System.Windows.Visibility.Hidden;
                         openwindow.Show();
                         this.Close();
                     }
@@ -69,6 +66,23 @@ namespace TankControl
                 }
             }
 
+        }
+
+        private string MD5Generator(string code)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(code));
+
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
         }
     }
 }

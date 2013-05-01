@@ -21,9 +21,19 @@ namespace TankControl.View
     public partial class User : UserControl
     {
         private ObservableCollection<TankControl.User> userlist;
+        private List<AuthenticationList> authenticationlist;
+
         public User()
         {
             InitializeComponent();
+            authenticationlist = new List<AuthenticationList>()
+            {
+                new AuthenticationList(){AuthenticationLevel = 1, AuthenticationName = "Administrator"},
+                new AuthenticationList(){AuthenticationLevel = 2, AuthenticationName = "Operator"}
+            };
+            Telerik.Windows.Controls.GridViewComboBoxColumn column = new Telerik.Windows.Controls.GridViewComboBoxColumn();
+            this.userListGridView.Columns.Add(column);
+            ((Telerik.Windows.Controls.GridViewComboBoxColumn)this.userListGridView.Columns["AuthLevel"]).ItemsSource = authenticationlist;
             
             userlist = new ObservableCollection<TankControl.User>();
                 using (TankControlEntities tce = new TankControlEntities())
@@ -71,7 +81,6 @@ namespace TankControl.View
                 this.userListGridView.Columns[0].IsVisible = true; //show delete button
                 this.userListGridView.Columns[1].IsVisible = false; //hide done button
                 this.userListGridView.Columns[2].IsVisible = false; //hide cancel button
-
 
                 errorText.Content = "";
                 return;
@@ -193,42 +202,51 @@ namespace TankControl.View
         {
             var rowContent = (e.Row.DataContext as TankControl.User);
 
-            using (TankControlEntities tce = new TankControlEntities())
-            {
-                tce.Users.Add(rowContent);
-                var x = 0;
-            }
-            using (TankControlEntities tce = new TankControlEntities())
-            {
-                try
-                {
-                    var query = (from a in tce.Users
-                                 where a.username == rowContent.username
-                                 select a).FirstOrDefault();
-                    if (query != null)
-                    {
-                        //Telerik.Windows.Controls.GridViewCellValidationResult validationResult = new Telerik.Windows.Controls.GridViewCellValidationResult();
-                        //validationResult.PropertyName = "Error";
-                        //validationResult.ErrorMessage = "Username already taken";
-                        //e.ValidationResults.Add(validationResult);
-                        errorText.Content = "Username already taken";
-                        e.IsValid = false;
-                    }
-                }
-                catch (System.Data.EntityException ex)
-                {
-                    //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An error occured while performing query to the database. Please contact technician");
-                    Application.Current.Shutdown();
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An unknown error has occurred. Please contact technician");
-                    Application.Current.Shutdown();
-                }
-                
-            }
         }
+
+        private void userListGridView_CellValidating(object sender, Telerik.Windows.Controls.GridViewCellValidatingEventArgs e)
+        {
+            if (e.Cell.Column.UniqueName == "columnUsername")
+            {
+                using (TankControlEntities tce = new TankControlEntities())
+                {
+                    try
+                    {
+                        var query = (from a in tce.Users
+                                     where a.username == e.NewValue
+                                     select a).FirstOrDefault();
+                        if (query != null)
+                        {
+                            //Telerik.Windows.Controls.GridViewCellValidationResult validationResult = new Telerik.Windows.Controls.GridViewCellValidationResult();
+                            //validationResult.PropertyName = "Error";
+                            //validationResult.ErrorMessage = "Username already taken";
+                            //e.ValidationResults.Add(validationResult);
+                            errorText.Content = "Username already taken";
+                            e.IsValid = false;
+                        }
+                    }
+                    catch (System.Data.EntityException ex)
+                    {
+                        //MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An error occured while performing query to the database. Please contact technician");
+                        Application.Current.Shutdown();
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        Application.Current.Shutdown();
+                    }
+
+                }
+            }
+
+        }
+    }
+
+    public class AuthenticationList
+    {
+        public int AuthenticationLevel { get; set; }
+        public string AuthenticationName { get; set; }
     }
 }

@@ -14,13 +14,13 @@
             </Grid.RowDefinitions>-->
             <Button x:Name="StartProcess" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="13,269,0,0" Click="Start_Click" />
             <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="124,269,0,0" Click="Stop_Click" />
-			<telerik:RadDropDownButton x:Name="DropDownReceipe" Content="-- Select Recipe --" Margin="10,17.94,53,628.53"
-						VerticalAlignment="Center" Width="187" FontSize="16" >
+			<!--<telerik:RadDropDownButton x:Name="DropDownReceipe" Content="Select Recipe" Margin="10,17.94,53,628.53" VerticalAlignment="Center" Width="187" FontSize="16" >
                     <telerik:RadDropDownButton.DropDownContent>
-                        <ListBox x:Name="Recipe" Width="185" telerik:StyleManager.Theme="Metro">
-                        </ListBox>
+                        <ListBox x:Name="RecipeList" Width="185">
+                    </ListBox>
                     </telerik:RadDropDownButton.DropDownContent>
-			</telerik:RadDropDownButton>
+			</telerik:RadDropDownButton>-->
+            <telerik:RadComboBox VerticalAlignment="Center" Width="187" FontSize="16" Margin="13,24,50,629" EmptyText="Select Recipe" Name="DropdownRecipe" SelectedValuePath="id" DisplayMemberPath="name" SelectionChanged="DropdownRecipe_SelectionChanged" />
 			<GroupBox x:Name="GroupAction" Header="Progress" HorizontalAlignment="Left" Margin="10,64.862,0,0" VerticalAlignment="Top" Height="176.608" Width="187">
 				<StackPanel HorizontalAlignment="Left" Height="223.078" VerticalAlignment="Top" Width="175">
 					<CheckBox Content="Ready" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="True" IsEnabled="False"/>
@@ -29,7 +29,7 @@
 					<CheckBox Content="Done" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
 				</StackPanel>
 			</GroupBox>
-		</Grid>
+        </Grid>
     </telerik:GroupBox>
 
 </UserControl>

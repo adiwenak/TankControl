@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TankControl.Class;
+using System.Collections.ObjectModel;
 
 namespace TankControl.View
 {
@@ -24,13 +25,23 @@ namespace TankControl.View
         public ControlArea()
         {
             InitializeComponent();
-            ListReceipe();
-
+            using (TankControlEntities tce = new TankControlEntities())
+            {
+                var query = from a in tce.Recipes
+                            select new { a.id, a.name };
+                foreach (var recipe in query)
+                {
+                    DropdownRecipe.Items.Add(new List<object> { new { id = recipe.id, name = recipe.name } });
+                }
+            
+            }
+            //ListReceipe();
             StopProcess.IsEnabled = false;
         }
 
         public void Stop_Click(object sender, RoutedEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine(DropdownRecipe.SelectedValue);
             Process.Singleton.FillupStop();
             StartProcess.IsEnabled = true;
             StopProcess.IsEnabled = false;
@@ -45,21 +56,27 @@ namespace TankControl.View
         }
 
         private void ListReceipe() {
-            for (int i = 1; i < 5; i++)
-            {
-                TextBlock tb = new TextBlock();
-                tb.Text = "Receipe "+i;
-                tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                tb.Margin = new Thickness(5, 3, 0, 3);
+            //for (int i = 1; i < 5; i++)
+            //{
+            //    TextBlock tb = new TextBlock();
+            //    tb.Text = "Receipe "+i;
+            //    tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            //    tb.Margin = new Thickness(5, 3, 0, 3);
 
-                StackPanel sp = new StackPanel();
-                sp.Orientation = Orientation.Horizontal;
-                sp.Children.Add(tb);
+            //    StackPanel sp = new StackPanel();
+            //    sp.Orientation = Orientation.Horizontal;
+            //    sp.Children.Add(tb);
 
-                ListBoxItem lb = new ListBoxItem();
-                lb.Content = sp;
-                Recipe.Items.Add(lb);
-            }
+            //    ListBoxItem lb = new ListBoxItem();
+            //    lb.Content = sp;
+            //    RecipeList.Items.Add(lb);
+            //}
+        }
+
+        private void DropdownRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var recipeId = DropdownRecipe.SelectedValue;
+
         }
     }
 }

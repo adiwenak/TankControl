@@ -1,9 +1,9 @@
 ﻿<Window x:Class="TankControl.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login" Height="247" Width="300">
+        Title="Login Tank Control" Height="247" Width="300">
     <Grid>
-        <Button Content="Login" Height="23" HorizontalAlignment="Left" Margin="104,160,0,0" Name="login" VerticalAlignment="Top" Width="75" Click="login_Click" />
+        <Button Content="Login" Height="23" HorizontalAlignment="Left" Margin="104,160,0,0" Name="login" VerticalAlignment="Top" Width="75" Click="login_Click" IsDefault="True" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="134,30,0,0" Name="username" VerticalAlignment="Top" Width="120" />
         <Label Content="Username:" Height="28" HorizontalAlignment="Left" Margin="15,25,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Password:" Height="28" HorizontalAlignment="Left" Margin="15,80,0,0" Name="label2" VerticalAlignment="Top" />

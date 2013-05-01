@@ -11,7 +11,7 @@
     <Grid>
         <Label Margin="6,0,769,0" FontSize="18" Height="34" VerticalAlignment="Top">Tank Control Users</Label>
         <Label Margin="6,24,93,0" Name="errorText" FontSize="12" Foreground="Red" Height="27" VerticalAlignment="Top"></Label>
-        <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="userListGridView" AutoGenerateColumns="False" ShowInsertRow="True" Margin="0,48,0,0" RowEditEnded="userListGridView_RowEditEnded" Deleted="userListGridView_Deleted" BeginningEdit="userListGridView_BeginningEdit" RowValidating="userListGridView_RowValidating">
+        <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="userListGridView" AutoGenerateColumns="False" ShowInsertRow="True" Margin="0,48,0,0" RowEditEnded="userListGridView_RowEditEnded" Deleted="userListGridView_Deleted" BeginningEdit="userListGridView_BeginningEdit" RowValidating="userListGridView_RowValidating" CellValidating="userListGridView_CellValidating">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewColumn>
                     <telerik:GridViewColumn.CellTemplate>
@@ -25,7 +25,7 @@
                 <telerik:GridViewColumn IsVisible="False">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Windows7"
+                            <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Metro"
 							   Command="telerikGrid:RadGridViewCommands.CommitEdit" CommandTarget="{Binding}"  />
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
@@ -33,14 +33,22 @@
                 <telerik:GridViewColumn IsVisible="False">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Windows7"
+                            <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Metro"
 							   Command="telerikGrid:RadGridViewCommands.CancelRowEdit" CommandTarget="{Binding}"/>
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
                 </telerik:GridViewColumn>
-                <telerik:GridViewDataColumn Header="Username" DataMemberBinding="{Binding username}" />
+                <telerik:GridViewDataColumn Header="Username" DataMemberBinding="{Binding username}" UniqueName="columnUsername"/>
                 <telerik:GridViewDataColumn Header="Name" DataMemberBinding="{Binding name}" />
-                <telerik:GridViewDataColumn Header="Authorization Level" DataMemberBinding="{Binding auth_level}" />
+                <telerik:GridViewComboBoxColumn Header="Authorization Level" DataMemberBinding="{Binding auth_level}" UniqueName="AuthLevel" DisplayMemberPath="AuthenticationName" SelectedValueMemberPath="AuthenticationLevel">
+                    <!--<telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                        <telerik:RadComboBox SelectedValue="{Binding AuthenticationLevel}"
+                                             DisplayMemberPath="AuthenticationName" x:Name="authComboBox"/>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>-->
+                </telerik:GridViewComboBoxColumn>
+                <!--<telerik:GridViewDataColumn Header="Authorization Level" DataMemberBinding="{Binding auth_level}"/>-->
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
     </Grid>
