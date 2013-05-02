@@ -81,7 +81,7 @@ namespace TankControl.View
                 this.userListGridView.Columns[0].IsVisible = true; //show delete button
                 this.userListGridView.Columns[1].IsVisible = false; //hide done button
                 this.userListGridView.Columns[2].IsVisible = false; //hide cancel button
-
+                this.userListGridView.Columns[3].IsReadOnly = true; //make username column read only
                 errorText.Content = "";
                 return;
             }
@@ -158,6 +158,7 @@ namespace TankControl.View
             this.userListGridView.Columns[0].IsVisible = true; //show delete button
             this.userListGridView.Columns[1].IsVisible = false; //hide done button
             this.userListGridView.Columns[2].IsVisible = false; //hide cancel button
+            this.userListGridView.Columns[3].IsReadOnly = true; //make username column read only
         }
 
         private void userListGridView_Deleted(object sender, Telerik.Windows.Controls.GridViewDeletedEventArgs e)
@@ -241,6 +242,11 @@ namespace TankControl.View
                 }
             }
 
+        }
+
+        private void userListGridView_AddingNewDataItem(object sender, Telerik.Windows.Controls.GridView.GridViewAddingNewEventArgs e)
+        {
+            this.userListGridView.Columns[3].IsReadOnly = false; //make username column editable
         }
     }
 
