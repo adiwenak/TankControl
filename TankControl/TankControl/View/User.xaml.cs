@@ -40,6 +40,7 @@ namespace TankControl.View
                 {
                     try{
                         var query = from a in tce.Users
+                                    orderby a.auth_level ascending
                                     select a;
                         foreach (var user in query)
                         {
@@ -48,7 +49,8 @@ namespace TankControl.View
                                 id = user.id,
                                 name = user.name,
                                 auth_level = user.auth_level,
-                                username = user.username
+                                username = user.username,
+                                password = TankControl.Class.AES.DecryptAES(user.password)
                             });
                         }
                     }
@@ -78,10 +80,10 @@ namespace TankControl.View
             if (e.EditAction == Telerik.Windows.Controls.GridView.GridViewEditAction.Cancel)
             {
                 ///*action when the user canceled editing or adding item, based on its index*/
-                this.userListGridView.Columns[0].IsVisible = true; //show delete button
-                this.userListGridView.Columns[1].IsVisible = false; //hide done button
-                this.userListGridView.Columns[2].IsVisible = false; //hide cancel button
-                this.userListGridView.Columns[3].IsReadOnly = true; //make username column read only
+                this.userListGridView.Columns["Delete"].IsVisible = true; //show delete button
+                this.userListGridView.Columns["Done"].IsVisible = false; //hide done button
+                this.userListGridView.Columns["Cancel"].IsVisible = false; //hide cancel button
+                this.userListGridView.Columns["AuthLevel"].IsVisible = true; //hide cancel button
                 errorText.Content = "";
                 return;
             }
@@ -96,7 +98,8 @@ namespace TankControl.View
                                         select a).First();
                         toUpdate.name = updatedRow.name;
                         toUpdate.auth_level = updatedRow.auth_level;
-                        toUpdate.username = updatedRow.username;
+                        //toUpdate.username = updatedRow.username;
+                        toUpdate.password = TankControl.Class.AES.EncryptAES(updatedRow.password);
                         tce.SaveChanges();
                         errorText.Content = "";
                     }
@@ -122,8 +125,20 @@ namespace TankControl.View
                     
                     try
                     {
+                        /*the value stored in temp are only for the purpose of the grid display
+                         *by not storing the original updatedrow values, the password value
+                         *that will be displayed would be in AES format after insertion,
+                         *the grid needs to be refreshed/reloaded in order for the correct display 
+                         *value to appear. Storing the value in temp then restoring the default values
+                         *of updated row eliminate the need to refresh/reload the grid.
+                         */
+                        var temp = updatedRow.password;
+                        updatedRow.auth_level = 2;
+                        updatedRow.password = TankControl.Class.AES.EncryptAES(updatedRow.password);
                         tce.Users.Add(updatedRow);
                         tce.SaveChanges();
+                        updatedRow.password = temp;
+                        this.userListGridView.Columns["AuthLevel"].IsVisible = true; //hide column authorization
                         errorText.Content = "";
                     }
                     catch (System.Data.EntityException ex)
@@ -154,11 +169,11 @@ namespace TankControl.View
                 }
             }
 
-            ///*action when the user has finished editing or adding item, based on its index*/
-            this.userListGridView.Columns[0].IsVisible = true; //show delete button
-            this.userListGridView.Columns[1].IsVisible = false; //hide done button
-            this.userListGridView.Columns[2].IsVisible = false; //hide cancel button
-            this.userListGridView.Columns[3].IsReadOnly = true; //make username column read only
+            this.userListGridView.Columns["Delete"].IsVisible = true; //show delete button
+            this.userListGridView.Columns["Done"].IsVisible = false; //hide done button
+            this.userListGridView.Columns["Cancel"].IsVisible = false; //hide cancel button
+            this.userListGridView.Columns["AuthLevel"].IsVisible = true; //hide column authorization
+           
         }
 
         private void userListGridView_Deleted(object sender, Telerik.Windows.Controls.GridViewDeletedEventArgs e)
@@ -194,16 +209,11 @@ namespace TankControl.View
         private void userListGridView_BeginningEdit(object sender, Telerik.Windows.Controls.GridViewBeginningEditRoutedEventArgs e)
         {
             ///*action when the user edit or add item, based on its index*/
-            this.userListGridView.Columns[0].IsVisible = false; //hide delete button
-            this.userListGridView.Columns[1].IsVisible = true; //show done button
-            this.userListGridView.Columns[2].IsVisible = true; //show cancel button
+            this.userListGridView.Columns["Delete"].IsVisible = false; //hide delete button
+            this.userListGridView.Columns["Done"].IsVisible = true; //show done button
+            this.userListGridView.Columns["Cancel"].IsVisible = true; //show cancel button
         }
 
-        private void userListGridView_RowValidating(object sender, Telerik.Windows.Controls.GridViewRowValidatingEventArgs e)
-        {
-            var rowContent = (e.Row.DataContext as TankControl.User);
-
-        }
 
         private void userListGridView_CellValidating(object sender, Telerik.Windows.Controls.GridViewCellValidatingEventArgs e)
         {
@@ -244,9 +254,21 @@ namespace TankControl.View
 
         }
 
+        private void userListGridView_Deleting(object sender, Telerik.Windows.Controls.GridViewDeletingEventArgs e)
+        {
+            /* check if the current user is an administrator, if yes prevent deletion */
+            var deletecheck = (e.Items.First() as TankControl.User);
+            if (deletecheck.auth_level == 1)
+            {
+                e.Cancel = true;
+                errorText.Content = "Cannot delete administrator";
+            }
+        }
+
         private void userListGridView_AddingNewDataItem(object sender, Telerik.Windows.Controls.GridView.GridViewAddingNewEventArgs e)
         {
-            this.userListGridView.Columns[3].IsReadOnly = false; //make username column editable
+            this.userListGridView.Columns["AuthLevel"].IsVisible = false; //hide authorization level column
+
         }
     }
 

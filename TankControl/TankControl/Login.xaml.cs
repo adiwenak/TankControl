@@ -27,7 +27,8 @@ namespace TankControl
         private void login_Click(object sender, RoutedEventArgs e)
         {
             string user = username.Text;
-            string pass = MD5Generator(password.Password);
+            string pass =TankControl.Class.AES.EncryptAES(password.Password);
+
             using (TankControlEntities tce = new TankControlEntities())
             {
                 try
@@ -66,23 +67,6 @@ namespace TankControl
                 }
             }
 
-        }
-
-        private string MD5Generator(string code)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-
-            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(code));
-
-            byte[] result = md5.Hash;
-
-            StringBuilder strBuilder = new StringBuilder();
-            for (int i = 0; i < result.Length; i++)
-            {
-                strBuilder.Append(result[i].ToString("x2"));
-            }
-
-            return strBuilder.ToString();
         }
     }
 }

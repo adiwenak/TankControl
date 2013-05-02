@@ -33,6 +33,10 @@ namespace TankControl.View
                 Recipe.IsEnabled = false;
                 Recipe.Visibility = System.Windows.Visibility.Hidden;
             }
+            else if (userAuthentication == 1)
+            {
+                //Do Nothing
+            }
         }
 
         public void Dashboad_Click(object sender, RoutedEventArgs e)
