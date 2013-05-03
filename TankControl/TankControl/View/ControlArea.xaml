@@ -20,7 +20,7 @@
                     </ListBox>
                     </telerik:RadDropDownButton.DropDownContent>
 			</telerik:RadDropDownButton>-->
-            <telerik:RadComboBox VerticalAlignment="Center" Width="187" FontSize="16" Margin="13,24,50,629" EmptyText="Select Recipe" Name="DropdownRecipe" SelectedValuePath="id" DisplayMemberPath="name" SelectionChanged="DropdownRecipe_SelectionChanged" />
+            <telerik:RadComboBox VerticalAlignment="Center" Width="187" FontSize="16" Margin="13,24,50,629" EmptyText="Select Recipe" Name="DropdownRecipe" SelectedValuePath="id" DisplayMemberPath="name" SelectionChanged="DropdownRecipe_SelectionChanged" DropDownOpened="DropdownRecipe_DropDownOpened" />
 			<GroupBox x:Name="GroupAction" Header="Progress" HorizontalAlignment="Left" Margin="10,64.862,0,0" VerticalAlignment="Top" Height="176.608" Width="187">
 				<StackPanel HorizontalAlignment="Left" Height="223.078" VerticalAlignment="Top" Width="175">
 					<CheckBox Content="Ready" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="True" IsEnabled="False"/>

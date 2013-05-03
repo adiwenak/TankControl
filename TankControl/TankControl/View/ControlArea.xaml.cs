@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using TankControl.Class;
 using System.Collections.ObjectModel;
 
@@ -28,30 +19,13 @@ namespace TankControl.View
         public ControlArea()
         {
             InitializeComponent();
-            using (TankControlEntities tce = new TankControlEntities())
-            {
-                var query = from a in tce.Recipes
-                            select new { a.id, a.name };
-
-                if (this.recipelist == null)
-                {
-                    this.recipelist = new ObservableCollection<TankControl.Recipe>();
-                }
-                foreach (var recipe in query)
-                {
-                    recipelist.Add(new TankControl.Recipe() {id=recipe.id, name=recipe.name });
-                    //DropdownRecipe.Items.Add(new List<object> { new { id = recipe.id, name = recipe.name } });
-                    //DropdownRecipe.Items.Add(new RecipeDD(recipe.name,recipe.id));
-                }
-
-                DropdownRecipe.ItemsSource = recipelist;
-            }
-            //ListReceipe();
+            ////ListReceipe();
             StopProcess.IsEnabled = false;
         }
 
         public void Stop_Click(object sender, RoutedEventArgs e)
         {
+            
             System.Diagnostics.Debug.WriteLine(DropdownRecipe.SelectedValue);
             Process.Singleton.FillupStop();
             StartProcess.IsEnabled = true;
@@ -89,5 +63,29 @@ namespace TankControl.View
             var recipeId = DropdownRecipe.SelectedValue;
 
         }
+
+        private void DropdownRecipe_DropDownOpened(object sender, EventArgs e)
+        {
+            using (TankControlEntities tce = new TankControlEntities())
+            {
+
+                var query = tce.Recipes.Select(x => new { x.id, x.name }).ToList();
+
+                if (this.recipelist == null)
+                {
+                    this.recipelist = new ObservableCollection<TankControl.Recipe>();
+                }
+                this.recipelist.Clear();
+                foreach (var recipe in query)
+                {
+                    recipelist.Add(new TankControl.Recipe() { id = recipe.id, name = recipe.name });
+                    //DropdownRecipe.Items.Add(new List<object> { new { id = recipe.id, name = recipe.name } });
+                    //DropdownRecipe.Items.Add(new RecipeDD(recipe.name,recipe.id));
+                }
+
+                DropdownRecipe.ItemsSource = recipelist;
+            }
+        }
+
     }
 }
