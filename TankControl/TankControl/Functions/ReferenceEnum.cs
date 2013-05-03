@@ -49,5 +49,19 @@ namespace TankControl.Functions
             DO14,
             DO15
         }
+        
+        public enum ErrorLevel
+        {
+            System = 1,
+            Mechanical
+
+        }
+
+        public enum UserLevel
+        {
+            Administrator = 1,
+            Operator
+        }
+
     }
 }

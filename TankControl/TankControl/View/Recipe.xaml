@@ -6,9 +6,11 @@
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              xmlns:telerikGrid="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"
              xmlns:telerikControls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
-    mc:Ignorable="d" Width="Auto" Height="Auto">
+    mc:Ignorable="d" d:DesignHeight="700" d:DesignWidth="1000">
     <Grid>
-        <telerik:RadGridView Name="recipeListGridView" AutoGenerateColumns="False" RowEditEnded="recipeListGridView_RowEditEnded" Deleted="recipeListGridView_Deleted" FrozenColumnCount="4" ShowInsertRow="True" telerikControls:StyleManager.Theme="Windows7" BeginningEdit="recipeListGridView_BeginningEdit" RowValidating="recipeListGridView_RowValidating" CanUserFreezeColumns="True" RowDetailsVisibilityMode="Collapsed">
+        <Label Margin="6,0,769,0" FontSize="18" Height="34" VerticalAlignment="Top">Tank Control Recipe</Label>
+        <Label Margin="6,24,93,0" Name="errorText" FontSize="12" Foreground="Red" Height="27" VerticalAlignment="Top"></Label>
+        <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="recipeListGridView" AutoGenerateColumns="False" RowEditEnded="recipeListGridView_RowEditEnded" Deleted="recipeListGridView_Deleted" FrozenColumnCount="4" ShowInsertRow="True" BeginningEdit="recipeListGridView_BeginningEdit" RowValidating="recipeListGridView_RowValidating" CanUserFreezeColumns="True" RowDetailsVisibilityMode="Collapsed" Margin="0,48,0,0">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewColumn>
                     <telerik:GridViewColumn.CellTemplate>
@@ -22,7 +24,7 @@
                 <telerik:GridViewColumn IsVisible="False">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Windows7"
+                            <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Metro"
 							   Command="telerikGrid:RadGridViewCommands.CommitEdit" CommandTarget="{Binding}"  />
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
@@ -30,7 +32,7 @@
                 <telerik:GridViewColumn IsVisible="False">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Windows7"
+                            <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Metro"
 							   Command="telerikGrid:RadGridViewCommands.CancelRowEdit" CommandTarget="{Binding}"/>
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
