@@ -19,8 +19,31 @@ namespace TankControl.View
         public ControlArea()
         {
             InitializeComponent();
-         
+<<<<<<< HEAD
+            ListReceipe();
+=======
+            ////ListReceipe();
+>>>>>>> 47b3b815c4059bf9a7420182602ff4402afcd546
             StopProcess.IsEnabled = false;
+        }
+
+        private void ListReceipe()
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                TextBlock tb = new TextBlock();
+                tb.Text = "Receipe " + i;
+                tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                tb.Margin = new Thickness(5, 3, 0, 3);
+
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.Children.Add(tb);
+
+                ListBoxItem lb = new ListBoxItem();
+                lb.Content = sp;
+                Recipe.Items.Add(lb);
+            }
         }
 
         public void Stop_Click(object sender, RoutedEventArgs e)
@@ -40,8 +63,17 @@ namespace TankControl.View
             StopProcess.IsEnabled = true;
         }
 
+<<<<<<< HEAD
         private void StartTake_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void PauseTake_Click(object sender, RoutedEventArgs e)
+        {
+
+=======
+        private void ListReceipe() {
             //for (int i = 1; i < 5; i++)
             //{
             //    TextBlock tb = new TextBlock();
@@ -83,9 +115,10 @@ namespace TankControl.View
                     //DropdownRecipe.Items.Add(new List<object> { new { id = recipe.id, name = recipe.name } });
                     //DropdownRecipe.Items.Add(new RecipeDD(recipe.name,recipe.id));
                 }
-            }
 
-            DropdownRecipe.ItemsSource = recipelist;
+                DropdownRecipe.ItemsSource = recipelist;
+            }
+>>>>>>> 47b3b815c4059bf9a7420182602ff4402afcd546
         }
 
     }

@@ -62,23 +62,17 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="Telerik.Windows.Controls, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.Chart, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.Charting, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Data, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.DataServices, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Docking, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.EntityFramework, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.Expressions, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewers, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.GanttView, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.GridView, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.ImageEditor, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Input, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Navigation, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.RichTextBoxUI, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.ScheduleView, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Data, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Diagrams.Core, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
     <Reference Include="Telerik.Windows.Zip, Version=2012.1.215.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -89,16 +83,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Functions\AES.cs" />
     <Compile Include="Class\BigValveL.cs" />
     <Compile Include="Class\BigValveR.cs" />
     <Compile Include="Class\MainTank.cs" />
+    <Compile Include="Class\Microcontroller.cs" />
     <Compile Include="Class\Process.cs" />
     <Compile Include="Class\Pump.cs" />
     <Compile Include="Class\TinyTankL.cs" />
     <Compile Include="Class\BaseTank.cs" />
-    <Compile Include="Class\Component.cs" />
+    <Compile Include="Class\IComponent.cs" />
+    <Compile Include="Functions\ReferenceEnum.cs" />
+    <Compile Include="Class\OutValve.cs" />
     <Compile Include="History.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -110,28 +111,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class\OutValve.cs" />
+    <Compile Include="MXIO.cs" />
+    <Compile Include="Class\SmallValve.cs" />
     <Compile Include="Recipe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class\SmallValve.cs" />
     <Compile Include="RunTester.cs" />
-    <Compile Include="Class\ShakeValveL.cs" />
-    <Compile Include="Class\ShakeValveR.cs" />
+    <Compile Include="Class\ControlValve.cs" />
+    <Compile Include="Class\ShakeValve.cs" />
+    <Compile Include="Class\TinyTankPump.cs" />
+    <Compile Include="Class\TinyTankR.cs" />
+    <Compile Include="Class\WeightScale.cs" />
     <Compile Include="SystemError.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="TankControlDB.Designer.cs">
+    <Compile Include="TankControl.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TankControlDB.edmx</DependentUpon>
+      <DependentUpon>TankControl.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Class\TinyTankPump.cs" />
-    <Compile Include="Class\TinyTankR.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class\WeightScale.cs" />
     <Compile Include="View\ComponentGDA\Component\BigValveLComponent.xaml.cs">
       <DependentUpon>BigValveLComponent.xaml</DependentUpon>
     </Compile>
@@ -189,6 +190,13 @@
     <Compile Include="View\GraphicDisplayArea.xaml.cs">
       <DependentUpon>GraphicDisplayArea.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\User.xaml.cs">
+      <DependentUpon>User.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -281,6 +289,10 @@
       <SubType>Designer</SubType>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\User.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -316,9 +328,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EntityDeploy Include="TankControlDB.edmx">
+    <EntityDeploy Include="TankControl.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TankControlDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>TankControl.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
