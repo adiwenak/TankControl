@@ -20,8 +20,11 @@ namespace TankControl.View
     /// <summary>
     /// Interaction logic for ControlArea.xaml
     /// </summary>
+    /// 
+
     public partial class ControlArea : UserControl
     {
+        private ObservableCollection<TankControl.Recipe> recipelist;
         public ControlArea()
         {
             InitializeComponent();
@@ -29,11 +32,19 @@ namespace TankControl.View
             {
                 var query = from a in tce.Recipes
                             select new { a.id, a.name };
+
+                if (this.recipelist == null)
+                {
+                    this.recipelist = new ObservableCollection<TankControl.Recipe>();
+                }
                 foreach (var recipe in query)
                 {
-                    DropdownRecipe.Items.Add(new List<object> { new { id = recipe.id, name = recipe.name } });
+                    recipelist.Add(new TankControl.Recipe() {id=recipe.id, name=recipe.name });
+                    //DropdownRecipe.Items.Add(new List<object> { new { id = recipe.id, name = recipe.name } });
+                    //DropdownRecipe.Items.Add(new RecipeDD(recipe.name,recipe.id));
                 }
-            
+
+                DropdownRecipe.ItemsSource = recipelist;
             }
             //ListReceipe();
             StopProcess.IsEnabled = false;
