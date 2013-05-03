@@ -20,7 +20,6 @@ namespace TankControl
         }
     
         public int id { get; set; }
-        public string name { get; set; }
         public Nullable<double> el1 { get; set; }
         public Nullable<double> el2 { get; set; }
         public Nullable<double> el3 { get; set; }

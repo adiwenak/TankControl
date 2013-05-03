@@ -27,7 +27,7 @@ namespace TankControl.Class
                 if (singleton == null)
                 {
                     singleton = new Process();
-                    Microcontroller.Singleton.InitConnection();
+                    //Microcontroller.Singleton.InitConnection();
                 }
                 return singleton;
             }
