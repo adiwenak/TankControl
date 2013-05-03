@@ -26,6 +26,10 @@ namespace TankControl.View
         public User()
         {
             InitializeComponent();
+            /*For binding in radGridViewComboBox Column
+             *For example if the data from database is 1 then the combobox column will display
+             *administrator
+             */
             authenticationlist = new List<AuthenticationList>()
             {
                 new AuthenticationList(){AuthenticationLevel = 1, AuthenticationName = "Administrator"},
@@ -33,8 +37,9 @@ namespace TankControl.View
             };
             Telerik.Windows.Controls.GridViewComboBoxColumn column = new Telerik.Windows.Controls.GridViewComboBoxColumn();
             this.userListGridView.Columns.Add(column);
-            ((Telerik.Windows.Controls.GridViewComboBoxColumn)this.userListGridView.Columns["AuthLevel"]).ItemsSource = authenticationlist;
-            
+            ((Telerik.Windows.Controls.GridViewComboBoxColumn)this.userListGridView.Columns["columnAuthLevel"]).ItemsSource = authenticationlist;
+
+            /*Begin Query*/
             userlist = new ObservableCollection<TankControl.User>();
                 using (TankControlEntities tce = new TankControlEntities())
                 {
@@ -54,16 +59,14 @@ namespace TankControl.View
                             });
                         }
                     }
-                    catch (System.Data.EntityException ex)
+                    catch (System.Data.EntityException)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An error occured while retrieving data from database. Please contact technician");
+                        MessageBox.Show("An error occured while retrieving data from database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
 
@@ -80,10 +83,10 @@ namespace TankControl.View
             if (e.EditAction == Telerik.Windows.Controls.GridView.GridViewEditAction.Cancel)
             {
                 ///*action when the user canceled editing or adding item, based on its index*/
-                this.userListGridView.Columns["Delete"].IsVisible = true; //show delete button
-                this.userListGridView.Columns["Done"].IsVisible = false; //hide done button
-                this.userListGridView.Columns["Cancel"].IsVisible = false; //hide cancel button
-                this.userListGridView.Columns["AuthLevel"].IsVisible = true; //hide cancel button
+                this.userListGridView.Columns["columnDelete"].IsVisible = true; //show delete button
+                this.userListGridView.Columns["columnDone"].IsVisible = false; //hide done button
+                this.userListGridView.Columns["columnCancel"].IsVisible = false; //hide cancel button
+                this.userListGridView.Columns["columnAuthLevel"].IsVisible = true; //hide authorization level column
                 errorText.Content = "";
                 return;
             }
@@ -103,16 +106,16 @@ namespace TankControl.View
                         tce.SaveChanges();
                         errorText.Content = "";
                     }
-                    catch (System.Data.EntityException ex)
+                    catch (System.Data.EntityException)
                     {
                         //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An error occured while performing update to the database. Please contact technician");
+                        MessageBox.Show("An error occured while performing update to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        MessageBox.Show("An unknown error has occurred. Please contact technician","Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
                 }
@@ -138,13 +141,12 @@ namespace TankControl.View
                         tce.Users.Add(updatedRow);
                         tce.SaveChanges();
                         updatedRow.password = temp;
-                        this.userListGridView.Columns["AuthLevel"].IsVisible = true; //hide column authorization
+                        this.userListGridView.Columns["columnAuthLevel"].IsVisible = true; //hide column authorization
                         errorText.Content = "";
                     }
-                    catch (System.Data.EntityException ex)
+                    catch (System.Data.EntityException)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An error occured while performing insert to the database. Please contact technician");
+                        MessageBox.Show("An error occured while performing insert to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
                     catch (Exception ex)
@@ -160,7 +162,7 @@ namespace TankControl.View
                         }
                         else
                         {
-                            MessageBox.Show("An unknown error has occurred. Please contact technician");
+                            MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                             Application.Current.Shutdown();
                         }
                     }
@@ -169,10 +171,10 @@ namespace TankControl.View
                 }
             }
 
-            this.userListGridView.Columns["Delete"].IsVisible = true; //show delete button
-            this.userListGridView.Columns["Done"].IsVisible = false; //hide done button
-            this.userListGridView.Columns["Cancel"].IsVisible = false; //hide cancel button
-            this.userListGridView.Columns["AuthLevel"].IsVisible = true; //hide column authorization
+            this.userListGridView.Columns["columnDelete"].IsVisible = true; //show delete button
+            this.userListGridView.Columns["columnDone"].IsVisible = false; //hide done button
+            this.userListGridView.Columns["columnCancel"].IsVisible = false; //hide cancel button
+            this.userListGridView.Columns["columnAuthLevel"].IsVisible = true; //hide column authorization
            
         }
 
@@ -191,16 +193,15 @@ namespace TankControl.View
                     tce.SaveChanges();
                     errorText.Content = "";
                 }
-                catch (System.Data.EntityException ex)
+                catch (System.Data.EntityException)
                 {
-                    //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An error occured while performing delete to the database. Please contact technician");
+                    MessageBox.Show("An error occured while performing delete to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An unknown error has occurred. Please contact technician");
+                    MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
             }
@@ -209,9 +210,9 @@ namespace TankControl.View
         private void userListGridView_BeginningEdit(object sender, Telerik.Windows.Controls.GridViewBeginningEditRoutedEventArgs e)
         {
             ///*action when the user edit or add item, based on its index*/
-            this.userListGridView.Columns["Delete"].IsVisible = false; //hide delete button
-            this.userListGridView.Columns["Done"].IsVisible = true; //show done button
-            this.userListGridView.Columns["Cancel"].IsVisible = true; //show cancel button
+            this.userListGridView.Columns["columnDelete"].IsVisible = false; //hide delete button
+            this.userListGridView.Columns["columnDone"].IsVisible = true; //show done button
+            this.userListGridView.Columns["columnCancel"].IsVisible = true; //show cancel button
         }
 
 
@@ -228,24 +229,18 @@ namespace TankControl.View
                                      select a).FirstOrDefault();
                         if (query != null)
                         {
-                            //Telerik.Windows.Controls.GridViewCellValidationResult validationResult = new Telerik.Windows.Controls.GridViewCellValidationResult();
-                            //validationResult.PropertyName = "Error";
-                            //validationResult.ErrorMessage = "Username already taken";
-                            //e.ValidationResults.Add(validationResult);
                             errorText.Content = "Username already taken";
                             e.IsValid = false;
                         }
                     }
-                    catch (System.Data.EntityException ex)
+                    catch (System.Data.EntityException)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An error occured while performing query to the database. Please contact technician");
+                        MessageBox.Show("An error occured while performing query to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
 
@@ -267,7 +262,7 @@ namespace TankControl.View
 
         private void userListGridView_AddingNewDataItem(object sender, Telerik.Windows.Controls.GridView.GridViewAddingNewEventArgs e)
         {
-            this.userListGridView.Columns["AuthLevel"].IsVisible = false; //hide authorization level column
+            this.userListGridView.Columns["columnAuthLevel"].IsVisible = false; //hide authorization level column
 
         }
     }

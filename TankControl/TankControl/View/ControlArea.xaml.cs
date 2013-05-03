@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-
 using TankControl.Class;
 using System.Collections.ObjectModel;
 
@@ -19,7 +18,6 @@ namespace TankControl.View
         public ControlArea()
         {
             InitializeComponent();
-         
             StopProcess.IsEnabled = false;
         }
 
@@ -40,52 +38,41 @@ namespace TankControl.View
             StopProcess.IsEnabled = true;
         }
 
-        private void StartTake_Click(object sender, RoutedEventArgs e)
-        {
-            //for (int i = 1; i < 5; i++)
-            //{
-            //    TextBlock tb = new TextBlock();
-            //    tb.Text = "Receipe "+i;
-            //    tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            //    tb.Margin = new Thickness(5, 3, 0, 3);
-
-            //    StackPanel sp = new StackPanel();
-            //    sp.Orientation = Orientation.Horizontal;
-            //    sp.Children.Add(tb);
-
-            //    ListBoxItem lb = new ListBoxItem();
-            //    lb.Content = sp;
-            //    RecipeList.Items.Add(lb);
-            //}
-        }
-
         private void DropdownRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var recipeId = DropdownRecipe.SelectedValue;
-
         }
 
         private void DropdownRecipe_DropDownOpened(object sender, EventArgs e)
         {
             using (TankControlEntities tce = new TankControlEntities())
             {
-
-                var query = tce.Recipes.Select(x => new { x.id, x.name }).ToList();
-
-                if (this.recipelist == null)
+                try
                 {
-                    this.recipelist = new ObservableCollection<TankControl.Recipe>();
+                    var query = tce.Recipes.Select(x => new { x.id, x.name }).ToList();
+
+                    if (this.recipelist == null)
+                    {
+                        this.recipelist = new ObservableCollection<TankControl.Recipe>();
+                    }
+                    this.recipelist.Clear();
+                    foreach (var recipe in query)
+                    {
+                        recipelist.Add(new TankControl.Recipe() { id = recipe.id, name = recipe.name });
+                    }
                 }
-                this.recipelist.Clear();
-                foreach (var recipe in query)
+                catch (System.Data.EntityException)
                 {
-                    recipelist.Add(new TankControl.Recipe() { id = recipe.id, name = recipe.name });
-                    //DropdownRecipe.Items.Add(new List<object> { new { id = recipe.id, name = recipe.name } });
-                    //DropdownRecipe.Items.Add(new RecipeDD(recipe.name,recipe.id));
+                    MessageBox.Show("An error occured while generating recipe data from database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Application.Current.Shutdown();
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Application.Current.Shutdown();
+                }
+                DropdownRecipe.ItemsSource = recipelist;
             }
-
-            DropdownRecipe.ItemsSource = recipelist;
         }
 
     }
