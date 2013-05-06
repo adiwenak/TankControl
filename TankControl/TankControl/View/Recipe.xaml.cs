@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using Telerik.Windows.Controls;
 
 namespace TankControl.View
 {
@@ -21,10 +22,11 @@ namespace TankControl.View
     public partial class Recipe : UserControl
     {
         private ObservableCollection<TankControl.Recipe> recipelist;
+        private float elementLimit;
         public Recipe()
         {
-            
             InitializeComponent();
+            elementLimit = TankControl.Properties.Settings.Default.ElementLimit;
             recipelist = new ObservableCollection<TankControl.Recipe>();
             using (TankControlEntities tce = new TankControlEntities())
             {
@@ -104,6 +106,17 @@ namespace TankControl.View
                         toUpdate.el6 = updatedRow.el6;
                         toUpdate.el7 = updatedRow.el7;
                         tce.SaveChanges();
+                        if (updatedRow is TankControl.Recipe)
+                        {
+                            if (checkElementLimit(updatedRow) == false)
+                            {
+                                e.Row.Background = new SolidColorBrush(Colors.Red);
+                            }
+                            else
+                            {
+                                e.Row.Background = new SolidColorBrush(Colors.White);
+                            }
+                        }
                         errorText.Content = "";
                     }
                     catch (System.Data.EntityException)
@@ -188,21 +201,46 @@ namespace TankControl.View
         private void recipeListGridView_RowValidating(object sender, Telerik.Windows.Controls.GridViewRowValidatingEventArgs e)
         {
             var rowContent = (e.Row.DataContext as TankControl.Recipe);
-            var elementSum = 
-                Convert.ToSingle(rowContent.el1) + 
-                Convert.ToSingle(rowContent.el2) + 
-                Convert.ToSingle(rowContent.el3) + 
-                Convert.ToSingle(rowContent.el4) + 
-                Convert.ToSingle(rowContent.el5) + 
-                Convert.ToSingle(rowContent.el6) + 
-                Convert.ToSingle(rowContent.el7);
-            var elementLimit = 1000;
-            if (elementSum > elementLimit)
+            if (checkElementLimit(rowContent) == false)
             {
                 errorText.Content = "The sum of element 1 to element 7 must not exceed " + elementLimit;
                 e.IsValid = false;
             }
             
+        }
+
+        private void recipeListGridView_RowLoaded(object sender, Telerik.Windows.Controls.GridView.RowLoadedEventArgs e)
+        {
+            
+            var rowContent = (e.DataElement) as TankControl.Recipe;
+            if (rowContent is TankControl.Recipe)
+            {
+               if (checkElementLimit(rowContent) == false)
+               {
+                   e.Row.Background = new SolidColorBrush(Colors.Red);
+               }
+                
+            }
+        }
+    
+        private bool checkElementLimit(TankControl.Recipe recipeElement)
+        {
+            var elementSum =
+               Convert.ToSingle(recipeElement.el1) +
+               Convert.ToSingle(recipeElement.el2) +
+               Convert.ToSingle(recipeElement.el3) +
+               Convert.ToSingle(recipeElement.el4) +
+               Convert.ToSingle(recipeElement.el5) +
+               Convert.ToSingle(recipeElement.el6) +
+               Convert.ToSingle(recipeElement.el7);
+            if (elementSum > elementLimit)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
