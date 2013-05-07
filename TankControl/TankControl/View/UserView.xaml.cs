@@ -18,12 +18,12 @@ namespace TankControl.View
     /// <summary>
     /// Interaction logic for User.xaml
     /// </summary>
-    public partial class User : UserControl
+    public partial class UserView : UserControl
     {
         private ObservableCollection<TankControl.User> userlist;
         private List<AuthenticationList> authenticationlist;
 
-        public User()
+        public UserView()
         {
             InitializeComponent();
             authenticationlist = new List<AuthenticationList>()

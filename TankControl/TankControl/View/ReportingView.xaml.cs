@@ -18,10 +18,10 @@ namespace TankControl.View
     /// <summary>
     /// Interaction logic for Reporting.xaml
     /// </summary>
-    public partial class Reporting : UserControl
+    public partial class ReportingView : UserControl
     {
         private ObservableCollection<TankControl.History> reportlist = new ObservableCollection<TankControl.History>();
-        public Reporting()
+        public ReportingView()
         {
             InitializeComponent();
         }

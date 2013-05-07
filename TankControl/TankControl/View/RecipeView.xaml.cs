@@ -18,12 +18,12 @@ namespace TankControl.View
     /// <summary>
     /// Interaction logic for Recipe.xaml
     /// </summary>
-    public partial class Recipe : UserControl
+    public partial class RecipeView : UserControl
     {
         private ObservableCollection<TankControl.Recipe> recipelist;
         private int startIndex = 12; 
         private int endIndex = 21;
-        public Recipe()
+        public RecipeView()
         {
             
             InitializeComponent();
