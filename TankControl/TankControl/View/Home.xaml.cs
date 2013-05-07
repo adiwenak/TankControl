@@ -52,7 +52,7 @@ namespace TankControl.View
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            TankControl.View.Recipe openwindow = new TankControl.View.Recipe();
+            TankControl.View.RecipeView openwindow = new TankControl.View.RecipeView();
 
             if (MainContainer.Children.Count > 0)
             {
@@ -63,7 +63,7 @@ namespace TankControl.View
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            TankControl.View.Reporting openwindow = new TankControl.View.Reporting();
+            TankControl.View.ReportingView openwindow = new TankControl.View.ReportingView();
 
             if (MainContainer.Children.Count > 0)
             {
@@ -74,7 +74,7 @@ namespace TankControl.View
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            TankControl.View.User openwindow = new TankControl.View.User();
+            TankControl.View.UserView openwindow = new TankControl.View.UserView();
 
             if (MainContainer.Children.Count > 0)
             {

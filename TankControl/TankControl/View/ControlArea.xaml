@@ -8,16 +8,8 @@
              d:DesignHeight="300" d:DesignWidth="300" Width="250" Height="675">
     <telerik:GroupBox x:Name="groupCA" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="595" Width="224" BorderThickness="4" Header="Control Area" FontSize="18.667">
         <Grid Width="250" Height="675" Margin="0,12,-38,-121.53">
-            <Button x:Name="StartProcess" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="13,269,0,0" Click="Start_Click" />
-            <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="124,269,0,0" Click="Stop_Click" />
-			<!--<telerik:RadDropDownButton x:Name="DropDownReceipe" Content="Select Recipe" Margin="10,17.94,53,628.53" VerticalAlignment="Center" Width="187" FontSize="16" >
-            <Button x:Name="PauseTake" Content="Pause Take" Height="30" HorizontalAlignment="Left" Margin="43,366,0,0" VerticalAlignment="Top" Width="132" Click="StartTake_Click"/>
-
-                    <telerik:RadDropDownButton.DropDownContent>
-                        <ListBox x:Name="RecipeList" Width="185">
-                    </ListBox>
-                    </telerik:RadDropDownButton.DropDownContent>
-			</telerik:RadDropDownButton>-->
+            <Button x:Name="StartProcess" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="13,269,0,0" Click="Start_Click" IsEnabled="False" />
+            <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="71" Margin="124,269,0,0" Click="Stop_Click" IsEnabled="False" />
             <telerik:RadComboBox VerticalAlignment="Center" Width="187" FontSize="16" Margin="13,24,50,629" EmptyText="Select Recipe" Name="DropdownRecipe" SelectedValuePath="id" DisplayMemberPath="name" SelectionChanged="DropdownRecipe_SelectionChanged" DropDownOpened="DropdownRecipe_DropDownOpened" />
 			<GroupBox x:Name="GroupAction" Header="Progress" HorizontalAlignment="Left" Margin="10,64.862,0,0" VerticalAlignment="Top" Height="176.608" Width="187">
 				<StackPanel HorizontalAlignment="Left" Height="223.078" VerticalAlignment="Top" Width="175">

@@ -27,7 +27,7 @@ namespace TankControl.Class
                 if (singleton == null)
                 {
                     singleton = new Process();
-                    //Microcontroller.Singleton.InitConnection();
+                    Microcontroller.Singleton.InitConnection();
                 }
                 return singleton;
             }
@@ -78,6 +78,21 @@ namespace TankControl.Class
 
         // PROPERTIES - END
 
+
+        public bool IsProcessReady()
+        {
+            bool ready = false;
+
+            if (this.Recipe != null)
+            {
+                if (this.Recipe.IsValid() == true)
+                {
+                    ready = true;
+                }
+            }
+
+            return ready;
+        }
         // PROCESS - START
         public void ProcessFillup(float receiveWeight)
         {
@@ -170,21 +185,30 @@ namespace TankControl.Class
         // CONTROL - START
         public void FillupRun()
         {
-            this.MainTank.TPump1.StageLimit = 2;
-            this.MainTank.TPump1.StageLimit2 = 4;
-            this.MainTank.TPump2.StageLimit = 6;
-            this.MainTank.TPump2.StageLimit2 = 8;
-            this.MainTank.TLeft1.StageLimit = 10;
-            this.MainTank.TLeft2.StageLimit = 12;
-            this.MainTank.TRight1.StageLimit = 14;
-            this.MainTank.TRight2.StageLimit = 15;
-            this.MainTank.TRight3.StageLimit = 16;
-            this.MainTank.TPump1.RunPump();
-            this.MainTank.TPump1.RunValveBig();
+            if (this.Recipe != null)
+            {
+                float pumpOneA = (float)(this.Recipe.el1 * this.Recipe.switch_el1);
+                float pumpOneB = (float)(this.Recipe.el1 * (1 - this.Recipe.switch_el1));
 
-            RunTester.Singleton.RunTimer();
+                float pumpTwoA = (float)(this.Recipe.el2 * this.Recipe.switch_el2);
+                float pumpTwoB = (float)(this.Recipe.el2 * (1 - this.Recipe.switch_el2));
 
-            this.MainTank.Start();
+                this.MainTank.TPump1.StageLimit = 3;
+                this.MainTank.TPump1.StageLimit2 = 5;
+                this.MainTank.TPump2.StageLimit = 7;
+                this.MainTank.TPump2.StageLimit2 = 10;
+                this.MainTank.TLeft1.StageLimit = 12;
+                this.MainTank.TLeft2.StageLimit = 15;
+                this.MainTank.TRight1.StageLimit = 17;
+                this.MainTank.TRight2.StageLimit =  20;
+                this.MainTank.TRight3.StageLimit = 30;
+                this.MainTank.TPump1.RunPump();
+                this.MainTank.TPump1.RunValveBig();
+
+                RunTester.Singleton.RunTimer();
+
+                this.MainTank.Start();
+            }
         }
 
         public void FillupStop()
@@ -309,7 +333,7 @@ namespace TankControl.Class
         }
 
         // LISTENER WEIGHT SCALE
-        public void WeightUpdated(float receiveWeight)
+        public void WeightUpdated(float receiveWeight,float addweight)
         {
             if (WeightScale.Singleton.CurrentWeight == receiveWeight)
             {

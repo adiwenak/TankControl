@@ -67,7 +67,7 @@ namespace TankControl
         {
             weight += this.addWeight;
             System.Diagnostics.Debug.WriteLine("weight :" + weight);
-            WeightScale.Singleton.WeightScaleUpdated(weight);
+            WeightScale.Singleton.WeightScaleUpdated(weight,this.AddWeight);
         }
     }
 }

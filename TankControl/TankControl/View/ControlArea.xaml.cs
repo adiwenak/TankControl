@@ -19,8 +19,6 @@ namespace TankControl.View
         public ControlArea()
         {
             InitializeComponent();
-         
-            StopProcess.IsEnabled = false;
         }
 
         public void Stop_Click(object sender, RoutedEventArgs e)
@@ -40,28 +38,22 @@ namespace TankControl.View
             StopProcess.IsEnabled = true;
         }
 
-        private void StartTake_Click(object sender, RoutedEventArgs e)
-        {
-            //for (int i = 1; i < 5; i++)
-            //{
-            //    TextBlock tb = new TextBlock();
-            //    tb.Text = "Receipe "+i;
-            //    tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            //    tb.Margin = new Thickness(5, 3, 0, 3);
-
-            //    StackPanel sp = new StackPanel();
-            //    sp.Orientation = Orientation.Horizontal;
-            //    sp.Children.Add(tb);
-
-            //    ListBoxItem lb = new ListBoxItem();
-            //    lb.Content = sp;
-            //    RecipeList.Items.Add(lb);
-            //}
-        }
-
         private void DropdownRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var recipeId = DropdownRecipe.SelectedValue;
+            int recipeId = (int)DropdownRecipe.SelectedValue;
+            using (TankControlEntities tce = new TankControlEntities())
+            {
+                Recipe selectedRecipe = tce.Recipes.Where(x => x.id == recipeId).FirstOrDefault();
+                if (selectedRecipe != null)
+                {
+                    Process.Singleton.Recipe = selectedRecipe;
+                    if (Process.Singleton.IsProcessReady() == true)
+                    {
+                        StartProcess.IsEnabled = true;
+                    }
+                }
+
+            }
 
         }
 

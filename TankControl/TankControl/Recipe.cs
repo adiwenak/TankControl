@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using TankControl.Class;
 
 namespace TankControl
 {
@@ -21,25 +22,39 @@ namespace TankControl
     
         public int id { get; set; }
         public string name { get; set; }
-        public Nullable<double> el1 { get; set; }
-        public Nullable<double> el2 { get; set; }
-        public Nullable<double> el3 { get; set; }
-        public Nullable<double> el4 { get; set; }
-        public Nullable<double> el5 { get; set; }
-        public Nullable<double> el6 { get; set; }
-        public Nullable<double> el7 { get; set; }
-        public Nullable<double> tol_el1 { get; set; }
-        public Nullable<double> tol_el2 { get; set; }
-        public Nullable<double> tol_el3 { get; set; }
-        public Nullable<double> tol_el4 { get; set; }
-        public Nullable<double> tol_el5 { get; set; }
-        public Nullable<double> tol_el6 { get; set; }
-        public Nullable<double> tol_el7 { get; set; }
-        public Nullable<double> switch_el1 { get; set; }
-        public Nullable<double> switch_el2 { get; set; }
-        public Nullable<int> runtime { get; set; }
+        public double el1 { get; set; }
+        public double el2 { get; set; }
+        public double el3 { get; set; }
+        public double el4 { get; set; }
+        public double el5 { get; set; }
+        public double el6 { get; set; }
+        public double el7 { get; set; }
+        public double tol_el1 { get; set; }
+        public double tol_el2 { get; set; }
+        public double tol_el3 { get; set; }
+        public double tol_el4 { get; set; }
+        public double tol_el5 { get; set; }
+        public double tol_el6 { get; set; }
+        public double tol_el7 { get; set; }
+        public double switch_el1 { get; set; }
+        public double switch_el2 { get; set; }
+        public int runtime { get; set; }
     
         public virtual ICollection<History> Histories { get; set; }
+
+        public bool IsValid()
+        {
+            bool valid = false;
+
+            double sumAll = this.el1 + this.el3 + this.el4 + this.el5 + this.el6 + this.el7;
+
+            if (sumAll <= Setting.Limit)
+            {
+                valid = true;
+            }
+
+            return valid;
+        }
     }
     
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,16 +66,16 @@ namespace TankControl.Class
         // PROPERTIES END
     
         // UPDATE OBSERVER
-        public void Notify(float weight)
+        public void Notify(float weight, float addWeight)
         {
-            process.WeightUpdated(weight);
+            process.WeightUpdated(weight, addWeight);
         }
 
         // LISTENER TO WEIGHT SCALE
 
-        public void WeightScaleUpdated(float weight)
-        {   
-            Notify(weight);
+        public void WeightScaleUpdated(float weight, float addWeight)
+        {
+            Notify(weight, addWeight);
             this.CurrentWeight = weight;
         }
 
