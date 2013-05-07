@@ -13,7 +13,7 @@
         <Label Margin="6,24,93,0" Name="errorText" FontSize="12" Foreground="Red" Height="27" VerticalAlignment="Top"></Label>
         <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="userListGridView" AutoGenerateColumns="False" ShowInsertRow="True" Margin="0,48,0,0" RowEditEnded="userListGridView_RowEditEnded" Deleted="userListGridView_Deleted" BeginningEdit="userListGridView_BeginningEdit" CellValidating="userListGridView_CellValidating" Deleting="userListGridView_Deleting" AddingNewDataItem="userListGridView_AddingNewDataItem">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewColumn UniqueName="Delete">
+                <telerik:GridViewColumn UniqueName="columnDelete">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <telerik:RadButton Command="telerikGrid:RadGridViewCommands.Delete" CommandParameter="{Binding}" Width="20" Height="20" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}">
@@ -22,7 +22,7 @@
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
                 </telerik:GridViewColumn>
-                <telerik:GridViewColumn IsVisible="False" UniqueName="Done">
+                <telerik:GridViewColumn IsVisible="False" UniqueName="columnDone">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Metro"
@@ -30,7 +30,7 @@
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
                 </telerik:GridViewColumn>
-                <telerik:GridViewColumn IsVisible="False" UniqueName="Cancel">
+                <telerik:GridViewColumn IsVisible="False" UniqueName="columnCancel">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Metro"
@@ -41,7 +41,7 @@
                 <telerik:GridViewDataColumn Header="Username" DataMemberBinding="{Binding username}" UniqueName="columnUsername"/>
                 <telerik:GridViewDataColumn Header="Password" DataMemberBinding="{Binding password}"/>
                 <telerik:GridViewDataColumn Header="Name" DataMemberBinding="{Binding name}" />
-                <telerik:GridViewComboBoxColumn Header="Authorization Level" DataMemberBinding="{Binding auth_level}" UniqueName="AuthLevel" DisplayMemberPath="AuthenticationName" SelectedValueMemberPath="AuthenticationLevel" IsReadOnly="True"/>
+                <telerik:GridViewComboBoxColumn Header="Authorization Level" DataMemberBinding="{Binding auth_level}" UniqueName="columnAuthLevel" DisplayMemberPath="AuthenticationName" SelectedValueMemberPath="AuthenticationLevel" IsReadOnly="True"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
     </Grid>

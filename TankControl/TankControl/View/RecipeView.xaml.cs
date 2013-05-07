@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using Telerik.Windows.Controls;
 
 namespace TankControl.View
 {
@@ -21,14 +22,12 @@ namespace TankControl.View
     public partial class RecipeView : UserControl
     {
         private ObservableCollection<TankControl.Recipe> recipelist;
-        private int startIndex = 12; 
-        private int endIndex = 21;
+        private double elementLimit;
         public RecipeView()
         {
-            
             InitializeComponent();
+            elementLimit = TankControl.Properties.Settings.Default.Limit;
             recipelist = new ObservableCollection<TankControl.Recipe>();
-           
             using (TankControlEntities tce = new TankControlEntities())
             {
                 try
@@ -62,10 +61,14 @@ namespace TankControl.View
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (System.Data.EntityException)
                 {
-
-                    MessageBox.Show(ex.InnerException.Message.ToString());
+                    MessageBox.Show("An error occured while performing update to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Application.Current.Shutdown();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
                 recipeListGridView.ItemsSource = recipelist;
@@ -78,15 +81,11 @@ namespace TankControl.View
             var updatedRow = (e.NewData as TankControl.Recipe);
             if (e.EditAction == Telerik.Windows.Controls.GridView.GridViewEditAction.Cancel)
             {
-                ///*action when the user canceled editing or adding item, based on its index*/
-                this.recipeListGridView.Columns[0].IsVisible = true; //show delete button
-                this.recipeListGridView.Columns[1].IsVisible = false; //hide done button
-                this.recipeListGridView.Columns[2].IsVisible = false; //hide cancel button
+                /*action when the user canceled editing or adding item, based on its index*/
+                this.recipeListGridView.Columns["columnDelete"].IsVisible = true; //show delete button
+                this.recipeListGridView.Columns["columnDone"].IsVisible = false; //hide done button
+                this.recipeListGridView.Columns["columnCancel"].IsVisible = false; //hide cancel button
                 errorText.Content = "";
-                //for (int i = startIndex; i < endIndex; i++)
-                //{
-                //    this.recipeListGridView.Columns[i].IsVisible = false;
-                //}
                 return;
             }
             if (e.EditOperationType == Telerik.Windows.Controls.GridView.GridViewEditOperationType.Edit)
@@ -107,18 +106,27 @@ namespace TankControl.View
                         toUpdate.el6 = updatedRow.el6;
                         toUpdate.el7 = updatedRow.el7;
                         tce.SaveChanges();
+                        if (updatedRow is TankControl.Recipe)
+                        {
+                            if (checkElementLimit(updatedRow) == false)
+                            {
+                                e.Row.Background = new SolidColorBrush(Colors.Red);
+                            }
+                            else
+                            {
+                                e.Row.Background = new SolidColorBrush(Colors.White);
+                            }
+                        }
                         errorText.Content = "";
                     }
-                    catch (System.Data.EntityException ex)
+                    catch (System.Data.EntityException)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An error occured while performing update to the database. Please contact technician");
+                        MessageBox.Show("An error occured while performing update to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
                 }
@@ -134,29 +142,23 @@ namespace TankControl.View
                         tce.SaveChanges();
                         errorText.Content = "";
                     }
-                    catch (System.Data.EntityException ex)
+                    catch (System.Data.EntityException)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An error occured while performing insert to the database. Please contact technician");
+                        MessageBox.Show("An error occured while performing insert to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An unknown error has occurred. Please contact technician");
+                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
                 }
             }
 
-            ///*action when the user has finished editing or adding item, based on its index*/
-            this.recipeListGridView.Columns[0].IsVisible = true; //show delete button
-            this.recipeListGridView.Columns[1].IsVisible = false; //hide done button
-            this.recipeListGridView.Columns[2].IsVisible = false; //hide cancel button
-            //for (int i = startIndex; i < endIndex; i++)
-            //{
-            //    this.recipeListGridView.Columns[i].IsVisible = false;
-            //}
+            /*action when the user has finished editing or adding item, based on its index*/
+            this.recipeListGridView.Columns["columnDelete"].IsVisible = true; //show delete button
+            this.recipeListGridView.Columns["columnDone"].IsVisible = false; //hide done button
+            this.recipeListGridView.Columns["columnCancel"].IsVisible = false; //hide cancel button
         }
 
         private void recipeListGridView_Deleted(object sender, Telerik.Windows.Controls.GridViewDeletedEventArgs e)
@@ -174,16 +176,14 @@ namespace TankControl.View
                     tce.SaveChanges();
                     errorText.Content = "";
                 }
-                catch (System.Data.EntityException ex)
+                catch (System.Data.EntityException)
                 {
-                    //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An error occured while performing delete to the database. Please contact technician");
+                    MessageBox.Show("An error occured while performing delete to the database. Please contact technician","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An unknown error has occurred. Please contact technician");
+                    MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
             }
@@ -192,45 +192,55 @@ namespace TankControl.View
         private void recipeListGridView_BeginningEdit(object sender, Telerik.Windows.Controls.GridViewBeginningEditRoutedEventArgs e)
         {
             ///*action when the user edit or add item, based on its index*/
-            this.recipeListGridView.Columns[0].IsVisible = false; //hide delete button
-            this.recipeListGridView.Columns[1].IsVisible = true; //show done button
-            this.recipeListGridView.Columns[2].IsVisible = true; //show cancel button
-            for (int i = startIndex; i < endIndex; i++)
-            {
-                this.recipeListGridView.Columns[i].IsVisible = true;
-            }
+            this.recipeListGridView.Columns["columnDelete"].IsVisible = false; //hide delete button
+            this.recipeListGridView.Columns["columnDone"].IsVisible = true; //show done button
+            this.recipeListGridView.Columns["columnCancel"].IsVisible = true; //show cancel button
         }
 
+        // For use in validating element limit
         private void recipeListGridView_RowValidating(object sender, Telerik.Windows.Controls.GridViewRowValidatingEventArgs e)
         {
             var rowContent = (e.Row.DataContext as TankControl.Recipe);
-            var elementSum = 
-                Convert.ToSingle(rowContent.el1) + 
-                Convert.ToSingle(rowContent.el2) + 
-                Convert.ToSingle(rowContent.el3) + 
-                Convert.ToSingle(rowContent.el4) + 
-                Convert.ToSingle(rowContent.el5) + 
-                Convert.ToSingle(rowContent.el6) + 
-                Convert.ToSingle(rowContent.el7);
-            var elementLimit = 1000;
-            //if (Convert.ToString(rowContent) == string.Empty)
-            //{
-            //    Telerik.Windows.Controls.GridViewCellValidationResult validationResult = new Telerik.Windows.Controls.GridViewCellValidationResult();
-            //    validationResult.PropertyName = "Error";
-            //    validationResult.ErrorMessage = "At least one field must be filled";
-            //    e.ValidationResults.Add(validationResult);
-            //    e.IsValid = false;
-            //}
-            if (elementSum > elementLimit)
+            if (checkElementLimit(rowContent) == false)
             {
-                //Telerik.Windows.Controls.GridViewCellValidationResult validationResult = new Telerik.Windows.Controls.GridViewCellValidationResult();
-                //validationResult.PropertyName = "Error";
-                //validationResult.ErrorMessage = "The sum of element 1 to element 7 must not exceed 1000";
-                //e.ValidationResults.Add(validationResult);
                 errorText.Content = "The sum of element 1 to element 7 must not exceed " + elementLimit;
                 e.IsValid = false;
             }
             
+        }
+
+        private void recipeListGridView_RowLoaded(object sender, Telerik.Windows.Controls.GridView.RowLoadedEventArgs e)
+        {
+            
+            var rowContent = (e.DataElement) as TankControl.Recipe;
+            if (rowContent is TankControl.Recipe)
+            {
+               if (checkElementLimit(rowContent) == false)
+               {
+                   e.Row.Background = new SolidColorBrush(Colors.Red);
+               }
+                
+            }
+        }
+    
+        private bool checkElementLimit(TankControl.Recipe recipeElement)
+        {
+            var elementSum =
+               Convert.ToSingle(recipeElement.el1) +
+               Convert.ToSingle(recipeElement.el2) +
+               Convert.ToSingle(recipeElement.el3) +
+               Convert.ToSingle(recipeElement.el4) +
+               Convert.ToSingle(recipeElement.el5) +
+               Convert.ToSingle(recipeElement.el6) +
+               Convert.ToSingle(recipeElement.el7);
+            if (elementSum > elementLimit)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

@@ -15,10 +15,10 @@
         </Grid.RowDefinitions>
         
         <Menu Grid.Row="0" IsMainMenu="True" Height="25" Width="1000">
-            <MenuItem Header="_Dashboard" Click="Dashboad_Click" Name="Dashboard"/>
-            <MenuItem Header="_Reporting" Click="MenuItem_Click_1" Name="Reporting"/>
-            <MenuItem Header="_Recipe" Click="MenuItem_Click" Name="Recipe"/>
-            <MenuItem Header="_User" Click="MenuItem_Click_2" Name="User"/>
+            <MenuItem Header="_Dashboard" Click="Dashboard_Click" Name="Dashboard"/>
+            <MenuItem Header="_Reporting" Click="Reporting_Click" Name="Reporting"/>
+            <MenuItem Header="_Recipe" Click="Recipe_Click" Name="Recipe"/>
+            <MenuItem Header="_User" Click="User_Click" Name="User"/>
         </Menu>
 
         <StackPanel Grid.Row="1"  x:Name="MainContainer" Height="675" Width="1000">

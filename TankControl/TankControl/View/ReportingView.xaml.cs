@@ -84,9 +84,14 @@ namespace TankControl.View
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (System.Data.EntityException)
                     {
-                        MessageBox.Show(ex.InnerException.Message.ToString());
+                        MessageBox.Show("An error occured while generating data from database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Application.Current.Shutdown();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
                     reportGridView.ItemsSource = reportlist;

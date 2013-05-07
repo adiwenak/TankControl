@@ -37,9 +37,18 @@ namespace TankControl.View
             {
                 //Do Nothing
             }
+            else
+            {
+                User.IsEnabled = false;
+                User.Visibility = System.Windows.Visibility.Hidden;
+                Reporting.IsEnabled = false;
+                Reporting.Visibility = System.Windows.Visibility.Hidden;
+                Recipe.IsEnabled = false;
+                Recipe.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
-        public void Dashboad_Click(object sender, RoutedEventArgs e)
+        public void Dashboard_Click(object sender, RoutedEventArgs e)
         {
             TankControl.View.Dashboard openwindow = new TankControl.View.Dashboard();
 
@@ -50,7 +59,7 @@ namespace TankControl.View
             }
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void Recipe_Click(object sender, RoutedEventArgs e)
         {
             TankControl.View.RecipeView openwindow = new TankControl.View.RecipeView();
 
@@ -61,7 +70,7 @@ namespace TankControl.View
             }
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void Reporting_Click(object sender, RoutedEventArgs e)
         {
             TankControl.View.ReportingView openwindow = new TankControl.View.ReportingView();
 
@@ -72,7 +81,7 @@ namespace TankControl.View
             }
         }
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        private void User_Click(object sender, RoutedEventArgs e)
         {
             TankControl.View.UserView openwindow = new TankControl.View.UserView();
 

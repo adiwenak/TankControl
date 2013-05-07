@@ -10,9 +10,9 @@
     <Grid>
         <Label Margin="6,0,769,0" FontSize="18" Height="34" VerticalAlignment="Top">Tank Control Recipe</Label>
         <Label Margin="6,24,93,0" Name="errorText" FontSize="12" Foreground="Red" Height="27" VerticalAlignment="Top"></Label>
-        <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="recipeListGridView" AutoGenerateColumns="False" RowEditEnded="recipeListGridView_RowEditEnded" Deleted="recipeListGridView_Deleted" FrozenColumnCount="4" ShowInsertRow="True" BeginningEdit="recipeListGridView_BeginningEdit" RowValidating="recipeListGridView_RowValidating" CanUserFreezeColumns="True" RowDetailsVisibilityMode="Collapsed" Margin="0,48,0,0">
+        <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="recipeListGridView" AutoGenerateColumns="False" RowEditEnded="recipeListGridView_RowEditEnded" Deleted="recipeListGridView_Deleted" FrozenColumnCount="4" ShowInsertRow="True" BeginningEdit="recipeListGridView_BeginningEdit" RowValidating="recipeListGridView_RowValidating" CanUserFreezeColumns="True" RowDetailsVisibilityMode="Collapsed" Margin="0,48,0,0" RowLoaded="recipeListGridView_RowLoaded">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewColumn>
+                <telerik:GridViewColumn UniqueName="columnDelete">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
                                 <telerik:RadButton Command="telerikGrid:RadGridViewCommands.Delete" CommandParameter="{Binding}" Width="20" Height="20" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}">
@@ -21,7 +21,7 @@
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
                 </telerik:GridViewColumn>
-                <telerik:GridViewColumn IsVisible="False">
+                <telerik:GridViewColumn IsVisible="False" UniqueName="columnDone">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <telerik:RadButton Width="50" Content="Done" telerikControls:StyleManager.Theme="Metro"
@@ -29,7 +29,7 @@
                         </DataTemplate>
                     </telerik:GridViewColumn.CellTemplate>
                 </telerik:GridViewColumn>
-                <telerik:GridViewColumn IsVisible="False">
+                <telerik:GridViewColumn IsVisible="False" UniqueName="columnCancel">
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <telerik:RadButton Width="50" Content="Cancel" telerikControls:StyleManager.Theme="Metro"
