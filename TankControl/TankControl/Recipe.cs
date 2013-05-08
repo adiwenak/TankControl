@@ -48,7 +48,7 @@ namespace TankControl
 
             double sumAll = this.el1 + this.el3 + this.el4 + this.el5 + this.el6 + this.el7;
 
-            if (sumAll <= Setting.Limit)
+            if (sumAll <= TankControl.Properties.Settings.Default.Limit)
             {
                 valid = true;
             }

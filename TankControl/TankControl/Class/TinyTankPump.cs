@@ -52,8 +52,8 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Run();
+                this.pump = true;
                 this._TempAddWeight();
-                pump = true;
             }
         }
 
@@ -63,8 +63,8 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Stop();
+                this.pump = false;
                 this._TempEqualWeight();
-                pump = false;
             }
         }
 
@@ -74,8 +74,8 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Run();
+                this.valveSmall = true;
                 this._TempAddWeight();
-                valveSmall = true;
             }
         }
 
@@ -85,8 +85,8 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Stop();
+                this.valveSmall = false;
                 this._TempEqualWeight();
-                valveSmall = false;
             }
         }
 
@@ -96,8 +96,8 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Run();
+                this.valveBig = true;
                 this._TempAddWeight();
-                valveBig = true;
             }
         } 
 
@@ -107,18 +107,21 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Stop();
-                this._TempEqualWeight();
-                valveBig = false;
+                this.valveBig = false;
+                this._TempEqualWeight(); 
             }
         }
 
-        public void End()
+        public void End(bool cleanup)
         {
             this.StopValveBig();
             this.StopPump();
             this.StopValveSmall();
             this._TempEqualWeight();
-            this.CleanUp();
+            if (cleanup)
+            {
+                this.CleanUp();
+            }
         }
 
         public void CleanUp()

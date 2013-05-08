@@ -65,10 +65,13 @@ namespace TankControl.Class
             }
         }
 
-        public void End()
+        public void End(bool cleanup)
         {
             this.Stop();
-            this.CleanUp();
+            if (cleanup)
+            {
+                this.CleanUp();
+            }
         }
 
     }

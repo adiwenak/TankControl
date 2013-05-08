@@ -3,7 +3,19 @@
   <Profiles />
   <Settings>
     <Setting Name="Limit" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">30</Value>
+      <Value Profile="(Default)">400</Value>
+    </Setting>
+    <Setting Name="MoxAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.5.254</Value>
+    </Setting>
+    <Setting Name="MoxPort" Type="System.UInt16" Scope="User">
+      <Value Profile="(Default)">502</Value>
+    </Setting>
+    <Setting Name="MoxTimeout" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="MoxPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

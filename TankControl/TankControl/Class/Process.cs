@@ -27,7 +27,6 @@ namespace TankControl.Class
                 if (singleton == null)
                 {
                     singleton = new Process();
-                    Microcontroller.Singleton.InitConnection();
                 }
                 return singleton;
             }
@@ -87,61 +86,66 @@ namespace TankControl.Class
             {
                 if (this.Recipe.IsValid() == true)
                 {
-                    ready = true;
+                    if (WeightScale.Singleton.CurrentWeight >= -1 && WeightScale.Singleton.CurrentWeight <= 1)
+                    {
+                        if (Microcontroller.Singleton.IsConnected())
+                        {
+                            ready = true;
+                        }
+                    }
                 }
             }
 
             return ready;
         }
+
         // PROCESS - START
         public void ProcessFillup(float receiveWeight)
         {
             if (receiveWeight >= this.MainTank.TPump1.StageLimit && receiveWeight < this.MainTank.TPump1.StageLimit2)
             {
-                this.MainTank.TPump1.StopValveBig();
+                this.StopAllComponent(false);
                 this.MainTank.TPump1.RunValveSmall();
             }
             else if(receiveWeight >= this.MainTank.TPump1.StageLimit2 && receiveWeight < this.MainTank.TPump2.StageLimit)
             {
-                this.MainTank.TPump1.StopValveSmall();
-                this.MainTank.TPump1.StopPump();
+                this.StopAllComponent(false);
                 this.MainTank.TPump2.RunPump();
                 this.MainTank.TPump2.RunValveBig();
             }
             else if (receiveWeight >= this.MainTank.TPump1.StageLimit && receiveWeight < this.MainTank.TPump2.StageLimit2)
             {
+                this.StopAllComponent(false);
                 this.MainTank.TPump2.RunValveSmall();
-                this.MainTank.TPump2.StopValveBig();
             }
             else if (receiveWeight >= this.MainTank.TPump2.StageLimit2 && receiveWeight < this.MainTank.TLeft1.StageLimit)
             {
-                this.MainTank.TPump2.StopPump();
-                this.MainTank.TPump2.StopValveSmall();
+                this.StopAllComponent(false);
                 this.MainTank.TLeft1.Run();
             }
             else if (receiveWeight >= this.MainTank.TLeft1.StageLimit && receiveWeight < this.MainTank.TLeft2.StageLimit)
             {
-                this.MainTank.TLeft1.Stop();
+                this.StopAllComponent(false);
                 this.MainTank.TLeft2.Run();
             }
             else if (receiveWeight >= this.MainTank.TLeft2.StageLimit && receiveWeight < this.MainTank.TRight1.StageLimit)
             {
-                this.MainTank.TLeft2.Stop();
+                this.StopAllComponent(false);
                 this.MainTank.TRight1.Run();
             }
             else if (receiveWeight >= this.MainTank.TRight1.StageLimit && receiveWeight < this.MainTank.TRight2.StageLimit)
             {
-                this.MainTank.TRight1.Stop();
+                this.StopAllComponent(false);
                 this.MainTank.TRight2.Run();
             }
             else if (receiveWeight >= this.MainTank.TRight2.StageLimit && receiveWeight < this.MainTank.TRight3.StageLimit)
             {
-                this.MainTank.TRight2.Stop();
+                this.StopAllComponent(false);
                 this.MainTank.TRight3.Run();
             }
             else if (receiveWeight >= this.MainTank.TRight3.StageLimit)
             {
-                this.MainTank.TRight3.Stop();
+                this.StopAllComponent(false);
                 RunTester.Singleton.StopTimer();
                 this.ProcessShake();
             }
@@ -156,10 +160,22 @@ namespace TankControl.Class
 
         }
 
+        public void ProcessTaking()
+        {
+            this.MainTank.OpenValveControl();
+            this.MainTank.OpenValveOutput();
+        }
+
+        public void ProcessTakingStop()
+        {
+            this.MainTank.StopValveControl();
+            this.MainTank.StopValveOutput();
+        }
+
         private void ShakeRun(object sender, EventArgs e)
         {
             runCounter++;
-            if (runCounter < 5)
+            if (runCounter < this.Recipe.runtime)
             {
                 this.MainTank.OpenValveControl();
                 this.MainTank.OpenValveShake();
@@ -175,10 +191,7 @@ namespace TankControl.Class
             }
         }
 
-        public void ProcessTaking()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         // PROCESS - END
         
@@ -188,20 +201,30 @@ namespace TankControl.Class
             if (this.Recipe != null)
             {
                 float pumpOneA = (float)(this.Recipe.el1 * this.Recipe.switch_el1);
-                float pumpOneB = (float)(this.Recipe.el1 * (1 - this.Recipe.switch_el1));
+                float pumpOneB = pumpOneA + (float)(this.Recipe.el1 * (1 - this.Recipe.switch_el1));
 
-                float pumpTwoA = (float)(this.Recipe.el2 * this.Recipe.switch_el2);
-                float pumpTwoB = (float)(this.Recipe.el2 * (1 - this.Recipe.switch_el2));
+                float pumpTwoA = pumpOneB + (float)(this.Recipe.el2 * this.Recipe.switch_el2);
+                float pumpTwoB = pumpTwoA + (float)(this.Recipe.el2 * (1 - this.Recipe.switch_el2));
 
-                this.MainTank.TPump1.StageLimit = 3;
-                this.MainTank.TPump1.StageLimit2 = 5;
-                this.MainTank.TPump2.StageLimit = 7;
-                this.MainTank.TPump2.StageLimit2 = 10;
-                this.MainTank.TLeft1.StageLimit = 12;
-                this.MainTank.TLeft2.StageLimit = 15;
-                this.MainTank.TRight1.StageLimit = 17;
-                this.MainTank.TRight2.StageLimit =  20;
-                this.MainTank.TRight3.StageLimit = 30;
+                float pumpThree = pumpTwoB + (float)this.Recipe.el3;
+
+                float pumpFour = pumpThree + (float)this.Recipe.el4;
+
+                float pumpFive = pumpFour + (float)this.Recipe.el5;
+
+                float pumpSix = pumpFive + (float)this.Recipe.el6;
+
+                float pumpSeven = pumpSix + (float)this.Recipe.el7;
+                     
+                this.MainTank.TPump1.StageLimit = pumpOneA;
+                this.MainTank.TPump1.StageLimit2 = pumpOneB;
+                this.MainTank.TPump2.StageLimit = pumpTwoA;
+                this.MainTank.TPump2.StageLimit2 = pumpTwoB;
+                this.MainTank.TLeft1.StageLimit = pumpThree;
+                this.MainTank.TLeft2.StageLimit = pumpFour;
+                this.MainTank.TRight1.StageLimit = pumpFive;
+                this.MainTank.TRight2.StageLimit =  pumpSix;
+                this.MainTank.TRight3.StageLimit = pumpSeven;
                 this.MainTank.TPump1.RunPump();
                 this.MainTank.TPump1.RunValveBig();
 
@@ -214,13 +237,7 @@ namespace TankControl.Class
         public void FillupStop()
         {
             this.MainTank.Stop();
-            this.MainTank.TPump1.End();
-            this.MainTank.TPump2.End();
-            this.MainTank.TLeft1.End();
-            this.MainTank.TLeft2.End();
-            this.MainTank.TRight1.End();
-            this.MainTank.TRight2.End();
-            this.MainTank.TRight3.End();
+            this.StopAllComponent(true);
             RunTester.Singleton.StopTimer();
         }
 
@@ -232,6 +249,27 @@ namespace TankControl.Class
         public void FillupResume()
         {
             throw new NotImplementedException();
+        }
+
+        public void TakeStart()
+        {
+            this.ProcessTaking();
+        }
+
+        public void TakeStop()
+        {
+            this.ProcessTakingStop();
+        }
+
+        public void StopAllComponent(bool cleanup)
+        {
+            this.MainTank.TPump1.End(cleanup);
+            this.MainTank.TPump2.End(cleanup);
+            this.MainTank.TLeft1.End(cleanup);
+            this.MainTank.TLeft2.End(cleanup);
+            this.MainTank.TRight1.End(cleanup);
+            this.MainTank.TRight2.End(cleanup);
+            this.MainTank.TRight3.End(cleanup);
         }
 
         // CONTROL - END
@@ -256,7 +294,7 @@ namespace TankControl.Class
                     List<IComponent> list = new List<IComponent>{
                             new ControlValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO9),gdaView.GdaMainTankShake.Slc,(int)ReferenceEnum.Component.ValveControl),
                             new ShakeValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO10),gdaView.GdaMainTankShake.Src, (int)ReferenceEnum.Component.ValveShake),
-                            new OutValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO11),gdaView.GdaMainTankShake.Oc, (int)ReferenceEnum.Component.PumpMainTank)
+                            new OutValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO11),gdaView.GdaMainTankShake.Oc, (int)ReferenceEnum.Component.ValveOutput)
                     };
                     this.MainTank = new MainTank(gdaView,(int)ReferenceEnum.Tank.MainTank, list);
                 }

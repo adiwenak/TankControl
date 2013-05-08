@@ -11,8 +11,12 @@ namespace TankControl.Class
     public class Microcontroller
     {
 
-        private Int32[] hConnection = new Int32[1];
+        private static Int32[] hConnection = new Int32[1];
         private byte[] byteWriteCoils = new byte[2];
+        private static UInt32 Timeout = TankControl.Properties.Settings.Default.MoxTimeout;
+        private static UInt16 Port = TankControl.Properties.Settings.Default.MoxPort;
+        private static string IPAddr = TankControl.Properties.Settings.Default.MoxAddress;
+        private static string Password = "";
         private static Microcontroller singleton;
 
         public static Microcontroller Singleton
@@ -28,6 +32,7 @@ namespace TankControl.Class
             }
         }
 
+        // For error code
         private static void CheckError(int iRet, string szFunctionName)
         {
             string szErrMsg = "MXIO_OK";
@@ -141,42 +146,68 @@ namespace TankControl.Class
                 {
                     //To terminates use of the socket
                     MXIO_CS.MXEIO_Exit();
-                    Environment.Exit(1);
                 }
             }
         }
-    
-        public void InitConnection()
+        
+        // initialize the connection, it will return true if success
+        public bool Connect()
         {
+            bool success = false;
+
             int returnValues;
-            const UInt16 Port = 502;
-            string IPAddr = "192.168.5.254";
-            UInt32 Timeout = 10000;
-            string Password = "";
 
             // Initialize
             returnValues = MXIO_CS.MXEIO_Init();
             Debug.WriteLine("MXIO Initialize Return Code {0}", returnValues);
-            
-            // Connect to device
-            Debug.WriteLine("MXEIO_E1K_Connect IP={0}, Timeout={1}, Password={2}", IPAddr, Timeout, Password);
-            returnValues = MXIO_CS.MXEIO_E1K_Connect(System.Text.Encoding.UTF8.GetBytes(IPAddr), Port, Timeout, hConnection, System.Text.Encoding.UTF8.GetBytes(Password));
-            CheckError(returnValues, "MXEIO_E1K_Connect");
-            if (returnValues == MXIO_CS.MXIO_OK)
+
+            if (returnValues == 0)
             {
-                Debug.WriteLine("IO logic connected");
+                // Connect to device
+                Debug.WriteLine("MXEIO_E1K_Connect IP={0}, Timeout={1}, Password={2}", IPAddr, Timeout, Password);
+                returnValues = MXIO_CS.MXEIO_E1K_Connect(System.Text.Encoding.UTF8.GetBytes(IPAddr), Port, Timeout, hConnection, System.Text.Encoding.UTF8.GetBytes(Password));
+                CheckError(returnValues, "MXEIO_E1K_Connect");
+                if (returnValues == MXIO_CS.MXIO_OK)
+                {
+                    Debug.WriteLine("IO logic connected");
+                    success = true;
+                }
             }
 
-            //Check Connection
+            return success;
+        }
+
+        public bool Disconnect()
+        {
+            int returnValue;
+            bool success = false;
+
+            returnValue = MXIO_CS.MXEIO_Disconnect(hConnection[0]);
+            CheckError(returnValue, "MXEIO_Disconnect");
+            if (returnValue == MXIO_CS.MXIO_OK)
+            {
+                Console.WriteLine("MXEIO_Disconnect return {0}", returnValue);
+                success = true;
+            }
+
+            return success;
+        }
+
+        // check connection to device
+        public bool IsConnected()
+        {
+            int returnValue;
+            bool success = false;
             byte[] bytCheckStatus = new byte[1];
-            returnValues = MXIO_CS.MXEIO_CheckConnection(hConnection[0], Timeout, bytCheckStatus);
-            CheckError(returnValues, "MXEIO_CheckConnection");
-            if (returnValues == MXIO_CS.MXIO_OK)
+            returnValue = MXIO_CS.MXEIO_CheckConnection(hConnection[0], Timeout, bytCheckStatus);
+            CheckError(returnValue, "MXEIO_CheckConnection");
+            if (returnValue == MXIO_CS.MXIO_OK)
             {
                 switch (bytCheckStatus[0])
                 {
                     case MXIO_CS.CHECK_CONNECTION_OK:
                         Debug.WriteLine("MXEIO_CheckConnection: Check connection ok => {0}", bytCheckStatus[0]);
+                        success = true;
                         break;
                     case MXIO_CS.CHECK_CONNECTION_FAIL:
                         Debug.WriteLine("MXEIO_CheckConnection: Check connection fail => {0}", bytCheckStatus[0]);
@@ -189,6 +220,8 @@ namespace TankControl.Class
                         break;
                 }
             }
+
+            return success;
         }
 
         public bool OnDigitalOutput(UInt16 location)
