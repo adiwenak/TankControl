@@ -15,17 +15,7 @@ namespace TankControl.Class
         private bool pump;
         private float stageLimit2;
 
-        public float StageLimit2
-        {
-            get
-            {
-                return this.stageLimit2;
-            }
-            set
-            {
-                this.stageLimit2 = value;
-            }
-        }
+        public decimal StageLimit2 {get;set;}
 
         public TinyTankPumpComponent View
         {
@@ -46,7 +36,7 @@ namespace TankControl.Class
             this.AddComponents(list);
         }
 
-        public void RunPump()
+        public IComponent RunPump()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
             if (cmp != null)
@@ -55,9 +45,11 @@ namespace TankControl.Class
                 this.pump = true;
                 this._TempAddWeight();
             }
+
+            return cmp;
         }
 
-        public void StopPump()
+        public IComponent StopPump()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
             if (cmp != null)
@@ -66,9 +58,11 @@ namespace TankControl.Class
                 this.pump = false;
                 this._TempEqualWeight();
             }
+
+            return cmp;
         }
 
-        public void RunValveSmall()
+        public IComponent RunValveSmall()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
             if (cmp != null)
@@ -77,9 +71,11 @@ namespace TankControl.Class
                 this.valveSmall = true;
                 this._TempAddWeight();
             }
+
+            return cmp;
         }
 
-        public void StopValveSmall()
+        public IComponent StopValveSmall()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
             if (cmp != null)
@@ -88,9 +84,11 @@ namespace TankControl.Class
                 this.valveSmall = false;
                 this._TempEqualWeight();
             }
+
+            return cmp;
         }
 
-        public void RunValveBig()
+        public IComponent RunValveBig()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
             if (cmp != null)
@@ -99,9 +97,11 @@ namespace TankControl.Class
                 this.valveBig = true;
                 this._TempAddWeight();
             }
+
+            return cmp;
         } 
 
-        public void StopValveBig()
+        public IComponent StopValveBig()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
             if (cmp != null)
@@ -110,6 +110,29 @@ namespace TankControl.Class
                 this.valveBig = false;
                 this._TempEqualWeight(); 
             }
+
+            return cmp;
+        }
+
+        public void SwicthValveSmall()
+        {
+            StopValveBig();
+            RunValveSmall();
+        }
+
+        public IComponent GetPump()
+        {
+            return this.GetComponent((int)ReferenceEnum.Component.PumpTinyTank);
+        }
+
+        public IComponent GetBigValve()
+        {
+            return this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+        }
+
+        public IComponent GetSmallValve()
+        {
+            return this.GetComponent((int)ReferenceEnum.Component.ValveSmall);
         }
 
         public void End(bool cleanup)

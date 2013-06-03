@@ -42,7 +42,7 @@ namespace TankControl.Class
             this.AddComponents(list);
         }
 
-        public void Run()
+        public IComponent Run()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
 
@@ -51,16 +51,21 @@ namespace TankControl.Class
                 cmp.Run();
                 this._TempAddWeight();
             }
+
+            return cmp;
         }
 
-        public void Stop()
+        public IComponent Stop()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveBig);
+
             if (cmp != null)
             {
                 cmp.Stop();
                 this._TempEqualWeight();
             }
+
+            return cmp;
         }
 
         public void End(bool cleanup)

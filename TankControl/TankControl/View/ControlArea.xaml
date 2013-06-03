@@ -10,28 +10,26 @@
         <Grid Width="250" Height="675" Margin="0,12,-38,-121.53">
             
             <telerik:RadComboBox VerticalAlignment="Center" Width="187" FontSize="16" Margin="13,24,50,629" EmptyText="Select Recipe" Name="DropdownRecipe" SelectedValuePath="id" DisplayMemberPath="name" SelectionChanged="DropdownRecipe_SelectionChanged" />
-			<GroupBox x:Name="GroupAction" Header="Progress" HorizontalAlignment="Left" Margin="10,64.862,0,0" VerticalAlignment="Top" Height="176.608" Width="187">
-				<StackPanel HorizontalAlignment="Left" Height="223.078" VerticalAlignment="Top" Width="175">
-					<CheckBox Content="Ready" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="True" IsEnabled="False"/>
-					<CheckBox Content="Fill Up" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
-					<CheckBox Content="Mixing" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
-					<CheckBox Content="Done" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsEnabled="False"/>
+			<GroupBox x:Name="GroupAction" Header="Progress" HorizontalAlignment="Left" Margin="10,64.862,0,0" VerticalAlignment="Top" Height="154" Width="187">
+				<StackPanel HorizontalAlignment="Left" Height="115" VerticalAlignment="Top" Width="170">
+					<CheckBox x:Name="CheckReady" Content="Ready" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="False" IsEnabled="False"/>
+                    <CheckBox x:Name="CheckFillup" Content="Fill Up" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="False" IsEnabled="False"/>
+                    <CheckBox x:Name="CheckMixing" Content="Mixing" Style="{DynamicResource SimpleCheckBox}" Margin="10,10,0,0" IsChecked="False" IsEnabled="False"/>
 				</StackPanel>
 			</GroupBox>
 
-            <Button x:Name="StartProcess" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="93" Margin="13,269,0,0" Click="Start_Click" IsEnabled="False" />
-            <Button x:Name="StopProcess" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="115,269,0,0" Click="Stop_Click" IsEnabled="False" />
-            <Button x:Name="StartTake" Content="Take" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="93" Margin="13,320,0,0" Click="StartTake_Click" IsEnabled="False" />
-            <Button x:Name="StopTake" Content="Close" Height="30" VerticalAlignment="Top" Margin="115,320,45,0" Click="StopTake_Click" IsEnabled="False" />
-            <Button x:Name="ConnectMoxa" Content="Connect" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="192" Margin="13,364,0,0" Click="ConnectMoxa_Click" IsEnabled="true" />
-            <Button x:Name="DisconnectMoxa" Content="Disconnect" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="192" Margin="13,400,0,0" Click="DisconnectMoxa_Click" IsEnabled="False" />
+            <Button x:Name="StartProcessButton" Content="Start" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="93" Margin="13,269,0,0" Click="StartProcess_Click" IsEnabled="False" />
+            <Button x:Name="StopProcessButton" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="115,269,0,0" Click="StopProcess_Click" IsEnabled="False" />
+            <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="192" Margin="13,305,0,0" Click="Connect_Click" IsEnabled="true" />
+            <Button x:Name="DisconnectButton" Content="Disconnect" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="192" Margin="13,341,0,0" Click="Disconnect_Click" IsEnabled="False" />
 
-            <Label FontWeight="Bold" Margin="6,475,138,172" VerticalAlignment="Center" Padding="5" FontSize="13">Current Weight</Label>
-            <Label x:Name="CurrentWeightLabel" Height="30" Margin="120,473,45,172" FontWeight="Normal" FontSize="15" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">230 Kg</Label>
+            <Label FontWeight="Bold" Margin="6,436,138,211" VerticalAlignment="Center" Padding="5" FontSize="13">Current Weight</Label>
+            <Label x:Name="CurrentWeightLabel" Height="30" Margin="120,434,45,211" FontWeight="Normal" FontSize="15" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">0 Kg</Label>
             
-            <Label Height="30" Margin="6,509,169,136" FontWeight="Bold" FontSize="13">Moxa</Label>
-            <Label x:Name="MoxaStatusLabel" Height="30" Margin="0,509,45,136" FontWeight="Normal" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="103">Disconnected</Label>
-    
+            <Label Height="30" Margin="6,470,169,175" FontWeight="Bold" FontSize="13">Moxa</Label>
+            <Label x:Name="MoxaStatusLabel" Height="30" Margin="0,468,45,177" FontWeight="Normal" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="103">Disconnected</Label>
+            <Label Content="Scale" FontSize="13" FontWeight="Bold" Height="30" Margin="6,506,169,139" />
+            <Label x:Name="ScaleStatusLabel" Content="Disconnected" FontSize="15" FontWeight="Normal" Height="30" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,506,45,139" VerticalContentAlignment="Center" Width="103" />
         </Grid>
     </telerik:GroupBox>
 </UserControl>

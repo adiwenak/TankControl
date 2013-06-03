@@ -44,24 +44,24 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="el1" Type="float" />
-          <Property Name="el2" Type="float" />
-          <Property Name="el3" Type="float" />
-          <Property Name="el4" Type="float" />
-          <Property Name="el5" Type="float" />
-          <Property Name="el6" Type="float" />
-          <Property Name="el7" Type="float" />
-          <Property Name="tol_el1" Type="float" />
-          <Property Name="tol_el2" Type="float" />
-          <Property Name="tol_el3" Type="float" />
-          <Property Name="tol_el4" Type="float" />
-          <Property Name="tol_el5" Type="float" />
-          <Property Name="tol_el6" Type="float" />
-          <Property Name="tol_el7" Type="float" />
-          <Property Name="switch_el1" Type="float" />
-          <Property Name="switch_el2" Type="float" />
-          <Property Name="runtime" Type="int" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="el1" Type="float" Nullable="false" />
+          <Property Name="el2" Type="float" Nullable="false" />
+          <Property Name="el3" Type="float" Nullable="false" />
+          <Property Name="el4" Type="float" Nullable="false" />
+          <Property Name="el5" Type="float" Nullable="false" />
+          <Property Name="el6" Type="float" Nullable="false" />
+          <Property Name="el7" Type="float" Nullable="false" />
+          <Property Name="tol_el1" Type="float" Nullable="false" />
+          <Property Name="tol_el2" Type="float" Nullable="false" />
+          <Property Name="tol_el3" Type="float" Nullable="false" />
+          <Property Name="tol_el4" Type="float" Nullable="false" />
+          <Property Name="tol_el5" Type="float" Nullable="false" />
+          <Property Name="tol_el6" Type="float" Nullable="false" />
+          <Property Name="tol_el7" Type="float" Nullable="false" />
+          <Property Name="switch_el1" Type="float" Nullable="false" />
+          <Property Name="switch_el2" Type="float" Nullable="false" />
+          <Property Name="runtime" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SystemError">
           <Key>
@@ -100,40 +100,15 @@
     <edmx:ConceptualModels>
       <Schema Namespace="TankControlModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="TankControlEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Recipes" EntityType="TankControlModel.Recipe" />
           <EntitySet Name="SystemErrors" EntityType="TankControlModel.SystemError" />
           <EntitySet Name="Users" EntityType="TankControlModel.User" />
           <EntitySet Name="Histories" EntityType="TankControlModel.History" />
+          <EntitySet Name="Recipes" EntityType="TankControlModel.Recipe" />
           <AssociationSet Name="FK_History_Recipe" Association="TankControlModel.FK_History_Recipe">
             <End Role="Recipe" EntitySet="Recipes" />
             <End Role="History" EntitySet="Histories" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Recipe">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="el1" Type="Double" />
-          <Property Name="el2" Type="Double" />
-          <Property Name="el3" Type="Double" />
-          <Property Name="el4" Type="Double" />
-          <Property Name="el5" Type="Double" />
-          <Property Name="el6" Type="Double" />
-          <Property Name="el7" Type="Double" />
-          <Property Name="tol_el1" Type="Double" />
-          <Property Name="tol_el2" Type="Double" />
-          <Property Name="tol_el3" Type="Double" />
-          <Property Name="tol_el4" Type="Double" />
-          <Property Name="tol_el5" Type="Double" />
-          <Property Name="tol_el6" Type="Double" />
-          <Property Name="tol_el7" Type="Double" />
-          <Property Name="switch_el1" Type="Double" />
-          <Property Name="switch_el2" Type="Double" />
-          <Property Name="runtime" Type="Int32" />
-          <NavigationProperty Name="Histories" Relationship="TankControlModel.FK_History_Recipe" FromRole="Recipe" ToRole="History" />
-        </EntityType>
         <EntityType Name="SystemError">
           <Key>
             <PropertyRef Name="id" />
@@ -179,6 +154,31 @@
           <Property Type="Int32" Name="duration_el7" />
           <NavigationProperty Name="Recipe" Relationship="TankControlModel.FK_History_Recipe" FromRole="History" ToRole="Recipe" />
         </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="el1" Nullable="false" />
+          <Property Type="Double" Name="el2" Nullable="false" />
+          <Property Type="Double" Name="el3" Nullable="false" />
+          <Property Type="Double" Name="el4" Nullable="false" />
+          <Property Type="Double" Name="el5" Nullable="false" />
+          <Property Type="Double" Name="el6" Nullable="false" />
+          <Property Type="Double" Name="el7" Nullable="false" />
+          <Property Type="Double" Name="tol_el1" Nullable="false" />
+          <Property Type="Double" Name="tol_el2" Nullable="false" />
+          <Property Type="Double" Name="tol_el3" Nullable="false" />
+          <Property Type="Double" Name="tol_el4" Nullable="false" />
+          <Property Type="Double" Name="tol_el5" Nullable="false" />
+          <Property Type="Double" Name="tol_el6" Nullable="false" />
+          <Property Type="Double" Name="tol_el7" Nullable="false" />
+          <Property Type="Double" Name="switch_el1" Nullable="false" />
+          <Property Type="Double" Name="switch_el2" Nullable="false" />
+          <Property Type="Int32" Name="runtime" Nullable="false" />
+          <NavigationProperty Name="Histories" Relationship="TankControlModel.FK_History_Recipe" FromRole="Recipe" ToRole="History" />
+        </EntityType>
         <Association Name="FK_History_Recipe">
           <End Type="TankControlModel.Recipe" Role="Recipe" Multiplicity="1" />
           <End Type="TankControlModel.History" Role="History" Multiplicity="*" />
@@ -197,31 +197,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TankControlModelStoreContainer" CdmEntityContainer="TankControlEntities">
-          <EntitySetMapping Name="Recipes">
-            <EntityTypeMapping TypeName="TankControlModel.Recipe">
-              <MappingFragment StoreEntitySet="Recipe">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="el1" ColumnName="el1" />
-                <ScalarProperty Name="el2" ColumnName="el2" />
-                <ScalarProperty Name="el3" ColumnName="el3" />
-                <ScalarProperty Name="el4" ColumnName="el4" />
-                <ScalarProperty Name="el5" ColumnName="el5" />
-                <ScalarProperty Name="el6" ColumnName="el6" />
-                <ScalarProperty Name="el7" ColumnName="el7" />
-                <ScalarProperty Name="tol_el1" ColumnName="tol_el1" />
-                <ScalarProperty Name="tol_el2" ColumnName="tol_el2" />
-                <ScalarProperty Name="tol_el3" ColumnName="tol_el3" />
-                <ScalarProperty Name="tol_el4" ColumnName="tol_el4" />
-                <ScalarProperty Name="tol_el5" ColumnName="tol_el5" />
-                <ScalarProperty Name="tol_el6" ColumnName="tol_el6" />
-                <ScalarProperty Name="tol_el7" ColumnName="tol_el7" />
-                <ScalarProperty Name="switch_el1" ColumnName="switch_el1" />
-                <ScalarProperty Name="switch_el2" ColumnName="switch_el2" />
-                <ScalarProperty Name="runtime" ColumnName="runtime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SystemErrors">
             <EntityTypeMapping TypeName="TankControlModel.SystemError">
               <MappingFragment StoreEntitySet="SystemError">
@@ -269,6 +244,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="TankControlModel.Recipe">
+              <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="runtime" ColumnName="runtime" />
+                <ScalarProperty Name="switch_el2" ColumnName="switch_el2" />
+                <ScalarProperty Name="switch_el1" ColumnName="switch_el1" />
+                <ScalarProperty Name="tol_el7" ColumnName="tol_el7" />
+                <ScalarProperty Name="tol_el6" ColumnName="tol_el6" />
+                <ScalarProperty Name="tol_el5" ColumnName="tol_el5" />
+                <ScalarProperty Name="tol_el4" ColumnName="tol_el4" />
+                <ScalarProperty Name="tol_el3" ColumnName="tol_el3" />
+                <ScalarProperty Name="tol_el2" ColumnName="tol_el2" />
+                <ScalarProperty Name="tol_el1" ColumnName="tol_el1" />
+                <ScalarProperty Name="el7" ColumnName="el7" />
+                <ScalarProperty Name="el6" ColumnName="el6" />
+                <ScalarProperty Name="el5" ColumnName="el5" />
+                <ScalarProperty Name="el4" ColumnName="el4" />
+                <ScalarProperty Name="el3" ColumnName="el3" />
+                <ScalarProperty Name="el2" ColumnName="el2" />
+                <ScalarProperty Name="el1" ColumnName="el1" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -291,10 +291,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="TankControl">
-        <EntityTypeShape EntityType="TankControlModel.Recipe" Width="1.5" PointX="0.75" PointY="1.125" Height="4.8648079427083317" IsExpanded="true" />
         <EntityTypeShape EntityType="TankControlModel.SystemError" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
         <EntityTypeShape EntityType="TankControlModel.User" Width="1.5" PointX="5.75" PointY="3.75" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="TankControlModel.History" Width="1.5" PointX="3" PointY="1.125" Height="4.8648079427083335" />
+        <EntityTypeShape EntityType="TankControlModel.Recipe" Width="1.5" PointX="0.75" PointY="1.125" Height="4.8648079427083335" />
         <AssociationConnector Association="TankControlModel.FK_History_Recipe" >
           <ConnectorPoint PointX="2.25" PointY="3.5574039713541667" />
           <ConnectorPoint PointX="3" PointY="3.5574039713541667" />

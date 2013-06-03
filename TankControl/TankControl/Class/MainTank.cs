@@ -157,7 +157,7 @@ namespace TankControl.Class
         // CONTROL - START
         public void Start()
         {
-            this.View.RunWithLimit(2);
+            this.View.RunWithLimit(1);
             this.IsFillup = true;
             
         }
@@ -186,58 +186,71 @@ namespace TankControl.Class
             this.IsPause = false;
         }
 
-        public void OpenValveControl()
+        public IComponent OpenValveControl()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
             if (cmp != null)
             {
                 cmp.Run();
             }
+
+            return cmp;
         }
 
-        public void StopValveControl()
+        public IComponent StopValveControl()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveControl);
             if (cmp != null)
             {
                 cmp.Stop();
             }
+
+            return cmp;
         }
 
-        public void OpenValveShake()
+        public IComponent OpenValveShake()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
             if (cmp != null)
             {
                 cmp.Run();
             }
+
+            return cmp;
         }
 
-        public void StopValveShake()
+        public IComponent StopValveShake()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveShake);
             if (cmp != null)
             {
                 cmp.Stop();
             }
+
+            return cmp;
         }
 
-        public void OpenValveOutput()
+        public IComponent OpenValveOutput()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
             if (cmp != null)
             {
                 cmp.Run();
             }
+
+            return cmp;
         }
 
-        public void StopValveOutput()
+        public IComponent StopValveOutput()
         {
             IComponent cmp = this.GetComponent((int)ReferenceEnum.Component.ValveOutput);
+
             if (cmp != null)
             {
                 cmp.Stop();
             }
+
+            return cmp;
         }
 
         public void RunPump()

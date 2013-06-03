@@ -105,6 +105,16 @@ namespace TankControl.View
                         toUpdate.el5 = updatedRow.el5;
                         toUpdate.el6 = updatedRow.el6;
                         toUpdate.el7 = updatedRow.el7;
+                        toUpdate.switch_el1 = updatedRow.switch_el1;
+                        toUpdate.switch_el2 = updatedRow.switch_el2;
+                        toUpdate.runtime = updatedRow.runtime;
+                        toUpdate.tol_el1 = updatedRow.tol_el1;
+                        toUpdate.tol_el2 = updatedRow.tol_el2;
+                        toUpdate.tol_el3 = updatedRow.tol_el3;
+                        toUpdate.tol_el4 = updatedRow.tol_el4;
+                        toUpdate.tol_el5 = updatedRow.tol_el5;
+                        toUpdate.tol_el6 = updatedRow.tol_el6;
+                        toUpdate.tol_el7 = updatedRow.tol_el7;
                         tce.SaveChanges();
                         if (updatedRow is TankControl.Recipe)
                         {

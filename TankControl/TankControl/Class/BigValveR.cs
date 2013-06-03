@@ -72,7 +72,7 @@ namespace TankControl.Class
         {
             if (this.IsRun == false)
             {
-                if (Microcontroller.Singleton.OnDigitalOutput(DeviceAddress))
+                if (Microcontroller.Singleton.OnDigitalOutput(DeviceAddress) || TankControl.Properties.Settings.Default.SystemTest == 1)
                 {
                     this.View.Open();
                 }
@@ -84,7 +84,7 @@ namespace TankControl.Class
         {
             if (this.IsRun == true)
             {
-                if (Microcontroller.Singleton.OffDigitalOutput(DeviceAddress))
+                if (Microcontroller.Singleton.OffDigitalOutput(DeviceAddress) || TankControl.Properties.Settings.Default.SystemTest == 1)
                 {
                     this.View.Close();
                 }

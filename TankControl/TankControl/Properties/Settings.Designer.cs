@@ -82,5 +82,65 @@ namespace TankControl.Properties {
                 this["MoxPassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM5")]
+        public string WSPort {
+            get {
+                return ((string)(this["WSPort"]));
+            }
+            set {
+                this["WSPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9600")]
+        public int WSBaudRate {
+            get {
+                return ((int)(this["WSBaudRate"]));
+            }
+            set {
+                this["WSBaudRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int WSInterval {
+            get {
+                return ((int)(this["WSInterval"]));
+            }
+            set {
+                this["WSInterval"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public int TankHeight {
+            get {
+                return ((int)(this["TankHeight"]));
+            }
+            set {
+                this["TankHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int SystemTest {
+            get {
+                return ((int)(this["SystemTest"]));
+            }
+            set {
+                this["SystemTest"] = value;
+            }
+        }
     }
 }

@@ -9,19 +9,8 @@ namespace TankControl.Class
     {
         private IList<IComponent> listComponents;
         private int id;
-        private float stageLimit;
 
-        public float StageLimit
-        {
-            get
-            {
-                return this.stageLimit;
-            }
-            set
-            {
-                this.stageLimit = value;
-            }
-        }
+        public decimal StageLimit {get;set;}
 
         public int ID
         {

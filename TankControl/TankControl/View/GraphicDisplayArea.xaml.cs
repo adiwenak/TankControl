@@ -59,8 +59,6 @@ namespace TankControl.View
             this.Components.Add(sc);
             
             Process.Singleton.AddView(this);
-
-
         }
 
         // PROPERTIES - START
@@ -214,12 +212,6 @@ namespace TankControl.View
             this.GdaMainTankShake.src.Close();
             this.GdaMainTankShake.oc.Close();
         }
-
-        public void UpdateView()
-        {
-
-        }
-
 
     }
 

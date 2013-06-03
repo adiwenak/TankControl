@@ -9,28 +9,16 @@ namespace TankControl
 {
     class RunTester
     {
-        private float weight = 0;
-        private float addWeight = 1;
+        private decimal weight = 0;
         private DispatcherTimer timer;
         private static RunTester singleton;
+        public decimal AddWeight {get;set;}
 
         public RunTester()
         {
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += new EventHandler(WeightUpdated);
-        }
-
-        public float AddWeight
-        {
-            get
-            {
-                return this.addWeight;
-            }
-            set
-            {
-                this.addWeight = value;
-            }
         }
 
         public static RunTester Singleton
@@ -60,12 +48,12 @@ namespace TankControl
         public void Reset()
         {
             this.weight = 0;
-            this.addWeight = 1;
+            this.AddWeight = 1;
         }
 
         private void WeightUpdated(object sender, EventArgs e)
         {
-            weight += this.addWeight;
+            this.weight += this.AddWeight;
             System.Diagnostics.Debug.WriteLine("weight :" + weight);
             WeightScale.Singleton.WeightScaleUpdated(weight,this.AddWeight);
         }
