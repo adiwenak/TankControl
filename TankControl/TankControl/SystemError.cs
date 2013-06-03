@@ -19,31 +19,6 @@ namespace TankControl
         public string errorDesc { get; set; }
         public string errorLocation { get; set; }
         public Nullable<System.DateTime> errorDate { get; set; }
-
-        public static void Log(string errorDesc,int errorlvl)
-        {
-            SystemError sys = new SystemError();
-            sys.errorDate = DateTime.Now;
-            sys.errorDesc = errorDesc;
-            sys.errorLevel = errorlvl;
-
-            using (TankControlEntities tce = new TankControlEntities())
-            {
-                try
-                {
-                    tce.SystemErrors.Add(sys);
-                    tce.SaveChanges();
-                }
-                catch (System.Data.EntityException)
-                {
-
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-        }
     }
     
 }

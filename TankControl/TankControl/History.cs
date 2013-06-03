@@ -18,22 +18,28 @@ namespace TankControl
         public int recipe_id { get; set; }
         public string recipe_name { get; set; }
         public System.DateTime date { get; set; }
-        public Nullable<double> el1 { get; set; }
-        public Nullable<double> el2 { get; set; }
-        public Nullable<double> el3 { get; set; }
-        public Nullable<double> el4 { get; set; }
-        public Nullable<double> el5 { get; set; }
-        public Nullable<double> el6 { get; set; }
-        public Nullable<double> el7 { get; set; }
-        public Nullable<double> total { get; set; }
-        public Nullable<int> duration_el1 { get; set; }
-        public Nullable<int> duration_el2 { get; set; }
-        public Nullable<int> duration_el3 { get; set; }
-        public Nullable<int> duration_el4 { get; set; }
-        public Nullable<int> duration_el5 { get; set; }
-        public Nullable<int> duration_el6 { get; set; }
-        public Nullable<int> duration_el7 { get; set; }
-    
+        public double el1 { get; set; }
+        public double el2 { get; set; }
+        public double el3 { get; set; }
+        public double el4 { get; set; }
+        public double el5 { get; set; }
+        public double el6 { get; set; }
+        public double el7 { get; set; }
+        public double total { get; set; }
+        public int duration_el1 { get; set; }
+        public int duration_el2 { get; set; }
+        public int duration_el3 { get; set; }
+        public int duration_el4 { get; set; }
+        public int duration_el5 { get; set; }
+        public int duration_el6 { get; set; }
+        public int duration_el7 { get; set; }
+
+        public History(int recipeID, string recipeName)
+        {
+            this.date = DateTime.Now;
+            this.recipe_id = recipeID;
+            this.recipe_name = recipe_name;
+        }
         public virtual Recipe Recipe { get; set; }
     }
     

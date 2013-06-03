@@ -27,7 +27,7 @@ namespace TankControl
     
         public DbSet<SystemError> SystemErrors { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<History> Histories { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<History> Histories { get; set; }
     }
 }

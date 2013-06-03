@@ -365,8 +365,7 @@ namespace TankControl.Class
                 this.MainTank.TRight2.StageLimit = pumpSix;
                 this.MainTank.TRight3.StageLimit = pumpSeven;
 
-                this.History = new History();
-                this.History.recipe_id = this.Recipe.id;
+                this.History = new History(this.Recipe.id, this.Recipe.name);
             }
             else
             {
