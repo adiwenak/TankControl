@@ -269,9 +269,8 @@ namespace TankControl.Class
                     {
                         RunTester.Singleton.StopTimer();
                     }
-                    this.StopRunComponent();
                     this.controlArea.CheckFillup.IsChecked = true;
-                    processStep = 0;
+                    processStep = 10;
                     this.ProcessShake();
                     
                 }
@@ -319,19 +318,26 @@ namespace TankControl.Class
         private void UpdateShake(object sender, EventArgs e)
         {
             shakeCounter++;
-            if (shakeCounter < this.Recipe.runtime)
-            {
-                this.AddToRunComponent(this.MainTank.OpenValveControl());
-                this.AddToRunComponent(this.MainTank.OpenValveShake());
-            }
-            else
-            {
-                this.controlArea.CheckMixing.IsChecked = true;
-                shakeCounter = 0;
-                this.StopRunComponent();
-                (sender as DispatcherTimer).Stop();
-                this.FillupStop();
-            }
+            
+                if (shakeCounter < this.Recipe.runtime)
+                {
+                    if (this.processStep <= 10)
+                    {
+                        this.StopRunComponent();
+                        this.AddToRunComponent(this.MainTank.OpenValveControl());
+                        this.AddToRunComponent(this.MainTank.OpenValveShake());
+                        this.processStep = 11;
+                    }
+                }
+                else
+                {
+                    this.controlArea.CheckMixing.IsChecked = true;
+                    shakeCounter = 0;
+                    this.controlArea.EnableStartProcess();
+                    this.StopRunComponent();
+                    (sender as DispatcherTimer).Stop();
+                    this.FillupStop();
+                }
         }
 
 
@@ -380,8 +386,6 @@ namespace TankControl.Class
         {
             this.processRun = true;
             this.SetupFillup();
-            this.AddToRunComponent(this.MainTank.TPump1.RunPump());
-            this.AddToRunComponent(this.MainTank.TPump1.RunValveBig());
 
             if (TankControl.Properties.Settings.Default.SystemTest == 1)
             {
@@ -396,21 +400,29 @@ namespace TankControl.Class
             this.MainTank.Stop();
             using (TankControlEntities tce = new TankControlEntities())
             {
-                tce.Histories.Add(this.History);
-                try
+                if (this.History != null)
                 {
-                    tce.SaveChanges();
+                    tce.Histories.Add(this.History);
+                    try
+                    {
+                        tce.SaveChanges();
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.InnerException.InnerException);
+                    }
+                    catch (System.Data.EntityException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.InnerException.InnerException);
+                    }
                 }
-                catch (DbUpdateException ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.InnerException.InnerException);
-                }
-                catch (System.Data.EntityException ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.InnerException.InnerException);
-                }
+
+                this.History = null;
             }
 
+            this.controlArea.CheckFillup.IsChecked = false;
+            this.controlArea.CheckMixing.IsChecked = false;
+            this.processStep = 0;
             this.processRun = false;
             this.Reset(true);
         }
@@ -560,7 +572,7 @@ namespace TankControl.Class
         {
             if (processRun)
             {
-                if ((float)currentWeight > 0.5)
+                if ((float)currentWeight >= 0)
                 {
                     double addPixel = (float)currentWeight / this.PixelRate;
 

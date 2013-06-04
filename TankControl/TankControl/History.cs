@@ -38,7 +38,7 @@ namespace TankControl
         {
             this.date = DateTime.Now;
             this.recipe_id = recipeID;
-            this.recipe_name = recipe_name;
+            this.recipe_name = recipeName;
         }
         public virtual Recipe Recipe { get; set; }
     }

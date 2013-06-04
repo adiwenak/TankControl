@@ -190,13 +190,13 @@ namespace TankControl.View
             return ready;
         }
 
-        private void EnableStartProcess()
+        public void EnableStartProcess()
         {
             this.StartProcessButton.IsEnabled = true;
             this.StopProcessButton.IsEnabled = false;
         }
 
-        private void DisableStartProcess()
+        public void DisableStartProcess()
         {
             this.StartProcessButton.IsEnabled = false;
             this.StopProcessButton.IsEnabled = true;

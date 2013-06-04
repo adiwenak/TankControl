@@ -9,6 +9,7 @@ using TankControl.View;
 using System.Windows;
 using System.Windows.Threading;
 using System.Diagnostics;
+using System.IO;
 
 namespace TankControl.Class
 {
@@ -46,16 +47,7 @@ namespace TankControl.Class
 
         // PROPERTIES END
 
-        // UPDATE OBSERVER
-        public void Notify(decimal addWeight)
-        {
-            if (this.Process != null)
-            {
-                this.Process.WeightUpdated(this.CurrentWeight, (float)addWeight);
-            }
-        }
-
-        // LISTENER TO WEIGHT SCALE
+        // Use for testing purposes, SystemTest = 1 << in setting
         public void WeightScaleUpdated(decimal weight, decimal addWeight)
         {
             this.CurrentWeight = weight;
@@ -101,27 +93,55 @@ namespace TankControl.Class
             return success;
         }
 
+        /// <summary>
+        /// Handles the DataReceived event of the serialPort control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.IO.Ports.SerialDataReceivedEventArgs" /> instance containing the event data.</param>
+        /// interval use for deciding in what frequency need to update the weight of the system, because by default the weight scale device updated by 10/s
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             if (counterInterval == interval)
             {
                 this.counterInterval = 1;
 
-                if (serialPort.IsOpen == true)
+                if (serialPort.IsOpen)
                 {
-                    string resp = serialPort.ReadLine();
-                    if (resp.Length > 6)
+                    string resp = "";
+
+                    try
                     {
-                        string toParse = resp.Substring(1, 7);
-                        decimal weight;
-                        if (Decimal.TryParse(toParse, out weight))
+                        resp = serialPort.ReadLine();
+                    }
+                    catch (IOException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.InnerException);
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.InnerException);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.InnerException);
+                    }
+
+                    if (resp.Length > 7)
+                    {
+                        int startIndex = resp.IndexOf("0");
+                        if (startIndex > 0)
                         {
-                            decimal addWeight = weight - this.CurrentWeight;
-                            this.CurrentWeight = weight;
-                            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
-                                new Action(() => this.Notify(addWeight)));
-                            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
-                                new Action(() => this.WeightLabel.Content = (weight.ToString() + " kg")));
+                            string toParse = resp.Substring(startIndex, 7);
+                            decimal weight;
+                            if (Decimal.TryParse(toParse, out weight))
+                            {
+                                decimal addWeight = weight - this.CurrentWeight;
+                                this.CurrentWeight = weight;
+                                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                    new Action(() => this.Notify(addWeight)));
+                                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                                    new Action(() => this.DisplayText(weight)));
+                            }
                         }
                     }
                 }
@@ -132,9 +152,9 @@ namespace TankControl.Class
             {
                 this.counterInterval++;
             }
-
         }
 
+        // UPDATE LABEL IN CONTROL AREA.XAML
         private void DisplayText(decimal weight)
         {
             if (this.WeightLabel != null)
@@ -145,6 +165,15 @@ namespace TankControl.Class
             else
             {
 
+            }
+        }
+
+        // UPDATE OBSERVER
+        public void Notify(decimal addWeight)
+        {
+            if (this.Process != null)
+            {
+                this.Process.WeightUpdated(this.CurrentWeight, (float)addWeight);
             }
         }
 
