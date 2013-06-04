@@ -70,8 +70,9 @@ namespace TankControl.View
                 {
                     if (this.CheckProcess() == true)
                     {
-                        this.DisableConnection();
+                       
                     }
+                    this.DisableConnection();
                 }
                 else
                 {

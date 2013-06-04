@@ -103,19 +103,27 @@ namespace TankControl.Class
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-
             if (counterInterval == interval)
             {
                 this.counterInterval = 1;
-                string response = serialPort.ReadExisting();
-                string twoString = response.Substring(0, 2);
-                if (twoString.Contains("W") && twoString.Contains("N"))
+
+                if (serialPort.IsOpen == true)
                 {
-                    decimal weight = decimal.Parse(response.Substring(3, 6));
-                    decimal addWeight = weight - this.CurrentWeight;
-                    this.CurrentWeight = weight;
-                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => this.Notify(addWeight)));
-                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.WeightLabel.Content = (weight.ToString() + " kg")));
+                    string resp = serialPort.ReadLine();
+                    if (resp.Length > 6)
+                    {
+                        string toParse = resp.Substring(1, 7);
+                        decimal weight;
+                        if (Decimal.TryParse(toParse, out weight))
+                        {
+                            decimal addWeight = weight - this.CurrentWeight;
+                            this.CurrentWeight = weight;
+                            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                new Action(() => this.Notify(addWeight)));
+                            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
+                                new Action(() => this.WeightLabel.Content = (weight.ToString() + " kg")));
+                        }
+                    }
                 }
 
 

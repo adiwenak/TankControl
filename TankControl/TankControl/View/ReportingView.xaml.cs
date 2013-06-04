@@ -60,10 +60,9 @@ namespace TankControl.View
                         reportlist.Clear();
                         foreach (var history in query)
                         {
-                            reportlist.Add(new TankControl.History()
+                            reportlist.Add(new TankControl.History(history.recipe_id,history.recipe_name)
                             {
                                 id = history.id,
-                                recipe_name = history.recipe_name,
                                 date = history.date,
                                 el1 = history.el1,
                                 el2 = history.el2,
