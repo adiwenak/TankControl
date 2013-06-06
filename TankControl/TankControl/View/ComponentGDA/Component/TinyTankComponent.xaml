@@ -9,6 +9,6 @@
 	d:DesignWidth="65" d:DesignHeight="90">
 
 	<Grid x:Name="LayoutRoot">
-		<Image HorizontalAlignment="Left" Height="70" Margin="4.381,16.553,0,0" VerticalAlignment="Top" Width="55.619" Source="/TankControl;component/Images/tanki/tanki.jpg"/>
+		<Image HorizontalAlignment="Left" Height="70" Margin="4.381,16.553,0,0" VerticalAlignment="Top" Width="55.619" Source="/TankControl;component/Images/tanki/tanki.png"/>
 	</Grid>
 </UserControl>

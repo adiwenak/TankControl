@@ -26,11 +26,11 @@
 			</ObjectAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="blockArrow">
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="-1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="-0.933"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="blockArrow">
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="-456"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="-414.611"/>
 			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="blockArrow1">
 				<DiscreteObjectKeyFrame KeyTime="0:0:2.5" Value="{x:Static Visibility.Visible}"/>
@@ -38,21 +38,21 @@
 			</ObjectAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="blockArrow1">
 				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-268"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-232.169"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="blockArrow1">
 				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="0.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>
-    	<Path x:Name="HorizontalPathD" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="204" Margin="95,476,0,0" StrokeThickness="10" Stretch="Fill"/>
-    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="473" Margin="287,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="Black" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
-    	<Path x:Name="HorizontalPathT" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="289" Margin="10,10,0,0" StrokeThickness="10" Stretch="Fill"/>
-    	<Path x:Name="EndPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="33.125" Margin="10,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="Black" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
+    	<Path x:Name="HorizontalPathD" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="204" Margin="95,476,0,0" StrokeThickness="4" Stretch="Fill"/>
+    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="472.004" Margin="292.906,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="4" VerticalAlignment="Top" Width="7"/>
+    	<Path x:Name="HorizontalPathT" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="289" Margin="10,10,0,0" StrokeThickness="4" Stretch="Fill"/>
+    	<Path x:Name="EndPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="33.125" Margin="10,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="4" VerticalAlignment="Top" Width="7"/>
             
-    	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="13" Margin="95.5,473,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" Fill="Red" Visibility="Hidden">
+    	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="8" Margin="55.5,473.682,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Fill="#FF0000C0" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -62,7 +62,7 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<ed:BlockArrow x:Name="blockArrow" Fill="Red" HorizontalAlignment="Left" Height="17" Margin="284,466,0,0" Orientation="Up" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+    	<ed:BlockArrow x:Name="blockArrow" Fill="#FF0000C0" HorizontalAlignment="Left" Height="55" Margin="290.848,424.774,0,0" Orientation="Up" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="8" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -72,7 +72,7 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<ed:BlockArrow x:Name="blockArrow1" Fill="Red" HorizontalAlignment="Left" Height="13" Margin="278.5,7,0,0" Orientation="Left" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+    	<ed:BlockArrow x:Name="blockArrow1" Fill="#FF0000C0" HorizontalAlignment="Left" Height="8" Margin="242.078,8.205,0,0" Orientation="Left" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -82,7 +82,7 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<Image x:Name="valveRight" HorizontalAlignment="Left" Height="26" Margin="175.717,458.554,0,0" VerticalAlignment="Top" Width="39"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png">
+    	<Image x:Name="valveRight" HorizontalAlignment="Left" Height="26" Margin="175.717,462.55,0,0" VerticalAlignment="Top" Width="39"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/pumpClose.png">
     		<Image.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>

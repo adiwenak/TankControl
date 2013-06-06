@@ -574,9 +574,9 @@ namespace TankControl.Class
             {
                 if ((float)currentWeight >= 0)
                 {
-                    double addPixel = (float)currentWeight / this.PixelRate;
-
-                    this.MainTank.FillupWithLimit(addPixel);
+                    double currentHeight = (float)currentWeight / this.PixelRate;
+                    
+                    this.MainTank.FillupWithLimit(currentHeight);
                     this.ProcessFillup(currentWeight);
                 }
             }

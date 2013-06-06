@@ -133,9 +133,9 @@ namespace TankControl.Class
             this.StageLimit = 0;
         }
 
-        public void _TempAddWeight()
+        public void _TempAddWeight(decimal weight = 1)
         {
-            RunTester.Singleton.AddWeight = 1;
+            RunTester.Singleton.AddWeight = weight;
         }
 
         public void _TempEqualWeight()

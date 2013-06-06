@@ -17,7 +17,7 @@
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>
-    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="85" Margin="23,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="Black" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
+    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="85" Margin="23,9.666,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
     	<ed:BlockArrow x:Name="downArrow" Fill="Red" HorizontalAlignment="Left" Height="15" Margin="20,10,0,0" Orientation="Down" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="13" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
@@ -28,16 +28,26 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<Image x:Name="valveOut" HorizontalAlignment="Left" Height="29" Margin="18.5,37.5,-2.5,0" VerticalAlignment="Top" Width="39"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/closeRotate.png">
-    		<Image.RenderTransform>
+    	<Path x:Name="VerticalPath_Copy" Data="M160,40.166667 L160,79.999668" Fill="#FF703A3A" HorizontalAlignment="Left" Height="39.966" Margin="24.507,28.795,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FFF91111" StrokeThickness="10" VerticalAlignment="Top" Width="7" RenderTransformOrigin="0.5,0.5">
+    		<Path.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
     				<SkewTransform/>
-    				<RotateTransform/>
+    				<RotateTransform Angle="-40.902"/>
     				<TranslateTransform/>
     			</TransformGroup>
-    		</Image.RenderTransform>
-    	</Image>
+    		</Path.RenderTransform>
+    	</Path>
+    	<Path x:Name="VerticalPath_Copy1" Data="M160,40.166667 L160,79.999668" Fill="#FF703A3A" HorizontalAlignment="Left" Height="39.966" Margin="20.34,30.462,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FFF91111" StrokeThickness="10" VerticalAlignment="Top" Width="7" RenderTransformOrigin="0.5,0.5">
+    		<Path.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform Angle="48.989"/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</Path.RenderTransform>
+    	</Path>
             
     </Grid>
 </UserControl>

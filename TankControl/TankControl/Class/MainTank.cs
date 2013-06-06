@@ -157,7 +157,7 @@ namespace TankControl.Class
         // CONTROL - START
         public void Start()
         {
-            this.View.RunWithLimit(1);
+            this.View.RunWithLimit(0);
             this.IsFillup = true;
             
         }

@@ -29,20 +29,20 @@ namespace TankControl.View.ComponentGDA
 
         private void ValveClose()
         {
-            BitmapImage img = new BitmapImage();
-            img.BeginInit();
-            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/closeRotate.png");
-            img.EndInit();
-            valveOut.Source = img;
+            //BitmapImage img = new BitmapImage();
+            //img.BeginInit();
+            //img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/closeRotate.png");
+            //img.EndInit();
+            //valveOut.Source = img;
         }
 
         private void ValveOpen()
         {
-            BitmapImage img = new BitmapImage();
-            img.BeginInit();
-            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/openRotate.png");
-            img.EndInit();
-            valveOut.Source = img;
+            //BitmapImage img = new BitmapImage();
+            //img.BeginInit();
+            //img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/openRotate.png");
+            //img.EndInit();
+            //valveOut.Source = img;
         }
 
         public void Open()

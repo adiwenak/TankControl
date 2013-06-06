@@ -31,7 +31,7 @@ namespace TankControl.View.ComponentGDA
         {
             BitmapImage img = new BitmapImage();
             img.BeginInit();
-            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/close.png");
+            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/pumpClose.png");
             img.EndInit();
             valveRight.Source = img;
         }
@@ -40,7 +40,7 @@ namespace TankControl.View.ComponentGDA
         {
             BitmapImage img = new BitmapImage();
             img.BeginInit();
-            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/open.png");
+            img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/pumpOpen.png");
             img.EndInit();
             valveRight.Source = img;
         }

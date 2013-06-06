@@ -23,18 +23,8 @@
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>            
-    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="119.852" Margin="0.333,26.648,0,0" StrokeThickness="10" Stretch="Fill"/>
-    	<ed:BlockArrow x:Name="blockArrow" Fill="Red" HorizontalAlignment="Left" Height="16" Margin="100.01,22.028,0,0" Orientation="Left" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
-    		<ed:BlockArrow.RenderTransform>
-    			<TransformGroup>
-    				<ScaleTransform/>
-    				<SkewTransform/>
-    				<RotateTransform/>
-    				<TranslateTransform/>
-    			</TransformGroup>
-    		</ed:BlockArrow.RenderTransform>
-    	</ed:BlockArrow>
-    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="36.115" Margin="41.217,3.885,0,0" VerticalAlignment="Top" Width="44.283"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png">
+    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="#FF2B2B2B" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="119.852" Margin="0.333,26.648,0,0" StrokeThickness="5" Stretch="Fill"/>
+    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="36.115" Margin="41.217,10.064,0,0" VerticalAlignment="Top" Width="44.283"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png">
     		<Image.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -44,6 +34,16 @@
     			</TransformGroup>
     		</Image.RenderTransform>
     	</Image>
+    	<ed:BlockArrow x:Name="blockArrow" Fill="#FF0000C0" HorizontalAlignment="Left" Height="16" Margin="102.348,21.026,0,0" Orientation="Left" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="15" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+    		<ed:BlockArrow.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</ed:BlockArrow.RenderTransform>
+    	</ed:BlockArrow>
             
     </Grid>
 </UserControl>

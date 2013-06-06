@@ -11,33 +11,39 @@
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="downArrow">
 				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
 				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Visible}"/>
 			</ObjectAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="downArrow">
 				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.001"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="downArrow">
 				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="19.308"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="9.64"/>
 			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rightArrow">
+				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
 				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
 				<DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Hidden}"/>
 			</ObjectAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightArrow">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="109.348"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="63.351"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightArrow">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.041"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="-0.292"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>
-    	<Path x:Name="BigPath" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="119.25" Margin="1.855,36.736,0,0" StrokeThickness="10" Stretch="Fill"/>
-    	<Path Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="26.917" Margin="1.838,15,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="Black" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
-    	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="13" Margin="1.832,33.747,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" Fill="Red" Visibility="Hidden">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0*"/>
+    		<RowDefinition/>
+    	</Grid.RowDefinitions>
+    	<Path x:Name="BigPath" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="119.25" Margin="1.463,20.858,0,0" StrokeThickness="4" Stretch="Fill" Grid.Row="1"/>
+    	<Path Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="26.917" Margin="1.463,0.333,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="4" VerticalAlignment="Top" Width="7" Grid.Row="1"/>
+    	<ed:BlockArrow x:Name="downArrow" Fill="#FF0000C0" HorizontalAlignment="Left" Height="15" Margin="-0.5,0.858,0,0" Orientation="Down" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="8" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" Grid.Row="1">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -47,7 +53,7 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<ed:BlockArrow x:Name="downArrow" Fill="Red" HorizontalAlignment="Left" Height="15" Margin="-1,9.983,0,0" Orientation="Down" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="13" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+    	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="8" Margin="1.463,19.25,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Fill="#FF0000C0" Grid.Row="1" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -57,7 +63,7 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<Image x:Name="valveLeft" HorizontalAlignment="Left" Height="28.991" Margin="41.217,17.669,0,0" VerticalAlignment="Top" Width="38.783"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png">
+    	<Image x:Name="valveLeft" HorizontalAlignment="Left" Height="28.992" Margin="53.104,7.562,0,0" VerticalAlignment="Top" Width="38.783"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png" Grid.Row="1">
     		<Image.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>

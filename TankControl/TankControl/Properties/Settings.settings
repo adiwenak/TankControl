@@ -18,7 +18,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="WSPort" Type="System.String" Scope="User">
-      <Value Profile="(Default)">COM5</Value>
+      <Value Profile="(Default)">COM6</Value>
     </Setting>
     <Setting Name="WSBaudRate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">9600</Value>

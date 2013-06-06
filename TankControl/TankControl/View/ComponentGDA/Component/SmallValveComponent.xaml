@@ -13,7 +13,7 @@
 				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
 			</ObjectAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="downArrow">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0" Value="-1.169"/>
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="downArrow">
@@ -35,9 +35,9 @@
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>
-    	<Path x:Name="BigPath" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="119.25" Margin="1.855,39.236,0,0" StrokeThickness="10" Stretch="Fill"/>
-    	<Path Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="41.833" Margin="1.838,2.584,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="Black" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
-    	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="13" Margin="1.832,36.247,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" Fill="Red" Visibility="Hidden">
+    	<Path x:Name="BigPath" Data="M0.5,40.5 L89.166667,40.5" Fill="#FF2B2B2B" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="119.25" Margin="1.855,39.236,0,0" StrokeThickness="5" Stretch="Fill"/>
+    	<Path Data="M160,40.166667 L160,79.999668" Fill="#FF2B2B2B" HorizontalAlignment="Left" Height="41.833" Margin="1.838,2.584,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="5" VerticalAlignment="Top" Width="7"/>
+    	<ed:BlockArrow x:Name="downArrow" Fill="#FF0000C0" HorizontalAlignment="Left" Height="15" Margin="-1,0.292,0,0" Orientation="Down" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="13" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -47,7 +47,8 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<ed:BlockArrow x:Name="downArrow" Fill="Red" HorizontalAlignment="Left" Height="15" Margin="-1,0.292,0,0" Orientation="Down" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="13" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="36" Margin="42.675,22.566,0,0" VerticalAlignment="Top" Width="44" Source="/TankControl;component/Images/valve/close.png"/>
+    	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="13" Margin="1.832,35.412,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" Fill="#FF0000C0" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -57,7 +58,6 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="36" Margin="42.675,15.385,0,0" VerticalAlignment="Top" Width="44" Source="/TankControl;component/Images/valve/close.png"/>
             
     </Grid>
 </UserControl>
