@@ -21,7 +21,7 @@
         </GroupBox>
 
 
-        <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="reportGridView" AutoGenerateColumns="False" IsReadOnly="True" Visibility="Hidden" Margin="0,138,6,34">
+        <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="reportGridView" AutoGenerateColumns="False" IsReadOnly="True" Visibility="Hidden" Margin="0,138,6,34" Height="Auto">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="Recipe Name" DataMemberBinding="{Binding recipe_name}"/>
                 <telerik:GridViewDataColumn Header="Date" DataMemberBinding="{Binding date}" DataFormatString="dd/MM/yyyy" />
@@ -44,7 +44,7 @@
         </telerik:RadGridView>
         <telerik:RadDataPager telerikControls:StyleManager.Theme="Metro" Name="reportDataPager" Visibility="Hidden"
                           Source="{Binding Items, ElementName=reportGridView}"
-                          PageSize="5" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="0,0,6,0" />
+                          PageSize="15" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="0,0,6,0" />
         
     </Grid>
 </UserControl>

@@ -9,8 +9,8 @@
         <ComponentGDA:TinyTankRComponent x:Name="tinyTank_5" Canvas.Left="518.5" Canvas.Top="135.5"/>
         <ComponentGDA:TinyTankLComponent x:Name="tinyTank_4" Canvas.Left="136" Canvas.Top="377" Height="75"/>
         <ComponentGDA:TinyTankLComponent x:Name="tinyTank_3" Canvas.Left="136" Canvas.Top="295.5" Height="75"/>
-        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_2" Canvas.Top="169.5" Canvas.Left="56"/>
-        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_1" Canvas.Top="73.5" Canvas.Left="56"/>
+        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_2" Canvas.Top="169.5" Canvas.Left="55"/>
+        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_1" Canvas.Top="73.5" Canvas.Left="55"/>
         <ComponentGDA:ShakeComponent x:Name="shakeComponent" Canvas.Left="226.5" Canvas.Top="19"/>
 	</Canvas>	
 </UserControl>

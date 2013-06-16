@@ -270,24 +270,32 @@ namespace TankControl.Class
                         RunTester.Singleton.StopTimer();
                     }
                     this.controlArea.CheckFillup.IsChecked = true;
-                    processStep = 10;
-                    this.ProcessShake();
-                    
+                    if (this.Recipe.runtime > 0)
+                    {
+                        processStep = 10;
+                        this.ProcessShake();
+                    }
+                    else
+                    {
+                        this.StopRunComponent();
+                        this.controlArea.EnableStartProcess();
+                        this.FillupStop();
+                    }
                 }
             }
         }
 
-        private void StopRunComponent(List<IComponent> getRuns = null)
+        private void StopRunComponent()
         {
-            if (this.runComponents.Count > 0)
+            if (this.runComponents != null && this.runComponents.Count > 0)
             {
                 foreach (IComponent cmp in this.runComponents)
                 {
                     cmp.Stop();
                 }
-            }
 
-            this.runComponents.Clear();
+                this.runComponents.Clear();
+            }
         }
 
         private void AddToRunComponent(IComponent cmp)
@@ -331,11 +339,11 @@ namespace TankControl.Class
                 }
                 else
                 {
-                    this.controlArea.CheckMixing.IsChecked = true;
+                    (sender as DispatcherTimer).Stop();
                     shakeCounter = 0;
+                    this.controlArea.CheckMixing.IsChecked = true;
                     this.controlArea.EnableStartProcess();
                     this.StopRunComponent();
-                    (sender as DispatcherTimer).Stop();
                     this.FillupStop();
                 }
         }
@@ -371,7 +379,7 @@ namespace TankControl.Class
                 this.MainTank.TRight2.StageLimit = pumpSix;
                 this.MainTank.TRight3.StageLimit = pumpSeven;
 
-                this.History = new History(this.Recipe.id, this.Recipe.name);
+                this.History = new History(this.Recipe.id,this.Recipe.name);
             }
             else
             {
@@ -384,6 +392,7 @@ namespace TankControl.Class
         /// </summary>
         public void FillupRun()
         {
+            this.processStep = 0;
             this.processRun = true;
             this.SetupFillup();
 

@@ -58,11 +58,13 @@ namespace TankControl.View
                                     select a;
 
                         reportlist.Clear();
-                        foreach (var history in query)
+                        foreach (History history in query)
                         {
-                            reportlist.Add(new TankControl.History(history.recipe_id,history.recipe_name)
+                            reportlist.Add(new TankControl.History()
                             {
                                 id = history.id,
+                                recipe_id = history.recipe_id,
+                                recipe_name = history.recipe_name,
                                 date = history.date,
                                 el1 = history.el1,
                                 el2 = history.el2,
@@ -88,7 +90,7 @@ namespace TankControl.View
                         MessageBox.Show("An error occured while generating data from database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         Application.Current.Shutdown();

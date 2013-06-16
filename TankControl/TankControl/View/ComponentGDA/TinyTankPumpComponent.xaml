@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="275">
     <Grid>
-    	<local:TinyTankComponent x:Name="TinyTank" HorizontalAlignment="Left" Margin="0.998,-3.889,0,0" VerticalAlignment="Top"/>
-    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="Black" VerticalAlignment="Top" Width="104.852" Margin="55,42.276,0,0" StrokeThickness="10" Stretch="Fill"/>
-    	<local:BigValveLComponent x:Name="BigValve" HorizontalAlignment="Left" Margin="154,16,0,0" VerticalAlignment="Top"/>
-    	<local:SmallValveComponent x:Name="SmallValve" HorizontalAlignment="Left" Margin="152,44.615,0,0" VerticalAlignment="Top"/>
-    	<local:PumpComponent x:Name="Pump" HorizontalAlignment="Left" Margin="80,22.661,0,0" VerticalAlignment="Top"/>
+    	<local:TinyTankComponent x:Name="TinyTank" HorizontalAlignment="Left" Margin="0.656,-3.889,0,0" VerticalAlignment="Top"/>
+    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="#FF2B2B2B" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="104.852" Margin="55.666,42.276,0,0" StrokeThickness="10" Stretch="Fill"/>
+    	<local:BigValveLComponent x:Name="BigValve" HorizontalAlignment="Left" Margin="153.332,15.666,0,0" VerticalAlignment="Top"/>
+    	<local:SmallValveComponent x:Name="SmallValve" HorizontalAlignment="Left" Margin="150.997,44.948,0,-0.334" VerticalAlignment="Top"/>
+    	<local:PumpComponent x:Name="Pump" HorizontalAlignment="Left" Margin="79.332,22.661,0,0" VerticalAlignment="Top"/>
             
     </Grid>
 </UserControl>

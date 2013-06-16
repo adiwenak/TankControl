@@ -34,6 +34,11 @@ namespace TankControl
         public int duration_el6 { get; set; }
         public int duration_el7 { get; set; }
 
+        public History()
+        {
+            this.date = DateTime.Now;
+        }
+
         public History(int recipeID, string recipeName)
         {
             this.date = DateTime.Now;

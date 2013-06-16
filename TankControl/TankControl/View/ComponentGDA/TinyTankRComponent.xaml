@@ -8,7 +8,7 @@
              d:DesignWidth="195" d:DesignHeight="78.851">
     <Grid>
             
-    	<local:TinyTankComponent x:Name="TinyTank" HorizontalAlignment="Left" Margin="108,-12.851,0,0" VerticalAlignment="Top"/>
+    	<local:TinyTankComponent x:Name="TinyTank" HorizontalAlignment="Left" Margin="111.75,-12.851,0,0" VerticalAlignment="Top"/>
     	<local:BigValveRComponent x:Name="BigValveR" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
             
     </Grid>
