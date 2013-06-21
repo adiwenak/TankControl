@@ -53,8 +53,8 @@ namespace TankControl.View
                     try
                     {
                         var query = from a in tce.Histories
-                                    where a.date >= startdate
-                                    where a.date <= enddate
+                                    where a.date_start >= startdate
+                                    where a.date_start <= enddate
                                     select a;
 
                         reportlist.Clear();
@@ -65,7 +65,8 @@ namespace TankControl.View
                                 id = history.id,
                                 recipe_id = history.recipe_id,
                                 recipe_name = history.recipe_name,
-                                date = history.date,
+                                date_start = history.date_start,
+                                date_complete = history.date_complete,
                                 el1 = history.el1,
                                 el2 = history.el2,
                                 el3 = history.el3,
@@ -74,13 +75,13 @@ namespace TankControl.View
                                 el6 = history.el6,
                                 el7 = history.el7,
                                 total = history.total,
-                                duration_el1 = history.duration_el1,
-                                duration_el2 = history.duration_el2,
-                                duration_el3 = history.duration_el3,
-                                duration_el4 = history.duration_el4,
-                                duration_el5 = history.duration_el5,
-                                duration_el6 = history.duration_el6,
-                                duration_el7 = history.duration_el7
+                                //duration_el1 = history.duration_el1,
+                                //duration_el2 = history.duration_el2,
+                                //duration_el3 = history.duration_el3,
+                                //duration_el4 = history.duration_el4,
+                                //duration_el5 = history.duration_el5,
+                                //duration_el6 = history.duration_el6,
+                                //duration_el7 = history.duration_el7
                             });
 
                         }

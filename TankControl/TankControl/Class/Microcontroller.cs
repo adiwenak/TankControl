@@ -226,16 +226,27 @@ namespace TankControl.Class
 
         public bool OnDigitalOutput(UInt16 location)
         {
-            int ret;
             bool success = false;
-            byteWriteCoils[0] = 0x01;
-
-            ret = MXIO_CS.MXIO_WriteCoils(hConnection[0], location, 1, byteWriteCoils);
-            CheckError(ret, "MXIO_WriteCoils");
-            if (ret == MXIO_CS.MXIO_OK)
+            if (TankControl.Properties.Settings.Default.SystemTest == 0)
             {
-                Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X} , 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
-                success = true;
+                int ret;
+                byteWriteCoils[0] = 0x01;
+
+                ret = MXIO_CS.MXIO_WriteCoils(hConnection[0], location, 1, byteWriteCoils);
+                CheckError(ret, "MXIO_WriteCoils");
+                if (ret == MXIO_CS.EIO_SOCKET_DISCONNECT)
+                {
+                    if (this.Connect())
+                    {
+                        this.OnDigitalOutput(location);
+                    }
+                }
+
+                if (ret == MXIO_CS.MXIO_OK)
+                {
+                    Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X} , 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
+                    success = true;
+                }
             }
 
             return success;
@@ -243,16 +254,29 @@ namespace TankControl.Class
 
         public bool OffDigitalOutput(UInt16 location)
         {
-            int ret;
+            
             bool success = false;
-            byteWriteCoils[0] = 0x00;
-
-            ret = MXIO_CS.MXIO_WriteCoils(hConnection[0], location, 1, byteWriteCoils);
-            CheckError(ret, "MXIO_WriteCoils");
-            if (ret == MXIO_CS.MXIO_OK)
+            if (TankControl.Properties.Settings.Default.SystemTest == 0)
             {
-                Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X}, 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
-                success = true;
+                int ret;
+                byteWriteCoils[0] = 0x00;
+
+                ret = MXIO_CS.MXIO_WriteCoils(hConnection[0], location, 1, byteWriteCoils);
+                CheckError(ret, "MXIO_WriteCoils");
+
+                if (ret == MXIO_CS.EIO_SOCKET_DISCONNECT)
+                {
+                    if (this.Connect())
+                    {
+                        this.OffDigitalOutput(location);
+                    }
+                }
+
+                if (ret == MXIO_CS.MXIO_OK)
+                {
+                    Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X}, 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
+                    success = true;
+                }
             }
 
             return success;

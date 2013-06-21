@@ -40,9 +40,9 @@ namespace TankControl.View.ComponentGDA
 
         void fillTimer_Tick(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("tanki Height :" + tankiFill.Height);
-            System.Diagnostics.Debug.WriteLine("after render height:" + currentHeight);
-            System.Diagnostics.Debug.WriteLine("increment :" + incrementHeight);
+            //System.Diagnostics.Debug.WriteLine("tanki Height :" + tankiFill.Height);
+            //System.Diagnostics.Debug.WriteLine("after render height:" + currentHeight);
+            //System.Diagnostics.Debug.WriteLine("increment :" + incrementHeight);
             if (tankiFill.Height <= (tankHeight - incrementHeight))
             {               
                 currentHeight = tankiFill.Height;
@@ -89,8 +89,7 @@ namespace TankControl.View.ComponentGDA
                 Clean();
                 mainTankAnimation.Stop();
                 fillTimer.Stop();
-                System.Diagnostics.Debug.WriteLine("current stop:" + currentHeight);
-
+                //System.Diagnostics.Debug.WriteLine("current stop:" + currentHeight);
             }
         }
 
@@ -112,7 +111,7 @@ namespace TankControl.View.ComponentGDA
         }
 
         public void Add(double incrementHeight){
-            System.Diagnostics.Debug.WriteLine("increment top :" + incrementHeight);
+            //System.Diagnostics.Debug.WriteLine("increment top :" + incrementHeight);
             this.incrementHeight = incrementHeight;
             if(currentHeight  > (tankHeight - this.incrementHeight)){
                 fillTimer.Start();

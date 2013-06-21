@@ -22,7 +22,8 @@
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="recipe_id" Type="int" Nullable="false" />
           <Property Name="recipe_name" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="date_start" Type="datetime" Nullable="false" />
+          <Property Name="date_complete" Type="datetime" Nullable="false" />
           <Property Name="el1" Type="float" Nullable="false" />
           <Property Name="el2" Type="float" Nullable="false" />
           <Property Name="el3" Type="float" Nullable="false" />
@@ -161,7 +162,8 @@
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="recipe_id" Nullable="false" />
           <Property Type="String" Name="recipe_name" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="DateTime" Name="date_start" Nullable="false" />
+          <Property Type="DateTime" Name="date_complete" Nullable="false" />
           <Property Type="Double" Name="el1" Nullable="false" />
           <Property Type="Double" Name="el2" Nullable="false" />
           <Property Type="Double" Name="el3" Nullable="false" />
@@ -262,7 +264,8 @@
                 <ScalarProperty Name="el3" ColumnName="el3" />
                 <ScalarProperty Name="el2" ColumnName="el2" />
                 <ScalarProperty Name="el1" ColumnName="el1" />
-                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="date_complete" ColumnName="date_complete" />
+                <ScalarProperty Name="date_start" ColumnName="date_start" />
                 <ScalarProperty Name="recipe_name" ColumnName="recipe_name" />
                 <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -294,12 +297,12 @@
         <EntityTypeShape EntityType="TankControlModel.SystemError" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
         <EntityTypeShape EntityType="TankControlModel.User" Width="1.5" PointX="5.75" PointY="3.75" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="TankControlModel.Recipe" Width="1.5" PointX="0.75" PointY="1.125" Height="4.8648079427083335" />
-        <EntityTypeShape EntityType="TankControlModel.History" Width="1.5" PointX="3" PointY="1.125" Height="4.8648079427083335" />
+        <EntityTypeShape EntityType="TankControlModel.History" Width="1.5" PointX="3" PointY="1" Height="5.0571093750000031" />
         <AssociationConnector Association="TankControlModel.FK_History_Recipe" >
-          <ConnectorPoint PointX="2.25" PointY="3.5574039713541667" />
-          <ConnectorPoint PointX="3" PointY="3.5574039713541667" />
+          <ConnectorPoint PointX="2.25" PointY="3.5574039713541663" />
+          <ConnectorPoint PointX="3" PointY="3.5574039713541663" />
         </AssociationConnector>
-      </Diagram>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

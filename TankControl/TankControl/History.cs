@@ -17,7 +17,8 @@ namespace TankControl
         public int id { get; set; }
         public int recipe_id { get; set; }
         public string recipe_name { get; set; }
-        public System.DateTime date { get; set; }
+        public System.DateTime date_start { get; set; }
+        public System.DateTime date_complete { get; set; }
         public double el1 { get; set; }
         public double el2 { get; set; }
         public double el3 { get; set; }
@@ -33,19 +34,20 @@ namespace TankControl
         public int duration_el5 { get; set; }
         public int duration_el6 { get; set; }
         public int duration_el7 { get; set; }
+    
+        public virtual Recipe Recipe { get; set; }
 
         public History()
         {
-            this.date = DateTime.Now;
+            this.date_start = DateTime.Now;
         }
 
         public History(int recipeID, string recipeName)
         {
-            this.date = DateTime.Now;
+            this.date_start = DateTime.Now;
             this.recipe_id = recipeID;
             this.recipe_name = recipeName;
         }
-        public virtual Recipe Recipe { get; set; }
     }
     
 }

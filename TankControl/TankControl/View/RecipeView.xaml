@@ -38,21 +38,21 @@
                     </telerik:GridViewColumn.CellTemplate>
                 </telerik:GridViewColumn>
                 <telerik:GridViewDataColumn Header="Name" DataMemberBinding="{Binding name}" />
-                <telerik:GridViewDataColumn Header="Element 1" DataMemberBinding="{Binding el1}" />
-                <telerik:GridViewDataColumn Header="Element 2" DataMemberBinding="{Binding el2}" />
-                <telerik:GridViewDataColumn Header="Element 3" DataMemberBinding="{Binding el3}" />
-                <telerik:GridViewDataColumn Header="Element 4" DataMemberBinding="{Binding el4}" />
-                <telerik:GridViewDataColumn Header="Element 5" DataMemberBinding="{Binding el5}" />
-                <telerik:GridViewDataColumn Header="Element 6" DataMemberBinding="{Binding el6}" />
-                <telerik:GridViewDataColumn Header="Element 7" DataMemberBinding="{Binding el7}" />
+                <telerik:GridViewDataColumn Header="Drum 1" DataMemberBinding="{Binding el1}" />
+                <telerik:GridViewDataColumn Header="Drum 2" DataMemberBinding="{Binding el2}" />
+                <telerik:GridViewDataColumn Header="Drum 3" DataMemberBinding="{Binding el3}" />
+                <telerik:GridViewDataColumn Header="Drum 4" DataMemberBinding="{Binding el4}" />
+                <telerik:GridViewDataColumn Header="Drum 5" DataMemberBinding="{Binding el5}" />
+                <telerik:GridViewDataColumn Header="Drum 6" DataMemberBinding="{Binding el6}" />
+                <telerik:GridViewDataColumn Header="Drum 7" DataMemberBinding="{Binding el7}" />
                 <telerik:GridViewDataColumn Header="Runtime" DataMemberBinding="{Binding runtime}" />
-                <telerik:GridViewDataColumn Header="Tolerance Element 1" DataMemberBinding="{Binding tol_el1}" />
+                <!--<telerik:GridViewDataColumn Header="Tolerance Element 1" DataMemberBinding="{Binding tol_el1}" />
                 <telerik:GridViewDataColumn Header="Tolerance Element 2" DataMemberBinding="{Binding tol_el2}" />
                 <telerik:GridViewDataColumn Header="Tolerance Element 3" DataMemberBinding="{Binding tol_el3}" />
                 <telerik:GridViewDataColumn Header="Tolerance Element 4" DataMemberBinding="{Binding tol_el4}" />
                 <telerik:GridViewDataColumn Header="Tolerance Element 5" DataMemberBinding="{Binding tol_el5}" />
                 <telerik:GridViewDataColumn Header="Tolerance Element 6" DataMemberBinding="{Binding tol_el6}" />
-                <telerik:GridViewDataColumn Header="Tolerance Element 7" DataMemberBinding="{Binding tol_el7}" />
+                <telerik:GridViewDataColumn Header="Tolerance Element 7" DataMemberBinding="{Binding tol_el7}" />-->
                 <telerik:GridViewDataColumn Header="Switch Element 1" DataMemberBinding="{Binding switch_el1}" />
                 <telerik:GridViewDataColumn Header="Switch Element 2" DataMemberBinding="{Binding switch_el2}" />
             </telerik:RadGridView.Columns>

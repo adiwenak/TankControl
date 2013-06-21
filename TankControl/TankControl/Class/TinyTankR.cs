@@ -50,7 +50,12 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Run();
+
                 this._TempAddWeight();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Right unable to close Valve");
             }
 
             return cmp;
@@ -64,6 +69,10 @@ namespace TankControl.Class
             {
                 cmp.Stop();
                 this._TempEqualWeight();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Right unable to open Valve");
             }
 
             return cmp;

@@ -258,7 +258,9 @@ namespace TankControl.Class
                 {
                     if (this.History != null)
                     {
-                        this.History.el7 = (double)receiveWeight - (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4 + this.History.el5 + this.History.el6);
+                        this.History.el7 = (double)receiveWeight - 
+                            (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4 + this.History.el5 + this.History.el6);
+                        this.History.total = (double)receiveWeight;
                     }
                     else
                     {
@@ -269,7 +271,9 @@ namespace TankControl.Class
                     {
                         RunTester.Singleton.StopTimer();
                     }
+
                     this.controlArea.CheckFillup.IsChecked = true;
+
                     if (this.Recipe.runtime > 0)
                     {
                         processStep = 10;
@@ -411,6 +415,7 @@ namespace TankControl.Class
             {
                 if (this.History != null)
                 {
+                    this.History.date_complete = DateTime.Now;
                     tce.Histories.Add(this.History);
                     try
                     {
@@ -505,7 +510,8 @@ namespace TankControl.Class
                 if (this.MainTank == null)
                 {
                     List<IComponent> list = new List<IComponent>{
-                            new ControlValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO14),gdaView.GdaMainTankShake.Slc,(int)ReferenceEnum.Component.ValveControl),
+                            //this control valve use as a pump
+                            new ControlValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO1),gdaView.GdaMainTankShake.Slc,(int)ReferenceEnum.Component.ValveControl),
                             new ShakeValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO12),gdaView.GdaMainTankShake.Src, (int)ReferenceEnum.Component.ValveShake),
                             new OutValve(Convert.ToUInt16(ReferenceEnum.MOXA.DO13),gdaView.GdaMainTankShake.Oc, (int)ReferenceEnum.Component.ValveOutput)
                     };

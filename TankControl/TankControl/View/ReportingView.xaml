@@ -24,22 +24,23 @@
         <telerik:RadGridView telerikControls:StyleManager.Theme="Metro" Name="reportGridView" AutoGenerateColumns="False" IsReadOnly="True" Visibility="Hidden" Margin="0,138,6,34" Height="Auto">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="Recipe Name" DataMemberBinding="{Binding recipe_name}"/>
-                <telerik:GridViewDataColumn Header="Date" DataMemberBinding="{Binding date}" DataFormatString="dd/MM/yyyy" />
-                <telerik:GridViewDataColumn Header="Element 1" DataMemberBinding="{Binding el1}" />
-                <telerik:GridViewDataColumn Header="Element 2" DataMemberBinding="{Binding el2}" />
-                <telerik:GridViewDataColumn Header="Element 3" DataMemberBinding="{Binding el3}" />
-                <telerik:GridViewDataColumn Header="Element 4" DataMemberBinding="{Binding el4}" />
-                <telerik:GridViewDataColumn Header="Element 5" DataMemberBinding="{Binding el5}" />
-                <telerik:GridViewDataColumn Header="Element 6" DataMemberBinding="{Binding el6}" />
-                <telerik:GridViewDataColumn Header="Element 7" DataMemberBinding="{Binding el7}" />
+                <telerik:GridViewDataColumn Header="Start Date" DataMemberBinding="{Binding date_start}" />
+                <telerik:GridViewDataColumn Header="End Date" DataMemberBinding="{Binding date_complete}" />
+                <telerik:GridViewDataColumn Header="Drum 1" DataMemberBinding="{Binding el1}" />
+                <telerik:GridViewDataColumn Header="Drum 2" DataMemberBinding="{Binding el2}" />
+                <telerik:GridViewDataColumn Header="Drum 3" DataMemberBinding="{Binding el3}" />
+                <telerik:GridViewDataColumn Header="Drum 4" DataMemberBinding="{Binding el4}" />
+                <telerik:GridViewDataColumn Header="Drum 5" DataMemberBinding="{Binding el5}" />
+                <telerik:GridViewDataColumn Header="Drum 6" DataMemberBinding="{Binding el6}" />
+                <telerik:GridViewDataColumn Header="Drum 7" DataMemberBinding="{Binding el7}" />
                 <telerik:GridViewDataColumn Header="Total" DataMemberBinding="{Binding total}" />
-                <telerik:GridViewDataColumn Header="Duration Element 1" DataMemberBinding="{Binding duration_el1}" />
+                <!--<telerik:GridViewDataColumn Header="Duration Element 1" DataMemberBinding="{Binding duration_el1}" />
                 <telerik:GridViewDataColumn Header="Duration Element 2" DataMemberBinding="{Binding duration_el2}" />
                 <telerik:GridViewDataColumn Header="Duration Element 3" DataMemberBinding="{Binding duration_el3}" />
                 <telerik:GridViewDataColumn Header="Duration Element 4" DataMemberBinding="{Binding duration_el4}" />
                 <telerik:GridViewDataColumn Header="Duration Element 5" DataMemberBinding="{Binding duration_el5}" />
                 <telerik:GridViewDataColumn Header="Duration Element 6" DataMemberBinding="{Binding duration_el6}" />
-                <telerik:GridViewDataColumn Header="Duration Element 7" DataMemberBinding="{Binding duration_el7}" />
+                <telerik:GridViewDataColumn Header="Duration Element 7" DataMemberBinding="{Binding duration_el7}" />-->
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <telerik:RadDataPager telerikControls:StyleManager.Theme="Metro" Name="reportDataPager" Visibility="Hidden"

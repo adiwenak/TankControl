@@ -109,10 +109,10 @@ namespace TankControl.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int WSInterval {
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public float WSInterval {
             get {
-                return ((int)(this["WSInterval"]));
+                return ((float)(this["WSInterval"]));
             }
             set {
                 this["WSInterval"] = value;

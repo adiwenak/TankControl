@@ -18,7 +18,7 @@ namespace TankControl.Class
         private static WeightScale singleton;
         private SerialPort serialPort;
         private int counterInterval = 1;
-        private static int interval = TankControl.Properties.Settings.Default.WSInterval * 10;
+        private static int interval = (int)(TankControl.Properties.Settings.Default.WSInterval * 10);
 
         public static WeightScale Singleton
         {
@@ -65,15 +65,22 @@ namespace TankControl.Class
         public bool Connect()
         {
             bool success = false;
-            this.serialPort.PortName = TankControl.Properties.Settings.Default.WSPort;
-            this.serialPort.BaudRate = TankControl.Properties.Settings.Default.WSBaudRate;
-
-            this.serialPort.Open();
-
-            if (this.serialPort.IsOpen)
+            if (!this.serialPort.IsOpen)
             {
-                success = true;
-                this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+                this.serialPort.PortName = TankControl.Properties.Settings.Default.WSPort;
+                this.serialPort.BaudRate = TankControl.Properties.Settings.Default.WSBaudRate;
+
+                this.serialPort.Open();
+
+                if (this.serialPort.IsOpen)
+                {
+                    success = true;
+                    this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Fail to connect to weight scale reason : port is already open");
             }
 
             return success;
@@ -139,8 +146,6 @@ namespace TankControl.Class
                                 this.CurrentWeight = weight;
                                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                     new Action(() => this.Notify(addWeight)));
-                                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background,
-                                    new Action(() => this.DisplayText(weight)));
                             }
                         }
                     }
@@ -160,7 +165,7 @@ namespace TankControl.Class
             if (this.WeightLabel != null)
             {
                 string value = weight.ToString() + " kg";
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.WeightLabel.Content = value));
+                this.WeightLabel.Content = value;
             }
             else
             {
@@ -173,6 +178,8 @@ namespace TankControl.Class
         {
             if (this.Process != null)
             {
+                string value = this.CurrentWeight.ToString() + " kg";
+                this.WeightLabel.Content = value;
                 this.Process.WeightUpdated(this.CurrentWeight, (float)addWeight);
             }
         }

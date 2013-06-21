@@ -135,12 +135,18 @@ namespace TankControl.Class
 
         public void _TempAddWeight(decimal weight = 1)
         {
-            RunTester.Singleton.AddWeight = weight;
+            if (TankControl.Properties.Settings.Default.SystemTest == 1)
+            {
+                RunTester.Singleton.AddWeight = weight;
+            }
         }
 
         public void _TempEqualWeight()
         {
-            RunTester.Singleton.AddWeight = 0;
+            if (TankControl.Properties.Settings.Default.SystemTest == 1)
+            {
+                RunTester.Singleton.AddWeight = 0;
+            }
         }
 
         

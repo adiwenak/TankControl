@@ -45,6 +45,10 @@ namespace TankControl.Class
                 this.pump = true;
                 this._TempAddWeight();
             }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Pump unable to run Pump");
+            }
 
             return cmp;
         }
@@ -57,6 +61,10 @@ namespace TankControl.Class
                 cmp.Stop();
                 this.pump = false;
                 this._TempEqualWeight();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Pump unable to stop Pump");
             }
 
             return cmp;
@@ -71,6 +79,10 @@ namespace TankControl.Class
                 this.valveSmall = true;
                 this._TempAddWeight();
             }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Pump unable to run valve small");
+            }
 
             return cmp;
         }
@@ -83,6 +95,10 @@ namespace TankControl.Class
                 cmp.Stop();
                 this.valveSmall = false;
                 this._TempEqualWeight();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Pump unable to stop valve small");
             }
 
             return cmp;
@@ -97,6 +113,10 @@ namespace TankControl.Class
                 this.valveBig = true;
                 this._TempAddWeight();
             }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Pump unable to run Valve Big");
+            }
 
             return cmp;
         } 
@@ -109,6 +129,10 @@ namespace TankControl.Class
                 cmp.Stop();
                 this.valveBig = false;
                 this._TempEqualWeight(); 
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Tiny Tank Pump unable to stop Valve Big");
             }
 
             return cmp;

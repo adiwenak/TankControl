@@ -23,8 +23,8 @@
     <Setting Name="WSBaudRate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">9600</Value>
     </Setting>
-    <Setting Name="WSInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+    <Setting Name="WSInterval" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
     </Setting>
     <Setting Name="TankHeight" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">400</Value>
