@@ -7,8 +7,8 @@
         <UserControl.Resources>
         <Storyboard x:Key="storyTank">
         		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="tankiFill">
-        			<EasingDoubleKeyFrame KeyTime="0" Value="415.237"/>
-        			<EasingDoubleKeyFrame KeyTime="0:0:5" Value="88"/>
+        			<EasingDoubleKeyFrame KeyTime="0" Value="404.874"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:5" Value="76"/>
         		</DoubleAnimationUsingKeyFrames>
         		<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="topFill">
         			<EasingColorKeyFrame KeyTime="0" Value="#FF44BCE9"/>
@@ -28,8 +28,8 @@
     </UserControl.Resources>
 
     <Grid Margin="0,0.083,1.5,-0.083" Background="{x:Null}">
-        <Rectangle x:Name="mainTangki" HorizontalAlignment="Left" Height="413.207" Margin="8.23,17.793,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.601" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="#FF44BCE9"/>
-        <Rectangle x:Name="tankiFill" HorizontalAlignment="Left" Height="414.011" Margin="8.679,16.484,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.601" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White">
+        <Rectangle x:Name="mainTangki" HorizontalAlignment="Left" Height="412.54" Margin="8.23,17.793,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.601" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="#FF44BCE9" StrokeThickness="9"/>
+        <Rectangle x:Name="tankiFill" HorizontalAlignment="Left" Height="403.041" Margin="17.377,21.126,0,0" Stroke="White" VerticalAlignment="Top" Width="177.25" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White" StrokeThickness="5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -38,17 +38,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle x:Name="topFill" HorizontalAlignment="Left" Height="40.621" Margin="8.987,390.379,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.6" RenderTransformOrigin="0.495,1.798" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <Rectangle x:Name="tankiClose" HorizontalAlignment="Left" Height="40.621" Margin="8.23,15.315,0,0" Stroke="Black" VerticalAlignment="Top" Width="195.601" RenderTransformOrigin="0.5,0.5" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White">
+        <Rectangle x:Name="topFill" HorizontalAlignment="Left" Height="37.454" Margin="18.127,388.546,0,0" Stroke="Black" VerticalAlignment="Top" Width="176.5" RenderTransformOrigin="0.495,1.798" StrokeStartLineCap="Square" RadiusX="60" RadiusY="20" Fill="White" StrokeThickness="0">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
