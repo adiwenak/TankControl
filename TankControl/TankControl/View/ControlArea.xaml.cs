@@ -98,23 +98,27 @@ namespace TankControl.View
 
         private void DropdownRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int recipeId = (int)DropdownRecipe.SelectedValue;
-            using (TankControlEntities tce = new TankControlEntities())
+            if (DropdownRecipe.SelectedValue != null)
             {
-                Recipe selectedRecipe = tce.Recipes.Where(x => x.id == recipeId).FirstOrDefault();
+                int recipeId = (int)DropdownRecipe.SelectedValue;
 
-                if (selectedRecipe != null)
+                using (TankControlEntities tce = new TankControlEntities())
                 {
-                    Process.Singleton.Recipe = selectedRecipe;
+                    Recipe selectedRecipe = tce.Recipes.Where(x => x.id == recipeId).FirstOrDefault();
 
-                    if (this.CheckProcess() == true)
+                    if (selectedRecipe != null)
                     {
-                        this.EnableStartProcess();
-                    }
-                }
-                else
-                {
+                        Process.Singleton.Recipe = selectedRecipe;
 
+                        if (this.CheckProcess() == true)
+                        {
+                            this.EnableStartProcess();
+                        }
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
 
@@ -126,15 +130,8 @@ namespace TankControl.View
             {
                 try
                 {
-                    if (this.recipelist == null)
-                    {
-                        this.recipelist = new ObservableCollection<Recipe>();
-                    }
 
-                    if (this.recipelist.Count > 0)
-                    {
-                        this.recipelist.Clear();
-                    }
+                    this.recipelist = new ObservableCollection<Recipe>();
 
                     var query = tce.Recipes.Select(x => new { x.id, x.name }).ToList();
 
@@ -147,14 +144,14 @@ namespace TankControl.View
                     }
 
                 }
-                catch (System.Data.EntityException)
+                catch (System.Data.EntityException exception)
                 {
-                    MessageBox.Show("An error occured while generating recipe data from database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("An error occured while generating recipe data from database. Please contact technician {" + exception.Message + "}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("An unknown error has occurred. Please contact technician {" + exception.Message + "}" , "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
 

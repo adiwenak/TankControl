@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Windows.Threading;
 using TankControl.Functions;
 using System.Data.Entity.Infrastructure;
+using System.Windows.Forms;
 
 namespace TankControl.Class
 {
@@ -25,12 +26,13 @@ namespace TankControl.Class
         // use to determine the current process step
         private int processStep = 0;
 
+        private int checkTimeout = 0;
+
+        private decimal previousWeight;
         // a collection of the current running components (valve, pump), it use for stoping the somewhere along the process
         private List<IComponent> runComponents;
         // use to update the check list process in the view
         private ControlArea controlArea;
-
-        private History history;
 
         // SINGLETON
         public static Process Singleton
@@ -40,6 +42,10 @@ namespace TankControl.Class
                 if (singleton == null)
                 {
                     singleton = new Process();
+                    if (TankControl.Properties.Settings.Default.SystemTest == 1)
+                    {
+                        RunTester.Singleton.RunTimer();
+                    }
                 }
                 return singleton;
             }
@@ -112,12 +118,78 @@ namespace TankControl.Class
 
         #region Process Method
 
-        
+        public void TimeOutMessageBox(int processStep)
+        {
+            string message = "Timeout di ";
+            switch (processStep)
+            {
+                case 1:
+                {
+                    message += "Drum 1";
+                    break;
+                }
+                case 2:
+                {
+                    message += "Drum 1";
+                    break;
+                }
+                case 3:
+                {
+                    message += "Drum 2";
+                    break;
+                }
+                case 4:
+                {
+                    message += "Drum 2";
+                    break;
+                }
+                case 5:
+                {
+                    message += "Drum 3";
+                    break;
+                }
+                case 6:
+                {
+                    message += "Drum 4";
+                    break;
+                }
+                case 7:
+                {
+                    message += "Drum 5";
+                    break;
+                }
+                case 8:
+                {
+                    message += "Drum 6";
+                    break;
+                }
+                case 9:
+                {
+                    message += "Drum 7";
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
+            message += ", harap diperiksa !";
+            DialogResult result = MessageBox.Show(message, "PROCESS TIMEOUT!!", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+
+            if (result == DialogResult.OK)
+            {
+                this.FillupResume();
+                this.checkTimeout = 0;
+                this.processStep--;
+            }
+        }
+
+
         /// <summary>
         /// this is the heart of the process, it responsible to update the state of the process in accordance with the current weight
         /// </summary>
         /// <param name="receiveWeight">The current weight of the tank, suppose to be receive from the weight scale</param>
-
         public void ProcessFillup(decimal receiveWeight)
         {
             if (receiveWeight >= 0 && receiveWeight < this.MainTank.TPump1.StageLimit)
@@ -267,11 +339,6 @@ namespace TankControl.Class
 
                     }
 
-                    if (TankControl.Properties.Settings.Default.SystemTest == 1)
-                    {
-                        RunTester.Singleton.StopTimer();
-                    }
-
                     this.controlArea.CheckFillup.IsChecked = true;
 
                     if (this.Recipe.runtime > 0)
@@ -287,6 +354,24 @@ namespace TankControl.Class
                     }
                 }
             }
+
+            // this is too check if the weight receive never adds up, if it is then show message box to alert user
+            if (this.previousWeight == receiveWeight)
+            {
+                checkTimeout++;
+                if (checkTimeout == 3)
+                {
+                    this.FillupPause();
+                    this.TimeOutMessageBox(processStep);
+                }
+            }
+            else
+            {
+                checkTimeout = 0;
+            }
+
+            this.previousWeight = receiveWeight;
+         
         }
 
         private void StopRunComponent()
@@ -314,11 +399,10 @@ namespace TankControl.Class
                 this.runComponents.Add(cmp);
             }
         }
+
         /// <summary>
         /// this process responsible to mix the elements inside the tank by duration specify in recipe
         /// </summary>
-
-
         public void ProcessShake()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -400,11 +484,6 @@ namespace TankControl.Class
             this.processRun = true;
             this.SetupFillup();
 
-            if (TankControl.Properties.Settings.Default.SystemTest == 1)
-            {
-                RunTester.Singleton.RunTimer();
-            }
-
             this.MainTank.Start();
         }
 
@@ -417,6 +496,7 @@ namespace TankControl.Class
                 {
                     this.History.date_complete = DateTime.Now;
                     tce.Histories.Add(this.History);
+                    RunTester.Singleton.Reset();
                     try
                     {
                         tce.SaveChanges();
@@ -443,12 +523,13 @@ namespace TankControl.Class
 
         public void FillupPause()
         {
-            throw new NotImplementedException();
+            this.StopRunComponent();
+            this.processRun = false;
         }
 
         public void FillupResume()
         {
-            throw new NotImplementedException();
+            this.processRun = true;
         }
 
         public void TakeStart()
@@ -590,7 +671,6 @@ namespace TankControl.Class
                 if ((float)currentWeight >= 0)
                 {
                     double currentHeight = (float)currentWeight / this.PixelRate;
-                    
                     this.MainTank.FillupWithLimit(currentHeight);
                     this.ProcessFillup(currentWeight);
                 }

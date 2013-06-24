@@ -20,10 +20,17 @@ namespace TankControl.View
     public partial class Home : Page
     {
         public string userAuthenticationLevel;
+
+        private TankControl.View.Dashboard dashboardPage;
+        private TankControl.View.RecipeView recipePage;
+        private TankControl.View.ReportingView reportingPage;
+        private TankControl.View.UserView userPage;
+
         public Home()
         {
             InitializeComponent();
             int userAuthentication = (int)Application.Current.Properties["userAuthenticationLevel"];
+            this.dashboardPage = this.dashboard_view;
             if (userAuthentication == 2)
             {
                 User.IsEnabled = false;
@@ -32,10 +39,14 @@ namespace TankControl.View
                 Reporting.Visibility = System.Windows.Visibility.Hidden;
                 Recipe.IsEnabled = false;
                 Recipe.Visibility = System.Windows.Visibility.Hidden;
+                
             }
             else if (userAuthentication == 1)
             {
                 //Do Nothing
+                this.recipePage = new TankControl.View.RecipeView();
+                this.reportingPage = new TankControl.View.ReportingView();
+                this.userPage = new TankControl.View.UserView();
             }
             else
             {
@@ -46,49 +57,47 @@ namespace TankControl.View
                 Recipe.IsEnabled = false;
                 Recipe.Visibility = System.Windows.Visibility.Hidden;
             }
+
+            
+            
         }
 
         public void Dashboard_Click(object sender, RoutedEventArgs e)
         {
-            TankControl.View.Dashboard openwindow = new TankControl.View.Dashboard();
 
             if (MainContainer.Children.Count > 0)
             {
                 MainContainer.Children.RemoveAt(0);
-                MainContainer.Children.Add(openwindow);
+                MainContainer.Children.Add(this.dashboardPage);
             }
         }
 
         private void Recipe_Click(object sender, RoutedEventArgs e)
         {
-            TankControl.View.RecipeView openwindow = new TankControl.View.RecipeView();
-
             if (MainContainer.Children.Count > 0)
             {
                 MainContainer.Children.RemoveAt(0);
-                MainContainer.Children.Add(openwindow);
+                MainContainer.Children.Add(this.recipePage);
             }
         }
 
         private void Reporting_Click(object sender, RoutedEventArgs e)
         {
-            TankControl.View.ReportingView openwindow = new TankControl.View.ReportingView();
 
             if (MainContainer.Children.Count > 0)
             {
                 MainContainer.Children.RemoveAt(0);
-                MainContainer.Children.Add(openwindow);
+                MainContainer.Children.Add(this.reportingPage);
             }
         }
 
         private void User_Click(object sender, RoutedEventArgs e)
         {
-            TankControl.View.UserView openwindow = new TankControl.View.UserView();
 
             if (MainContainer.Children.Count > 0)
             {
                 MainContainer.Children.RemoveAt(0);
-                MainContainer.Children.Add(openwindow);
+                MainContainer.Children.Add(this.userPage);
             }
         }
 

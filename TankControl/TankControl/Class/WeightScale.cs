@@ -52,7 +52,6 @@ namespace TankControl.Class
         {
             this.CurrentWeight = weight;
             this.Notify(addWeight);
-            this.DisplayText(weight);
         }
 
         // METHOD
@@ -159,21 +158,7 @@ namespace TankControl.Class
             }
         }
 
-        // UPDATE LABEL IN CONTROL AREA.XAML
-        private void DisplayText(decimal weight)
-        {
-            if (this.WeightLabel != null)
-            {
-                string value = weight.ToString() + " kg";
-                this.WeightLabel.Content = value;
-            }
-            else
-            {
-
-            }
-        }
-
-        // UPDATE OBSERVER
+        // Notify the process as well as updating the weight label in Control Area View
         public void Notify(decimal addWeight)
         {
             if (this.Process != null)

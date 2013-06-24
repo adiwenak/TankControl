@@ -7,50 +7,37 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="320">
 	<UserControl.Resources>
-		<Storyboard x:Key="MovingArrow" RepeatBehavior="Forever">
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rightArrow">
-				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-				<DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Hidden}"/>
-			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rightArrow">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="183.5"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rightArrow">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-			</DoubleAnimationUsingKeyFrames>
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="blockArrow">
-				<DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}"/>
-				<DiscreteObjectKeyFrame KeyTime="0:0:2.5" Value="{x:Static Visibility.Hidden}"/>
-			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="blockArrow">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="-0.933"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="blockArrow">
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="-414.611"/>
-			</DoubleAnimationUsingKeyFrames>
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="blockArrow1">
-				<DiscreteObjectKeyFrame KeyTime="0:0:2.5" Value="{x:Static Visibility.Visible}"/>
-				<DiscreteObjectKeyFrame KeyTime="0:0:4" Value="{x:Static Visibility.Hidden}"/>
-			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="blockArrow1">
-				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="-232.169"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="blockArrow1">
-				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
-			</DoubleAnimationUsingKeyFrames>
+		<Storyboard x:Key="MovingArrow">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="HorizontalPathD">
+				<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="HorizontalPathD">
+				<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="VerticalPath">
+				<EasingColorKeyFrame KeyTime="0:0:1" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="VerticalPath">
+				<EasingColorKeyFrame KeyTime="0:0:1" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="HorizontalPathT">
+				<EasingColorKeyFrame KeyTime="0:0:1.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="HorizontalPathT">
+				<EasingColorKeyFrame KeyTime="0:0:1.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="EndPath">
+				<EasingColorKeyFrame KeyTime="0:0:2" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="EndPath">
+				<EasingColorKeyFrame KeyTime="0:0:2" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>
-    	<Path x:Name="HorizontalPathD" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="204" Margin="95,476,0,0" StrokeThickness="4" Stretch="Fill"/>
-    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="472.004" Margin="292.906,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="4" VerticalAlignment="Top" Width="7"/>
-    	<Path x:Name="HorizontalPathT" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="289" Margin="10,10,0,0" StrokeThickness="4" Stretch="Fill"/>
-    	<Path x:Name="EndPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="33.125" Margin="10,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="4" VerticalAlignment="Top" Width="7"/>
+    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="472.004" Margin="292.906,15.979,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF58575A" StrokeThickness="9" VerticalAlignment="Top" Width="8"/>
+    	<Path x:Name="HorizontalPathT" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="8" StrokeStartLineCap="Square" Stroke="#FF58575A" VerticalAlignment="Top" Width="289" Margin="16.395,10,0,0" StrokeThickness="9" Stretch="Fill"/>
+    	<Path x:Name="EndPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="33.125" Margin="9.75,10,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF58575A" StrokeThickness="9" VerticalAlignment="Top" Width="8"/>
             
     	<ed:BlockArrow x:Name="rightArrow" HorizontalAlignment="Left" Height="8" Margin="55.5,473.682,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" Fill="#FF0000C0" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
@@ -82,7 +69,7 @@
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
     	</ed:BlockArrow>
-    	<Image x:Name="valveRight" HorizontalAlignment="Left" Height="26" Margin="175.717,462.55,0,0" VerticalAlignment="Top" Width="39"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/pumpClose.png">
+    	<Image x:Name="valveRight" HorizontalAlignment="Left" Height="47.917" Margin="168.467,451.795,0,0" VerticalAlignment="Top" Width="66.916"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/pumpClose.png">
     		<Image.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -92,6 +79,7 @@
     			</TransformGroup>
     		</Image.RenderTransform>
     	</Image>
+    	<Path x:Name="HorizontalPathD" Data="M0.5,40.5 L89.166667,40.5" Fill="Red" HorizontalAlignment="Left" Height="8" StrokeStartLineCap="Square" Stroke="#FF58575A" VerticalAlignment="Top" Width="204" Margin="95,475.499,0,0" StrokeThickness="9" Stretch="Fill"/>
             
     </Grid>
 </UserControl>

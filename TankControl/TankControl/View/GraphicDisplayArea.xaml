@@ -7,17 +7,17 @@
         <ComponentGDA:TinyTankRComponent x:Name="tinyTank_7" Canvas.Left="518.5" Canvas.Top="300"/>
         <ComponentGDA:TinyTankRComponent x:Name="tinyTank_6" Canvas.Left="518.5" Canvas.Top="218.798"/>
         <ComponentGDA:TinyTankRComponent x:Name="tinyTank_5" Canvas.Left="518.5" Canvas.Top="135.5"/>
-        <ComponentGDA:TinyTankLComponent x:Name="tinyTank_4" Canvas.Left="136" Canvas.Top="377" Height="75"/>
-        <ComponentGDA:TinyTankLComponent x:Name="tinyTank_3" Canvas.Left="136" Canvas.Top="295.5" Height="75"/>
-        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_2" Canvas.Top="169.5" Canvas.Left="55"/>
-        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_1" Canvas.Top="73.5" Canvas.Left="55"/>
-        <ComponentGDA:ShakeComponent x:Name="shakeComponent" Canvas.Left="226.5" Canvas.Top="19"/>
-        <Label Canvas.Left="74" Canvas.Top="99" Content="1" Height="52" Name="label1" Width="23" FontSize="26" Foreground="#FFF2ECEC" />
-        <Label Canvas.Left="74" Canvas.Top="194" Content="2" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label2" Width="23" />
-        <Label Canvas.Left="174" Canvas.Top="310" Content="3" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label3" Width="23" />
-        <Label Canvas.Left="174" Canvas.Top="392" Content="4" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label4" Width="23" />
-        <Label Canvas.Left="649" Canvas.Top="151" Content="5" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label5" Width="23" />
-        <Label Canvas.Left="649" Canvas.Top="235" Content="6" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label6" Width="23" />
-        <Label Canvas.Left="649" Canvas.Top="316" Content="7" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label7" Width="23" />
+        <ComponentGDA:TinyTankLComponent x:Name="tinyTank_4" Canvas.Left="133" Canvas.Top="377" Height="75"/>
+        <ComponentGDA:TinyTankLComponent x:Name="tinyTank_3" Canvas.Left="133" Canvas.Top="295.5" Height="75"/>
+        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_2" Canvas.Top="169.5" Canvas.Left="54" />
+        <ComponentGDA:TinyTankPumpComponent x:Name="tinyTank_1" Canvas.Top="73.5" Canvas.Left="54"/>
+        <ComponentGDA:ShakeComponent x:Name="shakeComponent" Canvas.Left="226" Canvas.Top="19"/>
+        <Label Canvas.Left="76" Canvas.Top="94" Content="1" Height="52" Name="label1" Width="23" FontSize="26" Foreground="#FFF2ECEC" />
+        <Label Canvas.Left="76" Canvas.Top="190" Content="2" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label2" Width="23" />
+        <Label Canvas.Left="174" Canvas.Top="309" Content="3" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label3" Width="23" />
+        <Label Canvas.Left="174" Canvas.Top="393" Content="4" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label4" Width="23" />
+        <Label Canvas.Left="643" Canvas.Top="151" Content="5" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label5" Width="23" />
+        <Label Canvas.Left="642" Canvas.Top="234" Content="6" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label6" Width="23" />
+        <Label Canvas.Left="644" Canvas.Top="316" Content="7" FontSize="26" Foreground="#FFF2ECEC" Height="52" Name="label7" Width="23" />
     </Canvas>	
 </UserControl>

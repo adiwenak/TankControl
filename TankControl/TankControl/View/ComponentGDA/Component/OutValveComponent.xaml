@@ -17,7 +17,7 @@
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>
-    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="85" Margin="23,9.666,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF2B2B2B" StrokeThickness="10" VerticalAlignment="Top" Width="7"/>
+    	<Path x:Name="VerticalPath" Data="M160,40.166667 L160,79.999668" Fill="Red" HorizontalAlignment="Left" Height="85" Margin="22.499,9.666,0,0" StrokeStartLineCap="Square" Stretch="Fill" Stroke="#FF58575A" StrokeThickness="10" VerticalAlignment="Top" Width="10"/>
     	<ed:BlockArrow x:Name="downArrow" Fill="Red" HorizontalAlignment="Left" Height="15" Margin="20,10,0,0" Orientation="Down" StrokeStartLineCap="Square" Stroke="red" VerticalAlignment="Top" Width="13" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>

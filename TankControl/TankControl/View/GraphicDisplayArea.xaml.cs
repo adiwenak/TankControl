@@ -213,6 +213,7 @@ namespace TankControl.View
             this.GdaMainTankShake.oc.Close();
         }
 
+
     }
 
 }

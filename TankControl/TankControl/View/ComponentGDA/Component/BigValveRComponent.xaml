@@ -7,24 +7,20 @@
              mc:Ignorable="d" 
              d:DesignWidth="220" d:DesignHeight="100">
 	<UserControl.Resources>
-		<Storyboard x:Key="MovingArrow" RepeatBehavior="Forever">
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="blockArrow">
-				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-				<DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Hidden}"/>
-			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="blockArrow">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-99.677"/>
+		<Storyboard x:Key="MovingArrow">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BigPath">
+				<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BigPath">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.375"/>
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="blockArrow">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.03"/>
-			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="BigPath">
+				<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
 		</Storyboard>
 	</UserControl.Resources>
     <Grid>            
-    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="#FF2B2B2B" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="119.852" Margin="0.333,26.648,0,0" StrokeThickness="5" Stretch="Fill"/>
-    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="36.115" Margin="41.217,10.064,0,0" VerticalAlignment="Top" Width="44.283"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png">
+    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="53" Margin="41.217,-2.745,0,0" VerticalAlignment="Top" Width="68"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png">
     		<Image.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform/>
@@ -33,7 +29,17 @@
     				<TranslateTransform/>
     			</TransformGroup>
     		</Image.RenderTransform>
-    	</Image>
+    	</Image>            
+    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="#FF58575A" HorizontalAlignment="Left" Height="8" StrokeStartLineCap="Square" Stroke="#FF58575A" VerticalAlignment="Top" Width="119.852" Margin="0.333,24.895,0,0" StrokeThickness="10" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+    		<Path.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</Path.RenderTransform>
+    	</Path>
     	<ed:BlockArrow x:Name="blockArrow" Fill="#FF0000C0" HorizontalAlignment="Left" Height="16" Margin="102.348,21.026,0,0" Orientation="Left" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="15" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>

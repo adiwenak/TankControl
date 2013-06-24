@@ -3,10 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="40" d:DesignWidth="47.5">
+             mc:Ignorable="d" Height="75.25" Width="112.25">
+	<UserControl.Resources>
+		<Storyboard x:Key="animate">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BigPath">
+				<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="BigPath">
+				<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF00AEEF"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
     <Grid>
-    	<Image x:Name="Pump" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Source="/TankControl;component/Images/valve/pumpClose.png"/>
+    	<Image x:Name="Pump" HorizontalAlignment="Left" Width="48" Source="/TankControl;component/Images/valve/pumpClose.png" Margin="34.268,3,0,5.75"/>
+    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="#FF58575A" HorizontalAlignment="Left" Height="8" StrokeStartLineCap="Square" Stroke="#FF58575A" VerticalAlignment="Top" Width="104.852" Margin="7.398,35.916,0,0" StrokeThickness="9" Stretch="Fill"/>
             
     </Grid>
 </UserControl>

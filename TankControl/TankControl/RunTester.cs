@@ -36,6 +36,7 @@ namespace TankControl
 
         public void RunTimer()
         {
+            this.AddWeight = 0;
             timer.Start();
         }
 

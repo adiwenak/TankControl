@@ -13,7 +13,6 @@ namespace TankControl.Class
         private bool valveBig;
         private bool valveSmall;
         private bool pump;
-        private float stageLimit2;
 
         public decimal StageLimit2 {get;set;}
 

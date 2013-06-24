@@ -4,29 +4,31 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
 	mc:Ignorable="d"
 	x:Class="TankControl.View.ComponentGDA.BigValveLComponent"
 	x:Name="UserControl"
 	d:DesignWidth="220" d:DesignHeight="100">
 
 	<UserControl.Resources>
-        <Storyboard x:Key="MovingArrow" RepeatBehavior="Forever">
-        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="blockArrow">
-        		<EasingDoubleKeyFrame KeyTime="0" Value="-0.375"/>
-        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="109.752"/>
-        	</DoubleAnimationUsingKeyFrames>
-        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="blockArrow">
-        		<EasingDoubleKeyFrame KeyTime="0" Value="-0.041"/>
-        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.165"/>
-        	</DoubleAnimationUsingKeyFrames>
-        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="blockArrow">
-        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-        		<DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Hidden}"/>
-        	</ObjectAnimationUsingKeyFrames>
+        <Storyboard x:Key="MovingArrow">
+        	<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="BigPath">
+        		<EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF00AEEF"/>
+        	</ColorAnimationUsingKeyFrames>
         </Storyboard>
 	</UserControl.Resources>
     <Grid>
-    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="#FF2B2B2B" HorizontalAlignment="Left" Height="7" StrokeStartLineCap="Square" Stroke="#FF2B2B2B" VerticalAlignment="Top" Width="119.852" Margin="0.333,26.648,0,0" StrokeThickness="10" Stretch="Fill"/>
+    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="53" Margin="39.842,-2.115,0,0" VerticalAlignment="Top" Width="68"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png" OpacityMask="#FF58575A">
+    		<Image.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</Image.RenderTransform>
+    	</Image>
+    	<Path x:Name="BigPath" Data="M0.5,2.5 L89.166667,2.5" Fill="#FF2B2B2B" HorizontalAlignment="Left" Height="8" StrokeStartLineCap="Square" Stroke="#FF58575A" VerticalAlignment="Top" Width="119.852" Margin="0.333,25.523,0,0" StrokeThickness="9" Stretch="Fill"/>
     	<ed:BlockArrow x:Name="blockArrow" HorizontalAlignment="Left" Height="13" Margin="0.333,23.681,0,0" Orientation="Right" StrokeStartLineCap="Square" Stroke="#FF0000C0" VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" Fill="#FF0000C0" Visibility="Hidden">
     		<ed:BlockArrow.RenderTransform>
     			<TransformGroup>
@@ -36,16 +38,6 @@
     				<TranslateTransform/>
     			</TransformGroup>
     		</ed:BlockArrow.RenderTransform>
-    	</ed:BlockArrow>
-    	<Image x:Name="valveBig" HorizontalAlignment="Left" Height="36.115" Margin="40.717,10.885,0,0" VerticalAlignment="Top" Width="44.283"  RenderTransformOrigin="0.5,0.5" Source="/TankControl;component/Images/valve/close.png" OpacityMask="#FF2B2B2B">
-    		<Image.RenderTransform>
-    			<TransformGroup>
-    				<ScaleTransform/>
-    				<SkewTransform/>
-    				<RotateTransform/>
-    				<TranslateTransform/>
-    			</TransformGroup>
-    		</Image.RenderTransform>
-    	</Image>     
+    	</ed:BlockArrow>     
     </Grid>
 </UserControl>

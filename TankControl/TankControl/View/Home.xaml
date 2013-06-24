@@ -22,7 +22,7 @@
         </Menu>
 
         <StackPanel Grid.Row="1"  x:Name="MainContainer" Height="675" Width="1000">
-        	<local:Dashboard Height="675" Width="1000"/>
+        	<local:Dashboard x:Name="dashboard_view" Height="675" Width="1000"/>
         </StackPanel>
     </Grid>
 

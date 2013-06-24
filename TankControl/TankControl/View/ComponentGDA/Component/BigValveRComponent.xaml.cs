@@ -21,6 +21,7 @@ namespace TankControl.View.ComponentGDA
     public partial class BigValveRComponent : UserControl
     {
         private Storyboard bigValveAnimation;
+
         public BigValveRComponent()
         {
             InitializeComponent();

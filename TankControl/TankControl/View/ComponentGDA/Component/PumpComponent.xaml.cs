@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace TankControl.View.ComponentGDA
 {
@@ -19,9 +20,12 @@ namespace TankControl.View.ComponentGDA
     /// </summary>
     public partial class PumpComponent : UserControl
     {
+        private Storyboard pumpAnimation;
+
         public PumpComponent()
         {
             InitializeComponent();
+            pumpAnimation = (Storyboard)FindResource("animate");
         }
 
         public void Run() {
@@ -30,6 +34,8 @@ namespace TankControl.View.ComponentGDA
             img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/pumpOpen.png");
             img.EndInit();
             Pump.Source = img;
+            pumpAnimation.Begin();
+          
         }
 		
 		public void Stop() {
@@ -38,6 +44,7 @@ namespace TankControl.View.ComponentGDA
             img.UriSource = new Uri(@"pack://application:,,,/TankControl;component/Images/valve/pumpClose.png");
             img.EndInit();
             Pump.Source = img;
+            pumpAnimation.Stop();
         }
     }
 }

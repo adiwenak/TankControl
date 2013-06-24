@@ -18,7 +18,7 @@
   <Class Name="TankControl.Class.Process">
     <Position X="6.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAJAAACAQAgAAiAQAICAAQABgAEEEQAAAAAAQiA=</HashCode>
+      <HashCode>KAAAAARIIAGEBAoABiEAAKAAKQQhgCEAAAACAAAARiA=</HashCode>
       <FileName>Class\Process.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -29,17 +29,14 @@
   <Class Name="TankControl.Class.WeightScale">
     <Position X="9.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACABAAAAgQAAQIAAQEAAAFAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAACABABAAgAAAYCAgQAAAAFAAggAAAAAgAA=</HashCode>
       <FileName>Class\WeightScale.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="process" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="TankControl.View.GraphicDisplayArea" Collapsed="true">
     <Position X="3.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAQABAAAAAIAAAACAAAAAAAAAAAAEiAEACAgAYAA=</HashCode>
+      <HashCode>ABAAAAABAAAAAIAAAACAAAAAAAAAAAAEiAEACAgAYAA=</HashCode>
       <FileName>View\GraphicDisplayArea.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -70,7 +67,7 @@
   <Class Name="TankControl.Class.BaseTank">
     <Position X="6" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIiAAAAABABAAQAAAAAogEAAKAAEAAAoA=</HashCode>
+      <HashCode>AAAAAAAAAAAIiAAAAABABAAQAAAAAogEAACAAEAAAoA=</HashCode>
       <FileName>Class\BaseTank.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -84,7 +81,7 @@
   <Class Name="TankControl.Class.TinyTankPump" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgIAAAAAAQgBCAAACABAIBAEACABAAAAAQAAAEAIAAA=</HashCode>
+      <HashCode>AgIAAAAIAQgBCAAACABAIBAEAKABAAAAAQAAJEAIAAA=</HashCode>
       <FileName>Class\TinyTankPump.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -120,23 +117,16 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TankControl.Class.Microcontroller">
-    <Position X="16.25" Y="3.25" Width="1.5" />
+    <Position X="13.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAEAAgAAAAAAAAAAAAAAiAQAAAAEAAAAAAAAAAQA=</HashCode>
+      <HashCode>AASAIAAAgAAAAABAAAAAAIAiCQAAAAMCAAAAAAAAAQA=</HashCode>
       <FileName>Class\Microcontroller.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TankControl.View.Recipe" Collapsed="true">
-    <Position X="11.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAIAAAAAQAAAQAAAAAACBAAAAAAAAgAACAAAAAAAA=</HashCode>
-      <FileName>View\Recipe.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TankControl.Recipe" Collapsed="true">
     <Position X="3.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAPhFAAAIAAAAAAAAAAAgAQAEAAAAAAAAAAAACgA=</HashCode>
+      <HashCode>AAAAAPhFAAAIAAAAAAgAAAAgAQAEAAAAAAAAAAAACgA=</HashCode>
       <FileName>Recipe.cs</FileName>
     </TypeIdentifier>
   </Class>

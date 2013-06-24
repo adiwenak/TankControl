@@ -26,8 +26,8 @@ namespace TankControl
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            string user = username.Text;
-            string pass =TankControl.Class.AES.EncryptAES(password.Password);
+            string user = this.username.Text;
+            string pass =TankControl.Class.AES.EncryptAES(this.password.Password);
 
             using (TankControlEntities tce = new TankControlEntities())
             {
