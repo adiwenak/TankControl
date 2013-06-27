@@ -49,7 +49,7 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Run();
-                this._TempAddWeight();
+                _TempAddWeight();
             }
 
             return cmp;
@@ -62,7 +62,7 @@ namespace TankControl.Class
             if (cmp != null)
             {
                 cmp.Stop();
-                this._TempEqualWeight();
+                _TempEqualWeight();
             }
 
             return cmp;

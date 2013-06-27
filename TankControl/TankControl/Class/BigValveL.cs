@@ -89,6 +89,7 @@ namespace TankControl.Class
                 if (Microcontroller.Singleton.OffDigitalOutput(DeviceAddress) || TankControl.Properties.Settings.Default.SystemTest == 1)
                 {
                     this.View.Close();
+                    BaseTank._TempEqualWeight();
                 }
                 this.IsRun = false;
             }

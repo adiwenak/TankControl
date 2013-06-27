@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Limit" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">400</Value>
+      <Value Profile="(Default)">1000</Value>
     </Setting>
     <Setting Name="MoxAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.5.254</Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">0.5</Value>
     </Setting>
     <Setting Name="TankHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">400</Value>
+      <Value Profile="(Default)">364</Value>
     </Setting>
     <Setting Name="SystemTest" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>

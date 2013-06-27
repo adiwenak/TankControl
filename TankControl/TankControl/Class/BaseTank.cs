@@ -133,7 +133,7 @@ namespace TankControl.Class
             this.StageLimit = 0;
         }
 
-        public void _TempAddWeight(decimal weight = 1)
+        public static void _TempAddWeight(decimal weight = 1)
         {
             if (TankControl.Properties.Settings.Default.SystemTest == 1)
             {
@@ -141,7 +141,7 @@ namespace TankControl.Class
             }
         }
 
-        public void _TempEqualWeight()
+        public static void _TempEqualWeight()
         {
             if (TankControl.Properties.Settings.Default.SystemTest == 1)
             {

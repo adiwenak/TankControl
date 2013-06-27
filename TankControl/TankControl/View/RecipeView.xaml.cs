@@ -105,6 +105,7 @@ namespace TankControl.View
                         toUpdate.el5 = updatedRow.el5;
                         toUpdate.el6 = updatedRow.el6;
                         toUpdate.el7 = updatedRow.el7;
+                        toUpdate.name = updatedRow.name;
                         toUpdate.switch_el1 = updatedRow.switch_el1;
                         toUpdate.switch_el2 = updatedRow.switch_el2;
                         toUpdate.runtime = updatedRow.runtime;

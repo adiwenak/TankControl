@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Controls;
-using TankControl.View;
-using TankControl.View.ComponentGDA;
-using System.Diagnostics;
-using System.Windows.Threading;
-using TankControl.Functions;
 using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;
+using System.Windows.Threading;
+using TankControl.Functions;
+using TankControl.View;
 
 namespace TankControl.Class
 {
@@ -22,7 +17,7 @@ namespace TankControl.Class
         // use as a rate to calibrate between the actual max weight of tank and height of main tank object view
         private float pixelRate;
         // use to determine if user has already press start process button
-        private bool processRun;
+        private bool isFillupRun;
         // use to determine the current process step
         private int processStep = 0;
 
@@ -185,6 +180,154 @@ namespace TankControl.Class
             }
         }
 
+        private void HistoryLoging(decimal receiveWeight)
+        {
+            switch (processStep)
+            {
+                case 1:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el1 == 0)
+                            {
+                                this.History.el1 = (double)receiveWeight;
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el1 == 0)
+                            {
+                                this.History.el1 = (double)receiveWeight;
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 3:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el2 == 0)
+                            {
+                                this.History.el2 = (double)receiveWeight - this.History.el1;
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 4:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el2 == 0)
+                            {
+                                this.History.el2 = (double)receiveWeight - this.History.el1;
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 5:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el3 == 0)
+                            {
+                                this.History.el3 = (double)receiveWeight - (this.History.el1 + this.History.el2);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 6:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el4 == 0)
+                            {
+                                this.History.el4 = (double)receiveWeight - (this.History.el1 + this.History.el2 + this.History.el3);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 7:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el5 == 0)
+                            {
+                                this.History.el5 = (double)receiveWeight -
+                                    (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 8:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el6 == 0)
+                            {
+                                this.History.el6 = (double)receiveWeight - (this.History.el1 + this.History.el2 +
+                                    this.History.el3 + this.History.el4 + this.History.el5);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                case 9:
+                    {
+                        if (this.History != null)
+                        {
+                            if (this.History.el7 == 0)
+                            {
+                                this.History.el7 = (double)receiveWeight -
+                                    (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4 + this.History.el5 + this.History.el6);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
 
         /// <summary>
         /// this is the heart of the process, it responsible to update the state of the process in accordance with the current weight
@@ -192,6 +335,7 @@ namespace TankControl.Class
         /// <param name="receiveWeight">The current weight of the tank, suppose to be receive from the weight scale</param>
         public void ProcessFillup(decimal receiveWeight)
         {
+            
             if (receiveWeight >= 0 && receiveWeight < this.MainTank.TPump1.StageLimit)
             {
                 if (processStep == 0)
@@ -215,14 +359,7 @@ namespace TankControl.Class
             {
                 if (processStep <= 2)
                 {
-                    if (this.History != null)
-                    {
-                        this.History.el1 = (double)receiveWeight;
-                    }
-                    else
-                    {
-
-                    }
+                    this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TPump2.RunPump());
                     this.AddToRunComponent(this.MainTank.TPump2.RunValveBig());
@@ -243,14 +380,7 @@ namespace TankControl.Class
             {
                 if (processStep <= 4)
                 {
-                    if (this.History != null)
-                    {
-                        this.History.el2 = (double)receiveWeight - this.History.el1;
-                    }
-                    else
-                    {
-
-                    }
+                    this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TLeft1.Run());
                     processStep = 5;
@@ -260,14 +390,7 @@ namespace TankControl.Class
             {
                 if (processStep <= 5)
                 {
-                    if (this.History != null)
-                    {
-                        this.History.el3 = (double)receiveWeight - (this.History.el1 + this.History.el2);
-                    }
-                    else
-                    {
-
-                    }
+                    this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TLeft2.Run());
                     processStep = 6;
@@ -277,14 +400,7 @@ namespace TankControl.Class
             {
                 if (processStep <= 6)
                 {
-                    if (this.History != null)
-                    {
-                        this.History.el4 = (double)receiveWeight - (this.History.el1 + this.History.el2 + this.History.el3);
-                    }
-                    else
-                    {
-
-                    }
+                    this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TRight1.Run());
                     processStep = 7;
@@ -294,14 +410,7 @@ namespace TankControl.Class
             {
                 if (processStep <= 7)
                 {
-                    if (this.History != null)
-                    {
-                        this.History.el5 = (double)receiveWeight - (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4);
-                    }
-                    else
-                    {
-
-                    }
+                    this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TRight2.Run());
                     processStep = 8;
@@ -311,14 +420,7 @@ namespace TankControl.Class
             {
                 if (processStep <= 8)
                 {
-                    if (this.History != null)
-                    {
-                        this.History.el6 = (double)receiveWeight - (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4 + this.History.el5);
-                    }
-                    else
-                    {
-
-                    }
+                    this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TRight3.Run());
                     processStep = 9;
@@ -328,22 +430,15 @@ namespace TankControl.Class
             {
                 if (processStep <= 9)
                 {
-                    if (this.History != null)
-                    {
-                        this.History.el7 = (double)receiveWeight - 
-                            (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4 + this.History.el5 + this.History.el6);
-                        this.History.total = (double)receiveWeight;
-                    }
-                    else
-                    {
-
-                    }
+                    this.HistoryLoging(receiveWeight);
+                    this.History.total = (double)receiveWeight;
 
                     this.controlArea.CheckFillup.IsChecked = true;
 
                     if (this.Recipe.runtime > 0)
                     {
                         processStep = 10;
+                        this.isFillupRun = false;
                         this.ProcessShake();
                     }
                     else
@@ -355,11 +450,12 @@ namespace TankControl.Class
                 }
             }
 
+            
             // this is too check if the weight receive never adds up, if it is then show message box to alert user
             if (this.previousWeight == receiveWeight)
             {
                 checkTimeout++;
-                if (checkTimeout == 3)
+                if (checkTimeout == 8)
                 {
                     this.FillupPause();
                     this.TimeOutMessageBox(processStep);
@@ -481,7 +577,7 @@ namespace TankControl.Class
         public void FillupRun()
         {
             this.processStep = 0;
-            this.processRun = true;
+            this.isFillupRun = true;
             this.SetupFillup();
 
             this.MainTank.Start();
@@ -517,19 +613,19 @@ namespace TankControl.Class
             this.controlArea.CheckFillup.IsChecked = false;
             this.controlArea.CheckMixing.IsChecked = false;
             this.processStep = 0;
-            this.processRun = false;
+            this.isFillupRun = false;
             this.Reset(true);
         }
 
         public void FillupPause()
         {
             this.StopRunComponent();
-            this.processRun = false;
+            this.isFillupRun = false;
         }
 
         public void FillupResume()
         {
-            this.processRun = true;
+            this.isFillupRun = true;
         }
 
         public void TakeStart()
@@ -666,7 +762,7 @@ namespace TankControl.Class
         // LISTENER WEIGHT SCALE
         public void WeightUpdated(decimal currentWeight, float addweight)
         {
-            if (processRun)
+            if (this.isFillupRun)
             {
                 if ((float)currentWeight >= 0)
                 {

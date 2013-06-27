@@ -25,7 +25,7 @@ namespace TankControl.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
         public double Limit {
             get {
                 return ((double)(this["Limit"]));
@@ -121,7 +121,7 @@ namespace TankControl.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.DefaultSettingValueAttribute("364")]
         public int TankHeight {
             get {
                 return ((int)(this["TankHeight"]));
