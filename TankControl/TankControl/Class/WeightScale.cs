@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Threading;
 using System.Diagnostics;
 using System.IO;
+using TankControl.Class.Functions;
 
 namespace TankControl.Class
 {
@@ -69,7 +70,30 @@ namespace TankControl.Class
                 this.serialPort.PortName = TankControl.Properties.Settings.Default.WSPort;
                 this.serialPort.BaudRate = TankControl.Properties.Settings.Default.WSBaudRate;
 
-                this.serialPort.Open();
+                try
+                {
+                    this.serialPort.Open();
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    TCFunction.MessageBoxError(ex.Message);
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    TCFunction.MessageBoxError(ex.Message);
+                }
+                catch (ArgumentException ex)
+                {
+                    TCFunction.MessageBoxError(ex.Message);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    TCFunction.MessageBoxError(ex.Message);
+                }
+                catch (IOException ex)
+                {
+                    TCFunction.MessageBoxError(ex.Message);
+                }
 
                 if (this.serialPort.IsOpen)
                 {
@@ -79,7 +103,7 @@ namespace TankControl.Class
             }
             else
             {
-                System.Diagnostics.Debug.WriteLine("Fail to connect to weight scale reason : port is already open");
+                TCFunction.MessageBoxFail("Port weight scale sudah dibuka");
             }
 
             return success;
@@ -121,15 +145,15 @@ namespace TankControl.Class
                     }
                     catch (IOException ex)
                     {
-                        System.Diagnostics.Debug.WriteLine(ex.InnerException);
+                        TCFunction.MessageBoxError(ex.InnerException.Message);
                     }
                     catch (InvalidOperationException ex)
                     {
-                        System.Diagnostics.Debug.WriteLine(ex.InnerException);
+                        TCFunction.MessageBoxError(ex.InnerException.Message);
                     }
                     catch (TimeoutException ex)
                     {
-                        System.Diagnostics.Debug.WriteLine(ex.InnerException);
+                        TCFunction.MessageBoxError(ex.InnerException.Message);
                     }
 
                     if (resp.Length > 7)

@@ -19,7 +19,7 @@ namespace TankControl.Class
         // use to determine if user has already press start process button
         private bool isFillupRun;
         // use to determine the current process step
-        private int processStep = 0;
+        private int fillupStep = 0;
 
         private int checkTimeout = 0;
 
@@ -60,6 +60,9 @@ namespace TankControl.Class
 
         public MainTank MainTank { get; set;}
 
+        private History History { get; set; }
+
+        // this properties use to convert weight from weightScale into pixel height for animations
         private float PixelRate
         {
             get
@@ -73,14 +76,11 @@ namespace TankControl.Class
             }
         }
 
-        private History History { get; set; }
-        // PROPERTIES - END
-
-
+        // this to check, if process is ready to start. 
         public bool IsProcessReady()
         {
             bool ready = false;
-
+            // if it is simulation, bypass all checking
             if (TankControl.Properties.Settings.Default.SystemTest == 1)
             {
                 if (this.Recipe != null)
@@ -170,162 +170,102 @@ namespace TankControl.Class
             }
 
             message += ", harap diperiksa !";
-            DialogResult result = MessageBox.Show(message, "PROCESS TIMEOUT!!", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+            DialogResult result = MessageBox.Show(message, "PROCESS TIMEOUT!!", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
 
             if (result == DialogResult.OK)
             {
                 this.FillupResume();
                 this.checkTimeout = 0;
-                this.processStep--;
+                this.fillupStep--;
             }
         }
 
         private void HistoryLoging(decimal receiveWeight)
         {
-            switch (processStep)
+            if (this.History != null)
             {
-                case 1:
-                    {
-                        if (this.History != null)
+                switch (fillupStep)
+                {
+                    case 1:
                         {
                             if (this.History.el1 == 0)
                             {
                                 this.History.el1 = (double)receiveWeight;
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        if (this.History != null)
+                    case 2:
                         {
                             if (this.History.el1 == 0)
                             {
                                 this.History.el1 = (double)receiveWeight;
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 3:
-                    {
-                        if (this.History != null)
+                    case 3:
                         {
                             if (this.History.el2 == 0)
                             {
                                 this.History.el2 = (double)receiveWeight - this.History.el1;
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 4:
-                    {
-                        if (this.History != null)
+                    case 4:
                         {
                             if (this.History.el2 == 0)
                             {
                                 this.History.el2 = (double)receiveWeight - this.History.el1;
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 5:
-                    {
-                        if (this.History != null)
+                    case 5:
                         {
                             if (this.History.el3 == 0)
                             {
                                 this.History.el3 = (double)receiveWeight - (this.History.el1 + this.History.el2);
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 6:
-                    {
-                        if (this.History != null)
+                    case 6:
                         {
                             if (this.History.el4 == 0)
                             {
                                 this.History.el4 = (double)receiveWeight - (this.History.el1 + this.History.el2 + this.History.el3);
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 7:
-                    {
-                        if (this.History != null)
+                    case 7:
                         {
                             if (this.History.el5 == 0)
                             {
                                 this.History.el5 = (double)receiveWeight -
                                     (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4);
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 8:
-                    {
-                        if (this.History != null)
+                    case 8:
                         {
                             if (this.History.el6 == 0)
                             {
                                 this.History.el6 = (double)receiveWeight - (this.History.el1 + this.History.el2 +
                                     this.History.el3 + this.History.el4 + this.History.el5);
                             }
+                            break;
                         }
-                        else
-                        {
-
-                        }
-                        break;
-                    }
-                case 9:
-                    {
-                        if (this.History != null)
+                    case 9:
                         {
                             if (this.History.el7 == 0)
                             {
                                 this.History.el7 = (double)receiveWeight -
                                     (this.History.el1 + this.History.el2 + this.History.el3 + this.History.el4 + this.History.el5 + this.History.el6);
                             }
+                            break;
                         }
-                        else
+                    default:
                         {
-
+                            break;
                         }
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                }
             }
         }
 
@@ -338,97 +278,98 @@ namespace TankControl.Class
             
             if (receiveWeight >= 0 && receiveWeight < this.MainTank.TPump1.StageLimit)
             {
-                if (processStep == 0)
+                if (fillupStep == 0)
                 {
                     this.AddToRunComponent(this.MainTank.TPump1.RunPump());
                     this.AddToRunComponent(this.MainTank.TPump1.RunValveBig());
-                    processStep = 1;
+                    fillupStep = 1;
                 }
             }
             else if (receiveWeight >= this.MainTank.TPump1.StageLimit && receiveWeight < this.MainTank.TPump1.StageLimit2)
             {
-                if (processStep == 1)
+                if (fillupStep == 1)
                 {
+                    this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TPump1.RunPump());
                     this.AddToRunComponent(this.MainTank.TPump1.RunValveSmall());
-                    processStep = 2;
+                    fillupStep = 2;
                 }
             }
             else if(receiveWeight >= this.MainTank.TPump1.StageLimit2 && receiveWeight < this.MainTank.TPump2.StageLimit)
             {
-                if (processStep <= 2)
+                if (fillupStep <= 2)
                 {
                     this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TPump2.RunPump());
                     this.AddToRunComponent(this.MainTank.TPump2.RunValveBig());
-                    processStep = 3;
+                    fillupStep = 3;
                 }   
             }
             else if (receiveWeight >= this.MainTank.TPump1.StageLimit && receiveWeight < this.MainTank.TPump2.StageLimit2)
             {
-                if (processStep <= 3)
+                if (fillupStep <= 3)
                 {
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TPump2.RunPump());
                     this.AddToRunComponent(this.MainTank.TPump2.RunValveSmall());
-                    processStep = 4;
+                    fillupStep = 4;
                 }
             }
             else if (receiveWeight >= this.MainTank.TPump2.StageLimit2 && receiveWeight < this.MainTank.TLeft1.StageLimit)
             {
-                if (processStep <= 4)
+                if (fillupStep <= 4)
                 {
                     this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TLeft1.Run());
-                    processStep = 5;
+                    fillupStep = 5;
                 }
             }
             else if (receiveWeight >= this.MainTank.TLeft1.StageLimit && receiveWeight < this.MainTank.TLeft2.StageLimit)
             {
-                if (processStep <= 5)
+                if (fillupStep <= 5)
                 {
                     this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TLeft2.Run());
-                    processStep = 6;
+                    fillupStep = 6;
                 }
             }
             else if (receiveWeight >= this.MainTank.TLeft2.StageLimit && receiveWeight < this.MainTank.TRight1.StageLimit)
             {
-                if (processStep <= 6)
+                if (fillupStep <= 6)
                 {
                     this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TRight1.Run());
-                    processStep = 7;
+                    fillupStep = 7;
                 }
             }
             else if (receiveWeight >= this.MainTank.TRight1.StageLimit && receiveWeight < this.MainTank.TRight2.StageLimit)
             {
-                if (processStep <= 7)
+                if (fillupStep <= 7)
                 {
                     this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TRight2.Run());
-                    processStep = 8;
+                    fillupStep = 8;
                 }
             }
             else if (receiveWeight >= this.MainTank.TRight2.StageLimit && receiveWeight < this.MainTank.TRight3.StageLimit)
             {
-                if (processStep <= 8)
+                if (fillupStep <= 8)
                 {
                     this.HistoryLoging(receiveWeight);
                     this.StopRunComponent();
                     this.AddToRunComponent(this.MainTank.TRight3.Run());
-                    processStep = 9;
+                    fillupStep = 9;
                 }
             }
             else if (receiveWeight >= this.MainTank.TRight3.StageLimit)
             {
-                if (processStep <= 9)
+                if (fillupStep <= 9)
                 {
                     this.HistoryLoging(receiveWeight);
                     this.History.total = (double)receiveWeight;
@@ -437,7 +378,7 @@ namespace TankControl.Class
 
                     if (this.Recipe.runtime > 0)
                     {
-                        processStep = 10;
+                        fillupStep = 10;
                         this.isFillupRun = false;
                         this.ProcessShake();
                     }
@@ -455,10 +396,10 @@ namespace TankControl.Class
             if (this.previousWeight == receiveWeight)
             {
                 checkTimeout++;
-                if (checkTimeout == 8)
+                if (checkTimeout == TankControl.Properties.Settings.Default.ProcessTimeout)
                 {
                     this.FillupPause();
-                    this.TimeOutMessageBox(processStep);
+                    this.TimeOutMessageBox(fillupStep);
                 }
             }
             else
@@ -511,46 +452,40 @@ namespace TankControl.Class
         {
             shakeCounter++;
             
-                if (shakeCounter < this.Recipe.runtime)
+            if (shakeCounter < this.Recipe.runtime)
+            {
+                if (this.fillupStep <= 10)
                 {
-                    if (this.processStep <= 10)
-                    {
-                        this.StopRunComponent();
-                        this.AddToRunComponent(this.MainTank.OpenValveControl());
-                        this.AddToRunComponent(this.MainTank.OpenValveShake());
-                        this.processStep = 11;
-                    }
-                }
-                else
-                {
-                    (sender as DispatcherTimer).Stop();
-                    shakeCounter = 0;
-                    this.controlArea.CheckMixing.IsChecked = true;
-                    this.controlArea.EnableStartProcess();
                     this.StopRunComponent();
-                    this.FillupStop();
+                    this.AddToRunComponent(this.MainTank.OpenValveControl());
+                    this.AddToRunComponent(this.MainTank.OpenValveShake());
+                    this.fillupStep = 11;
                 }
+            }
+            else
+            {
+                (sender as DispatcherTimer).Stop();
+                shakeCounter = 0;
+                this.controlArea.CheckMixing.IsChecked = true;
+                this.controlArea.EnableStartProcess();
+                this.StopRunComponent();
+                this.FillupStop();
+            }
         }
 
-
+        // Setup fillup process, 
         public void SetupFillup()
         {
             if (this.Recipe != null)
             {
                 decimal pumpOneA = (decimal)(this.Recipe.el1 * this.Recipe.switch_el1);
                 decimal pumpOneB = pumpOneA + (decimal)(this.Recipe.el1 * (1 - this.Recipe.switch_el1));
-
                 decimal pumpTwoA = pumpOneB + (decimal)(this.Recipe.el2 * this.Recipe.switch_el2);
                 decimal pumpTwoB = pumpTwoA + (decimal)(this.Recipe.el2 * (1 - this.Recipe.switch_el2));
-
                 decimal pumpThree = pumpTwoB + (decimal)this.Recipe.el3;
-
                 decimal pumpFour = pumpThree + (decimal)this.Recipe.el4;
-
                 decimal pumpFive = pumpFour + (decimal)this.Recipe.el5;
-
                 decimal pumpSix = pumpFive + (decimal)this.Recipe.el6;
-
                 decimal pumpSeven = pumpSix + (decimal)this.Recipe.el7;
 
                 this.MainTank.TPump1.StageLimit = pumpOneA;
@@ -565,10 +500,6 @@ namespace TankControl.Class
 
                 this.History = new History(this.Recipe.id,this.Recipe.name);
             }
-            else
-            {
-
-            }
         }
 
         /// <summary>
@@ -576,7 +507,7 @@ namespace TankControl.Class
         /// </summary>
         public void FillupRun()
         {
-            this.processStep = 0;
+            this.fillupStep = 0;
             this.isFillupRun = true;
             this.SetupFillup();
 
@@ -612,7 +543,7 @@ namespace TankControl.Class
 
             this.controlArea.CheckFillup.IsChecked = false;
             this.controlArea.CheckMixing.IsChecked = false;
-            this.processStep = 0;
+            this.fillupStep = 0;
             this.isFillupRun = false;
             this.Reset(true);
         }
@@ -657,7 +588,7 @@ namespace TankControl.Class
 
         #endregion
 
-        // ADD VIEW OSERVER
+        // ADD VIEW OBSERVER
         public void AddView(GraphicDisplayArea processView)
         {
             if (processView != null)

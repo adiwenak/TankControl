@@ -25,7 +25,7 @@ namespace TankControl.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("364")]
         public double Limit {
             get {
                 return ((double)(this["Limit"]));
@@ -85,7 +85,7 @@ namespace TankControl.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("COM6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM7")]
         public string WSPort {
             get {
                 return ((string)(this["WSPort"]));
@@ -140,6 +140,18 @@ namespace TankControl.Properties {
             }
             set {
                 this["SystemTest"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int ProcessTimeout {
+            get {
+                return ((int)(this["ProcessTimeout"]));
+            }
+            set {
+                this["ProcessTimeout"] = value;
             }
         }
     }

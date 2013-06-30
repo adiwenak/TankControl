@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using TankControl.Class.Functions;
 
 namespace TankControl.View
 {
@@ -88,13 +89,11 @@ namespace TankControl.View
                     }
                     catch (System.Data.EntityException)
                     {
-                        MessageBox.Show("An error occured while generating data from database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        Application.Current.Shutdown();
+                        TCFunction.MessageBoxFail("An error occured while generating data from database");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        Application.Current.Shutdown();
+                        TCFunction.MessageBoxFail("unknow error {" + ex.InnerException.Message + "}");
                     }
                     reportGridView.ItemsSource = reportlist;
                 }

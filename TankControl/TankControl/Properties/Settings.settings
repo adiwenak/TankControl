@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Limit" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">1000</Value>
+      <Value Profile="(Default)">364</Value>
     </Setting>
     <Setting Name="MoxAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.5.254</Value>
@@ -18,7 +18,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="WSPort" Type="System.String" Scope="User">
-      <Value Profile="(Default)">COM6</Value>
+      <Value Profile="(Default)">COM7</Value>
     </Setting>
     <Setting Name="WSBaudRate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">9600</Value>
@@ -31,6 +31,9 @@
     </Setting>
     <Setting Name="SystemTest" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ProcessTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
     </Setting>
   </Settings>
 </SettingsFile>

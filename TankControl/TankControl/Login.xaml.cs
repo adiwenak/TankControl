@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Security.Cryptography;
+using TankControl.Class.Functions;
 
 namespace TankControl
 {
@@ -27,6 +28,7 @@ namespace TankControl
         private void login_Click(object sender, RoutedEventArgs e)
         {
             string user = this.username.Text;
+
             string pass =TankControl.Class.AES.EncryptAES(this.password.Password);
 
             using (TankControlEntities tce = new TankControlEntities())
@@ -37,6 +39,7 @@ namespace TankControl
                                  where a.username == user
                                  where a.password == pass
                                  select a).FirstOrDefault();
+
                     if (query == null)
                     {
                         errorText.Content = "Invalid username/password";
@@ -55,14 +58,12 @@ namespace TankControl
                 }
                 catch (System.Data.EntityException ex)
                 {
-                    //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An error occured while logging in to the aplication. Please contact technician");
+                    TCFunction.MessageBoxError(ex.Message);
                     Application.Current.Shutdown();
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An unknown error has occurred. Please contact technician");
+                    TCFunction.MessageBoxError(ex.Message);
                     Application.Current.Shutdown();
                 }
             }

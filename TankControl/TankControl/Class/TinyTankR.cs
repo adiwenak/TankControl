@@ -51,7 +51,7 @@ namespace TankControl.Class
             {
                 cmp.Run();
 
-                _TempEqualWeight();
+                _TempAddWeight();
             }
             else
             {

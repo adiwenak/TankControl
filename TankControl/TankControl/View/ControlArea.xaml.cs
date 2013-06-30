@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using TankControl.Class;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
+using TankControl.Class.Functions;
 
 namespace TankControl.View
 {
@@ -16,9 +17,6 @@ namespace TankControl.View
     public partial class ControlArea : UserControl
     {
         private ObservableCollection<TankControl.Recipe> recipelist;
-
-        // use to determine if process can be started
-        private int counterProcess;
 
         public ControlArea()
         {
@@ -42,8 +40,11 @@ namespace TankControl.View
 
         private void StartProcess_Click(object sender, RoutedEventArgs e)
         {
-            Process.Singleton.FillupRun();
-            this.DisableStartProcess();
+            if (Process.Singleton.IsProcessReady() || TankControl.Properties.Settings.Default.SystemTest == 1)
+            {
+                Process.Singleton.FillupRun();
+                this.DisableStartProcess();
+            }
         }
 
         private void Disconnect_Click(object sender, RoutedEventArgs e)
@@ -64,9 +65,9 @@ namespace TankControl.View
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
-            if (Microcontroller.Singleton.Connect())
+            if (WeightScale.Singleton.Connect())
             {
-                if (WeightScale.Singleton.Connect())
+                if (Microcontroller.Singleton.Connect())
                 {
                     if (this.CheckProcess() == true)
                     {
@@ -76,24 +77,24 @@ namespace TankControl.View
                 }
                 else
                 {
-                    MessageBox.Show("Fail to connect weight scale, check setting or contact technician", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    TCFunction.MessageBoxFail("Fail to connect weight scale");
                 }
             }
             else
             {
-                MessageBox.Show("Fail to connect moxa, check setting or contact technician", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                TCFunction.MessageBoxFail("Fail to connect moxa");
             }
 
         }
 
         private void StartTake_Click(object sender, RoutedEventArgs e)
         {
-            Process.Singleton.TakeStart();
+            //Process.Singleton.TakeStart();
         }
 
         private void StopTake_Click(object sender, RoutedEventArgs e)
         {
-            Process.Singleton.TakeStop();
+            //Process.Singleton.TakeStop();
         }
 
         private void DropdownRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -117,7 +118,7 @@ namespace TankControl.View
                     }
                     else
                     {
-
+                        MessageBox.Show("Unable to get recipe","Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
