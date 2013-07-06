@@ -89,12 +89,16 @@ namespace TankControl.View
 
         private void StartTake_Click(object sender, RoutedEventArgs e)
         {
-            //Process.Singleton.TakeStart();
+            Process.Singleton.DrainStart();
+            this.StartDrainButton.IsEnabled = false;
+            this.StopDrainButton.IsEnabled = true;
         }
 
         private void StopTake_Click(object sender, RoutedEventArgs e)
         {
-            //Process.Singleton.TakeStop();
+            Process.Singleton.DrainStop();
+            this.StopDrainButton.IsEnabled = false;
+            this.StartDrainButton.IsEnabled = true;
         }
 
         private void DropdownRecipe_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -191,7 +195,10 @@ namespace TankControl.View
         public void EnableStartProcess()
         {
             this.StartProcessButton.IsEnabled = true;
+            this.StartDrainButton.IsEnabled = true;
+
             this.StopProcessButton.IsEnabled = false;
+            this.StopDrainButton.IsEnabled = true;
         }
 
         public void DisableStartProcess()
