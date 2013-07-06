@@ -10,7 +10,7 @@
             
     	<local:ShakeValveRComponent x:Name="ShakeValveR" HorizontalAlignment="Left" Margin="185.605,10.5,0,0" VerticalAlignment="Top"/>
     	<local:ShakeValveLComponent x:Name="ShakeValveL" HorizontalAlignment="Left" Margin="165.227,466.667,0,0" VerticalAlignment="Top"/>
-    	<local:OutValveComponent x:Name="OutValve" HorizontalAlignment="Left" Margin="257.164,483.911,0,0" VerticalAlignment="Top"/>
+    	<local:OutValveComponent x:Name="OutValve" HorizontalAlignment="Left" Margin="454.164,483.911,0,0" VerticalAlignment="Top"/>
             
     </Grid>
 </UserControl>

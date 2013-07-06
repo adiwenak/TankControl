@@ -559,15 +559,17 @@ namespace TankControl.Class
             this.isFillupRun = true;
         }
 
-        public void TakeStart()
+        public void DrainStart()
         {
             this.MainTank.OpenValveControl();
+            this.MainTank.OpenValveShake();
             this.MainTank.OpenValveOutput();
         }
 
-        public void TakeStop()
+        public void DrainStop()
         {
             this.MainTank.StopValveControl();
+            this.MainTank.StopValveShake();
             this.MainTank.StopValveOutput();
         }
 

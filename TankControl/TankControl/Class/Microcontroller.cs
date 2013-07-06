@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MOXA_CSharp_MXIO;
 using System.Diagnostics;
+using System.Windows;
 
 namespace TankControl.Class
 {
@@ -240,13 +241,21 @@ namespace TankControl.Class
                     {
                         this.OnDigitalOutput(location);
                     }
+                    else
+                    {
+                        MessageBox.Show("Koneksi ke MOXA putus", "FAIL", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-
-                if (ret == MXIO_CS.MXIO_OK)
+                else if (ret == MXIO_CS.MXIO_OK)
                 {
                     Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X} , 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
                     success = true;
                 }
+                else
+                {
+                    MessageBox.Show("MOXA tidak berjalan dengan baik", "FAIL", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
             }
 
             return success;
@@ -270,12 +279,19 @@ namespace TankControl.Class
                     {
                         this.OffDigitalOutput(location);
                     }
+                    else
+                    {
+                        MessageBox.Show("Koneksi ke MOXA putus", "FAIL", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-
-                if (ret == MXIO_CS.MXIO_OK)
+                else if (ret == MXIO_CS.MXIO_OK)
                 {
                     Debug.WriteLine("MXIO_WriteCoils Values:0x{0:X}, 0x{0:X}", byteWriteCoils[0], byteWriteCoils[1]);
                     success = true;
+                }
+                else
+                {
+                    MessageBox.Show("MOXA tidak berjalan dengan baik", "FAIL", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
