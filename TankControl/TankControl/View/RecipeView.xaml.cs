@@ -186,9 +186,9 @@ namespace TankControl.View
                     MessageBox.Show("An error occured while performing delete to the database. Please contact technician","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("An unknown error has occurred. Please contact technician" + ex.InnerException.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Application.Current.Shutdown();
                 }
             }

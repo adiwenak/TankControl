@@ -89,11 +89,11 @@ namespace TankControl.View
                     }
                     catch (System.Data.EntityException)
                     {
-                        TCFunction.MessageBoxFail("An error occured while generating data from database");
+                        TCFunction.MessageBoxFail("An error occured while generating history recipe from database");
                     }
                     catch (Exception ex)
                     {
-                        TCFunction.MessageBoxFail("unknow error {" + ex.InnerException.Message + "}");
+                        TCFunction.MessageBoxFail("unknow error {" + ex.InnerException.Message + "} in reporting view");
                     }
                     reportGridView.ItemsSource = reportlist;
                 }

@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using TankControl.Class.Functions;
 
 namespace TankControl.View
 {
@@ -61,12 +62,12 @@ namespace TankControl.View
                     }
                     catch (System.Data.EntityException)
                     {
-                        MessageBox.Show("An error occured while retrieving data from database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TCFunction.MessageBoxError("An error occured while retrieving user data from database. Please contact technician");
                         Application.Current.Shutdown();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TCFunction.MessageBoxError("An unknown error has occurred in user view. Please contact technician");
                         Application.Current.Shutdown();
                     }
 
@@ -109,13 +110,13 @@ namespace TankControl.View
                     catch (System.Data.EntityException)
                     {
                         //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An error occured while performing update to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TCFunction.MessageBoxError("An error occured while performing user update to the database. Please contact technician");
                         Application.Current.Shutdown();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         //MessageBox.Show(ex.InnerException.Message.ToString());
-                        MessageBox.Show("An unknown error has occurred. Please contact technician","Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TCFunction.MessageBoxError("An unknown error has occurred in user view. Please contact technician! {"+ ex.InnerException.Message + "}");
                         Application.Current.Shutdown();
                     }
                 }
@@ -144,9 +145,9 @@ namespace TankControl.View
                         this.userListGridView.Columns["columnAuthLevel"].IsVisible = true; //hide column authorization
                         errorText.Content = "";
                     }
-                    catch (System.Data.EntityException)
+                    catch (System.Data.EntityException ex)
                     {
-                        MessageBox.Show("An error occured while performing insert to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TCFunction.MessageBoxError("An error occured while performing insert user to the database. Please contact technician! {" + ex.Message +"}");
                         Application.Current.Shutdown();
                     }
                     catch (Exception ex)
@@ -162,7 +163,7 @@ namespace TankControl.View
                         }
                         else
                         {
-                            MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            TCFunction.MessageBoxError("An unknown error has occurred. Please contact technician! {" + ex.InnerException.Message + "}");
                             Application.Current.Shutdown();
                         }
                     }
@@ -193,15 +194,15 @@ namespace TankControl.View
                     tce.SaveChanges();
                     errorText.Content = "";
                 }
-                catch (System.Data.EntityException)
+                catch (System.Data.EntityException ex)
                 {
-                    MessageBox.Show("An error occured while performing delete to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    TCFunction.MessageBoxError("An error occured while performing user delete to the database. Please contact technician {" + ex.InnerException.Message + "}");
                     Application.Current.Shutdown();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //MessageBox.Show(ex.InnerException.Message.ToString());
-                    MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    TCFunction.MessageBoxError("An unknown error has occurred. Please contact technician! {" + ex.InnerException.Message + "}");
                     Application.Current.Shutdown();
                 }
             }
@@ -233,14 +234,14 @@ namespace TankControl.View
                             e.IsValid = false;
                         }
                     }
-                    catch (System.Data.EntityException)
+                    catch (System.Data.EntityException ex)
                     {
-                        MessageBox.Show("An error occured while performing query to the database. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TCFunction.MessageBoxError("An error occured while performing user listing. Please contact technician! {" + ex.InnerException.Message + "}");
                         Application.Current.Shutdown();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("An unknown error has occurred. Please contact technician", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TCFunction.MessageBoxError("An unknown error has occurred. Please contact technician! {" + ex.InnerException.Message + "}");
                         Application.Current.Shutdown();
                     }
 

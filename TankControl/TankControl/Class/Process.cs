@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Windows.Threading;
 using TankControl.Functions;
 using TankControl.View;
+using TankControl.Class.Functions;
 
 namespace TankControl.Class
 {
@@ -561,16 +562,30 @@ namespace TankControl.Class
 
         public void DrainStart()
         {
-            this.MainTank.OpenValveControl();
-            this.MainTank.OpenValveShake();
-            this.MainTank.OpenValveOutput();
+            if (Microcontroller.Singleton.IsConnected())
+            {
+                this.MainTank.OpenValveControl();
+                this.MainTank.OpenValveShake();
+                this.MainTank.OpenValveOutput();
+            }
+            else
+            {
+                TCFunction.MessageBoxFail("Moxa is not connected");
+            }
         }
 
         public void DrainStop()
         {
-            this.MainTank.StopValveControl();
-            this.MainTank.StopValveShake();
-            this.MainTank.StopValveOutput();
+            if (Microcontroller.Singleton.IsConnected())
+            {
+                this.MainTank.StopValveControl();
+                this.MainTank.StopValveShake();
+                this.MainTank.StopValveOutput();
+            }
+            else
+            {
+                TCFunction.MessageBoxFail("Moxa is not connected");
+            }
         }
 
         /// <summary>

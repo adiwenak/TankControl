@@ -71,9 +71,9 @@ namespace TankControl.View
                 {
                     if (this.CheckProcess() == true)
                     {
-                       
+                        this.DisableConnection();
                     }
-                    this.DisableConnection();
+                    
                 }
                 else
                 {
@@ -117,7 +117,7 @@ namespace TankControl.View
 
                         if (this.CheckProcess() == true)
                         {
-                            this.EnableStartProcess();
+
                         }
                     }
                     else
@@ -135,7 +135,7 @@ namespace TankControl.View
             {
                 try
                 {
-
+                    Process.Singleton.Recipe = null;
                     this.recipelist = new ObservableCollection<Recipe>();
 
                     var query = tce.Recipes.Select(x => new { x.id, x.name }).ToList();
@@ -148,31 +148,37 @@ namespace TankControl.View
                         }
                     }
 
+                    this.DropdownRecipe.ItemsSource = this.recipelist;
                 }
                 catch (System.Data.EntityException exception)
                 {
-                    MessageBox.Show("An error occured while generating recipe data from database. Please contact technician {" + exception.Message + "}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    TCFunction.MessageBoxError("An error occured while generating recipe data from database. Please contact technician {" + exception.Message + "}");
                     Application.Current.Shutdown();
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show("An unknown error has occurred. Please contact technician {" + exception.Message + "}" , "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    TCFunction.MessageBoxError("An unknown error has occurred in control area. Please contact technician {" + exception.Message + "}");
                     Application.Current.Shutdown();
                 }
 
             }
 
-            if (Microcontroller.Singleton.IsConnected())
+
+            // initialize control button
+            if (Process.Singleton.IsProcessReady())
             {
                 this.EnableStartProcess();
                 this.DisableConnection();
             }
             else
             {
-                this.EnableConnection();
+                if (!Microcontroller.Singleton.IsConnected() || !WeightScale.Singleton.IsConnected())
+                {
+                    this.EnableConnection();
+                }
             }
 
-            this.DropdownRecipe.ItemsSource = this.recipelist;
+            
         }
 
         // Event Handler Stop
@@ -187,6 +193,7 @@ namespace TankControl.View
             {
                 this.CheckReady.IsChecked = true;
                 this.EnableStartProcess();
+                ready = true;
             }
 
             return ready;
@@ -195,15 +202,14 @@ namespace TankControl.View
         public void EnableStartProcess()
         {
             this.StartProcessButton.IsEnabled = true;
-            this.StartDrainButton.IsEnabled = true;
 
             this.StopProcessButton.IsEnabled = false;
-            this.StopDrainButton.IsEnabled = true;
         }
 
         public void DisableStartProcess()
         {
             this.StartProcessButton.IsEnabled = false;
+
             this.StopProcessButton.IsEnabled = true;
         }
 

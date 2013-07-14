@@ -22,7 +22,7 @@
             <Button x:Name="StopProcessButton" Content="Stop" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="115,234,0,0" Click="StopProcess_Click" IsEnabled="False" />
             <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="192" Margin="13,305,0,0" Click="Connect_Click" IsEnabled="true" />
             <Button x:Name="DisconnectButton" Content="Disconnect" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="192" Margin="13,341,0,0" Click="Disconnect_Click" IsEnabled="False" />
-            <Button x:Name="StartDrainButton" Content="Drain" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="93" Margin="16,270,0,0" Click="StartTake_Click" IsEnabled="False" />
+            <Button x:Name="StartDrainButton" Content="Drain" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="93" Margin="16,270,0,0" Click="StartTake_Click" IsEnabled="True" />
             <Button x:Name="StopDrainButton" Content="Stop D" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="115,270,0,0" Click="StopTake_Click" IsEnabled="False" />
 
             <Label FontWeight="Bold" Margin="6,436,138,211" VerticalAlignment="Center" Padding="5" FontSize="13">Current Weight</Label>
