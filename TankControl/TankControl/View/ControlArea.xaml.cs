@@ -51,8 +51,14 @@ namespace TankControl.View
         {
             if (Microcontroller.Singleton.Disconnect())
             {
+                this.MoxaStatusLabel.Foreground = Brushes.Red;
+                this.MoxaStatusLabel.Content = "Disconnected";
+
                 if (WeightScale.Singleton.Disconnect())
                 {
+                    this.ScaleStatusLabel.Foreground = Brushes.Red;
+                    this.ScaleStatusLabel.Content = "Disconnected";
+
                     this.StartProcessButton.IsEnabled = false;
                     this.EnableConnection();
                 }
@@ -67,13 +73,18 @@ namespace TankControl.View
         {
             if (WeightScale.Singleton.Connect())
             {
+                this.ScaleStatusLabel.Foreground = Brushes.Green;
+                this.ScaleStatusLabel.Content = "Connected";
+
                 if (Microcontroller.Singleton.Connect())
                 {
+                    this.MoxaStatusLabel.Foreground = Brushes.Green;
+                    this.MoxaStatusLabel.Content = "Connected";
+
                     if (this.CheckProcess() == true)
                     {
                         this.DisableConnection();
                     }
-                    
                 }
                 else
                 {
@@ -117,12 +128,12 @@ namespace TankControl.View
 
                         if (this.CheckProcess() == true)
                         {
-
+                            this.DisableConnection();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Unable to get recipe","Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Unable to get recipe", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -178,7 +189,7 @@ namespace TankControl.View
                 }
             }
 
-            
+
         }
 
         // Event Handler Stop
@@ -217,12 +228,6 @@ namespace TankControl.View
         {
             this.ConnectButton.IsEnabled = true;
             this.DisconnectButton.IsEnabled = false;
-
-            this.MoxaStatusLabel.Foreground = Brushes.Red;
-            this.MoxaStatusLabel.Content = "Disconnected";
-
-            this.ScaleStatusLabel.Foreground = Brushes.Red;
-            this.ScaleStatusLabel.Content = "Disconnected";
         }
 
         private void DisableConnection()
@@ -230,11 +235,6 @@ namespace TankControl.View
             this.DisconnectButton.IsEnabled = true;
             this.ConnectButton.IsEnabled = false;
 
-            this.MoxaStatusLabel.Foreground = Brushes.Green;
-            this.MoxaStatusLabel.Content = "Connected";
-
-            this.ScaleStatusLabel.Foreground = Brushes.Green;
-            this.ScaleStatusLabel.Content = "Connected";
         }
 
         #endregion

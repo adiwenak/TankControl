@@ -104,7 +104,15 @@ namespace TankControl.Class
                                     ready = true;
                                 }
                             }
+                            else
+                            {
+                                TCFunction.MessageBoxFail("Timbangan tidak 0, harap tangki utama dikosongkan dan pilih recipe kembali!");
+                            }
                         }
+                    }
+                    else
+                    {
+                        TCFunction.MessageBoxFail("Recipe tidak benar, harap dicek ulang jumlah total recipe");
                     }
                 }
             }
